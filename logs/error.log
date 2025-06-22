@@ -1,0 +1,71 @@
+[Sun Jun 22 19:43:40.877559 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.3.22 configured -- resuming normal operations
+[Sun Jun 22 19:43:40.877679 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 19:44:06.863747 2025] [autoindex:error] [pid 17:tid 17] [client 172.18.0.5:39300] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://157.180.119.231:81/
+[Sun Jun 22 19:50:12.157761 2025] [autoindex:error] [pid 19:tid 19] [client 173.179.12.10:14621] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Sun Jun 22 19:50:55.172541 2025] [autoindex:error] [pid 21:tid 21] [client 172.18.0.1:35788] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive, referer: http://157.180.119.231:81/
+[Sun Jun 22 19:53:10.221077 2025] [autoindex:error] [pid 17:tid 17] [client 173.179.12.10:14670] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Sun Jun 22 19:53:13.088430 2025] [autoindex:error] [pid 17:tid 17] [client 173.179.12.10:14670] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Sun Jun 22 20:15:50.255687 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 20:16:04.958790 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.3.22 configured -- resuming normal operations
+[Sun Jun 22 20:16:04.958877 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 20:20:41.978177 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 20:29:52.734428 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 20:29:52.736920 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 20:32:42.938397 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 20:43:40.139813 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 20:43:40.140547 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 21:04:11.321696 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 21:04:21.459926 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 21:04:21.460034 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 21:12:10.526015 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 21:12:20.157873 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 21:12:20.157984 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 21:20:43.038975 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 21:20:54.869324 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 21:20:54.869417 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 21:23:38.473115 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 21:23:40.203425 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 21:23:40.203539 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 21:34:02.337440 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 21:34:03.989403 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 21:34:03.989487 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 21:34:17.137504 2025] [php:error] [pid 16:tid 16] [client 172.18.0.1:54962] PHP Parse error:  syntax error, unexpected variable "$CFG", expecting ")" in /var/www/html/moodle/config.php on line 54
+[Sun Jun 22 21:34:19.222988 2025] [php:error] [pid 17:tid 17] [client 172.18.0.1:54972] PHP Parse error:  syntax error, unexpected variable "$CFG", expecting ")" in /var/www/html/moodle/config.php on line 54
+[Sun Jun 22 21:34:20.844828 2025] [php:error] [pid 18:tid 18] [client 172.18.0.1:54984] PHP Parse error:  syntax error, unexpected variable "$CFG", expecting ")" in /var/www/html/moodle/config.php on line 54
+[Sun Jun 22 21:36:56.338970 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 21:36:58.133761 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 21:36:58.133857 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 21:37:05.403971 2025] [php:error] [pid 17:tid 17] [client 172.18.0.1:41868] PHP Parse error:  syntax error, unexpected token ";", expecting ")" in /var/www/html/moodle/config.php on line 51
+[Sun Jun 22 21:37:07.733508 2025] [php:error] [pid 18:tid 18] [client 172.18.0.1:41880] PHP Parse error:  syntax error, unexpected token ";", expecting ")" in /var/www/html/moodle/config.php on line 51
+[Sun Jun 22 21:38:01.051496 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 21:38:02.821262 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 21:38:02.821372 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 21:42:34.014332 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 21:42:35.721970 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 21:42:35.722040 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 21:44:16.403981 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 21:44:18.314506 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 21:44:18.314614 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 21:44:46.079082 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 21:44:47.782064 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 21:44:47.782155 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 22:11:54.050909 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 22:11:55.792555 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 22:11:55.792644 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 22:12:52.424158 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 22:12:54.132045 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 22:12:54.132199 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 22:47:43.816560 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 22:47:45.606134 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 22:47:45.606258 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 22:48:32.052657 2025] [php:error] [pid 17:tid 17] [client 172.18.0.3:53490] PHP Parse error:  Unclosed '{' on line 56 in /var/www/html/moodle/config.php on line 63, referer: http://157.180.119.231:81/
+[Sun Jun 22 22:48:34.080320 2025] [php:error] [pid 18:tid 18] [client 172.18.0.3:53502] PHP Parse error:  Unclosed '{' on line 56 in /var/www/html/moodle/config.php on line 63, referer: http://157.180.119.231:81/
+[Sun Jun 22 22:51:19.165694 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 22:51:20.942418 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 22:51:20.942544 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 23:04:08.235384 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 23:04:09.905148 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 23:04:09.905230 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sun Jun 22 23:09:54.969826 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Sun Jun 22 23:09:56.665258 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.1.32 configured -- resuming normal operations
+[Sun Jun 22 23:09:56.666077 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
