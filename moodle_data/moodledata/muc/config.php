@@ -1,6 +1,6 @@
 <?php defined('MOODLE_INTERNAL') || die();
  $configuration = array (
-  'siteidentifier' => '0f8cf19579cc7d4d4ad3ee86dfea9ed3',
+  'siteidentifier' => '940f771871d94573aada8bf48539da65',
   'stores' => 
   array (
     'default_application' => 

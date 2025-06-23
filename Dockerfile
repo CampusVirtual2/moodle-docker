@@ -44,6 +44,8 @@ RUN apt-get install -y libxml2-dev \
 && docker-php-ext-install soap
 #Instala suporte php para exif
 RUN docker-php-ext-install exif
+# Instala suporte PHP para PostgreSQL
+RUN docker-php-ext-install pgsql pdo_pgsql
 #Instala suporte php para opcache
 RUN docker-php-ext-install opcache
 RUN pecl install redis && docker-php-ext-enable redis

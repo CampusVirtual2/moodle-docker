@@ -16,6 +16,18 @@ services:
       - MARIADB_COLLATE=utf8mb4_unicode_ci
     networks:
       - default
+  moodlepgdb:
+    image: postgres:13
+    container_name: ${DOMAIN}_pgdb
+    restart: always
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    networks:
+      - default
   campusvirtual2.com:
     container_name: ${DOMAIN}_web
     env_file: .env
@@ -23,13 +35,21 @@ services:
     ports:
       - '8002:80'
     environment:
-      - MOODLE_DATABASE_HOST=moodledb
-      - MOODLE_DATABASE_PORT_NUMBER=3306
-      - MOODLE_DATABASE_USER=${MYSQL_USER}
-      - MOODLE_DATABASE_NAME=${MYSQL_DB}
-      - MOODLE_DATABASE_PASSWORD=${MYSQL_PASSWORD}
+      - MOODLE_DATABASE_TYPE=pgsql
+      - MOODLE_DATABASE_HOST=moodlepgdb
+      - MOODLE_DATABASE_PORT_NUMBER=5432
+      - MOODLE_DATABASE_USER=${POSTGRES_USER}
+      - MOODLE_DATABASE_NAME=${POSTGRES_DB}
+      - MOODLE_DATABASE_PASSWORD=${POSTGRES_PASSWORD}
       - ALLOW_EMPTY_PASSWORD=no
       - MOODLE_REVERSEPROXY=yes
+#      - MOODLE_DATABASE_HOST=moodledb
+#      - MOODLE_DATABASE_PORT_NUMBER=3306
+#      - MOODLE_DATABASE_USER=${MYSQL_USER}
+#      - MOODLE_DATABASE_NAME=${MYSQL_DB}
+#      - MOODLE_DATABASE_PASSWORD=${MYSQL_PASSWORD}
+#      - ALLOW_EMPTY_PASSWORD=no
+#      - MOODLE_REVERSEPROXY=yes
     volumes:
       - ./moodle_data:/var/www/html
       - ./moodledata_data:/var/www/moodledata
@@ -39,7 +59,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     depends_on:
-      - moodledb
+#     - moodledbi
+      - moodlepgdb
     extra_hosts:
       - "${DOMAIN}:127.0.1.1"
     networks:
@@ -96,6 +117,8 @@ volumes:
   moodle_data:
     driver: local
   moodledata_data:
+    driver: local
+  pg_data:
     driver: local
 networks:
   default:
