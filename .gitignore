@@ -1,3 +1,7 @@
 db_data/
 pg_data/
 logs/
+moodledata_data/cache/
+moodledata_data/localcache/
+moodledata_data/temp/
+moodledata_data/filedir/

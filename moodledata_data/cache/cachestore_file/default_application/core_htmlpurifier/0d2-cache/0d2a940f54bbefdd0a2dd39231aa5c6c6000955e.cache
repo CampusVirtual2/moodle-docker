@@ -1,9 +1,0 @@
-s:732:"<p>Marcação baseada na certeza requer que você indique o quão confiável você acha que sua resposta é. Os níveis disponíveis são:</p>
-
-<p>Nível de certeza | C = 1 (Incerto) | C = 2 (Médio) | C = 3 (Certo)
----------------------- |------------------- | ----------------- | ---------------- Marca se correto|           1            |            2         |         3
-Mark se errado   |           0            |           -2         |        -6
-Probabilidade correto | &lt;67%      |      67-80%     |    &gt; 80%</p>
-
-<p>Melhores marcas são ganhas por reconhecer a incerteza. Por exemplo, se você acha que há mais de um 1 em 3 chances de estar errado, você deve digitar C = 1 e evitar o risco de uma marca negativa.</p>
-";
