@@ -1022,3 +1022,4 @@
 [27/Jun/2025:15:38:48 +0000] 200 - GET http 157.180.119.231 "/" [Client 122.47.188.63] [Length 1033] [Gzip -] "Hello-World/1.0" "-"
 [27/Jun/2025:15:38:48 +0000] 400 - - http localhost-nginx-proxy-manager "-" [Client 122.47.188.63] [Length 154] [Gzip -] "-" "-"
 [27/Jun/2025:15:44:58 +0000] 200 - GET http 157.180.119.231 "/" [Client 108.165.153.7] [Length 568] [Gzip 1.86] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" "-"
+[27/Jun/2025:15:50:05 +0000] 400 - - http localhost "-" [Client 66.240.205.34] [Length 154] [Gzip -] "-" "-"
