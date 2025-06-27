@@ -1,18 +1,3 @@
-{
-  "libraryStrings": {
-    "confirmReset": "Είστε σίγουρος ότι επιθυμείτε να αλλάξετε τη διάταξη; Αυτό θα επαναφέρει την προεπισκόπηση.",
-    "sameAsSpacing": "Ίδιο με  το διάστημα",
-    "noFrame": "Χωρίς Πλαίσιο",
-    "uploadError": "Δεν είναι δυνατή η μεταφόρτωση της εικόνας. Πιθανότατα το αρχείο είναι πολύ μεγάλο.",
-    "zoomIn": "Μεγέθυνση",
-    "zoomOut": "Σμίκρυνση",
-    "noMoreZoom": "Χωρίς άλλο zoom",
-    "addImage": "Προσθήκη εικόνας",
-    "changeImage": "Αλλαγή εικόνας",
-    "imageSettings": "Ρυθμίσεις εικόνας",
-    "close": "Κλείσιμο",
-    "imageAltLabel": "Εναλλακτικό κείμενο",
-    "imageTitleLabel": "Επεξηγηματικό κείμενο",
-    "pleaseConfirm": "Παρακαλώ επιβεβαιώστε"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:5d6317cebcdf41fd847d6c469c4463e371da9ae1122df7d9cea1954ba1b474ae
+size 1008

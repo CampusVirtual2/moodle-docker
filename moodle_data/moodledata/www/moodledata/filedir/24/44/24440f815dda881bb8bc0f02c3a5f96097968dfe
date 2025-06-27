@@ -1,17 +1,3 @@
-{
-  "libraryStrings": {
-    "transformLabel": "Dönüştür",
-    "editLabel": "Düzenle",
-    "removeLabel": "Kaldır",
-    "bringToFrontLabel": "Öne getir",
-    "sendToBackLabel": "Geri gönder",
-    "unableToPaste": "Bu nesne yapıştırılamıyor. Maalesef yapıştırmaya çalıştığınız nesne bu içerik türü veya sürümü tarafından desteklenmiyor.",
-    "sizeLabel": "Boyut",
-    "positionLabel": "Konum",
-    "heightLabel": "Yükseklik",
-    "widthLabel": "Genişlik",
-    "copyLabel": "Kopyala",
-    "paste": "Yapıştır",
-    "moreElements": "Daha fazla öge"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:95db18d847ba1472a69d61d07fbb7325c79fbf878f96377a6102182aecf9369e
+size 587

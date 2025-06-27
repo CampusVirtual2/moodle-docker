@@ -1,14 +1,3 @@
-{
-  "libraryStrings": {
-    "transformLabel": "Transform",
-    "editLabel": "Edit",
-    "removeLabel": "Remove",
-    "bringToFrontLabel": "Bring to Front",
-    "sendToBackLabel": "Send to Back",
-    "unableToPaste": "Cannot paste this object. Unfortunately, the object you are trying to paste is not supported by this content type or version.",
-    "sizeLabel": "Size",
-    "positionLabel": "Position",
-    "heightLabel": "Height",
-    "widthLabel": "Width"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:587bec46877415fd082e5c9e5707f5474cac0b943188cecfeb71f5bd724bb6fe
+size 464

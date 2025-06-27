@@ -1,26 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Uzdevuma apraksts",
-      "description": "Aprakstiet kā lietotājam vajadzētu risināt uzdevumu."
-    },
-    {
-      "label": "Multivide",
-      "fields": [
-        {
-          "label": "Tips",
-          "description": "Papildu multivide, kuru atspoguļot virs jautājuma."
-        }
-      ]
-    },
-    {
-      "label": "Risinājuma apraksta etiķete",
-      "default": "Klikšķiniet, lai skatītu atbildi.",
-      "description": "Klikšķināms teksta laukums, kurā tiks atspoguļots risinājums."
-    },
-    {
-      "label": "Risinājuma teksts",
-      "description": "Attēla risinājums."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:9ff4cf6485510f8588a0a8691f79f7259510feca5cfcd8506d5da03836cf3bd3
+size 650

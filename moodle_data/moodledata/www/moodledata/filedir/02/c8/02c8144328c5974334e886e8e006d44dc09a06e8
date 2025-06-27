@@ -1,20 +1,3 @@
-{
-  "machineName": "H5PEditor.ShowWhen",
-  "title": "Toggle visibility of a field based on rules",
-  "license": "MIT",
-  "author": "fnoks",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 9,
-  "runnable": 0,
-  "preloadedJs": [
-    {
-      "path": "h5p-show-when.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "h5p-show-when.css"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:84317e95fca3ce42c7b1aff72a5e8e385002f869501c9834cd92ca6c7c3fff77
+size 361

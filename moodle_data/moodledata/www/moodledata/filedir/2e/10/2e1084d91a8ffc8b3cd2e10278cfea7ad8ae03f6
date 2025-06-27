@@ -1,17 +1,3 @@
-{
-  "libraryStrings": {
-    "transformLabel": "Trasforma",
-    "editLabel": "Modifica",
-    "removeLabel": "Rimuovi",
-    "bringToFrontLabel": "Porta in primo piano",
-    "sendToBackLabel": "Metti sullo sfondo",
-    "unableToPaste": "Impossibile incollare questo oggetto. Sfortunatamente, l'oggetto che stai cercando di incollare non è supportato da questo tipo di contenuto o da questa versione",
-    "sizeLabel": "Dimensione",
-    "positionLabel": "Posizione",
-    "heightLabel": "Altezza",
-    "widthLabel": "Larghezza",
-    "copyLabel": "Copia",
-    "paste": "Incolla",
-    "moreElements": "Più elementi"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:15260134b5d4485206a7f78e7a18caf890138e86282eb3a26cfb654954a93c41
+size 617

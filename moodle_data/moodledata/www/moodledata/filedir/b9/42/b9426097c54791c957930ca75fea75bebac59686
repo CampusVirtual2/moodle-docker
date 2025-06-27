@@ -1,26 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "توصيف تمرين",
-      "description": "توضيح دهيد كه كاربر چگونه بايد اين تمرين را حل كند."
-    },
-    {
-      "label": "رسانه",
-      "fields": [
-        {
-          "label": "نوع رسانه",
-          "description": "افزودن رسانه برای نمایش در بالای سوال"
-        }
-      ]
-    },
-    {
-      "label": "برچسب راه حل توصیفی",
-      "description": "منطقه متن قابل کلیک که در آن راه حل نمایش داده خواهد شد.",
-      "default": "Click to see the answer."
-    },
-    {
-      "label": "متن راه حل",
-      "description": "راه حل برای تصویر"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8126e8296fbeadd4cacb7db382f7c892d58f81fe07e34321e449edb7486152ea
+size 756

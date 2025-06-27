@@ -1,35 +1,3 @@
-{
-  "title": "H5PEditor.ThreeDModelLoader",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 3,
-  "runnable": 0,
-  "machineName": "H5PEditor.ThreeDModelLoader",
-  "coreApi": {
-    "majorVersion": 1,
-    "minorVersion": 12
-  },
-  "author": "Oliver Tacke",
-  "preloadedJs": [
-    {
-      "path": "dist/h5peditor-3d-model-loader.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "dist/h5peditor-3d-model-loader.css"
-    }
-  ],
-  "preloadedDependencies": [
-    {
-      "machineName": "H5P.AFrame",
-      "majorVersion": 1,
-      "minorVersion": 0
-    },
-    {
-      "machineName": "H5P.AFrameOrbitControls",
-      "majorVersion": 1,
-      "minorVersion": 3
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:9afe24834b609562aa32245ce1c52b3835d69b5dd5bd976c31ef1bba7ab8f381
+size 681

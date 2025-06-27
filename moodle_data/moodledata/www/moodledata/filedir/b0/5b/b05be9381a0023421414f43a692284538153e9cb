@@ -1,11 +1,3 @@
-function SetSCOComplete()
-{
- 	var SD = window.parent;
-
-    //This is the last page so set it complete
-    SD.SetReachedEnd();
-	SD.CommitData();
-}
-
-//Automatically set the SCO complete.
-SetSCOComplete();
+version https://git-lfs.github.com/spec/v1
+oid sha256:120084d9fc01496d7f3b4ee807b787eac32eb27e8d6bbeacf4fb14ac05edc148
+size 214

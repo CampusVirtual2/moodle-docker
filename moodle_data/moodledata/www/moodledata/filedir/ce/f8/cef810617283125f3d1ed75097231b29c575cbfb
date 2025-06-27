@@ -1,14 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Nome utente su Twitter",
-      "description": "Il nome utente recupererà i tweet da"
-    },
-    {
-      "label": "Mostra risposte"
-    },
-    {
-      "label": "Numero di tweet"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:17d899b4ca5d8c0be3ff73fc9566807d11371fc90caadcc23c872d1ac1f12982
+size 230

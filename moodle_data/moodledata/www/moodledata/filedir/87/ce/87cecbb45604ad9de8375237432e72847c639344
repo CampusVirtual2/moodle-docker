@@ -1,21 +1,3 @@
-{
-  "title": "Image Slide",
-  "description": "Image Slide, helper library for images used in image sliders and similar. Can render images with sizing options",
-  "majorVersion": 1,
-  "minorVersion": 1,
-  "patchVersion": 3,
-  "runnable": 0,
-  "author": "Falcon",
-  "license": "MIT",
-  "machineName": "H5P.ImageSlide",
-  "preloadedJs": [
-    {
-      "path": "image-slide.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "image-slide.css"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:58b42f9b69a0732e8241c5eae065fbd31dafd5d42a907dbb28c30e9f417f5b77
+size 453

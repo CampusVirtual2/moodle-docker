@@ -1,9 +1,3 @@
-{
-  "libraryStrings": {
-    "hide": "Ezkutatu",
-    "hideImportantInstructions": "Ezkutatu argibide garrantzitsuak",
-    "showImportantInstructions": "Erakutsi argibideak",
-    "example": "Adibidea",
-    "importantInstructions": "Argibide garrantzitsuak"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:af72ca9ceb99e7990b4497b66c27cfda2e84beca2a43ef915b5a50ffcd85c934
+size 261

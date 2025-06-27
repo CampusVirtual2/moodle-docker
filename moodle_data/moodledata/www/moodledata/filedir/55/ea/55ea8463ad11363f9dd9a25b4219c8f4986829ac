@@ -1,18 +1,3 @@
-{
-  "title": "Branching Question Editor",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 5,
-  "runnable": 0,
-  "machineName": "H5PEditor.BranchingQuestion",
-  "author": "thomasmars",
-  "coreApi": {
-    "majorVersion": 1,
-    "minorVersion": 24
-  },
-  "preloadedJs": [
-    {
-      "path": "index.js"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:3e788e47ca5f2321bef4172b3f446b91e8ba57a31076bcc94c9c5f6ca25c78db
+size 323

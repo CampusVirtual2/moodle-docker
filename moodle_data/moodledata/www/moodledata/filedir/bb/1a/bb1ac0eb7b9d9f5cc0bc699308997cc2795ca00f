@@ -1,24 +1,3 @@
-{
-  "title": "Text",
-  "description": "A simple library that displays text with all kinds of styling.",
-  "majorVersion": 1,
-  "minorVersion": 1,
-  "patchVersion": 13,
-  "runnable": 0,
-  "machineName": "H5P.AdvancedText",
-  "author": "Joubel",
-  "preloadedJs": [
-    {
-      "path": "text.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "text.css"
-    }
-  ],
-  "metadataSettings": {
-    "disable": 0,
-    "disableExtraTitleField": 1
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:acca1702b46a0afe50eb9da850751c1ef881bf009bd8415b8e29d6b2278b3807
+size 445

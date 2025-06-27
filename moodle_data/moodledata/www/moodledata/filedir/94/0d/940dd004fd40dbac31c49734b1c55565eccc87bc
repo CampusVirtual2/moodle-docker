@@ -1,11 +1,3 @@
-{
-  "libraryStrings": {
-    "noImage": "Du måste välja en bakgrundsbild innan du kan lägga till målfält (hotspots).",
-    "noImageTitle": "Ingen bakgrundsbild",
-    "done": "Färdig",
-    "back": "Tillbaka",
-    "remove": "Ta bort målfält (hotspot)",
-    "rectangle": "Skapa rektangel",
-    "circle": "Skapa cirkel"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:22402047e0ed43568afe549f9ad0ca55b4fd708caedfdc975ff4dd3210947404
+size 329

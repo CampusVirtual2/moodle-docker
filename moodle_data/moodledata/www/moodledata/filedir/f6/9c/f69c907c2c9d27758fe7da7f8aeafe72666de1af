@@ -1,7 +1,3 @@
-{
-  "libraryStrings": {
-    "exceedsMin": "\":property\" excede o valor mínimo de :min.",
-    "fromBiggerThanTo": "\"Desde\" deve ser anterior a \"Até\".",
-    "invalidTime": "\":property\" contém um formato de data/hora inválido."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:318c13115429b70985bfbae72028d2cc34693cb14d160a4596bc9769c75a50eb
+size 242

@@ -1,9 +1,3 @@
-.h5p-image > img {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.h5p-image > .h5p-placeholder {
-  background: url('placeholder.svg');
-  background-size: cover;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:cd5e90933d16b9fa5c57db0661a9a8862e9f860e5615b27537dd413d45d48201
+size 168

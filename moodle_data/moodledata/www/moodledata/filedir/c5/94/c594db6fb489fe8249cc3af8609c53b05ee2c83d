@@ -1,18 +1,3 @@
-{
-  "libraryStrings": {
-    "confirmReset": "Ali ste prepričani, da želite spremeniti postavitev? S tem boste ponastavili predogled oz. trenutni izbor.",
-    "sameAsSpacing": "Enak kot razmik",
-    "noFrame": "Brez okvirja",
-    "uploadError": "Slike ni mogoče naložiti. Datoteka je najverjetneje prevelika.",
-    "zoomIn": "Povečaj",
-    "zoomOut": "Pomanjšaj",
-    "noMoreZoom": "Ni več povečave",
-    "addImage": "Dodaj sliko",
-    "changeImage": "Zamenjaj sliko",
-    "imageSettings": "Nastavitev slike",
-    "close": "Zapri",
-    "imageAltLabel": "Nadomestno besedilo",
-    "imageTitleLabel": "Besedilo ob preletu miške",
-    "pleaseConfirm": "Please confirm"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:089950794739ee27d17258e60a52edef940b8d538f21f5fbec344da335913c18
+size 680

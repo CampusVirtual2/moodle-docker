@@ -1,24 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Breedte",
-      "description": "Breedte van iRaam in CSS vereisde formaat. Verstek: \"500px\""
-    },
-    {
-      "label": "Minimum breedte",
-      "description": "Minimum breedte van iRaam in CSS vereisde formaat. Verstek: \"300px\""
-    },
-    {
-      "label": "Hoogte",
-      "description": "Hoogte van iRaam in CSS vereisde formaat. Verstek: \"500px\""
-    },
-    {
-      "label": "Bron",
-      "description": "URL na eksterne dokument, of pad na dokument binne H5P (onder/inhoud)"
-    },
-    {
-      "label": "Aanpasbare grote word ondersteun",
-      "description": "Indien aktiveer, sal die volskerm knoppie vertoon en sal H5P aanpas by die grote van sy omgewing"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b449ae2ce207263e34f5ffe383ff23f3363de909951e5efb17373c61e8bc085a
+size 723

@@ -1,36 +1,3 @@
-{
-  "title": "KewAr Code",
-  "description": "H5P content type for displaying QR codes",
-  "majorVersion": 0,
-  "minorVersion": 2,
-  "patchVersion": 1,
-  "runnable": 1,
-  "author": "Oliver Tacke",
-  "license": "MIT",
-  "machineName": "H5P.KewArCode",
-  "embedTypes": [
-    "iframe"
-  ],
-  "preloadedJs": [
-    {
-      "path": "dist/h5p-kewar-code.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "dist/h5p-kewar-code.css"
-    }
-  ],
-  "editorDependencies": [
-    {
-      "machineName": "H5PEditor.ColorSelector",
-      "majorVersion": 1,
-      "minorVersion": 2
-    },
-    {
-      "machineName": "H5PEditor.ShowWhen",
-      "majorVersion": 1,
-      "minorVersion": 0
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1943655aaf6c759585bdfcf5c58c9bc905397cff8374f3219d8070ed5ff5149c
+size 684

@@ -1,17 +1,3 @@
-{
-  "libraryStrings": {
-    "transformLabel": "Transformoi",
-    "editLabel": "Editoi",
-    "removeLabel": "Poista",
-    "bringToFrontLabel": "Tuo eteen",
-    "sendToBackLabel": "Lähetä taakse",
-    "unableToPaste": "Objektia ei pystytty liittämään. Valitettavasti objektia jota yrität liittä ei tueta tässä aineistomuodossa tai sen nykyisessä versiossa.",
-    "sizeLabel": "Koko",
-    "positionLabel": "Sijainti",
-    "heightLabel": "Korkeus",
-    "widthLabel": "Leveys",
-    "copyLabel": "Kopioi",
-    "paste": "Liitä",
-    "moreElements": "Lisää elementtejä"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1462a1b742220a461140b88abd2f7456df8eb4a0c194297b3c31db174185d46e
+size 582

@@ -1,32 +1,3 @@
-/** @namespace H5PUpgrades */
-var H5PUpgrades = H5PUpgrades || {};
-
-H5PUpgrades['H5P.Flashcards'] = (function () {
-  return {
-    1: {
-      /**
-       * Asynchronous content upgrade hook.
-       * Upgrades parameters to support alternative answers separated by |.
-       *
-       * @params {object} parameters Parameters.
-       * @params {function} Callback to pass new values to.
-       * @params {object} extras Extras such as metadata.
-       */
-      6: function (parameters, finished, extras) {
-
-        if (parameters && Array.isArray(parameters.cards)) {
-          // Escape | in answers
-          for (var i = 0; i < parameters.cards.length; i++) {
-            if (typeof parameters.cards[i].answer === 'string') {
-              parameters.cards[i].answer = parameters.cards[i].answer
-                .replace(/\|/g, '\\|');
-            }
-          }
-        }
-
-        // Done
-        finished(null, parameters, extras);
-      }
-    }
-  };
-})();
+version https://git-lfs.github.com/spec/v1
+oid sha256:fe9a6456091cb6849a7183d057b946a79d7c000e879832186da13c9de90086cc
+size 957

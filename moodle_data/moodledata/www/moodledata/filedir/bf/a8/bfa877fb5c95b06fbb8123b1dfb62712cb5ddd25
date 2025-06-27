@@ -1,20 +1,3 @@
-{
-  "libraryStrings": {
-    "insertElement": "Přidat :type",
-    "done": "Hotovo",
-    "remove": "Odstranit",
-    "image": "Obrázek",
-    "text": "Text",
-    "noTaskSize": "Nejprve prosím zadejte velikost úlohy.",
-    "confirmRemoval": "Opravdu chcete tento prvek odebrat?",
-    "backgroundOpacityOverridden": "Neprůhlednost pozadí je potlačena",
-    "advancedtext": "Text",
-    "dropzone": "Místo umístění",
-    "selectAll": "Vybrat vše",
-    "deselectAll": "Odznačit vše",
-    "deleteTaskTitle": "Odstranit úkol",
-    "cancel": "Zrušit",
-    "confirm": "Potvrdit",
-    "ok": "Ok"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:294763207bda3fa7e775a64d45f8f7565f95f8fca40d2338ec6dc505c588567c
+size 604

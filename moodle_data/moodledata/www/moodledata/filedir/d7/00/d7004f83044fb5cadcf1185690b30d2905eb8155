@@ -1,17 +1,3 @@
-.h5p-text ul,
-.h5p-text li {
-    padding-left: 0;
-}
-.h5p-text ul li {
-  list-style-type: circle;
-  margin-left: 1.5em;
-  padding-left: 0;
-}
-.h5p-text ol li {
-  list-style-type: decimal;
-  margin-left: 1.5em;
-  padding-left: 0;
-}
-.h5p-text.h5p-frame {
-  margin: 1em;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:de9820de372783bc9719ed306c5f22f0aeb85c9299427857a64933c54ce63b02
+size 268

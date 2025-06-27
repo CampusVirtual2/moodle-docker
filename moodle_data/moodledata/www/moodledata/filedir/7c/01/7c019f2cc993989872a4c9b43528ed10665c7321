@@ -1,20 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Gelaren izena",
-      "description": "appear.in gelaren izena"
-    },
-    {
-      "label": "Doitu edukiontzira",
-      "description": "Doitu gela bere edukiontzira, altuera-zabalera %100era etorriko dira."
-    },
-    {
-      "label": "Altuera",
-      "description": "Ezarri txat/solasaldi gelaren altuera"
-    },
-    {
-      "label": "Zabalera",
-      "description": "Ezarri txat/solasaldi gelaren zabalera"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1d46a85ddd5859ec9a59c6510de0a868beab8b8e17163a95323099a54010942d
+size 461

@@ -1,17 +1,3 @@
-{
-  "libraryStrings": {
-    "transformLabel": "Transformeer",
-    "editLabel": "Wysig",
-    "removeLabel": "Verwyder",
-    "bringToFrontLabel": "Bring na vore",
-    "sendToBackLabel": "Stuur agtertoe",
-    "unableToPaste": "Kan nie hierdie voorwerp plak nie. Ongelukkig word die voorwerp wat jy probeer plak nie ondersteun deur hierdie inhoudstipe of weergawe nie.",
-    "sizeLabel": "Grootte",
-    "positionLabel": "Posisie",
-    "heightLabel": "Hoogte",
-    "widthLabel": "Wydte",
-    "copyLabel": "Kopieer",
-    "paste": "Plak",
-    "moreElements": "Meer elemente"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:fede842849da821e50d1a488ac06e65aa08331d2d252627cc512a43b185d7fcb
+size 574

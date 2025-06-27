@@ -1,16 +1,3 @@
-{
-  "title": "Drag N Drop",
-  "contentType": "API",
-  "description": "Provides a simple api for moving elements around. Could be used for sorting lists and etc.",
-  "majorVersion": 1,
-  "minorVersion": 1,
-  "patchVersion": 5,
-  "runnable": 0,
-  "machineName": "H5P.DragNDrop",
-  "author": "Frode Petterson",
-  "preloadedJs": [
-    {
-      "path": "drag-n-drop.js"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4e918773b244def257932ec9a85a734f1171ccba772964984924f2a88f2170ff
+size 375

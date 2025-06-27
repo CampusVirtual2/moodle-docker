@@ -1,24 +1,3 @@
-{
-  "machineName": "H5PEditor.SingleChoiceSetTextualEditor",
-  "title": "H5P Editor Single Choice Set Textual Editor",
-  "license": "MIT",
-  "author": "Joubel",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 10,
-  "runnable": 0,
-  "coreApi": {
-    "majorVersion": 1,
-    "minorVersion": 24
-  },
-  "preloadedJs": [
-    {
-      "path": "h5peditor-ssc-editor.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "h5peditor-ssc-editor.css"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:87a80cae8a9fea5d0b98884839c8ea0bfe173b232c6ed705a5d179a4989ab5a6
+size 462

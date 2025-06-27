@@ -1,24 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Largura",
-      "description": "Largura do iFrame em formato compatível com o CSS. Padrão: \"500px\""
-    },
-    {
-      "label": "Largura mínima",
-      "description": "Largura mínima do iFrame no formato compatível com o CSS. Padrão: \"300px\""
-    },
-    {
-      "label": "Altura",
-      "description": "Altura do iFrame em formato compatível com o CSS. Padrão: \"500px\""
-    },
-    {
-      "label": "Fonte",
-      "description": "URI para documento externo, ou caminho para documento encontrado dentro do H5P (sob /content)"
-    },
-    {
-      "label": "Redimensionar suportado",
-      "description": "Se ativado, o botão de tela cheia será exibido, e o H5P será redimensionado para se ajustar ao seu ambiente"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:9861656c9c71ad4c39d0b7b6d7d3cecb8dc413d9c1ba03037a9e683e85d14456
+size 780

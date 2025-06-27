@@ -1,15 +1,3 @@
-{
-  "title": "Timer",
-  "machineName": "H5P.Timer",
-  "majorVersion": 0,
-  "minorVersion": 4,
-  "patchVersion": 2,
-  "contentType": "Utility",
-  "runnable": 0,
-  "author": "Oliver Tacke",
-  "license": "pd",
-  "description": "General purpose timer that can be used by other H5P libraries.",
-  "preloadedJs": [
-    {"path": "scripts/timer.js"}
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a0a86eeed4ed7093e6f213d1659755bee4ef2c6466213d66d953754bfed8f63b
+size 348

@@ -1,20 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Consigne",
-      "description": "Texte facultatif affiché au dessus de l'enregistreur audio"
-    },
-    {
-      "label": "Options et textes",
-      "description": "Make the room fit its container, will override any height and width defined with 100% values."
-    },
-    {
-      "label": "Height",
-      "description": "Set Height of chat/talk room"
-    },
-    {
-      "label": "Width",
-      "description": "Set Width of chat/talk room"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:83f8c3c95c1ac4715c8b3e64dcc1d63218ac5a483409be7b25ca8a19810f4b96
+size 491

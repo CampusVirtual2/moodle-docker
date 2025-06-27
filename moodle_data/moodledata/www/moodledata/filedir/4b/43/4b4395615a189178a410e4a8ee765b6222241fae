@@ -1,26 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Taak beskrywing",
-      "description": "Beskryf hoe die gebruiker die taak moet oplos."
-    },
-    {
-      "label": "Media",
-      "fields": [
-        {
-          "label": "Tipe",
-          "description": "Opsionele media wat bo die vraag vertoon word."
-        }
-      ]
-    },
-    {
-      "label": "Beskrywende antwoordetiket",
-      "default": "Klik om die antwoord te sien.",
-      "description": "Klikbare teksarea waar die oplossing vertoon sal word."
-    },
-    {
-      "label": "Antwoordteks",
-      "description": "Die antwoord vir die prent."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:9d5ffb66d68184b05c3cd8e86bb9e02433767307f1ed12b2da96b1ab93f96ece
+size 606

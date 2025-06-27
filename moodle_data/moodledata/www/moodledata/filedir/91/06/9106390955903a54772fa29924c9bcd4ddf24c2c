@@ -1,32 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Maandishi ya Swali",
-      "description": "Swali ambalo mtumiaji atafanya uchaguzi kulingana nalo."
-    },
-    {
-      "label": "Chaguzi",
-      "entity": "chaguo",
-      "field": {
-        "fields": [
-          {
-            "label": "Chaguo la Maandishi",
-            "description": "Lebo ambayo itaonyeshwa kwenye kitufe cha chaguo."
-          },
-          {
-            "label": "Nenda Kwa",
-            "description": "Muda unaolengwa kuchukuliwa na mtumiaji baada ya kubofya kitufe cha chaguo. Weka msimbo wa saa katika umbizo la M:SS."
-          },
-          {
-            "label": "Ikiwa Umechagua Maandishi",
-            "description": "Maandishi ya hiari ya uthibitisho ambayo yataonyeshwa baada ya mtumiaji kubonyeza kitufe cha chaguo."
-          }
-        ]
-      }
-    },
-    {
-      "label": "Endelea Lebo ya Kitufe",
-      "default": "Endelea"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:896d1458e36d5feb0d934800d1d26c82b205039aa7c70b0dfc530ba7b0e8d193
+size 912

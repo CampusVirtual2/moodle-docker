@@ -1,26 +1,3 @@
-{
-  "title": "Link",
-  "description": "A library for display a single link.",
-  "majorVersion": 1,
-  "minorVersion": 3,
-  "patchVersion": 16,
-  "runnable": 0,
-  "metadataSettings": {
-    "disable": 1,
-    "disableExtraTitleField": 1
-  },
-  "machineName": "H5P.Link",
-  "author": "Joubel",
-  "preloadedJs": [
-    {
-      "path": "link.js"
-    }
-  ],
-  "editorDependencies": [
-    {
-      "machineName": "H5PEditor.UrlField",
-      "majorVersion": 1,
-      "minorVersion": 2
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:687b644f6f04ce66d41625b7f64a621e952d3b0aacb763a1eccd92cb22517e7f
+size 484

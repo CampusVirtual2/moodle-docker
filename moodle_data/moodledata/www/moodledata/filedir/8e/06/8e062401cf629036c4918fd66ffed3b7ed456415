@@ -1,21 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "عناصر",
-      "entity": "element",
-      "field": {
-        "label": "نوع العنصر",
-        "description": "مكتبة من اجل هذه الصفحة."
-      }
-    },
-    {
-      "label": "تسمية النص المساعد",
-      "description": "تسمية  من اجل عرض معلومات مفيدة إضافية للمستخدم.",
-      "default": "More information"
-    },
-    {
-      "label": "ملء معلومات مساعدة اضافية",
-      "description": "هنا يمكنك ملء معلومات إضافية للمستخدم ، والتي ستكون متاحة عند النقر عليها."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:76673319064f00a755a49ca443dbb61e9e476482fee8636381b05991ab62b3a6
+size 678

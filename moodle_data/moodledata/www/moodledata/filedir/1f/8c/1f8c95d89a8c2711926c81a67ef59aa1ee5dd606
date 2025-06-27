@@ -1,20 +1,3 @@
-{
-  "machineName": "H5P.AFrameOrbitControls",
-  "title": "aframe-orbit-controls.js",
-  "description": "H5P wrapper for replacing AFrame controls with Orbit Controls",
-  "license": "MIT",
-  "author": "Kevin Ngo &lt;me@ngokevin.com&gt;",
-  "majorVersion": 1,
-  "minorVersion": 3,
-  "patchVersion": 0,
-  "runnable": 0,
-  "coreApi": {
-    "majorVersion": 1,
-    "minorVersion": 12
-  },
-  "preloadedJs": [
-    {
-      "path": "aframe-orbit-controls.min.js"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1693b12599851e526d429e701beb837cac7c713f0d3535ba5cddaacde00fe657
+size 464

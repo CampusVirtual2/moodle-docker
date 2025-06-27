@@ -1,32 +1,3 @@
-{
-  "semantics": [
-    {
-      "description": "Pregunta sobre a cal o usuario baseará a súa elección.",
-      "label": "Texto da Pregunta"
-    },
-    {
-      "entity": "opción",
-      "field": {
-        "fields": [
-          {
-            "description": "O texto amosado no botón opción.",
-            "label": "Texto da Opción"
-          },
-          {
-            "description": "O tempo de destino ao que o usuario será levado cando prema o botón da opción. Escribe o código de tempo co formato M:SS.",
-            "label": "Ir A"
-          },
-          {
-            "description": "Un texto de confirmación opcional amosado despois de que o usuario preme o botón da opción.",
-            "label": "Texto Se foi Escollido"
-          }
-        ]
-      },
-      "label": "Opcións"
-    },
-    {
-      "default": "Continuar",
-      "label": "Etiqueta para o Botón Continuar"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:5351c66c635ae29eed080cdcf35b11a5ced0cd850a5c08e33c2784e13763f05b
+size 903

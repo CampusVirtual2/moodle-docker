@@ -1,16 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "التسمية",
-      "description": "التسمية / المتجهة إلى الجواب عندما يصدر المستخدم جميع الأجوبة"
-    },
-    {},
-    {
-      "label": "تسمية الاصدار لا تعمل",
-      "default": "Export not supported on your device"
-    },
-    {
-      "label": "إدراج التعليقات في وثيقة الاصدار"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4b3eb1e1e79e5dc88fb5fbc2a5978886d8c4ea823418adb1d6d8958d73b412f7
+size 430

@@ -1,7 +1,3 @@
-{
-  "libraryStrings": {
-    "distributeButtonLabel": "Ισοκατανομή",
-    "distributeButtonWarning": "Θα μεταβληθούν οι τιμές για όλες τις κλίμακες. Είστε σίγουρος ότι θέλετε να συνεχίσετε;",
-    "rangeOutOfSequenceWarning": "Οι κλίμακες βαθμολογίας είναι ασυνεχείς"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:23341603b49795593fe4f90752defc4adcab598898b5b970852aa20c2f8336ec
+size 389

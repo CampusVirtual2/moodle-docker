@@ -1,21 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Öğeler",
-      "entity": "öğe",
-      "field": {
-        "label": "Öğe türü",
-        "description": "Bu sayfa için kütüphane."
-      }
-    },
-    {
-      "label": "Yardım metni için etiket",
-      "description": "Kullanıcıya yardımcı ek bilgi göstermek için etiket.",
-      "default": "Daha fazla bilgi"
-    },
-    {
-      "label": "Ek yardım bilgisini doldurun",
-      "description": "Tıklandığında erişilebilir olacak, kullanıcı için ek bilgiyi burada doldurabilrsiniz."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:58f5b1bb2e6c8c376a5b9a8e718edd8f9ade68dee9fa04cb57533b23ffdd0d4b
+size 555

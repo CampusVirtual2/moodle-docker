@@ -1,8 +1,3 @@
-{
-  "libraryStrings": {
-    "helpText": "Rozdziel pytania pustą linią. W pytaniach typu wielokrotnego wyboru pierwsza linia powinna zawierać pytanie, a kolejne - możliwe odpowiedzi. Właściwą odpowiedź poprzedź znakiem gwiazdki (*).",
-    "example": "Ile wynosi liczba Pi?\n*3,14\n9,82\n\nIle to jest 4 * 0?\n1\n4\n*0",
-    "warning": "Uwaga! Jeśli wyedytujesz pytania w trybie tekstowym, utracisz całe formatowanie (w tym nowe akapity).",
-    "unknownQuestionType": "Pytanie bez możliwości edycji"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1a6f53578afa16407491912241af1482ebc872a95a25e07fdbe602213198e855
+size 517

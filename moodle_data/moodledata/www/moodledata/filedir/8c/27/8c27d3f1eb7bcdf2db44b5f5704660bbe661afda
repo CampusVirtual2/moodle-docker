@@ -1,24 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Upana",
-      "description": "Upana wa ukurasa wa wavuti ndani ya ukurasa mama katika umbizo linalotii Laha za Mitindo ya Kuporomoka. Chaguo-msingi: \"500 pikseli\""
-    },
-    {
-      "label": "Upana wa chini",
-      "description": "Upana wa chini wa ukurasa wa wavuti ndani ya ukurasa mama (iFrame) katika umbizo linalotii Laha za Mitindo ya Kuporomoka. Chaguo-msingi: \"300 pikseli (px)\""
-    },
-    {
-      "label": "Urefu",
-      "description": "Urefu wa ukurasa wa wavuti ndani ya ukurasa mama (iFrame) katika umbizo linalotii Laha za Mitindo ya Kuporomoka. Chaguo-msingi: \"500 pikseli\""
-    },
-    {
-      "label": "Chanzo",
-      "description": "Kitambulisho cha Rasilimali Sawa (URI) hadi waraka wa nje, au njia ya waraka inayopatikana ndani ya Kifurushi cha H5P (chini ya/maudhui)"
-    },
-    {
-      "label": "Kubadilisha ukubwa kunakoungwa mkono",
-      "description": "Ikiwashwa, kitufe cha skrini nzima kitaonyeshwa, na Kifurushi cha H5P kitabadilishwa ukubwa wake ili kilingane na mazingira yake"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2fe534385e335caa096eeff747a42db5c520d2cd4c27eb87e119dcd8c734cd03
+size 1068

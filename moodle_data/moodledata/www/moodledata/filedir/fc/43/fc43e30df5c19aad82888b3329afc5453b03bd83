@@ -1,27 +1,3 @@
-{
-  "title": "Export page",
-  "majorVersion": 1,
-  "minorVersion": 1,
-  "patchVersion": 5,
-  "runnable": 0,
-  "machineName": "H5P.ExportPage",
-  "author": "Joubel",
-  "license": "MIT",
-  "preloadedJs": [
-    {
-      "path": "export-page.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "export-page.css"
-    }
-  ],
-  "preloadedDependencies": [
-    {
-      "machineName": "docxgenJS",
-      "majorVersion": 1,
-      "minorVersion": 0
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:98487264f773fc5a40b0e82821df725b90e43b0c2b55f20e577edcb3168e5b57
+size 451

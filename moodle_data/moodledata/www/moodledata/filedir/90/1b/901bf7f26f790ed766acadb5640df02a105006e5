@@ -1,7 +1,3 @@
-{
-  "libraryStrings": {
-    "helpText": "Escreva cada declaração em uma linha separada.\nUse uma linha vazia para separar conjuntos de afirmações.\nA primeira declaração é sempre correta.\nSe houver uma dica - ela é escrita na primeira linha com o prefixo \" : \"",
-    "example": "2 + 2 = 4\n0 * 4 = 4\n\n:Cidade escandinava\nOslo é a capital da Noruega\nOslo é a capital da Suécia\nOslo é a capital da Islândia",
-    "warning": "Aviso! Se você alterar as tarefas no editor de texto, toda a formatação (incluindo quebras de linha) será removida."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e95875c6b1e0ab48b05af3d0c95086c8240cc3c12e7adc16345af305b87c3313
+size 571

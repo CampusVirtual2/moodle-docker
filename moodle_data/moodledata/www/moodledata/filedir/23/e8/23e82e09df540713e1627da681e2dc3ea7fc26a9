@@ -1,8 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Tabula",
-      "default": "<table class=\"h5p-table\"><thead><tr><th scope=\"col\">Virsraksta kolonna 1</th><th scope=\"col\">Virsraksta kolonna 2</th></tr></thead><tbody><tr><td>Rinda 1 Kol 1</td><td>Rinda 1 Kol 2</td></tr><tr><td>Rinda 2 Kol 1</td><td>Rinda 2 Kol 2</td></tr></tbody></table>"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:9fa1e705e3b9dde6d2adf84995f7a9d6e785469150e8a8d77080b52c4ad069ec
+size 348

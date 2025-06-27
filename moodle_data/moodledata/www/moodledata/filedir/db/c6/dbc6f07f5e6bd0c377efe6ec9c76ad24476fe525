@@ -1,21 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Elemente",
-      "entity": "element",
-      "field": {
-        "label": "Element tipe",
-        "description": "Biblioteek vir hierdie bladsy."
-      }
-    },
-    {
-      "label": "Etiket vir hulpteks",
-      "description": "Etiket om aanvullende nuttige inligting aan die gebruiker te wys.",
-      "default": "Meer inligting"
-    },
-    {
-      "label": "Vul die addisionele hulp informasie in",
-      "description": "Hier kan jy addisionele inligting vir die gebruiker invul, wat beskikbaar sal wees wanneer gekliek word."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:9fb374d529d64f98340926459678d071bb6663b857e361a3f60c947222d60682
+size 578

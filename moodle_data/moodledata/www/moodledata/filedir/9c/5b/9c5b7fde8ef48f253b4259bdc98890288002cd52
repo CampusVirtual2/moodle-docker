@@ -1,18 +1,3 @@
-{
-  "libraryStrings": {
-    "confirmReset": "确定要改变布局吗？这将重置预览设定。",
-    "sameAsSpacing": "与间距同宽",
-    "noFrame": "不加边框",
-    "uploadError": "无法上传图片，档案可能太大了。",
-    "zoomIn": "放大",
-    "zoomOut": "缩小",
-    "noMoreZoom": "无法再缩放",
-    "addImage": "添加图片",
-    "changeImage": "变更图片",
-    "imageSettings": "图片资讯设定",
-    "close": "关闭",
-    "imageAltLabel": "替代文字",
-    "imageTitleLabel": "悬停文字",
-    "pleaseConfirm": "请确认"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:22dce249a3312f53e08d0e1a42cea7f56a13993e9459f74dbd4c4949b7e10915
+size 575

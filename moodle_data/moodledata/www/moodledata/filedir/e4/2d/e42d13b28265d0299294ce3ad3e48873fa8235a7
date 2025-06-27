@@ -1,36 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Taulers",
-      "entity": "tauler",
-      "field": {
-        "label": "Contingut",
-        "entity": "contingut",
-        "fields": [
-          {
-            "label": "Títol"
-          },
-          {
-            "label": "Tipus de contingut",
-            "entity": "contingut"
-          }
-        ]
-      }
-    },
-    {
-      "label": "Identificadors H per a les etiquetes (no afecta la mida de l’etiqueta)",
-      "description": "Identificador H que s’utilitza a les etiquetes. Normalment és H2, però si es mostra a sota d’un encapçalament H2, cal fer servir H3. L’identificador no afecta la mida de les etiquetes; només té finalitats semàntiques.",
-      "options": [
-        {
-          "label": "H2"
-        },
-        {
-          "label": "H3"
-        },
-        {
-          "label": "H4"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2608e6223cc27a65f4918f19460a672ef753ad3c7d9d9f44e7271e285fa2fe70
+size 880

@@ -1,21 +1,3 @@
-{
-  "title": "Simple Multi Choice",
-  "description": "Create a simple multiple choice",
-  "majorVersion": 1,
-  "minorVersion": 1,
-  "patchVersion": 16,
-  "runnable": 0,
-  "author": "thomasmars",
-  "license": "MIT",
-  "machineName": "H5P.SimpleMultiChoice",
-  "preloadedJs": [
-    {
-      "path": "dist/dist.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "dist/styles.css"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7e979f60c5e6e02af5bf6d5d89d9ccf31bd0f141d66c05366aeaa82ae92ffeb7
+size 392

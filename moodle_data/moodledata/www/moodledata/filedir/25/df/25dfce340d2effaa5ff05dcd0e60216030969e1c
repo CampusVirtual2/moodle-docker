@@ -1,8 +1,3 @@
-{
-  "libraryStrings": {
-    "helpText": "Trenne Fragen mit einer leeren Zeile. In Multiple Choice-Fragen ist die erste Zeile die Frage und die folgenden Zeilen sind die Antwortmöglichkeiten. Vor die richtigen Antworten werden Sternchen (*) gestellt. Auch Tipps und Rückmeldungen können hinzugefügt werden: *Antwortmöglichkeit:Tipp:Rückmeldung wenn gewählt:Rückmeldung wenn nicht gewählt. Beispiel:",
-    "example": "Welche Zahl ist Pi?\n*3,14\n9,82\n\nWas ist 4 * 0?\n1\n4\n*0",
-    "warning": "Achtung: Wenn die Fragen im Texteditor verändert werden, werden alle Formatierungen (und Zeilenumbrüche) entfernt.",
-    "unknownQuestionType": "Nicht-bearbeitbare Frage"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d79e8ad3dcf133ec1558048ab57062cf30249171f15c683a1f2c33f83fc1d009
+size 683

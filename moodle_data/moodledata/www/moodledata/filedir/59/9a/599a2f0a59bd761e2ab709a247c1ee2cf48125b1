@@ -1,21 +1,3 @@
-var H5PUpgrades = H5PUpgrades || {};
-
-H5PUpgrades['H5P.TrueFalse'] = (function () {
-  return {
-    1: {
-      5: function (parameters, finished, extras) {
-        var title;
-
-        if (parameters && parameters.question) {
-          title = parameters.question;
-        }
-
-        extras = extras || {};
-        extras.metadata = extras.metadata || {};
-        extras.metadata.title = (title) ? title.replace(/<[^>]*>?/g, '') : ((extras.metadata.title) ? extras.metadata.title : 'True-False');
-
-        finished(null, parameters, extras);
-      }
-    }
-  };
-})();
+version https://git-lfs.github.com/spec/v1
+oid sha256:cebc61301417c2d1d2a00df270fee9690352e7cea351ec2c60ebc6d3af8c6a19
+size 565

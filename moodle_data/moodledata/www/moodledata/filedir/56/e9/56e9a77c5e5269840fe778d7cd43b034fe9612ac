@@ -1,17 +1,3 @@
-{
-  "libraryStrings": {
-    "editLabel": "Hariri",
-    "bringToFrontLabel": "Leta Mbele",
-    "unableToPaste": "Haiwezi kubandika kifaa hiki. Kwa bahati mbaya, kifaa unachojaribu kubandika hakitumiki na aina au toleo hili la maudhui.",
-    "positionLabel": "Nafasi",
-    "widthLabel": "Upana",
-    "paste": "Bandika",
-    "transformLabel": "Badilisha",
-    "removeLabel": "Ondoa",
-    "sendToBackLabel": "Tuma Nyuma",
-    "sizeLabel": "Ukubwa",
-    "heightLabel": "Urefu",
-    "copyLabel": "Nakili",
-    "moreElements": "Vipengele zaidi"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:9c98e50c10c58a0c80b767c6a70e3c8d5cc4e5bd7c6e77adb727092f2bc36d68
+size 544

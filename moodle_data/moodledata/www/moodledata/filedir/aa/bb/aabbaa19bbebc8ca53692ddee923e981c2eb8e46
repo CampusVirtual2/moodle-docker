@@ -1,21 +1,3 @@
-{
-  "title": "Table",
-  "contentType": "Static content",
-  "description": "Simple library that displays table.",
-  "majorVersion": 1,
-  "minorVersion": 1,
-  "patchVersion": 16,
-  "runnable": 0,
-  "machineName": "H5P.Table",
-  "author": "Joubel",
-  "preloadedJs": [
-    {
-      "path": "scripts/table.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "styles/table.css"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2c50c0cf193e6110d06d922a056b72e7b0f9f12dceaf6bee9f28e8ac960c6f28
+size 385

@@ -1,34 +1,3 @@
-.h5p-eta.h5p-element {
-  overflow: visible;
-}
-
-.h5p-eta {
-  display: flex;
-  flex-flow: column;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
-
-.h5p-eta .h5p-eta-input {
-  width: 100%;
-  resize: none !important;
-  font-size: 100%;
-  padding: 0.25em;
-  border: 1px solid #a0a0a0;
-  line-height: 1.25em;
-  box-sizing: border-box;
-  outline: none;
-  flex: auto;
-}
-.h5p-eta .h5p-eta-input:focus {
-  border-color: #53a0ff;
-}
-.h5p-eta-label {
-  overflow: hidden;
-  padding: 0.375em 0.5em;
-  flex: none;
-}
-.h5p-eta-label p:last-child {
-  margin-bottom: 0;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:3481c3b7b92760d74bb9fe3bcadf0ce0406a7eb18dbe27dd0edb4f98322878b6
+size 559

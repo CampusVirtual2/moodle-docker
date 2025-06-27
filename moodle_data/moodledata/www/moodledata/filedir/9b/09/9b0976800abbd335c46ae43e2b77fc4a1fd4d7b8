@@ -1,29 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Rhestr o Gynnwys y Golofn",
-      "entity": "cynnwys",
-      "field": {
-        "fields": [
-          {
-            "label": "Cynnwys"
-          },
-          {
-            "label": "Gwahanwch gynnwys gyda mesurydd llorweddol",
-            "options": [
-              {
-                "label": "Awtomatig (diofyn)"
-              },
-              {
-                "label": "Byth yn defnyddio mesurydd uwchben"
-              },
-              {
-                "label": "Wastad yn defnyddio mesurydd uwchben"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:251abad7db3e8c75960b805ec591e39db3c261bfe7d6744ab93f46408452c8b8
+size 619

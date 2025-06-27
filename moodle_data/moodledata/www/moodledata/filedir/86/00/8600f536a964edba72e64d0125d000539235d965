@@ -1,16 +1,3 @@
-{
-  "libraryStrings":{
-    "insertElement":"Füge :type hinzu",
-    "done":"Fertig",
-    "remove":"Entfernen",
-    "image":"Bild",
-    "text":"Text",
-    "noTaskSize":"Bitte gib zuerst die Größe des Aufgabenfeldes an.",
-    "confirmRemoval":"Bist du sicher, dass du dieses Element entfernen möchtest?",
-    "backgroundOpacityOverridden":"Die Deckkraft des Hintergrunds ist überschrieben.",
-    "advancedtext":"Text",
-    "dropzone":"Drop-Feld",
-    "selectAll":"Alles auswählen",
-    "deselectAll":"Auswahl aufheben"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:67d7b1f94ea540d4b08ee683949f11c28a1b94fc3f6e9a0aea75341106bbd545
+size 527

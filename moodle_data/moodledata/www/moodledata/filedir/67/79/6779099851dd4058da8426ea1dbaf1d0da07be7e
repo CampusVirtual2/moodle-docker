@@ -1,21 +1,3 @@
-{
-  "title": "Drag'N Resize",
-  "contentType": "API",
-  "description": "A library that aims to make resize operations easier for other libraries.",
-  "majorVersion": 1,
-  "minorVersion": 2,
-  "patchVersion": 6,
-  "runnable": 0,
-  "machineName": "H5P.DragNResize",
-  "author": "Frode Petterson",
-  "preloadedJs": [
-    {
-      "path": "H5P.DragNResize.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "H5P.DragNResize.css"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:3f5b39652e9eb8c233d7de442c1ccc405bbc9d16951b15528cfb819da99f6dae
+size 440

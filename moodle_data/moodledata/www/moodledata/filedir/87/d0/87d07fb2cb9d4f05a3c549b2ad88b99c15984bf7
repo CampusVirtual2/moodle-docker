@@ -1,20 +1,3 @@
-{
-  "libraryStrings": {
-    "insertElement": "Dodaj :tip",
-    "done": "Dokončano",
-    "remove": "Odstrani",
-    "image": "Slika",
-    "text": "Besedilo",
-    "noTaskSize": "Najprej je potrebno določiti velikost.",
-    "confirmRemoval": "Resnično izbrišem ta element?",
-    "backgroundOpacityOverridden": "Prekrivnost ozadja je prekoračena",
-    "advancedtext": "Besedilo",
-    "dropzone": "Spustno polje",
-    "selectAll": "Izberi vse",
-    "deselectAll": "Odznači vse",
-    "deleteTaskTitle": "Deleting task",
-    "cancel": "Cancel",
-    "confirm": "Confirm",
-    "ok": "Ok"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:bc88e9eaf0df0e6aafcbeb52f64e9b3543d3a3194c648fcd88dead7e4c4e1a92
+size 590

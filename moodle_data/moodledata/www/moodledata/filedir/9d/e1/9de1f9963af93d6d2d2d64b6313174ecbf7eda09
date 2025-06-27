@@ -1,6 +1,3 @@
-{
-  "libraryStrings": {
-    "helpText": "Sortu galdera eta erantzunen blokeak. Blokeen artean lerro zuri bat egongo da. Bloke bakoitzean, lehenengo lerroan galdera dago eta gainerako lerroetan erantzunak. Lehenengo erantzuna erantzun zuzena da",
-    "warning": "Argi ibili! Jarduera testu editore batez aldatzen baduzu formatu aberastu guztiak galduko dira (lerro jauziak barne)."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:3a6fd749b4e25c91cb8b9077e090348d5ec3f0929e2e13d28d00ef46bec6519c
+size 387

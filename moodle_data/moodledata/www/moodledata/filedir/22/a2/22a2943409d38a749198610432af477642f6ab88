@@ -1,30 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Vraag of beskrywing"
-    },
-    {
-      "label": "Plekhouer teks",
-      "default": "Begin skryf...",
-      "description": "Teks wat aanvanklik in die invoerveld vertoon word. Sal outomaties verwyder word wanneer die gebruiker begin skryf."
-    },
-    {
-      "label": "Invoer rye",
-      "description": "Bepaal die hoogte van die invoerveld.",
-      "options": [
-        {
-          "label": "1 lyn"
-        },
-        {
-          "label": "2 lyne"
-        },
-        {
-          "label": "3 lyne"
-        },
-        {
-          "label": "10 lyne"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:bdf6eefcaf319567f13f54148aafd33fb3bc8b4264fb53c3d0542a2a8eb1a398
+size 620

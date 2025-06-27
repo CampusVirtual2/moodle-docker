@@ -1,13 +1,3 @@
-.h5peditor .h5p-link-widget .h5p-link-fields {
-  display: flex;
-}
-
-.h5peditor .h5p-link-url,
-.h5peditor .h5p-link-protocol-selector {
-  display: inline-block;
-  margin: 0 1em 0 0;
-}
-
-.h5peditor .h5p-link-url {
-  flex: 2;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:6775fbcf7979ce8f3af059e2c2d1597a856126c268de0dbaa4fe624538b0f98a
+size 223

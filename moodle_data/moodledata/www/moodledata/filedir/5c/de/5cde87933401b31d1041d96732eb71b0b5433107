@@ -1,20 +1,3 @@
-{
-  "machineName": "H5P.ThreeJS",
-  "title": "three.js",
-  "description": "Provides H5P with the popular, easy to use and lightweight 3D library: three.js",
-  "license": "MIT",
-  "author": "three.js authors",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 104,
-  "runnable": 0,
-  "coreApi": {
-    "majorVersion": 1,
-    "minorVersion": 12
-  },
-  "preloadedJs": [
-    {
-      "path": "three.min.js"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2c91a3112bd017e3812f3de883e4860725d5a8b86d9ef8ace648155d9b4090d1
+size 423

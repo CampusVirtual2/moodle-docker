@@ -1,25 +1,3 @@
-{
-  "title": "H5PEditor.ColorSelector",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 3,
-  "runnable": 0,
-  "machineName": "H5PEditor.ColorSelector",
-  "author": "Joubel AS",
-  "preloadedJs": [
-    {
-      "path": "scripts/spectrum.js"
-    },
-    {
-      "path": "scripts/color-selector.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "styles/spectrum.css"
-    },
-    {
-      "path": "styles/color-selector.css"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:fdc37fee187f2559657e17d66d157a12c97760238385e72ae528e7296447a20c
+size 444

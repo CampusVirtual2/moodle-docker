@@ -1,30 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Câu hỏi hoặc mô tả"
-    },
-    {
-      "label": "Placeholder text",
-      "default": "Start writing...",
-      "description": "Text that initially will be shown in the input field. Will be removed automatically when the user starts writing."
-    },
-    {
-      "label": "Input rows",
-      "description": "Determines the height of the input field.",
-      "options": [
-        {
-          "label": "1 line"
-        },
-        {
-          "label": "2 lines"
-        },
-        {
-          "label": "3 lines"
-        },
-        {
-          "label": "10 lines"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:9bf6d92a04a563428cdcdaff319d5d34f429dcfbcefc05320e88ba97d8ec185b
+size 637

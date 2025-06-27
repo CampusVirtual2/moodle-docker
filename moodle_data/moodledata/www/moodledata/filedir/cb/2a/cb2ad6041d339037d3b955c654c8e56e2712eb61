@@ -1,7 +1,3 @@
-{
-  "libraryStrings": {
-    "helpText": "Schrijf iedere bewering op een aparte regel.\nGebruik een lege regel om sets met beweringen te scheiden.\nEerste bewering is altijd juist.\nAls er een tip is - wordt die geschreven op de eerste regel met het voorvoegsel \" : \"",
-    "example": "2 + 2 = 4\n0 * 4 = 4\n\n:Scandinavische stad\nOslo is de hoofdstad van Noorwegen\nOslo is de hoofdstad van Zweden\nOslo is de hoofdstad van IJsland",
-    "warning": "Waarschuwing! Als je de taak in de tekstuele editor bewerkt, wordt alle rich text opmaak (incl. regeleinden) verwijderd."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:98bbe78bfecbf89d8c811994447eca4013f06e0afa92d1e580d46aa0fc35ca4b
+size 581

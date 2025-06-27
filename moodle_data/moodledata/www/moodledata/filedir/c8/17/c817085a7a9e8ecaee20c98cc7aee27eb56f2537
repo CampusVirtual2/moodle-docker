@@ -1,23 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Afbeelding"
-    },
-    {
-      "label": "Slechts decoratief",
-      "description": "Schakel deze optie in als de afbeelding puur decoratief is en geen informatie aan de inhoud van de pagina toevoegt. Schermlezers negeren de afbeelding dan en geven ook geen alternatieve tekst."
-    },
-    {
-      "label": "Alternatieve tekst",
-      "description": "Vereist. Als de browser deze afbeelding niet kan laden wordt deze tekst getoond. Ook gebruikt door \"tekst-naar-spraak\" lezers."
-    },
-    {
-      "label": "Hover tekst",
-      "description": "Optioneel. Deze tekst wordt getoond wanneer een gebruiker zijn muisaanwijzer beweegt over de afbeelding."
-    },
-    {
-      "label": "Naam afbeeldingsinhoud",
-      "default": "Afbeelding"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e565f930af50a2d30a839b8ac167286dc1018993e83613b6c1ec61584c02727d
+size 788

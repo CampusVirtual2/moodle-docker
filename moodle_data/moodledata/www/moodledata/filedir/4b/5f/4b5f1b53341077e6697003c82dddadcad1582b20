@@ -1,30 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Question or description"
-    },
-    {
-      "label": "Placeholder text",
-      "default": "Start writing...",
-      "description": "Text that initially will be shown in the input field. Will be removed automatically when the user starts writing."
-    },
-    {
-      "label": "Input rows",
-      "description": "Determines the height of the input field.",
-      "options": [
-        {
-          "label": "1 line"
-        },
-        {
-          "label": "2 lines"
-        },
-        {
-          "label": "3 lines"
-        },
-        {
-          "label": "10 lines"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4623499b9ab36e838e1369624b435f27bf961a592c7880bca2bcd4017acd7949
+size 633

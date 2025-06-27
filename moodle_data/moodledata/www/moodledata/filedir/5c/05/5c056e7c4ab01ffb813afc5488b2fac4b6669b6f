@@ -1,16 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Etiqueta",
-      "description": "Etiqueta/cabeçalho para resposta quando o usuário exporta todas as respostas"
-    },
-    {},
-    {
-      "label": "Etiqueta de exportação não suportada",
-      "default": "Exportação não suportada no seu dispositivo"
-    },
-    {
-      "label": "Incluir comentários no documento exportado"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:08cb2adf12225c473f85604f5ec6c9c92f3529ef16a0a475befe581dab205f3e
+size 385

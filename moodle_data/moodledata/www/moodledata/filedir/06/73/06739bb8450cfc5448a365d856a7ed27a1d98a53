@@ -1,17 +1,3 @@
-{
-  "libraryStrings": {
-    "confirmReset": "Confirmeu que voleu canviar el disseny? Amb aquesta acció, es restablirà la previsualització.",
-    "sameAsSpacing": "Igual que l’espaiat",
-    "noFrame": "Sens marc",
-    "uploadError": "No es pot penjar la imatge. Probablement el fitxer és massa gran.",
-    "zoomIn": "Amplia",
-    "zoomOut": "Redueix",
-    "noMoreZoom": "No es pot ampliar més",
-    "addImage": "Afegeix una imatge",
-    "changeImage": "Canvia la imatge",
-    "imageSettings": "Configuració de la imatge",
-    "close": "Tancar[close]",
-    "imageAltLabel": "Text alternatiu",
-    "imageTitleLabel": "Text que es mostra en passar el cursor per sobre"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:07a17a1f906af0c0726731443aba768d043ea7ad2b4218b33044921bf15742d0
+size 679

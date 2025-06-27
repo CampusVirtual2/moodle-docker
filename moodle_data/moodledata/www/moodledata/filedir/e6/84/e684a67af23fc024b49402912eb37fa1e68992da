@@ -1,30 +1,3 @@
-.h5p-shape-element {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-/* Shapes */
-.h5p-shape-element.h5p-shape-rectangle {
-}
-
-.h5p-shape-element.h5p-shape-circle {
-  border-radius: 50%;
-}
-
-/* Border styles */
-.h5p-shape-element.h5p-border-solid {
-  border-style: solid;
-}
-
-.h5p-shape-element.h5p-border-dotted {
-  border-style: dotted;
-}
-
-.h5p-shape-element.h5p-border-dashed {
-  border-style: dashed;
-}
-
-.h5p-shape-element.h5p-border-double {
-  border-style: double;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:40f4e167517d94453679987c083714147c179928109b11c7e1d521ef5d83d357
+size 482

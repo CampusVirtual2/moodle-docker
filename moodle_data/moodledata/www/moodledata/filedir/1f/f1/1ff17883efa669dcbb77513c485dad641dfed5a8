@@ -1,6 +1,3 @@
-{
-  "libraryStrings": {
-    "helpText": "Crea blocs de preguntes i respostes, on cada bloc està separat per una línia buida. En cada bloc la primera línia és la pregunta, les altres línies contenen les respostes. La primera resposta és la correcta",
-    "warning": "Advertiment: si canvieu les tasques de l’editor de text, se suprimirà el format de tot el text enriquit (inclosos els salts de línia)."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7188eec3dc5bc265a380c754dc684c449b1dc9debe9706206d69284077e643c3
+size 418

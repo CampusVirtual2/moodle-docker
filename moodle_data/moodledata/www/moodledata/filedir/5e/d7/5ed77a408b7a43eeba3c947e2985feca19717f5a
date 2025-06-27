@@ -1,8 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Tabela",
-      "default": "<table class=\"h5p-table\"><thead><tr><th scope=\"col\">Título da Coluna 1</th><th scope=\"col\">Título da Coluna 2</th></tr></thead><tbody><tr><td>Lin 1 Col 1</td><td>Lin 1 Col 2</td></tr><tr><td>Lin 2 Col 1</td><td>Lin 2 Col 2</td></tr></tbody></table>"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:065f15b100779cca2aee20ba828fd1a35ceb7c5abc1b3e1a7a2834433b0f4af6
+size 338

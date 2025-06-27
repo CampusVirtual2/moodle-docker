@@ -1,1 +1,3 @@
-.h5peditor-input-row>.title::before{content:none}.h5peditor-input-row .h5peditor-input-row-content{background-color:#fff;border:1px solid #d0d0d1;border-top:none;margin:0;padding:20px}.h5peditor-input-row .h5peditor-input-row-content .h5peditor-input-row-row{display:flex;flex-direction:row}.h5peditor-input-row .h5peditor-input-row-content .h5peditor-input-row-row>.field{margin:0 1em 0 0}.h5peditor-input-row .h5peditor-input-row-content .h5peditor-input-row-row>.field:last-child{margin-right:0}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b251b8e71f64c247bf2814134087f18bab733f44223d7280298074f3468bd7cb
+size 499

@@ -1,6 +1,3 @@
-{
-  "libraryStrings": {
-    "helpText": "Crea bloques de pregunta y respuestas y separa cada bloque con una línea vacía. En cada bloque, la primera línea es la pregunta y las demás contienen las respuestas. La primera respuesta es la correcta",
-    "warning": "¡Advertencia! Si cambias las tareas en el editor de texto, se eliminará todo el formato de texto enriquecido (incl. saltos de línea)."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:491d0756fa0da8fd4ce8f34a719d077e1eeb3268190c9ec3b88da4ea92288f5b
+size 409

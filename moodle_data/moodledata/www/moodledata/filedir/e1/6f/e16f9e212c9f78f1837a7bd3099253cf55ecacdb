@@ -1,24 +1,3 @@
-{
-  "machineName": "H5PEditor.SummaryTextualEditor",
-  "title": "H5P Editor Summary Textual Editor",
-  "license": "MIT",
-  "author": "Joubel",
-  "majorVersion": 1,
-  "minorVersion": 1,
-  "patchVersion": 11,
-  "runnable": 0,
-  "coreApi": {
-    "majorVersion": 1,
-    "minorVersion": 24
-  },
-  "preloadedJs": [
-    {
-      "path": "summary-textual-editor.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "styles/H5PEditor.SummaryTextualEditor.css"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d6f221adc12ccb1ffd2540af99b855df813948696ca653f40c7e845acbc01317
+size 463

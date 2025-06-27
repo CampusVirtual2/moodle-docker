@@ -1,17 +1,3 @@
-{
-  "libraryStrings": {
-    "editLabel": "Redaguoti",
-    "bringToFrontLabel": "Atnešti į priekį",
-    "unableToPaste": "Negalima įklijuoti šio objekto. Deja, objekto, kurį bandote įklijuoti, turinio tipas arba versija nepalaikoma.",
-    "positionLabel": "Pozicija",
-    "widthLabel": "Plotis",
-    "paste": "Įklijuoti",
-    "transformLabel": "Transformuoti",
-    "removeLabel": "Pašalinti",
-    "sendToBackLabel": "Siųsti atgal",
-    "sizeLabel": "Dydis",
-    "heightLabel": "Aukštis",
-    "copyLabel": "Kopijuoti",
-    "moreElements": "Daugiau elementų"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d5c1d4df91b72cd27f2b81c24a8451b9fe13a19e7b53dca45b8ec056625fa023
+size 574

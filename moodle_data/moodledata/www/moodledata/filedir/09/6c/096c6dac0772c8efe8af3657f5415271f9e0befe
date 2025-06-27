@@ -1,31 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Pealkiri"
-    },
-    {
-      "fields": [
-        {
-          "label": "Protokoll",
-          "options": [
-            {
-              "label": "http://"
-            },
-            {
-              "label": "https://"
-            },
-            {
-              "label": "(tüvest sõltuv)"
-            },
-            {
-              "label": "muu"
-            }
-          ]
-        },
-        {
-          "label": "Link"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:529186f487720fb3ab79e6e290f3b5621bce6e6d4cb4da651a32986b6180998e
+size 489

@@ -1,18 +1,3 @@
-{
-  "libraryStrings": {
-    "confirmReset": "Opravdu chcete změnit rozvržení? Tím se náhled resetuje.",
-    "sameAsSpacing": "Stejné jako mezery",
-    "noFrame": "Bez rámečku",
-    "uploadError": "Obrázek nelze nahrát. Soubor je pravděpodobně příliš velký.",
-    "zoomIn": "Přiblížit",
-    "zoomOut": "Oddálit",
-    "noMoreZoom": "Žádné další přiblížení",
-    "addImage": "Přidat obrázek",
-    "changeImage": "Změnit obrázek",
-    "imageSettings": "Nastavení obrázku",
-    "close": "Zavřít",
-    "imageAltLabel": "Alternativní text",
-    "imageTitleLabel": "Najet kurzorem na text",
-    "pleaseConfirm": "Please confirm"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b93a246b4120e51a798b553cff7ccd4777a076114cce365532a7789498fb9747
+size 665

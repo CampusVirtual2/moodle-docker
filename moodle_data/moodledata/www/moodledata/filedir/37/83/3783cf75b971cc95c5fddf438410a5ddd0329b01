@@ -1,26 +1,3 @@
-var H5PUpgrades = H5PUpgrades || {};
-H5PUpgrades['H5P.ImageSequencing'] = (function () {
-  return {
-    1: {
-      1: function (parameters, finished) {
-        // Wrap summaries to allow tip.
-
-        parameters.behaviour = {
-          enableSolution: true,
-          enableRetry: true,
-          enableResume: true
-        };
-
-        parameters.l10n.showSolution = 'Show Solution';
-        parameters.l10n.resume = 'Resume';
-        parameters.l10n.audioNotSupported = 'Audio Not Supported';
-        parameters.l10n.ariaPlay= 'Play the corresponding audio';
-        parameters.l10n.ariaMoveDescription= 'Moved @cardDesc from @posSrc to @posDes';
-        parameters.l10n.ariaCardDesc = 'sequencing item';
-
-
-        finished(null, parameters);
-      }
-    }
-  };
-}) ();
+version https://git-lfs.github.com/spec/v1
+oid sha256:abfa80893a5ad99f7c87012350a0f4a96a8c1447dffed6f756c6bfcc4f9f6ee9
+size 770

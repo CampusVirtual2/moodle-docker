@@ -1,36 +1,3 @@
-{
-  "semantics":[
-    {
-      "label":"Paneelid",
-      "entity":"paneel",
-      "field":{
-        "label":"Sisu",
-        "entity":"sisu",
-        "fields":[
-          {
-            "label":"Pealkiri"
-          },
-          {
-            "label":"Sisu tüüp",
-            "entity":"sisu"
-          }
-        ]
-      }
-    },
-    {
-      "label":"Pealkirja H tunnus (ei mõjuta pealkirja suurust)",
-      "description":"Pealkirjade h tunnus. Tavaliselt H2, kuid alapealkirjade puhul kasuta H3. Ei mõjuta pealkirjade suurust, kasutatakse üksnes eristaval eesmärgil.",
-      "options":[
-        {
-          "label":"H2"
-        },
-        {
-          "label":"H3"
-        },
-        {
-          "label":"H4"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:088d68c45e381e662b2171aab843b21c068e41b6f79e20a2f2c9f95159fab051
+size 774

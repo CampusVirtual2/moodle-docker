@@ -1,24 +1,3 @@
-var H5PUpgrades = H5PUpgrades || {};
-
-H5PUpgrades['H5P.Chart'] = (function () {
-  return {
-    1: {
-
-      /**
-       * Upgrades old background selector values to work with new
-       * background selector
-       *
-       * @params {Object} parameters
-       * @params {function} finished
-       */
-      1: function (parameters, finished) {
-        parameters.listOfTypes.forEach(function (type) {
-          type.color = '#' + type.color;
-          type.fontColor = '#' + type.fontColor;
-        });
-
-        finished(null, parameters);
-      }
-    }
-  };
-})();
+version https://git-lfs.github.com/spec/v1
+oid sha256:83928acb00686c1c5c0458883738a860e80d4e0416e5df25b77648c52358aa8e
+size 563

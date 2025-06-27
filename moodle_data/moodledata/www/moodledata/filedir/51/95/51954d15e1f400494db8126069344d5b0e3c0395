@@ -1,30 +1,3 @@
-{
-  "title": "H5PEditor.Wizard",
-  "majorVersion": 1,
-  "minorVersion": 2,
-  "patchVersion": 16,
-  "runnable": 0,
-  "machineName": "H5PEditor.Wizard",
-  "author": "Frode Petterson",
-  "coreApi": {
-    "majorVersion": 1,
-    "minorVersion": 23
-  },
-  "preloadedJs": [
-    {
-      "path": "Scripts/Wizard.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "Styles/Wizard.css"
-    }
-  ],
-  "preloadedDependencies": [
-    {
-      "machineName": "H5P.FontIcons",
-      "majorVersion": 1,
-      "minorVersion": 0
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:6b3ddfc2e2e913516b2f210c11c76b8c769b3902488914707dfb99c17e99dded
+size 522

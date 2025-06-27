@@ -1,16 +1,3 @@
-{
-  "machineName": "H5P.SoundJS",
-  "title": "Sound js api",
-  "description": "API for playing sound (http://www.createjs.com/#!/SoundJS)",
-  "license": "MIT",
-  "author": "The createjs team",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 2,
-  "runnable": 0,
-  "preloadedJs": [
-    {
-      "path": "soundjs-0.6.2.min.js"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:97eed8b141525eee51cb2505a417962d3aeae51a9a266099cd2d41a0e761d547
+size 347

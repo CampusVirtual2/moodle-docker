@@ -1,29 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "List of Column Content",
-      "entity": "Zasób",
-      "field": {
-        "fields": [
-          {
-            "label": "Zasób"
-          },
-          {
-            "label": "Oddziel zawartość poziomą linijką",
-            "options": [
-              {
-                "label": "Automatyczne (domyślnie)"
-              },
-              {
-                "label": "Never use ruler above"
-              },
-              {
-                "label": "Zawsze używaj linijki powyżej"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2a7ef579f19f06b856600d4dcec5b14a7194fff483f6c69452bbfd46d7ee5c9c
+size 598

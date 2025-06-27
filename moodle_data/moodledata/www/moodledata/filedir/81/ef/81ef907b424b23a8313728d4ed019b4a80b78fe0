@@ -1,20 +1,3 @@
-{
-  "libraryStrings": {
-    "ok": "Ok",
-    "deselectAll": "Atsijāt visus",
-    "image": "Attēls",
-    "text": "Teksts",
-    "noTaskSize": "Lūdzu no sākuma precizējiet uzdevuma lielumu.",
-    "advancedtext": "Teksts",
-    "dropzone": "Nomešanas zona",
-    "cancel": "Atcelt",
-    "done": "Pabeigt",
-    "insertElement": "Pievienot :type",
-    "remove": "Noņemt",
-    "confirmRemoval": "Vai esat pārliecināts, ka vēlaties noņemt šo elementu?",
-    "backgroundOpacityOverridden": "Fona attēla caurspīdīgums tiek ignorēts",
-    "selectAll": "Atlasīt visus",
-    "deleteTaskTitle": "Uzdevuma dzēšana",
-    "confirm": "Apstiprināt"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8bbd808d392c1f752a3eb93bdfdc4d98c7e433a5391a8b666ed2f022ea81fd22
+size 653

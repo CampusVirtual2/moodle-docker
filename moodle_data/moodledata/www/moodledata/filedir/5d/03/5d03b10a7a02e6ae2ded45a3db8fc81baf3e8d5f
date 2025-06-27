@@ -1,20 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Nome room",
-      "description": "Nome pubblico nella room"
-    },
-    {
-      "label": "Adatta contenuto",
-      "description": "Adatta la room al contenuto, sovrascriverà qualsiasi altezza e larghezza definita con valori 100 %."
-    },
-    {
-      "label": "Altezza",
-      "description": "Definisci l'altezza della chat/talk room"
-    },
-    {
-      "label": "Larghezza",
-      "description": "Definisci la larghezza della chat/talk room"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:0f7ef91405e761f11021d0343f994186ab524b1f00fd12b4904cab980f5efbcf
+size 496

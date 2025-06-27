@@ -1,7 +1,3 @@
-{
-  "libraryStrings": {
-    "helpText": "Skriv varje påstående på en egen rad.\nAnvänd en tom rad för att separera grupper av påståenden.\nDet försa påståendet är alltid det korrekta.\nOm det finns ett tips - så skrivs det på första raden med prefix \" : \"",
-    "example": "2 + 2 = 4\n0 * 4 = 4\n\n:Skandinavisk stad\nOslo är huvudstad i Norge\nOslo är huvudstad i Sverige\nOslo är huvudstad på Island",
-    "warning": "Varning! Om du ändrar uppgifter i den textuella redigeraren, så kommer all textformatering (inklusive radbrytningar) att försvinna."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:6c650d87228ba1df893f653248eb0cd6a4a47444cef837b3ae6e2de58ebaefdf
+size 582

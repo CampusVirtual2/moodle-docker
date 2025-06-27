@@ -1,29 +1,3 @@
-{
-  "semantics":[
-    {
-      "label":"Lijst van de column inhoud",
-      "entity":"inhoud",
-      "field":{
-        "fields":[
-          {
-            "label":"Inhoud"
-          },
-          {
-            "label":"Scheid de inhoud met de horizontale lijn",
-            "options":[
-              {
-                "label":"Automatisch (standaard)"
-              },
-              {
-                "label":"Gebruik nooit een lijn erboven"
-              },
-              {
-                "label":"Gebruik altijd een lijn erboven"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:20087e569833997a0d32791e0600dfea161460272534e6f260d4f2f04768bb4d
+size 601

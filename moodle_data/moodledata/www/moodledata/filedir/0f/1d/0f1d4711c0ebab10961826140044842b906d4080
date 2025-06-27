@@ -1,36 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Panoji",
-      "entity": "panel",
-      "field": {
-        "label": "Vsebina",
-        "entity": "content",
-        "fields": [
-          {
-            "label": "Naslov"
-          },
-          {
-            "label": "Tip vsebine",
-            "entity": "content"
-          }
-        ]
-      }
-    },
-    {
-      "label": "H značke za oznake (ne vpliva na velikost oznak)",
-      "description": "H značka, ki naj se uporabi za oznake. Običajno je to H2. Če je vsebina umeščena pod H2 naslov izberite H3. Izbira ne vpliva na velikost oznak, uporablja se zgolj za semantične namene.",
-      "options": [
-        {
-          "label": "H2"
-        },
-        {
-          "label": "H3"
-        },
-        {
-          "label": "H4"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:c5ddf60b882aa5c0f4c93747fa2def53d4e36e3e9cda4db8ef72e93da0780c33
+size 803

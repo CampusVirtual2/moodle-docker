@@ -1,32 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Küsimuse tekst",
-      "description": "Küsimus, mille põhjal teeb kasutaja valiku."
-    },
-    {
-      "label": "Valikud",
-      "entity": "valik",
-      "field": {
-        "fields": [
-          {
-            "label": "Valiku tekst",
-            "description": "Silt, mida näidatakse valiku nupul."
-          },
-          {
-            "label": "Mine",
-            "description": "The target time the user will be taken to upon pressing the choice button. Sisesta ajakood formaadis M:SS."
-          },
-          {
-            "label": "Kui valitud tekst",
-            "description": "Valikuline kinnitav tekst, mida näidatakse siis, kui kasutaja on vajutanud Valik-nuppu."
-          }
-        ]
-      }
-    },
-    {
-      "label": "Jätka nupu silt",
-      "default": "Jätka"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:3811bde8963d1dabadebfa0f9b85dc9998d720d7afe05f94c452154c87b2249d
+size 834

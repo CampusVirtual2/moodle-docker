@@ -1,16 +1,3 @@
-{
-  "title": "Continuous Text",
-  "contentType": "Static content",
-  "description": "A library that handles splitting up a large text into several div-containers in a Course Presentation.",
-  "majorVersion": 1,
-  "minorVersion": 2,
-  "patchVersion": 15,
-  "runnable": 0,
-  "machineName": "H5P.ContinuousText",
-  "author": "Joubel",
-  "preloadedJs": [
-    {
-      "path": "scripts/ct.js"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8ce9a77886b85606fa181272e89c8598025adb7db47b82c8fc9697dcb662d5f4
+size 399

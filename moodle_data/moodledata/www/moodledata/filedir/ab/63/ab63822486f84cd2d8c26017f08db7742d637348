@@ -1,32 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Besedilo vprašanja",
-      "description": "Na podlagi besedila bo uporabnik izbral odgovor za nadaljevanje."
-    },
-    {
-      "label": "Odgovori",
-      "entity": "odgovor",
-      "field": {
-        "fields": [
-          {
-            "label": "Odgovor",
-            "description": "Besedilo bo zapisano kot gumb za izbiro tega odgovora."
-          },
-          {
-            "label": "Pojdi na",
-            "description": "Vnos časa za nadaljevanje ogleda posnetka (v formatu M:SS), na katerega bo udeleženca vodil klik."
-          },
-          {
-            "label": "Besedilo ob izbiri odgovora",
-            "description": "Neobvezno besedilo za potrditev odgovora ob izbiri."
-          }
-        ]
-      }
-    },
-    {
-      "label": "Besedilo za gumb \"Nadaljuj\"",
-      "default": "Nadaljuj"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:780a09be8a44a30cd0885e8561bdfba0428e1ad77c46cf423ef38a2ceb2068e1
+size 859

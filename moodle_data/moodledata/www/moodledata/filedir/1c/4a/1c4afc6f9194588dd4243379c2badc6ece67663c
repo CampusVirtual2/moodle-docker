@@ -1,29 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Llista del contingut de les columnes",
-      "entity": "contingut",
-      "field": {
-        "fields": [
-          {
-            "label": "Contingut"
-          },
-          {
-            "label": "Separa el contingut amb un regle horitzontal",
-            "options": [
-              {
-                "label": "Automàtic (opció predeterminada)"
-              },
-              {
-                "label": "No utilitzis mai el regle de la part superior"
-              },
-              {
-                "label": "Utilitza sempre el regle de la part superior"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:f5316194768a302982de9363d982cf8b9790f271d56696897437b1791c21b1bd
+size 671

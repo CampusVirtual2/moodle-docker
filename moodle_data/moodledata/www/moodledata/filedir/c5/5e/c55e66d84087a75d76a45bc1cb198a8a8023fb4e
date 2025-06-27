@@ -1,11 +1,3 @@
-{
-  "libraryStrings": {
-    "noImage": "Du musst ein Bild auswählen, um Hotspots hinzuzufügen.",
-    "noImageTitle": "Kein Hintergrundbild",
-    "done": "Fertig",
-    "back": "Zurück",
-    "remove": "Hotspot entfernen",
-    "rectangle": "Rechteck erstellen",
-    "circle": "Kreis erstellen"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b1fe52cd443bbe39c1da9f1731cc7174966ca16f1e5efe952939be04e32aa531
+size 300

@@ -1,9 +1,3 @@
-{
-  "libraryStrings": {
-    "example": "მაგალითი",
-    "hide": "დამალვა",
-    "showImportantInstructions": "ინსტრუქციების ჩვენება",
-    "hideImportantInstructions": "მნიშვნელოვანი ინსტრუქციების დამალვა",
-    "importantInstructions": "მნიშვნელოვანი ინსტრუქციები"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7ca88d925be36d40d990b2916f7275b58d9627cdf71e37cb19fe0994a40a08ef
+size 454

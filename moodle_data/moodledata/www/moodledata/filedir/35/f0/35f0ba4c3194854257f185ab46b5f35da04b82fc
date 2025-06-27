@@ -1,7 +1,3 @@
-{
-  "libraryStrings": {
-    "exceedsMin": "\":property\" хамгийн бага утгаас давна :мин.",
-    "fromBiggerThanTo": "\"Эхлэх\" хугацаа нь \"Дуусах\"-аас өмнө байх шаардлагатай.",
-    "invalidTime": "\":шинж чанар\" тодорхойгүй цагийн форматтай байна."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:bff17085a6d8a7af2ffb26b7dbdad35d5bf20d00c67ff6433ffaea562f0c0c0f
+size 365

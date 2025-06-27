@@ -1,18 +1,3 @@
-{
-  "libraryStrings": {
-    "sameAsSpacing": "Same as spacing",
-    "noFrame": "No frame",
-    "zoomIn": "Zoom In",
-    "zoomOut": "Zoom Out",
-    "noMoreZoom": "No more zoom",
-    "addImage": "Add Image",
-    "changeImage": "Change Image",
-    "imageSettings": "Image settings",
-    "close": "Close",
-    "imageAltLabel": "Alternative text",
-    "imageTitleLabel": "Hover text",
-    "pleaseConfirm": "Please confirm",
-    "confirmReset": "Are you sure you wish to change the layout? This will reset the preview.",
-    "uploadError": "Unable to upload image. The file is probably too large."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7592528a9497d82ced281029159de0ec68ffc191e40ecb2d58e35d829629c60b
+size 598

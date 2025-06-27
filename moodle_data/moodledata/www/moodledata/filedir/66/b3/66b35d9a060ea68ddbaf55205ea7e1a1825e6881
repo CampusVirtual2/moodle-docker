@@ -1,20 +1,3 @@
-{
-  "libraryStrings": {
-    "insertElement": "הוספת :type",
-    "done": "הסתיים",
-    "remove": "להסיר",
-    "image": "תמונה",
-    "text": "מלל",
-    "noTaskSize": "אנא ציינו את גודל המשימה תחילה.",
-    "confirmRemoval": "האם להסיר רכיב זה?",
-    "backgroundOpacityOverridden": "שקיפות הרקע ניתנת להתאמה",
-    "advancedtext": "מלל",
-    "dropzone": "אזור יעד",
-    "selectAll": "בחירת הכל",
-    "deselectAll": "איפוס בחירה",
-    "deleteTaskTitle": "Deleting task",
-    "cancel": "Cancel",
-    "confirm": "Confirm",
-    "ok": "Ok"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:50e166f2f755f71bcac0e530e46bd118bb6fcd68de8ae58b52725d9c10c1c874
+size 648

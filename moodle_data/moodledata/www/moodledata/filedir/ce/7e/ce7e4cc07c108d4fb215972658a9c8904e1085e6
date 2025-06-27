@@ -1,20 +1,3 @@
-{
-  "libraryStrings": {
-    "insertElement": "Añadir :tipo",
-    "done": "Hecho",
-    "remove": "Eliminar",
-    "image": "Imagen",
-    "text": "Texto",
-    "noTaskSize": "Por favor especifica el tamaño de la tarea primero.",
-    "confirmRemoval": "¿Seguro que quieres eliminar este elemento?",
-    "backgroundOpacityOverridden": "La opacidad del fondo está anulada",
-    "advancedtext": "Texto",
-    "dropzone": "Zona de Colocación",
-    "selectAll": "Seleccionar todo",
-    "deselectAll": "Deshacer seleccionar todo",
-    "deleteTaskTitle": "Eliminando tarea",
-    "cancel": "Cancelar",
-    "confirm": "Confirmar",
-    "ok": "Ok"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:75aeda3b72b996f0ab900ec2c6183a8ba6d6746bc2bf6beeee531444b35d69d8
+size 642

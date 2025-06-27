@@ -1,11 +1,3 @@
-{
-  "libraryStrings": {
-    "noImage": "Debes seleccionar una imagen de fondo antes de agregar puntos de acceso.",
-    "noImageTitle": "Sin Imagen de Fondo",
-    "done": "Hecho",
-    "back": "Atrás",
-    "remove": "Eliminar punto de acceso",
-    "rectangle": "Crear rectángulo",
-    "circle": "Crear círculo"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:3395089e814cf145d0e38c16a0c60250d8684b627da6ca0cec7666f2b8fd4ede
+size 318

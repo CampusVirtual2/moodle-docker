@@ -1,32 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Testo della domanda",
-      "description": "Domanda su cui l'apprendente farà la sua scelta"
-    },
-    {
-      "label": "Scelte",
-      "entity": "scelta",
-      "field": {
-        "fields": [
-          {
-            "label": "Testo della scelta",
-            "description": "Etichetta che sarà mostrata sul pulsante di scelta"
-          },
-          {
-            "label": "Vai a",
-            "description": "Il tempo a disposizione dell'apprendente dopo che avrà premuto il pulsante di scelta. Inserisci il codice di tempo nel formato M:SS"
-          },
-          {
-            "label": "Testo Se scelto",
-            "description": "Testo di conferma facoltativo, mostrato dopo che l'apprendente avrà premuto il pulsante di scelta"
-          }
-        ]
-      }
-    },
-    {
-      "label": "Etichetta del pulsante Continua",
-      "default": "Continua"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:9cda40e3337dfb43b2dfab7d4fd3622f0736745a5d3e0cc19c3f9810e327af69
+size 915

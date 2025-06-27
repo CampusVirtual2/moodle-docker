@@ -1,32 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Vraagteks",
-      "description": "Die vraag op grond waarvan die gebruiker 'n keuse sal maak."
-    },
-    {
-      "label": "Keuses",
-      "entity": "keuse",
-      "field": {
-        "fields": [
-          {
-            "label": "Keuseteks",
-            "description": "Die etiket wat vertoon word op die keuseknoppie."
-          },
-          {
-            "label": "Gaan na",
-            "description": "Die teikentyd wat die gebruiker geneem het wanneer die keuse knoppie gedruk word. Voer tydkode in die formaat M:SS in."
-          },
-          {
-            "label": "Indien geskies teks",
-            "description": "'n Opsionele bevestigingsteks wat vertoon word nadat die gebruiker op die keuse-knoppie gedruk het."
-          }
-        ]
-      }
-    },
-    {
-      "label": "Gaan voort knoppie-etiket",
-      "default": "Gaan voort"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2be6b06b348d768b7252d9e7f1ba8ec6eff0a54aee8cf44a24f96a57b2c17293
+size 892

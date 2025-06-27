@@ -1,26 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Navodilo udeležencem",
-      "description": "Opis reševanja zadane naloge."
-    },
-    {
-      "label": "Mediji",
-      "fields": [
-        {
-          "label": "Tip",
-          "description": "Neobvezna nastavitev dodatnega medija za prikaz nad vprašanjem."
-        }
-      ]
-    },
-    {
-      "label": "Opis rešitve",
-      "default": "Prikaži rešitev",
-      "description": "Besedilo bo udeležencem prikazano v obliki gumba."
-    },
-    {
-      "label": "Rešitev",
-      "description": "Besedilo odgovora na vprašanje."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b776bff145df11c3a469cb902662f157290c92510db8ca95bcd65a37dcd92309
+size 586

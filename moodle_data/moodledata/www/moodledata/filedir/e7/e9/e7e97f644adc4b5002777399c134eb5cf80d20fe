@@ -1,20 +1,3 @@
-{
-  "libraryStrings": {
-    "insertElement": "Gehitu :type",
-    "done": "Eginda",
-    "remove": "Kendu",
-    "image": "Irudia",
-    "text": "Testua",
-    "noTaskSize": "Zehaztu atazaren tamaina lehenik.",
-    "confirmRemoval": "Ziur zaude kendu nahi duzula elementu hau?",
-    "backgroundOpacityOverridden": "Atzeko planoaren opakutasuna ezeztatuta dago",
-    "advancedtext": "Testua",
-    "dropzone": "Jaregiteko zona",
-    "selectAll": "Hautatu dena",
-    "deselectAll": "Desautatu dena",
-    "deleteTaskTitle": "Ataza ezabatzen",
-    "cancel": "Utzi",
-    "confirm": "Baieztatu",
-    "ok": "Ados"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:0d19478c09a8b287664dd2819ac3028369f1b489cc2d3119a89a98195f5f8846
+size 607

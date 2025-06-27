@@ -1,18 +1,3 @@
-{
-  "libraryStrings": {
-    "confirmReset": "Düzeni değiştirmek istediğinizden emin misiniz? Bu, önizlemeyi sıfırlayacaktır.",
-    "sameAsSpacing": "Boşluk ile aynı",
-    "noFrame": "Çerçeve yok",
-    "uploadError": "Resim yüklenemiyor. Dosya muhtemelen çok büyük.",
-    "zoomIn": "Yakınlaştır",
-    "zoomOut": "Uzaklaştır",
-    "noMoreZoom": "Daha fazla yakınlaşamaz",
-    "addImage": "Resim ekleme",
-    "changeImage": "Resmi değiştir",
-    "imageSettings": "Resim ayarları",
-    "close": "Kapat",
-    "imageAltLabel": "Alternatif metin",
-    "imageTitleLabel": "Üzerine gelince metin",
-    "pleaseConfirm": "Lütfen onaylayın"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:906d26c01592064743ff38a54f644563fcb8a7deef8541941435c67af7488149
+size 664

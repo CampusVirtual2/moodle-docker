@@ -1,30 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Vprašanje ali opis"
-    },
-    {
-      "label": "Nadomestno besedilo",
-      "default": "Moje mnenje ...",
-      "description": "Nadomestno besedilo za udeleženca, ki bo v pomoč pri zapisu odgovora."
-    },
-    {
-      "label": "Višina vnosnega polja",
-      "description": "Določa število vrstic v vnosnem polju za zapis odgovora.",
-      "options": [
-        {
-          "label": "1 vrstica"
-        },
-        {
-          "label": "2 vrstici"
-        },
-        {
-          "label": "3 vrstice"
-        },
-        {
-          "label": "10 vrstic"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a392889e7e828cbce256b6fbabad6bbc99527ad80b5e7e2a203f3253bcaf79c0
+size 627

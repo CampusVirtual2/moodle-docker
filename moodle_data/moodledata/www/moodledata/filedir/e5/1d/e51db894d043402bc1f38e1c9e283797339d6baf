@@ -1,17 +1,3 @@
-{
-  "libraryStrings":{
-    "transformLabel":"Διαμόρφωση",
-    "editLabel":"Επεξεργασία",
-    "removeLabel":"Αφαίρεση",
-    "bringToFrontLabel":"Μεταφορά εμπρός",
-    "sendToBackLabel":"Μεταφορά πίσω",
-    "unableToPaste":"Δεν είναι δυνατή η επικόλληση του αντικειμένου. Δυστυχώς το αντικείμενο που προσπαθείτε να επικολλήσετε δεν υποστηρίζεται από τον τύπο περιεχομένου ή τη συγκεκριμένη έκδοση.",
-    "sizeLabel":"Μέγεθος",
-    "positionLabel":"Θέση",
-    "heightLabel":"Ύψος",
-    "widthLabel":"Πλάτος",
-    "copyLabel": "Αντιγραφή",
-    "paste": "Επικόλληση",
-    "moreElements": "Περισσότερα"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4e961d581583d03555e664707f42f7ee649562ffd07bfc6f9673edaaee203096
+size 857

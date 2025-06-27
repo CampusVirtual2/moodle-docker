@@ -1,6 +1,3 @@
-{
-  "libraryStrings": {
-    "helpText": "Maak blokken met vragen en antwoorden, waarin de blokken gescheiden worden door een lege regel. In elk blok is de eerste regel de vraag, de overige regels bevatten de antwoorden. Het eerste antwoord is het juiste",
-    "warning": "Waarschuwing! Als je de taak in de tekstuele editor bewerkt, wordt alle rich text opmaak (incl. regeleinden) verwijderd."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:0ac7455b57285f43142b9f62f2795c50591411a8e1f543b9d00a2fe30597d7bd
+size 400

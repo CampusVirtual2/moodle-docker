@@ -1,17 +1,3 @@
-{
-  "libraryStrings": {
-    "transformLabel": "გარდაქმნა",
-    "editLabel": "შეცვლა",
-    "removeLabel": "წაშლა",
-    "bringToFrontLabel": "წინ გადმოტანა",
-    "sendToBackLabel": "უკან გადატანა",
-    "unableToPaste": "შეუძლებელია ამ ობიექტის ჩასმა. სამწუხაროდ, ობიექტი, რომელიც გინდათ ჩასვათ, არ არის თავსებადი ამ შიგთავსთან ან ვერსიასთან.",
-    "sizeLabel": "ზომა",
-    "positionLabel": "პოზიცია",
-    "heightLabel": "სიმაღლე",
-    "widthLabel": "სიგანე",
-    "copyLabel": "კოპირება",
-    "paste": "ჩასმა",
-    "moreElements": "მეტი ელემენტი"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:274878855fe9c784bc5b503173886cc5d69ca63d8335116fb0696e43ff9b2f99
+size 938

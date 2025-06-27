@@ -1,26 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Aufgabenbeschreibung",
-      "description": "Beschreibung, wie die Lernenden die Aufgabe lösen sollten. Wird über dem Medium angezeigt."
-    },
-    {
-      "label": "Medium",
-      "fields": [
-        {
-          "label": "Medienart",
-          "description": "Optionales Medium, das über der Frage dargestellt wird."
-        }
-      ]
-    },
-    {
-      "label": "Beschriftung des \"Lösung anzeigen\"-Buttons",
-      "default": "Klicken, um die Antwort zu sehen.",
-      "description": "Klickbarer Text, an dessen Stelle die Lösung erscheinen wird."
-    },
-    {
-      "label": "Lösungstext",
-      "description": "Die Lösung für die Aufgabe bzw. das Medium."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:fb643fb810c00c5037e61a8c9da6f9af86fbd60d6bd55ba7f364aa8353028f85
+size 722

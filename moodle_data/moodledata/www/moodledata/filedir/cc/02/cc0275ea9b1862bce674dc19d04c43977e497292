@@ -1,26 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Opis zadatka",
-      "description": "Opišite kako će korinik riješiti zadatak."
-    },
-    {
-      "label": "Media",
-      "fields": [
-        {
-          "label": "Type",
-          "description": "Optional media to display above the question."
-        }
-      ]
-    },
-    {
-      "label": "Opisna oznaka za rješenje",
-      "default": "Kliknite da vitite odgovor",
-      "description": "Tekstualno područje za klikanje je ono područje gdje će biti prikazano rješenje."
-    },
-    {
-      "label": "Tekst rješenja",
-      "description": "Rješenje za sliku."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4574c2348ea0621dccfd9891205b8b73eca65941eb7fc6c02fe71d64ba5cc8e4
+size 621

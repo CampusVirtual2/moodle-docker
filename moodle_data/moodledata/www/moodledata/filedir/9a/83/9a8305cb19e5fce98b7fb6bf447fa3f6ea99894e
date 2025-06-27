@@ -1,7 +1,3 @@
-{
-  "libraryStrings": {
-    "exceedsMin": "\":property\" (속성)이 최소값 :min 을 초과합니다.",
-    "fromBiggerThanTo": "\"From\" 은 \"To\" 보다 앞서야 합니다.",
-    "invalidTime": "\":property\" (속성)은 유효하지 않은 시간 포맷을 포함하고 있습니다."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:849ebfbe50b90bdb062cb63a8271c33b3a7c66b9bd8dcfd49b8613ccf5d9228b
+size 299

@@ -1,8 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Tabulka",
-      "default": "<table class=\"h5p-table\"><thead><tr><th scope=\"col\">Nadpis sloupce 1</th><th scope=\"col\">Nadpis sloupce 2</th></tr></thead><tbody><tr><td>Řádek 1 Sloupec 1</td><td>Řádek 1 Sloupec 2</td></tr><tr><td>Řádek 2 Sloupec 1</td><td>Řádek 2 Sloupec 2</td></tr></tbody></table>"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ccd32e44c71caed36e0a611d8e675877a33da6744202887a646aaf897aecea4f
+size 365
