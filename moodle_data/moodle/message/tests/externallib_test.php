@@ -35,7 +35,7 @@ require_once($CFG->dirroot . '/message/externallib.php');
  * @copyright  2012 Jerome Mouneyrac
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class externallib_test extends externallib_advanced_testcase {
+class externallib_test extends externallib_advanced_testcase {
 
     /**
      * Tests set up
@@ -127,7 +127,7 @@ final class externallib_test extends externallib_advanced_testcase {
         $sentmessages = core_message_external::send_instant_messages($messages);
         $sentmessages = \external_api::clean_returnvalue(core_message_external::send_instant_messages_returns(), $sentmessages);
         $this->assertEquals(
-            get_string('usercantbemessaged', 'message'),
+            get_string('usercantbemessaged', 'message', fullname(\core_user::get_user($message1['touserid']))),
             array_pop($sentmessages)['errormessage']
         );
 
@@ -223,7 +223,7 @@ final class externallib_test extends externallib_advanced_testcase {
 
         $sentmessage = reset($sentmessages);
 
-        $this->assertEquals(get_string('usercantbemessaged', 'message'), $sentmessage['errormessage']);
+        $this->assertEquals(get_string('usercantbemessaged', 'message', fullname($user2)), $sentmessage['errormessage']);
 
         $this->assertEquals(0, $DB->count_records('messages'));
     }
@@ -259,7 +259,7 @@ final class externallib_test extends externallib_advanced_testcase {
 
         $sentmessage = reset($sentmessages);
 
-        $this->assertEquals(get_string('usercantbemessaged', 'message'), $sentmessage['errormessage']);
+        $this->assertEquals(get_string('usercantbemessaged', 'message', fullname($user2)), $sentmessage['errormessage']);
 
         $this->assertEquals(0, $DB->count_records('messages'));
     }
@@ -1437,14 +1437,13 @@ final class externallib_test extends externallib_advanced_testcase {
         $eventdata->smallmessage      = $eventdata->subject;
         message_send($eventdata);
 
-        // This event contains HTML in the subject field that will be removed by the WS (otherwise it will generate an exception).
         $eventdata = new \core\message\message();
         $eventdata->courseid         = $course->id;
         $eventdata->name             = 'submission';
         $eventdata->component        = 'mod_feedback';
         $eventdata->userfrom         = $user1;
         $eventdata->userto           = $user2;
-        $eventdata->subject          = 'Feedback submitted <span>with html</span>';
+        $eventdata->subject          = 'Feedback submitted';
         $eventdata->fullmessage      = 'Feedback submitted from an user';
         $eventdata->fullmessageformat = FORMAT_PLAIN;
         $eventdata->fullmessagehtml  = '<strong>Feedback submitted</strong>';
@@ -5137,7 +5136,7 @@ final class externallib_test extends externallib_advanced_testcase {
     /**
      * Data provider for test_get_conversation_counts().
      */
-    public static function get_conversation_counts_test_cases(): array {
+    public function get_conversation_counts_test_cases() {
         $typeindividual = \core_message\api::MESSAGE_CONVERSATION_TYPE_INDIVIDUAL;
         $typegroup = \core_message\api::MESSAGE_CONVERSATION_TYPE_GROUP;
         $typeself = \core_message\api::MESSAGE_CONVERSATION_TYPE_SELF;
@@ -5500,7 +5499,7 @@ final class externallib_test extends externallib_advanced_testcase {
     /**
      * Test the get_conversation_counts() function.
      *
-     * @dataProvider get_conversation_counts_test_cases
+     * @dataProvider get_conversation_counts_test_cases()
      * @param array $conversationconfigs Conversations to create
      * @param int $deletemessagesuser The user who is deleting the messages
      * @param array $deletemessages The list of messages to delete (by index)

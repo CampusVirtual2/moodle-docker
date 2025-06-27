@@ -42,7 +42,7 @@ class helper_test extends advanced_testcase {
      *
      * @return array
      */
-    public static function get_string_from_input_provider(): array {
+    public function get_string_from_input_provider(): array {
         return [
             'Text'  => [
                 'example',

@@ -5,7 +5,10 @@ Feature: Content bank use editor feature
   I need to be able to access the edition options
 
   Background:
-    Given I log in as "admin"
+    Given the following "blocks" exist:
+      | blockname     | contextlevel | reference | pagetypepattern | defaultregion |
+      | private_files | System       | 1         | my-index        | side-post     |
+    And I log in as "admin"
     And I am on site homepage
     And I turn editing mode on
     And the following config values are set as admin:
@@ -22,9 +25,10 @@ Feature: Content bank use editor feature
     Then the "[data-action=Add-content]" "css_element" should be disabled
 
   Scenario: Users can see the Add button if there is content type available for creation
-    Given the following "user private file" exists:
-      | user     | admin                                |
-      | filepath | h5p/tests/fixtures/filltheblanks.h5p |
+    Given I follow "Dashboard"
+    And I follow "Manage private files..."
+    And I upload "h5p/tests/fixtures/filltheblanks.h5p" file to "Files" filemanager
+    And I click on "Save changes" "button"
     And I click on "Site pages" "list_item" in the "Navigation" "block"
     And I click on "Content bank" "link" in the "Navigation" "block"
     And I click on "Upload" "link"
@@ -40,9 +44,10 @@ Feature: Content bank use editor feature
     And I should see "Fill in the Blanks"
 
   Scenario: Users can edit content if they have the required permission
-    Given the following "user private file" exists:
-      | user     | admin                                |
-      | filepath | h5p/tests/fixtures/filltheblanks.h5p |
+    Given I follow "Dashboard"
+    And I follow "Manage private files..."
+    And I upload "h5p/tests/fixtures/filltheblanks.h5p" file to "Files" filemanager
+    And I click on "Save changes" "button"
     And I click on "Site pages" "list_item" in the "Navigation" "block"
     And I click on "Content bank" "link" in the "Navigation" "block"
     And I click on "Upload" "link"
@@ -56,7 +61,6 @@ Feature: Content bank use editor feature
     Then I click on "Edit" "link"
     And I switch to "h5p-editor-iframe" class iframe
     And I switch to the main frame
-    And I change viewport size to "800x1400"
     And I click on "Cancel" "button"
     And I should see "filltheblanks.h5p" in the "h2" "css_element"
 

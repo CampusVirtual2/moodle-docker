@@ -63,11 +63,15 @@ if (!$item->id && $typ === 'pagebreak') {
 }
 
 //get the existing item or create it
-if (!$typ) {
+// $formdata->itemid = isset($formdata->itemid) ? $formdata->itemid : NULL;
+if (!$typ || !file_exists($CFG->dirroot.'/mod/feedback/item/'.$typ.'/lib.php')) {
     throw new \moodle_exception('typemissing', 'feedback', $editurl->out(false));
 }
 
+require_once($CFG->dirroot.'/mod/feedback/item/'.$typ.'/lib.php');
+
 $itemobj = feedback_get_item_class($typ);
+
 $itemobj->build_editform($item, $feedback, $cm);
 
 if ($itemobj->is_cancelled()) {

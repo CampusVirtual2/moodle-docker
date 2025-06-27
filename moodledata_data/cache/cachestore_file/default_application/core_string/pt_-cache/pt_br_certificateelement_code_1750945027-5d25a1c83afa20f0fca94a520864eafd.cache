@@ -1,0 +1,5 @@
+a:8:{s:7:"display";s:7:"Mostrar";s:12:"display_help";s:310:"Como mostrar o código:
+
+* Somente código (padrão): mostrará apenas o código para verificar o certificado
+* Código e link: mostrará um link para a página de verificação
+* URL: mostrará a URL de verificação como texto (geralmente para certificados impressos onde não é possível clicar em um link)";s:11:"displaycode";s:15:"Somente código";s:15:"displaycodelink";s:16:"Código com link";s:13:"displayqrcode";s:7:"QR Code";s:10:"displayurl";s:20:"URL de verificação";s:10:"pluginname";s:7:"Código";s:16:"privacy:metadata";s:51:"O plugin Código não armazena nenhum dado pessoal.";}

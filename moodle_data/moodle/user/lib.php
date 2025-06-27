@@ -1255,23 +1255,14 @@ function user_get_tagged_users($tag, $exclusivemode = false, $fromctx = 0, $ctx 
     }
     $perpage = $exclusivemode ? 24 : 5;
     $content = '';
-    $excludedusers = 0;
+    $totalpages = ceil($usercount / $perpage);
 
     if ($usercount) {
         $userlist = $tag->get_tagged_items('core', 'user', $page * $perpage, $perpage,
                 'it.deleted=:notdeleted', array('notdeleted' => 0));
-        foreach ($userlist as $user) {
-            if (!user_can_view_profile($user)) {
-                unset($userlist[$user->id]);
-                $excludedusers++;
-            }
-        }
         $renderer = $PAGE->get_renderer('core', 'user');
         $content .= $renderer->user_list($userlist, $exclusivemode);
     }
-
-    // Calculate the total number of pages.
-    $totalpages = ceil(($usercount - $excludedusers) / $perpage);
 
     return new core_tag\output\tagindex($tag, 'core', 'user', $content,
             $exclusivemode, $fromctx, $ctx, $rec, $page, $totalpages);
@@ -1391,27 +1382,3 @@ function user_edit_map_field_purpose($userid, $fieldname) {
     return $purpose;
 }
 
-/**
- * Update the users public key for the specified device and app.
- *
- * @param string $uuid The device UUID.
- * @param string $appid The app id, usually something like com.moodle.moodlemobile.
- * @param string $publickey The app generated public key.
- * @return bool
- * @since Moodle 4.2
- */
-function user_update_device_public_key(string $uuid, string $appid, string $publickey): bool {
-    global $USER, $DB;
-
-    if (!$DB->get_record('user_devices',
-        ['uuid' => $uuid, 'appid' => $appid, 'userid' => $USER->id]
-    )) {
-        return false;
-    }
-
-    $DB->set_field('user_devices', 'publickey', $publickey,
-        ['uuid' => $uuid, 'appid' => $appid, 'userid' => $USER->id]
-    );
-
-    return true;
-}

@@ -1,0 +1,143 @@
+services:
+  moodledb:
+    image: mariadb:latest
+    container_name: ${DOMAIN}_db
+    command: '--default-authentication-plugin=mysql_native_password'
+    volumes:
+      - ./db_data:/var/lib/mysql
+    restart: always
+    env_file: .env
+    environment:
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_DATABASE=${MYSQL_DB}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MARIADB_CHARACTER_SET=utf8mb4
+      - MARIADB_COLLATE=utf8mb4_unicode_ci
+      - TZ=America/Sao_Paulo
+    networks:
+      - default
+  moodlepgdb:
+    image: postgres:13
+    container_name: ${DOMAIN}_pgdb
+    restart: always
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - TZ=America/Sao_Paulo
+    networks:
+      - default
+  campusvirtual2.com:
+    container_name: ${DOMAIN}_web
+    env_file: .env
+    build: .
+    ports:
+      - '8002:80'
+    environment:
+      - MOODLE_DATABASE_TYPE=pgsql
+      - MOODLE_DATABASE_HOST=moodlepgdb
+      - MOODLE_DATABASE_PORT_NUMBER=5432
+      - MOODLE_DATABASE_USER=${POSTGRES_USER}
+      - MOODLE_DATABASE_NAME=${POSTGRES_DB}
+      - MOODLE_DATABASE_PASSWORD=${POSTGRES_PASSWORD}
+      - ALLOW_EMPTY_PASSWORD=no
+      - MOODLE_REVERSEPROXY=yes
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ./moodle_data:/var/www/html
+      - ./moodledata_data:/var/www/moodledata
+      - ./logs:/var/log/apache2
+      - ./000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    depends_on:
+      - moodlepgdb
+    extra_hosts:
+      - "${DOMAIN}:127.0.1.1"
+    networks:
+      - rede_proxy_reverso
+      - default
+  cron:
+    image: moodlehq/moodle-php-apache:8.1
+    container_name: ${DOMAIN}_cron
+    environment:
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ./moodle_data:/var/www/html
+      - ./moodledata_data:/var/www/moodledata
+    entrypoint: >
+      /bin/sh -c "while true; do php /var/www/html/moodle/admin/cli/cron.php; sleep 60; done"
+    depends_on:
+      - campusvirtual2.com 
+  redis:
+    image: redis:7.4.1-alpine
+    volumes:
+      - ./redis:/data
+    ports:
+      - 6379:6379
+    networks:
+      - default
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginx_proxy_manager # Nome fixo para fácil identificação
+    restart: unless-stopped
+    ports:
+      - '80:80'    # Porta HTTP para o mundo (necessária para validação Let's Encrypt e redirecionamento)
+      - '443:443'  # Porta HTTPS para o mundo
+      - '81:81'    # Porta para a interface web de administração do NPM (acesse via navegador, por exemplo, http://seuservidor_ip:81)
+    environment:
+      # Credenciais do banco de dados para o NPM. Você pode usar seu 'moodledb' existente.
+      # CRIE UM NOVO USUÁRIO E BANCO DE DADOS DENTRO DO moodledb PARA O NPM.
+      DB_MYSQL_HOST: moodledb # Nome do serviço do seu banco de dados no docker-compose.yml
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: npm_user # **ALTERE**: Crie este usuário no seu MariaDB
+      DB_MYSQL_PASSWORD: secure_npm_password # **ALTERE**: Crie esta senha
+      DB_MYSQL_NAME: npm_database # **ALTERE**: Crie este banco de dadosi
+    volumes:
+      - ./data/npm:/data # Volume para persistir dados, configs e certificados do NPM
+      - ./data/letsencrypt:/etc/letsencrypt # Opcional: Para ter acesso direto aos certificados do LE se precisar
+    networks:
+      - rede_proxy_reverso # Conecta o NPM à rede que seu Moodle usa para comunicação
+      - default # Se o NPM precisar se comunicar com outros serviços na rede padrão
+
+  pinpoint-collector:
+    image: pinpointdocker/pinpoint-collector:latest
+    ports:
+      - "9994:9994"  # GRPC Collector
+      - "9995:9995"  # Stat
+      - "9996:9996"  # Span
+    networks:
+      - rede_proxy_reverso # Conecta o NPM à rede que seu Moodle usa para comunicação
+      - default # Se o NPM precisar se comunicar com outros serviços na rede padrão
+
+  pinpoint-web:
+    image: pinpointdocker/pinpoint-web:latest
+    ports:
+      - "28080:8080"
+    depends_on:
+      - pinpoint-collector
+    environment:
+      - SPRING_PROFILES_ACTIVE=release
+      - COLLECTOR_IP=pinpoint-collector
+    networks:
+      - rede_proxy_reverso # Conecta o NPM à rede que seu Moodle usa para comunicação
+      - default # Se o NPM precisar se comunicar com outros serviços na rede padrão
+
+volumes:
+  mariadb_data:
+    driver: local
+  moodle_data:
+    driver: local
+  moodledata_data:
+    driver: local
+  pg_data:
+    driver: local
+networks:
+  default:
+    name: rede_${DOMAIN}
+  rede_proxy_reverso:
+    name: rede_proxy_reverso_interna

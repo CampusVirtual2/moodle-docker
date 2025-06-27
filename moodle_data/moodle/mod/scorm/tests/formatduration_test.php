@@ -30,8 +30,8 @@ require_once($CFG->dirroot . '/mod/scorm/locallib.php'); // Include the code to 
  * @copyright  2009 Dan Marsden
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class formatduration_test extends \basic_testcase {
-    public function test_scorm2004_format(): void {
+class formatduration_test extends \basic_testcase {
+    public function test_scorm2004_format() {
         $stryears = get_string('years');
         $strmonths = trim(get_string('nummonths'));
         $strdays = get_string('days');

@@ -22,8 +22,13 @@ use context_system;
 use core_blog_generator;
 use core_collator;
 use core_reportbuilder_generator;
+use core_reportbuilder_testcase;
 use core_reportbuilder\local\filters\{boolean_select, date, select, text};
-use core_reportbuilder\tests\core_reportbuilder_testcase;
+
+defined('MOODLE_INTERNAL') || die();
+
+global $CFG;
+require_once("{$CFG->dirroot}/reportbuilder/tests/helpers.php");
 
 /**
  * Unit tests for blogs datasource
@@ -33,7 +38,7 @@ use core_reportbuilder\tests\core_reportbuilder_testcase;
  * @copyright   2022 Paul Holden <paulh@moodle.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class blogs_test extends core_reportbuilder_testcase {
+class blogs_test extends core_reportbuilder_testcase {
 
     /**
      * Test default datasource
@@ -135,7 +140,7 @@ final class blogs_test extends core_reportbuilder_testcase {
      *
      * @return array[]
      */
-    public static function datasource_filters_provider(): array {
+    public function datasource_filters_provider(): array {
         return [
             'Filter title' => ['subject', 'Cool', 'blog:title', [
                 'blog:title_operator' => text::CONTAINS,

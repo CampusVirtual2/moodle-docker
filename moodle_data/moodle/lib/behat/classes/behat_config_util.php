@@ -762,8 +762,7 @@ class behat_config_util {
 
         // Get app version from env.json inside wwwroot.
         $jsonurl = $CFG->behat_ionic_wwwroot . '/assets/env.json';
-        $streamcontext = stream_context_create(['ssl' => ['verify_peer' => false, 'verify_peer_name' => false]]);
-        $json = @file_get_contents($jsonurl, false, $streamcontext);
+        $json = @file_get_contents($jsonurl);
 
         if (!$json) {
             throw new coding_exception('Unable to load app version from ' . $jsonurl);

@@ -40,6 +40,8 @@ class import extends base {
      * Imports the xmlfile into DB
      */
     public function execute(): void {
+        confirm_sesskey();
+
         $url = new \moodle_url('/admin/tool/admin_presets/index.php', ['action' => 'import', 'mode' => 'execute']);
         $this->moodleform = new import_form($url);
 

@@ -257,9 +257,10 @@ class calculator {
                 }
             }
             $this->stats->cache($qubaids);
+
+            // All finished.
+            $this->progress->end_progress();
         }
-        // All finished.
-        $this->progress->end_progress();
         return $this->stats;
     }
 

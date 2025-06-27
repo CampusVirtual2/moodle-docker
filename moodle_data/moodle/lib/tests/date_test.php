@@ -35,7 +35,7 @@ defined('MOODLE_INTERNAL') || die();
  * @covers \core_date
  * @coversDefaultClass \core_date
  */
-final class date_test extends advanced_testcase {
+class date_test extends advanced_testcase {
     /**
      * @covers ::get_default_php_timezone
      */
@@ -386,7 +386,7 @@ final class date_test extends advanced_testcase {
         $this->assertSame('Etc/GMT-1', date_default_timezone_get());
     }
 
-    public static function legacyUserTimezoneProvider(): array {
+    public function legacyUserTimezoneProvider() {
         return [
             ['', 'Australia/Perth'],            // Fallback on default timezone.
             ['-13.0', 'Australia/Perth'],       // Fallback on default timezone.

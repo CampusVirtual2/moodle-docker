@@ -26,13 +26,13 @@ use core_scss;
  * @copyright 2016 onwards Ankit Agarwal
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class scss_test extends \advanced_testcase {
+class scss_test extends \advanced_testcase {
 
     /**
      * Data provider for is_valid_file
      * @return array
      */
-    public static function is_valid_file_provider(): array {
+    public function is_valid_file_provider() {
         $themedirectory = \core_component::get_component_directory('theme_boost');
         $realroot = realpath($themedirectory);
         return [
@@ -66,7 +66,7 @@ final class scss_test extends \advanced_testcase {
     /**
      * Test cases for SassC compilation.
      */
-    public static function scss_compilation_provider(): array {
+    public function scss_compilation_provider() {
         return [
             'simple' => [
                 'scss' => '$font-stack: Helvetica, sans-serif;

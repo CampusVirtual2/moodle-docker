@@ -187,7 +187,6 @@ define(['jquery', 'core/modal_events', 'core/modal_registry', 'core/modal',
             templateContext = modalConfig.templateContext;
         }
 
-        var pendingModalPromise = new Pending('core/modal_factory:create');
         var modalPromise = createFromType(registryConf, templateContext)
             .then(function(modal) {
                 if (typeof modalConfig.title != 'undefined') {
@@ -218,7 +217,7 @@ define(['jquery', 'core/modal_events', 'core/modal_registry', 'core/modal',
                 }
 
                 modal.setScrollable(isScrollable);
-                pendingModalPromise.resolve();
+
                 return modal;
             });
 

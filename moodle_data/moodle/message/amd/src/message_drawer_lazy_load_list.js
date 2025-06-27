@@ -23,13 +23,11 @@
 define(
 [
     'jquery',
-    'core/custom_interaction_events',
-    'core/pending',
+    'core/custom_interaction_events'
 ],
 function(
     $,
-    CustomEvents,
-    PendingPromise,
+    CustomEvents
 ) {
 
     var SELECTORS = {
@@ -250,7 +248,6 @@ function(
      * @return {Object} promise
      */
     var initialLoadAndRender = function(root, loadCallback, renderCallback) {
-        const pendingPromise = new PendingPromise('initialLoadAndRender');
         getContentContainer(root).empty();
         showPlaceholder(root);
         hideContent(root);
@@ -269,10 +266,6 @@ function(
             .catch(function() {
                 hidePlaceholder(root);
                 showContent(root);
-                return;
-            })
-            .then(() => {
-                pendingPromise.resolve();
                 return;
             });
     };

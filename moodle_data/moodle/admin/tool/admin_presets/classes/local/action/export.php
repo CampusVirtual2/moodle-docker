@@ -52,6 +52,8 @@ class export extends base {
      * Stores a preset into the DB.
      */
     public function execute(): void {
+        confirm_sesskey();
+
         $url = new \moodle_url('/admin/tool/admin_presets/index.php', ['action' => 'export', 'mode' => 'execute']);
         $this->moodleform = new export_form($url);
 
@@ -85,7 +87,7 @@ class export extends base {
      * @throws xml_writer_exception
      */
     public function download_xml(): void {
-        require_sesskey();
+        confirm_sesskey();
 
         list($xmlstr, $filename) = $this->manager->download_preset($this->id);
 

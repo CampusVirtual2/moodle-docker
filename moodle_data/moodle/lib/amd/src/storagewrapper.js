@@ -162,14 +162,5 @@ define(['core/config'], function(config) {
         return true;
     };
 
-    /**
-     * Clean local storage.
-     *
-     * @method clean
-     */
-    Wrapper.prototype.clean = function() {
-        this.storage.clear();
-    };
-
     return Wrapper;
 });

@@ -8,9 +8,11 @@ Feature: Enable Block blog menu on the frontpage
     Given the following "users" exist:
       | username | firstname | lastname | email | idnumber |
       | student1 | Student | 1 | student1@example.com | S1 |
-    And the following "blocks" exist:
-      | blockname | contextlevel | reference | pagetypepattern | defaultregion |
-      | blog_menu | System       | 1         | site-index      | side-pre      |
+    And I log in as "admin"
+    And I am on site homepage
+    And I turn editing mode on
+    And I add the "Blog menu" block
+    And I log out
 
   Scenario: Students use the blog menu block to post blogs
     Given I log in as "student1"

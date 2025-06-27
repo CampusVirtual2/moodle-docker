@@ -66,7 +66,7 @@ class provider implements
                   FROM {user_private_key} k
                   JOIN {user} u ON k.userid = u.id
                   JOIN {context} ctx ON ctx.instanceid = u.id AND ctx.contextlevel = :contextlevel
-                 WHERE k.userid = :userid AND (k.script = 'tool_mobile' OR k.script = 'tool_mobile/qrlogin')";
+                 WHERE k.userid = :userid AND k.script = 'tool_mobile'";
         $params = ['userid' => $userid, 'contextlevel' => CONTEXT_USER];
         $contextlist = new contextlist();
         $contextlist->add_from_sql($sql, $params);
@@ -88,7 +88,6 @@ class provider implements
 
         // Add users based on userkey.
         \core_userkey\privacy\provider::get_user_contexts_with_script($userlist, $context, 'tool_mobile');
-        \core_userkey\privacy\provider::get_user_contexts_with_script($userlist, $context, 'tool_mobile/qrlogin');
     }
 
     /**
@@ -109,7 +108,6 @@ class provider implements
         }
         // Export associated userkeys.
         \core_userkey\privacy\provider::export_userkeys($context, [], 'tool_mobile');
-        \core_userkey\privacy\provider::export_userkeys($context, [], 'tool_mobile/qrlogin');
     }
     /**
      * Export all user preferences for the plugin.
@@ -140,7 +138,6 @@ class provider implements
         $userid = $context->instanceid;
         // Delete all the userkeys.
         \core_userkey\privacy\provider::delete_userkeys('tool_mobile', $userid);
-        \core_userkey\privacy\provider::delete_userkeys('tool_mobile/qrlogin', $userid);
     }
     /**
      * Delete all user data for the specified user, in the specified contexts.
@@ -161,7 +158,6 @@ class provider implements
         $userid = $context->instanceid;
         // Delete all the userkeys.
         \core_userkey\privacy\provider::delete_userkeys('tool_mobile', $userid);
-        \core_userkey\privacy\provider::delete_userkeys('tool_mobile/qrlogin', $userid);
     }
 
     /**
@@ -182,6 +178,5 @@ class provider implements
 
         // Delete all the userkeys.
         \core_userkey\privacy\provider::delete_userkeys('tool_mobile', $userid);
-        \core_userkey\privacy\provider::delete_userkeys('tool_mobile/qrlogin', $userid);
     }
 }

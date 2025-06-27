@@ -1281,7 +1281,6 @@ interface DomParserSettings {
     preserve_cdata?: boolean;
     remove_trailing_brs?: boolean;
     root_name?: string;
-    sanitize?: boolean;
     validate?: boolean;
     inline_styles?: boolean;
     blob_cache?: BlobCache;
@@ -1871,7 +1870,6 @@ interface BaseEditorOptions {
     visual_anchor_class?: string;
     visual_table_class?: string;
     width?: number | string;
-    xss_sanitization?: boolean;
     disable_nodechange?: boolean;
     forced_plugins?: string | string[];
     plugin_base_urls?: Record<string, string>;
@@ -1956,7 +1954,6 @@ interface EditorOptions extends NormalizedEditorOptions {
     visual_anchor_class: string;
     visual_table_class: string;
     width: number | string;
-    xss_sanitization: boolean;
 }
 declare type StyleMap = Record<string, string | number>;
 interface StylesSettings {

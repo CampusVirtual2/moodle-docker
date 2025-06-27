@@ -180,8 +180,12 @@ export default class Component extends DndCmItem {
         const exporter = this.reactive.getExporter();
         const data = exporter.cmCompletion(state, element);
 
-        const {html, js} = await Templates.renderForPromise(completionTemplate, data);
-        Templates.replaceNode(completionElement, html, js);
+        try {
+            const {html, js} = await Templates.renderForPromise(completionTemplate, data);
+            Templates.replaceNode(completionElement, html, js);
+        } catch (error) {
+            throw error;
+        }
     }
 
     /**

@@ -38,6 +38,8 @@ class load extends base {
     public function execute(): void {
         global $OUTPUT;
 
+        confirm_sesskey();
+
         $url = new \moodle_url('/admin/tool/admin_presets/index.php', ['action' => 'load', 'mode' => 'execute']);
         $this->moodleform = new load_form($url);
 

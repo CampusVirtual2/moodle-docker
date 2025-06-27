@@ -48,9 +48,11 @@ Feature: Viewing acceptances reports and accepting on behalf of other users
     And "Pending" "text" should exist in the "User Two" "table_row"
 
   Scenario: Agree on behalf of another user as a manager, single policy, javascript off
-    Given the following "role capability" exists:
-      | role                     | manager |
-      | tool/policy:acceptbehalf | allow   |
+    Given I log in as "admin"
+    And I set the following system permissions of "Manager" role:
+      | capability | permission |
+      | tool/policy:acceptbehalf | Allow |
+    And I log out
     When I log in as "manager"
     And I press "Next"
     And I set the field "I agree to the This site policy" to "1"
@@ -71,9 +73,11 @@ Feature: Viewing acceptances reports and accepting on behalf of other users
 
   @javascript
   Scenario: Agree on behalf of another user as a manager, single policy, javascript on
-    Given the following "role capability" exists:
-      | role                     | manager |
-      | tool/policy:acceptbehalf | allow   |
+    Given I log in as "admin"
+    And I set the following system permissions of "Manager" role:
+      | capability | permission |
+      | tool/policy:acceptbehalf | Allow |
+    And I log out
     When I log in as "manager"
     And I press "Next"
     And I set the field "I agree to the This site policy" to "1"
@@ -131,13 +135,13 @@ Feature: Viewing acceptances reports and accepting on behalf of other users
     And "Pending" "text" should exist in the "This privacy policy" "table_row"
 
   Scenario: Agree on behalf of another user as a manager, multiple policies, javascript off
-    Given the following "role capability" exists:
-      | role                     | manager |
-      | tool/policy:acceptbehalf | allow   |
-    And I log in as "admin"
+    Given I log in as "admin"
     And I navigate to "Users > Privacy and policies > Manage policies" in site administration
     And I click on "Set status to \"Active\"" "link" in the "This privacy policy" "table_row"
     And I press "Continue"
+    And I set the following system permissions of "Manager" role:
+      | capability | permission |
+      | tool/policy:acceptbehalf | Allow |
     And I log out
     When I log in as "manager"
     And I press "Next"
@@ -163,15 +167,14 @@ Feature: Viewing acceptances reports and accepting on behalf of other users
 
   @javascript
   Scenario: Agree on behalf of another user as a manager, multiple policies, javascript on
-    Given the following "role capability" exists:
-      | role                     | manager |
-      | tool/policy:acceptbehalf | allow   |
-    And I log in as "admin"
+    Given I log in as "admin"
     And I navigate to "Users > Privacy and policies > Manage policies" in site administration
     And I click on "Actions" "link_or_button" in the "This privacy policy" "table_row"
     And I click on "Set status to \"Active\"" "link" in the "This privacy policy" "table_row"
-    And I wait until "Activate" "button" exists
     And I press "Activate"
+    And I set the following system permissions of "Manager" role:
+      | capability | permission |
+      | tool/policy:acceptbehalf | Allow |
     And I log out
     When I log in as "manager"
     And I press "Next"
@@ -212,9 +215,11 @@ Feature: Viewing acceptances reports and accepting on behalf of other users
     And I should not see "Policies and agreements"
 
   Scenario: Policies and agreements profile link visible also for users who can access on behalf of others
-    Given the following "role capability" exists:
-      | role                     | manager |
-      | tool/policy:acceptbehalf | allow   |
+    Given I log in as "admin"
+    And I set the following system permissions of "Manager" role:
+      | capability | permission |
+      | tool/policy:acceptbehalf | Allow |
+    And I log out
     And I log in as "manager"
     And I press "Next"
     And I set the field "I agree to the This site policy" to "1"
@@ -226,9 +231,11 @@ Feature: Viewing acceptances reports and accepting on behalf of other users
     Then I should see "Policies and agreements"
 
   Scenario: Agree on behalf of another user as an admin who is logged in as a manager
-    Given the following "role capability" exists:
-      | role                     | manager |
-      | tool/policy:acceptbehalf | allow   |
+    Given I log in as "admin"
+    And I set the following system permissions of "Manager" role:
+      | capability | permission |
+      | tool/policy:acceptbehalf | Allow |
+    And I log out
     When I log in as "manager"
     And I press "Next"
     And I set the field "I agree to the This site policy" to "1"
@@ -254,15 +261,14 @@ Feature: Viewing acceptances reports and accepting on behalf of other users
 
   @javascript
   Scenario: Bulk agree on behalf of another users as a manager, multiple policies, javascript on
-    Given the following "role capability" exists:
-      | role                     | manager |
-      | tool/policy:acceptbehalf | allow   |
-    And I log in as "admin"
+    Given I log in as "admin"
     And I navigate to "Users > Privacy and policies > Manage policies" in site administration
     And I click on "Actions" "link_or_button" in the "This privacy policy" "table_row"
     And I click on "Set status to \"Active\"" "link" in the "This privacy policy" "table_row"
-    And I wait until "Activate" "button" exists
     And I press "Activate"
+    And I set the following system permissions of "Manager" role:
+      | capability | permission |
+      | tool/policy:acceptbehalf | Allow |
     And I log out
     When I log in as "manager"
     And I press "Next"

@@ -716,16 +716,6 @@ class grade_category extends grade_object {
 
         }
 
-        // First, check if all grades are null, because the final grade will be null
-        // even when aggreateonlygraded is true.
-        $allnull = true;
-        foreach ($grade_values as $v) {
-            if (!is_null($v)) {
-                $allnull = false;
-                break;
-            }
-        }
-
         // For items with no value, and not excluded - either set their grade to 0 or exclude them.
         foreach ($items as $itemid=>$value) {
             if (!isset($grade_values[$itemid]) and !in_array($itemid, $excluded)) {
@@ -793,13 +783,9 @@ class grade_category extends grade_object {
             $result['grademin'] = 0;
         }
 
-        if ($allnull) {
-            $grade->finalgrade = null;
-        } else {
-            // Recalculate the grade back to requested range.
-            $finalgrade = grade_grade::standardise_score($agg_grade, 0, 1, $result['grademin'], $result['grademax']);
-            $grade->finalgrade = $this->grade_item->bounded_grade($finalgrade);
-        }
+        // Recalculate the grade back to requested range.
+        $finalgrade = grade_grade::standardise_score($agg_grade, 0, 1, $result['grademin'], $result['grademax']);
+        $grade->finalgrade = $this->grade_item->bounded_grade($finalgrade);
 
         $oldrawgrademin = $grade->rawgrademin;
         $oldrawgrademax = $grade->rawgrademax;

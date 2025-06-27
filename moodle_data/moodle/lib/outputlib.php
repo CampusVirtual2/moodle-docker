@@ -1593,16 +1593,13 @@ class theme_config {
 
         // Getting all the candidate functions.
         $candidates = array();
-        foreach (array_reverse($this->parent_configs) as $parent_config) {
+        foreach ($this->parent_configs as $parent_config) {
             if (!isset($parent_config->extrascsscallback)) {
                 continue;
             }
             $candidates[] = $parent_config->extrascsscallback;
         }
-
-        if (isset($this->extrascsscallback)) {
-            $candidates[] = $this->extrascsscallback;
-        }
+        $candidates[] = $this->extrascsscallback;
 
         // Calling the functions.
         foreach ($candidates as $function) {
@@ -1626,16 +1623,13 @@ class theme_config {
 
         // Getting all the candidate functions.
         $candidates = array();
-        foreach (array_reverse($this->parent_configs) as $parent_config) {
+        foreach ($this->parent_configs as $parent_config) {
             if (!isset($parent_config->prescsscallback)) {
                 continue;
             }
             $candidates[] = $parent_config->prescsscallback;
         }
-
-        if (isset($this->prescsscallback)) {
-            $candidates[] = $this->prescsscallback;
-        }
+        $candidates[] = $this->prescsscallback;
 
         // Calling the functions.
         foreach ($candidates as $function) {

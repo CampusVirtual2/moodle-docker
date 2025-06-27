@@ -1105,10 +1105,10 @@ function clean_param($param, $type) {
                 } else if (preg_match('/^' . preg_quote($CFG->wwwroot . '/', '/') . '/i', $param)) {
                     // Absolute, and matches our wwwroot.
                 } else {
+
                     // Relative - let's make sure there are no tricks.
-                    if (validateUrlSyntax('/' . $param, 's-u-P-a-p-f+q?r?') &&
-                            !preg_match('/javascript(?:.*\/{2,})?:/i', rawurldecode($param))) {
-                        // Valid relative local URL.
+                    if (validateUrlSyntax('/' . $param, 's-u-P-a-p-f+q?r?') && !preg_match('/javascript:/i', $param)) {
+                        // Looks ok.
                     } else {
                         $param = '';
                     }
@@ -1318,9 +1318,8 @@ function fix_utf8($value) {
             // Shortcut.
             return $value;
         }
-
-        // Remove null bytes or invalid Unicode sequences from value.
-        $value = str_replace(["\0", "\xef\xbf\xbe", "\xef\xbf\xbf"], '', $value);
+        // No null bytes expected in our data, so let's remove it.
+        $value = str_replace("\0", '', $value);
 
         // Note: this duplicates min_fix_utf8() intentionally.
         static $buggyiconv = null;
@@ -2184,7 +2183,7 @@ function get_user_preferences($name = null, $default = null, $user = null) {
  * @param int $minute The minute part to create timestamp of
  * @param int $second The second part to create timestamp of
  * @param int|float|string $timezone Timezone modifier, used to calculate GMT time offset.
- *             if 99 then default user's timezone is used {@link https://moodledev.io/docs/apis/subsystems/time#timezone}
+ *             if 99 then default user's timezone is used {@link http://docs.moodle.org/dev/Time_API#Timezone}
  * @param bool $applydst Toggle Daylight Saving Time, default true, will be
  *             applied only if timezone is 99 or string.
  * @return int GMT timestamp
@@ -2310,7 +2309,7 @@ function format_time($totalsecs, $str = null) {
  *        get_string('strftime...', 'langconfig');
  * @param int|float|string $timezone by default, uses the user's time zone. if numeric and
  *        not 99 then daylight saving will not be added.
- *        {@link https://moodledev.io/docs/apis/subsystems/time#timezone}
+ *        {@link http://docs.moodle.org/dev/Time_API#Timezone}
  * @param bool $fixday If true (default) then the leading zero from %d is removed.
  *        If false then the leading zero is maintained.
  * @param bool $fixhour If true (default) then the leading zero from %I is removed.
@@ -2332,7 +2331,7 @@ function userdate($date, $format = '', $timezone = 99, $fixday = true, $fixhour 
  *        get_string('strftime...', 'langconfig');
  * @param int|float|string $timezone by default, uses the user's time zone. if numeric and
  *        not 99 then daylight saving will not be added.
- *        {@link https://moodledev.io/docs/apis/subsystems/time#timezone}
+ *        {@link http://docs.moodle.org/dev/Time_API#Timezone}
  * @param bool $fixday If true (default) then the leading zero from %d is removed.
  *        If false then the leading zero is maintained.
  * @param bool $fixhour If true (default) then the leading zero from %I is removed.
@@ -2495,7 +2494,7 @@ function usertimezone($timezone=99) {
  * @category time
  * @param float|int|string $tz timezone to calculate GMT time offset before
  *        calculating user timezone, 99 is default user timezone
- *        {@link https://moodledev.io/docs/apis/subsystems/time#timezone}
+ *        {@link http://docs.moodle.org/dev/Time_API#Timezone}
  * @return float|string
  */
 function get_user_timezone($tz = 99) {
@@ -2747,7 +2746,7 @@ function require_login($courseorid = null, $autologinguest = true, $cm = null, $
 
     // If the user is not even logged in yet then make sure they are.
     if (!isloggedin()) {
-        if ($autologinguest && !empty($CFG->autologinguests)) {
+        if ($autologinguest and !empty($CFG->guestloginbutton) and !empty($CFG->autologinguests)) {
             if (!$guest = get_complete_user_data('id', $CFG->siteguest)) {
                 // Misconfigured site guest, just redirect to login page.
                 redirect(get_login_url());
@@ -4966,7 +4965,7 @@ function get_complete_user_data($field, $value, $mnethostid = null, $throwexcept
 function check_password_policy($password, &$errmsg, $user = null) {
     global $CFG;
 
-    if (!empty($CFG->passwordpolicy) && !isguestuser($user)) {
+    if (!empty($CFG->passwordpolicy)) {
         $errmsg = '';
         if (core_text::strlen($password) < $CFG->minpasswordlength) {
             $errmsg .= '<div>'. get_string('errorminpasswordlength', 'auth', $CFG->minpasswordlength) .'</div>';
@@ -5681,10 +5680,6 @@ function reset_course_userdata($data) {
             }
             // Update calendar events for all modules.
             course_module_bulk_update_calendar_events($modname, $data->courseid);
-        }
-        // Purge the course cache after resetting course start date. MDL-76936
-        if ($data->timeshift) {
-            course_modinfo::purge_course_cache($data->courseid);
         }
     }
 
@@ -8381,10 +8376,9 @@ function moodle_setlocale($locale='') {
  *
  * @category string
  * @param string $string The text to be searched for words. May be HTML.
- * @param int|null $format
  * @return int The count of words in the specified string
  */
-function count_words($string, $format = null) {
+function count_words($string) {
     // Before stripping tags, add a space after the close tag of anything that is not obviously inline.
     // Also, br is a special case because it definitely delimits a word, but has no close tag.
     $string = preg_replace('~
@@ -8401,11 +8395,6 @@ function count_words($string, $format = null) {
                 <br> | <br\s*/>                 # Special cases that are not close tags.
             )
             ~x', '$1 ', $string); // Add a space after the close tag.
-    if ($format !== null && $format != FORMAT_PLAIN) {
-        // Match the usual text cleaning before display.
-        // Ideally we should apply multilang filter only here, other filters might add extra text.
-        $string = format_text($string, $format, ['filter' => false, 'noclean' => false, 'para' => false]);
-    }
     // Now remove HTML tags.
     $string = strip_tags($string);
     // Decode HTML entities.
@@ -8427,15 +8416,9 @@ function count_words($string, $format = null) {
  *
  * @category string
  * @param string $string The text to be searched for letters. May be HTML.
- * @param int|null $format
  * @return int The count of letters in the specified text.
  */
-function count_letters($string, $format = null) {
-    if ($format !== null && $format != FORMAT_PLAIN) {
-        // Match the usual text cleaning before display.
-        // Ideally we should apply multilang filter only here, other filters might add extra text.
-        $string = format_text($string, $format, ['filter' => false, 'noclean' => false, 'para' => false]);
-    }
+function count_letters($string) {
     $string = strip_tags($string); // Tags are out now.
     $string = html_entity_decode($string, ENT_COMPAT);
     $string = preg_replace('/[[:space:]]*/', '', $string); // Whitespace are out now.
@@ -9062,12 +9045,11 @@ function make_unique_id_code($extra = '') {
  *
  * @param string $addr    The address you are checking
  * @param string $subnetstr    The string of subnet addresses
- * @param bool $checkallzeros    The state to whether check for 0.0.0.0
  * @return bool
  */
-function address_in_subnet($addr, $subnetstr, $checkallzeros = false) {
+function address_in_subnet($addr, $subnetstr) {
 
-    if ($addr == '0.0.0.0' && !$checkallzeros) {
+    if ($addr == '0.0.0.0') {
         return false;
     }
     $subnets = explode(',', $subnetstr);
@@ -10210,14 +10192,8 @@ function setup_lang_from_browser() {
         // Clean it properly for include.
         $lang = strtolower(clean_param($lang, PARAM_SAFEDIR));
         if (get_string_manager()->translation_exists($lang, false)) {
-            // If the translation for this language exists then try to set it
-            // for the rest of the session, if this is a read only session then
-            // we can only set it temporarily in $CFG.
-            if (defined('READ_ONLY_SESSION') && !empty($CFG->enable_read_only_sessions)) {
-                $CFG->lang = $lang;
-            } else {
-                $SESSION->lang = $lang;
-            }
+            // Lang exists, set it in session.
+            $SESSION->lang = $lang;
             // We have finished. Go out.
             break;
         }
@@ -10249,12 +10225,23 @@ function is_proxybypass( $url ) {
     // Get the possible bypass hosts into an array.
     $matches = explode( ',', $CFG->proxybypass );
 
-    // Check for a exact match on the IP or in the domains.
-    $isdomaininallowedlist = \core\ip_utils::is_domain_in_allowed_list($host, $matches);
-    $isipinsubnetlist = \core\ip_utils::is_ip_in_subnet_list($host, $CFG->proxybypass, ',');
+    // Check for a match.
+    // (IPs need to match the left hand side and hosts the right of the url,
+    // but we can recklessly check both as there can't be a false +ve).
+    foreach ($matches as $match) {
+        $match = trim($match);
 
-    if ($isdomaininallowedlist || $isipinsubnetlist) {
-        return true;
+        // Try for IP match (Left side).
+        $lhs = substr($host, 0, strlen($match));
+        if (strcasecmp($match, $lhs)==0) {
+            return true;
+        }
+
+        // Try for host match (Right side).
+        $rhs = substr($host, -strlen($match));
+        if (strcasecmp($match, $rhs)==0) {
+            return true;
+        }
     }
 
     // Nothing matched.
@@ -10578,33 +10565,52 @@ function get_course_display_name_for_list($course) {
  * Safe analogue of unserialize() that can only parse arrays
  *
  * Arrays may contain only integers or strings as both keys and values. Nested arrays are allowed.
+ * Note: If any string (key or value) has semicolon (;) as part of the string parsing will fail.
+ * This is a simple method to substitute unnecessary unserialize() in code and not intended to cover all possible cases.
  *
  * @param string $expression
  * @return array|bool either parsed array or false if parsing was impossible.
  */
 function unserialize_array($expression) {
+    $subs = [];
+    // Find nested arrays, parse them and store in $subs , substitute with special string.
+    while (preg_match('/([\^;\}])(a:\d+:\{[^\{\}]*\})/', $expression, $matches) && strlen($matches[2]) < strlen($expression)) {
+        $key = '--SUB' . count($subs) . '--';
+        $subs[$key] = unserialize_array($matches[2]);
+        if ($subs[$key] === false) {
+            return false;
+        }
+        $expression = str_replace($matches[2], $key . ';', $expression);
+    }
 
     // Check the expression is an array.
-    if (!preg_match('/^a:(\d+):/', $expression)) {
+    if (!preg_match('/^a:(\d+):\{([^\}]*)\}$/', $expression, $matches1)) {
         return false;
     }
-
-    $values = (array) unserialize_object($expression);
-
-    // Callback that returns true if the given value is an unserialized object, executes recursively.
-    $invalidvaluecallback = static function($value) use (&$invalidvaluecallback): bool {
-        if (is_array($value)) {
-            return (bool) array_filter($value, $invalidvaluecallback);
+    // Get the size and elements of an array (key;value;key;value;....).
+    $parts = explode(';', $matches1[2]);
+    $size = intval($matches1[1]);
+    if (count($parts) < $size * 2 + 1) {
+        return false;
+    }
+    // Analyze each part and make sure it is an integer or string or a substitute.
+    $value = [];
+    for ($i = 0; $i < $size * 2; $i++) {
+        if (preg_match('/^i:(\d+)$/', $parts[$i], $matches2)) {
+            $parts[$i] = (int)$matches2[1];
+        } else if (preg_match('/^s:(\d+):"(.*)"$/', $parts[$i], $matches3) && strlen($matches3[2]) == (int)$matches3[1]) {
+            $parts[$i] = $matches3[2];
+        } else if (preg_match('/^--SUB\d+--$/', $parts[$i])) {
+            $parts[$i] = $subs[$parts[$i]];
+        } else {
+            return false;
         }
-        return ($value instanceof stdClass) || ($value instanceof __PHP_Incomplete_Class);
-    };
-
-    // Iterate over the result to ensure there are no stray objects.
-    if (array_filter($values, $invalidvaluecallback)) {
-        return false;
     }
-
-    return $values;
+    // Combine keys and values.
+    for ($i = 0; $i < $size * 2; $i += 2) {
+        $value[$parts[$i]] = $parts[$i+1];
+    }
+    return $value;
 }
 
 /**

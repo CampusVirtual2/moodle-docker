@@ -25,14 +25,14 @@ namespace core_question;
  * @copyright 2023 Jun Pataleta
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class question_display_options_test extends \advanced_testcase {
+class question_display_options_test extends \advanced_testcase {
 
     /**
      * Data provider for {@see self::test_has_question_identifier()}
      *
      * @return array[]
      */
-    public static function has_question_identifier_provider(): array {
+    public function has_question_identifier_provider(): array {
         return [
             'Empty string' => ['', false],
             'Empty space' => ['   ', false],
@@ -61,7 +61,7 @@ final class question_display_options_test extends \advanced_testcase {
      *
      * @return array[]
      */
-    public static function add_question_identifier_to_label_provider(): array {
+    public function add_question_identifier_to_label_provider(): array {
         return [
             'Empty string identifier' => ['Hello', '', false, false, "Hello"],
             'Null identifier' => ['Hello', null, false, false, "Hello"],

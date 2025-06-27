@@ -26,7 +26,7 @@ use tool_moodlenet\local\url;
  * @copyright  2020 Jake Dallimore <jrhdallimore@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class url_test extends \advanced_testcase {
+class url_test extends \advanced_testcase {
 
     /**
      * Test the parsing to host + path components.
@@ -55,7 +55,7 @@ final class url_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function url_provider(): array {
+    public function url_provider() {
         return [
             'No path' => [
                 'url' => 'https://example.moodle.net',

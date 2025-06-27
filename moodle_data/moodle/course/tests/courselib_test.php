@@ -63,7 +63,7 @@ require_once($CFG->dirroot . '/course/lib.php');
  * @copyright  2012 Petr Skoda {@link http://skodak.org}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class courselib_test extends advanced_testcase {
+class courselib_test extends advanced_testcase {
 
     /**
      * Load required libraries and fixtures.
@@ -636,7 +636,7 @@ final class courselib_test extends advanced_testcase {
      *
      * @return array An array of arrays contain test data
      */
-    public static function provider_course_delete_module(): array {
+    public function provider_course_delete_module() {
         $data = array();
 
         $data['assign'] = array('assign', array('duedate' => time()));
@@ -801,7 +801,7 @@ final class courselib_test extends advanced_testcase {
     /**
      * Relative dates mode settings provider for course creation.
      */
-    public static function create_course_relative_dates_provider(): array {
+    public function create_course_relative_dates_provider() {
         return [
             [0, 0, 0],
             [0, 1, 0],
@@ -1329,53 +1329,6 @@ final class courselib_test extends advanced_testcase {
         // Showing the modules.
         foreach ($modules as $mod) {
             set_coursemodule_visible($mod->cmid, 1);
-            $this->check_module_visibility($mod, 1, 1);
-        }
-    }
-
-    /**
-     * Test rebuildcache = false behaviour.
-     *
-     * When we pass rebuildcache = false to set_coursemodule_visible, the corusemodinfo cache will still contain
-     * the original visibility until we trigger a rebuild.
-     *
-     * @return void
-     * @covers ::set_coursemodule_visible
-     */
-    public function test_module_visibility_no_rebuild(): void {
-        $this->setAdminUser();
-        $this->resetAfterTest(true);
-
-        // Create course and modules.
-        $course = $this->getDataGenerator()->create_course(['numsections' => 5]);
-        $forum = $this->getDataGenerator()->create_module('forum', ['course' => $course->id]);
-        $assign = $this->getDataGenerator()->create_module('assign', ['duedate' => time(), 'course' => $course->id]);
-        $modules = compact('forum', 'assign');
-
-        // Hiding the modules.
-        foreach ($modules as $mod) {
-            set_coursemodule_visible($mod->cmid, 0, 1, false);
-            // The modinfo cache still has the original visibility until we manually trigger a rebuild.
-            $cm = get_fast_modinfo($mod->course)->get_cm($mod->cmid);
-            $this->assertEquals(1, $cm->visible);
-        }
-
-        rebuild_course_cache($course->id);
-
-        foreach ($modules as $mod) {
-            $this->check_module_visibility($mod, 0, 0);
-        }
-
-        // Showing the modules.
-        foreach ($modules as $mod) {
-            set_coursemodule_visible($mod->cmid, 1, 1, false);
-            $cm = get_fast_modinfo($mod->course)->get_cm($mod->cmid);
-            $this->assertEquals(0, $cm->visible);
-        }
-
-        rebuild_course_cache($course->id);
-
-        foreach ($modules as $mod) {
             $this->check_module_visibility($mod, 1, 1);
         }
     }
@@ -3590,7 +3543,7 @@ final class courselib_test extends advanced_testcase {
      *
      * @return array
      */
-    public static function course_enddate_provider(): array {
+    public function course_enddate_provider() {
         // Each provided example contains startdate, enddate and the expected exception error code if there is any.
         return [
             [
@@ -3672,7 +3625,7 @@ final class courselib_test extends advanced_testcase {
      *
      * @return array
      */
-    public static function course_dates_reset_provider(): array {
+    public function course_dates_reset_provider() {
 
         // Each example contains the following:
         // - course startdate
@@ -4573,7 +4526,7 @@ final class courselib_test extends advanced_testcase {
     /**
      * Test cases for the course_classify_courses_for_timeline test.
      */
-    public static function get_course_classify_courses_for_timeline_test_cases(): array {
+    public function get_course_classify_courses_for_timeline_test_cases() {
         $now = time();
         $day = 86400;
 
@@ -4684,7 +4637,7 @@ final class courselib_test extends advanced_testcase {
     /**
      * Test the course_classify_courses_for_timeline function.
      *
-     * @dataProvider get_course_classify_courses_for_timeline_test_cases
+     * @dataProvider get_course_classify_courses_for_timeline_test_cases()
      * @param array $coursesdata Courses to create
      * @param array $expected Expected test results.
      */
@@ -4726,7 +4679,7 @@ final class courselib_test extends advanced_testcase {
     /**
      * Test cases for the course_get_enrolled_courses_for_logged_in_user tests.
      */
-    public static function get_course_get_enrolled_courses_for_logged_in_user_test_cases(): array {
+    public function get_course_get_enrolled_courses_for_logged_in_user_test_cases() {
         $buildexpectedresult = function($limit, $offset) {
             $result = [];
             for ($i = $offset; $i < $offset + $limit; $i++) {
@@ -4814,7 +4767,7 @@ final class courselib_test extends advanced_testcase {
     /**
      * Test the course_get_enrolled_courses_for_logged_in_user function.
      *
-     * @dataProvider get_course_get_enrolled_courses_for_logged_in_user_test_cases
+     * @dataProvider get_course_get_enrolled_courses_for_logged_in_user_test_cases()
      * @param int $dbquerylimit Number of records to load per DB request
      * @param int $totalcourses Number of courses to create
      * @param int $limit Maximum number of results to get.
@@ -4862,7 +4815,7 @@ final class courselib_test extends advanced_testcase {
     /**
      * Test cases for the course_filter_courses_by_timeline_classification tests.
      */
-    public static function get_course_filter_courses_by_timeline_classification_test_cases(): array {
+    public function get_course_filter_courses_by_timeline_classification_test_cases() {
         $now = time();
         $day = 86400;
 
@@ -5112,7 +5065,7 @@ final class courselib_test extends advanced_testcase {
     /**
      * Test the course_filter_courses_by_timeline_classification function.
      *
-     * @dataProvider get_course_filter_courses_by_timeline_classification_test_cases
+     * @dataProvider get_course_filter_courses_by_timeline_classification_test_cases()
      * @param array $coursedata Course test data to create.
      * @param string $classification Timeline classification.
      * @param int $limit Maximum number of results to return.
@@ -5161,7 +5114,7 @@ final class courselib_test extends advanced_testcase {
     /**
      * Test cases for the course_filter_courses_by_timeline_classification tests.
      */
-    public static function get_course_filter_courses_by_customfield_test_cases(): array {
+    public function get_course_filter_courses_by_customfield_test_cases() {
         global $CFG;
         require_once($CFG->dirroot.'/blocks/myoverview/lib.php');
         $coursedata = [
@@ -5331,7 +5284,7 @@ final class courselib_test extends advanced_testcase {
     /**
      * Test the course_filter_courses_by_customfield function.
      *
-     * @dataProvider get_course_filter_courses_by_customfield_test_cases
+     * @dataProvider get_course_filter_courses_by_customfield_test_cases()
      * @param array $coursedata Course test data to create.
      * @param string $customfield Shortname of the customfield.
      * @param string $customfieldvalue the value to filter by.
@@ -5417,7 +5370,7 @@ final class courselib_test extends advanced_testcase {
     /**
      * Test cases for the course_filter_courses_by_timeline_classification w/ hidden courses tests.
      */
-    public static function get_course_filter_courses_by_timeline_classification_hidden_courses_test_cases(): array {
+    public function get_course_filter_courses_by_timeline_classification_hidden_courses_test_cases() {
         $now = time();
         $day = 86400;
 
@@ -5576,7 +5529,7 @@ final class courselib_test extends advanced_testcase {
     /**
      * Test the course_filter_courses_by_timeline_classification function hidden courses.
      *
-     * @dataProvider get_course_filter_courses_by_timeline_classification_hidden_courses_test_cases
+     * @dataProvider get_course_filter_courses_by_timeline_classification_hidden_courses_test_cases()
      * @param array $coursedata Course test data to create.
      * @param string $classification Timeline classification.
      * @param int $limit Maximum number of results to return.
@@ -5786,7 +5739,7 @@ final class courselib_test extends advanced_testcase {
      *
      * @return array
      */
-    public static function course_get_recent_courses_sort_validation_provider(): array {
+    function course_get_recent_courses_sort_validation_provider() {
         return [
             'Invalid sort format (SQL injection attempt)' =>
                 [
@@ -5860,7 +5813,7 @@ final class courselib_test extends advanced_testcase {
     /**
      * Test cases for the course_get_course_dates_for_user_ids tests.
      */
-    public static function get_course_get_course_dates_for_user_ids_test_cases(): array {
+    public function get_course_get_course_dates_for_user_ids_test_cases() {
         $now = time();
         $pastcoursestart = $now - 100;
         $futurecoursestart = $now + 100;
@@ -7074,7 +7027,7 @@ final class courselib_test extends advanced_testcase {
     /**
      * Test the course_get_course_dates_for_user_ids function.
      *
-     * @dataProvider get_course_get_course_dates_for_user_ids_test_cases
+     * @dataProvider get_course_get_course_dates_for_user_ids_test_cases()
      * @param bool $relativedatemode Set the course to relative dates mode
      * @param int $coursestart Course start date
      * @param int $usercount Number of users to create
@@ -7167,7 +7120,7 @@ final class courselib_test extends advanced_testcase {
      *
      * @return array An array of arrays contain test data
      */
-    public static function provider_course_modules_pending_deletion(): array {
+    public function provider_course_modules_pending_deletion() {
         return [
             'Non-gradable activity, check all'              => [['forum'], 0, false, true],
             'Gradable activity, check all'                  => [['assign'], 0, false, true],

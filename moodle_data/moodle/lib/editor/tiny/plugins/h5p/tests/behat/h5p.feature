@@ -1,4 +1,4 @@
-@editor @editor_tiny @tiny_h5p @javascript
+@editor @editor_tiny @tiny_h5p @javascript @_file_upload
 Feature: Use the TinyMCE editor to upload an h5p package
     In order to work with h5p
     As a content creator
@@ -20,6 +20,9 @@ Feature: Use the TinyMCE editor to upload an h5p package
     And the "displayh5p" filter is "on"
     And the following config values are set as admin:
       | allowedsources | https://moodle.h5p.com/content/[id] | filter_displayh5p |
+    And the following "blocks" exist:
+      | blockname     | contextlevel | reference | pagetypepattern | defaultregion |
+      | private_files | System       | 1         | my-index        | side-post     |
 
   @javascript @external
   Scenario: TinyMCE can be used to embed an H5P activity
@@ -35,11 +38,12 @@ Feature: Use the TinyMCE editor to upload an h5p package
 
   @javascript
   Scenario: TinyMCE can be used to upload and embed an H5P activity
-    Given the following "user private file" exists:
-      | user     | admin                                   |
-      | filepath | h5p/tests/fixtures/guess-the-answer.h5p |
+    Given I log in as "admin"
     And I change window size to "large"
-    And I am on the "PageName1" "page activity editing" page logged in as "admin"
+    And I follow "Manage private files..."
+    And I upload "h5p/tests/fixtures/guess-the-answer.h5p" file to "Files" filemanager
+    And I click on "Save changes" "button"
+    And I am on the "PageName1" "page activity editing" page
     And I click on the "Configure H5P content" button for the "Page content" TinyMCE editor
     And I click on "Browse repositories..." "button" in the "Insert H5P content" "dialogue"
     And I click on "Private files" "link" in the ".fp-repo-area" "css_element"
@@ -70,10 +74,11 @@ Feature: Use the TinyMCE editor to upload an h5p package
 
   @javascript @external
   Scenario: A user can edit H5P content embedding with TinyMCE
-    Given the following "user private file" exists:
-      | user     | admin                       |
-      | filepath | h5p/tests/fixtures/drag.h5p |
-    And I am on the "PageName1" "page activity editing" page logged in as "admin"
+    Given I log in as "admin"
+    And I follow "Manage private files..."
+    And I upload "lib/editor/atto/tests/fixtures/drag.h5p" file to "Files" filemanager
+    And I click on "Save changes" "button"
+    And I am on the PageName1 "page activity editing" page
     And I click on the "Configure H5P content" button for the "Page content" TinyMCE editor
     And I click on "Browse repositories..." "button" in the "Insert H5P content" "dialogue"
     And I click on "Private files" "link" in the ".fp-repo-area" "css_element"
@@ -99,10 +104,11 @@ Feature: Use the TinyMCE editor to upload an h5p package
 
   @javascript
   Scenario: Enable/disable H5P options
-    Given the following "user private file" exists:
-      | user     | admin                                   |
-      | filepath | h5p/tests/fixtures/guess-the-answer.h5p |
-    And I am on the "PageName1" "page activity editing" page logged in as "admin"
+    Given I log in as "admin"
+    And I follow "Manage private files..."
+    And I upload "h5p/tests/fixtures/guess-the-answer.h5p" file to "Files" filemanager
+    And I click on "Save changes" "button"
+    And I am on the PageName1 "page activity editing" page
     And I click on the "Configure H5P content" button for the "Page content" TinyMCE editor
     And I click on "Browse repositories..." "button" in the "Insert H5P content" "dialogue"
     And I click on "Private files" "link" in the ".fp-repo-area" "css_element"
@@ -174,10 +180,11 @@ Feature: Use the TinyMCE editor to upload an h5p package
     And the following "course enrolments" exist:
       | user     | course | role    |
       | student1 | C1     | student |
-    And the following "user private file" exists:
-      | user     | admin                                   |
-      | filepath | h5p/tests/fixtures/guess-the-answer.h5p |
-    And I am on the "PageName1" "page activity editing" page logged in as "admin"
+    And I log in as "admin"
+    And I follow "Manage private files..."
+    And I upload "h5p/tests/fixtures/guess-the-answer.h5p" file to "Files" filemanager
+    And I click on "Save changes" "button"
+    And I am on the PageName1 "page activity editing" page
     And I click on the "Configure H5P content" button for the "Page content" TinyMCE editor
     And I click on "Browse repositories..." "button" in the "Insert H5P content" "dialogue"
     And I click on "Private files" "link" in the ".fp-repo-area" "css_element"

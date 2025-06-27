@@ -21,8 +21,13 @@ namespace core_comment\reportbuilder\datasource;
 use comment;
 use context_course;
 use core_reportbuilder_generator;
+use core_reportbuilder_testcase;
 use core_reportbuilder\local\filters\{date, text};
-use core_reportbuilder\tests\core_reportbuilder_testcase;
+
+defined('MOODLE_INTERNAL') || die();
+
+global $CFG;
+require_once("{$CFG->dirroot}/reportbuilder/tests/helpers.php");
 
 /**
  * Unit tests for comments datasource
@@ -32,7 +37,7 @@ use core_reportbuilder\tests\core_reportbuilder_testcase;
  * @copyright   2022 Paul Holden <paulh@moodle.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class comments_test extends core_reportbuilder_testcase {
+class comments_test extends core_reportbuilder_testcase {
 
     /**
      * Require test libraries
@@ -61,7 +66,7 @@ final class comments_test extends core_reportbuilder_testcase {
 
         /** @var core_reportbuilder_generator $generator */
         $generator = $this->getDataGenerator()->get_plugin_generator('core_reportbuilder');
-        $report = $generator->create_report(['name' => 'Comments', 'source' => comments::class, 'default' => 1]);
+        $report = $generator->create_report(['name' => 'Blogs', 'source' => comments::class, 'default' => 1]);
 
         $content = $this->get_custom_report_content($report->get('id'));
         $this->assertCount(1, $content);
@@ -95,7 +100,7 @@ final class comments_test extends core_reportbuilder_testcase {
 
         /** @var core_reportbuilder_generator $generator */
         $generator = $this->getDataGenerator()->get_plugin_generator('core_reportbuilder');
-        $report = $generator->create_report(['name' => 'Comments', 'source' => comments::class, 'default' => 0]);
+        $report = $generator->create_report(['name' => 'Blogs', 'source' => comments::class, 'default' => 0]);
 
         $generator->create_column(['reportid' => $report->get('id'), 'uniqueidentifier' => 'comment:contexturl']);
         $generator->create_column(['reportid' => $report->get('id'), 'uniqueidentifier' => 'comment:component']);
@@ -118,7 +123,7 @@ final class comments_test extends core_reportbuilder_testcase {
      *
      * @return array[]
      */
-    public static function datasource_filters_provider(): array {
+    public function datasource_filters_provider(): array {
         return [
             // Comment.
             'Filter content' => ['comment:content', [

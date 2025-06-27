@@ -180,18 +180,7 @@ $PAGE->set_pagelayout('admin');
 
 if ($rssid) {
     $isadding = false;
-
-    if ($managesharedfeeds) {
-        $select = 'id = :id AND (userid = :userid OR shared = 1)';
-    } else {
-        $select = 'id = :id AND userid = :userid';
-    }
-
-    $rssrecord = $DB->get_record_select('block_rss_client', $select, [
-        'id' => $rssid,
-        'userid' => $USER->id,
-    ], '*', MUST_EXIST);
-
+    $rssrecord = $DB->get_record('block_rss_client', array('id' => $rssid), '*', MUST_EXIST);
 } else {
     $isadding = true;
     $rssrecord = new stdClass;

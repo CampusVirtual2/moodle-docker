@@ -24,7 +24,7 @@
 import EquationModal from 'tiny_equation/modal';
 import ModalFactory from 'core/modal_factory';
 import ModalEvents from 'core/modal_events';
-import {getContextId, getLibraries, getTexDocsUrl} from 'tiny_equation/options';
+import {getLibraries, getTexDocsUrl} from 'tiny_equation/options';
 import {notifyFilterContentUpdated} from 'core/event';
 import * as TinyEquationRepository from 'tiny_equation/repository';
 import {exception as displayException} from 'core/notification';
@@ -65,18 +65,15 @@ const displayDialogue = async(editor) => {
     const root = $root[0];
     currentForm = root.querySelector(Selectors.elements.form);
 
-    const contextId = getContextId(editor);
-    const debouncedPreviewUpdater = debounce(() => updatePreview(getContextId(editor)), 500);
-
     $root.on(ModalEvents.hidden, () => {
         modalPromises.destroy();
     });
 
     $root.on(ModalEvents.shown, () => {
         const library = root.querySelector(Selectors.elements.library);
-        TinyEquationRepository.filterEquation(contextId, library.innerHTML).then(async data => {
+        TinyEquationRepository.filterEquation(1, library.innerHTML).then(async data => {
             library.innerHTML = data.content;
-            updatePreview(contextId);
+            updatePreview();
             notifyFilter(library);
             return data;
         }).catch(displayException);
@@ -88,7 +85,7 @@ const displayDialogue = async(editor) => {
         const textArea = e.target.closest('.tiny_equation_equation');
         if (libraryItem) {
             e.preventDefault();
-            selectLibraryItem(libraryItem, contextId);
+            selectLibraryItem(libraryItem);
         }
         if (submitAction) {
             e.preventDefault();
@@ -96,14 +93,14 @@ const displayDialogue = async(editor) => {
             modalPromises.destroy();
         }
         if (textArea) {
-            debouncedPreviewUpdater();
+            debounce(updatePreview(), 500);
         }
     });
 
     root.addEventListener('keyup', (e) => {
         const textArea = e.target.closest(Selectors.elements.equationTextArea);
         if (textArea) {
-            debouncedPreviewUpdater();
+            debounce(updatePreview(), 500);
         }
     });
 
@@ -138,9 +135,8 @@ const getTemplateContext = (editor, data) => {
 /**
  * Handle select library item.
  * @param {Object} libraryItem
- * @param {number} contextId
  */
-const selectLibraryItem = (libraryItem, contextId) => {
+const selectLibraryItem = (libraryItem) => {
     const tex = libraryItem.getAttribute('data-tex');
     const input = currentForm.querySelector(Selectors.elements.equationTextArea);
     let oldValue;
@@ -166,14 +162,13 @@ const selectLibraryItem = (libraryItem, contextId) => {
 
     input.selectionStart = input.selectionEnd = focusPoint;
 
-    updatePreview(contextId);
+    updatePreview();
 };
 
 /**
  * Update the preview section.
- * @param {number} contextId
  */
-const updatePreview = (contextId) => {
+const updatePreview = () => {
     const textarea = currentForm.querySelector(Selectors.elements.equationTextArea);
     const preview = currentForm.querySelector(Selectors.elements.preview);
     const prefix = '';
@@ -211,7 +206,7 @@ const updatePreview = (contextId) => {
     equation = prefix + equation.substring(0, currentPos) + cursorLatex + equation.substring(currentPos);
 
     equation = Selectors.delimiters.start + ' ' + equation + ' ' + Selectors.delimiters.end;
-    TinyEquationRepository.filterEquation(contextId, equation).then((data) => {
+    TinyEquationRepository.filterEquation(1, equation).then((data) => {
         preview.innerHTML = data.content;
         notifyFilter(preview);
 

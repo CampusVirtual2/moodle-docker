@@ -26,13 +26,17 @@ Feature: Students can use the recent blog entries block to view recent entries o
       | intro                         | Offline text      |
       | section                       | 1                 |
       | assignsubmission_file_enabled | 0                 |
-    And the following "blocks" exist:
-      | blockname   | contextlevel    | reference | pagetypepattern | defaultregion |
-      | blog_menu   | Activity module | 0001      | mod-assign-view | side-pre      |
-      | blog_recent | Activity module | 0001      | mod-assign-view | side-pre      |
+    And I log in as "teacher1"
+    And I am on "Course 1" course homepage with editing mode on
+    And I follow "Test assignment 1"
+    And I add the "Blog menu" block
+    And I add the "Recent blog entries" block
+    And I log out
 
   Scenario: Students use the recent blog entries block to view blogs
-    Given I am on the "Test assignment 1" "assign activity" page logged in as student1
+    Given I log in as "student1"
+    And I am on "Course 1" course homepage
+    And I follow "Test assignment 1"
     And I follow "Add an entry about this Assignment"
     When I set the following fields to these values:
       | Entry title | S1 First Blog |
@@ -46,7 +50,9 @@ Feature: Students can use the recent blog entries block to view recent entries o
     And I should see "This is my awesome blog!"
 
   Scenario: Students only see a few entries in the recent blog entries block
-    Given I am on the "Test assignment 1" "assign activity" page logged in as student1
+    Given I log in as "student1"
+    And I am on "Course 1" course homepage
+    And I follow "Test assignment 1"
     And I follow "Add an entry about this Assignment"
     # Blog 1 of 5
     And I set the following fields to these values:

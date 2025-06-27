@@ -107,9 +107,7 @@ class assign_override_form extends moodleform {
             if ($this->groupid) {
                 // There is already a groupid, so freeze the selector.
                 $groupchoices = [
-                    $this->groupid => format_string(groups_get_group_name($this->groupid), true, [
-                        'context' => $this->context,
-                    ]),
+                    $this->groupid => format_string(groups_get_group_name($this->groupid), true, $this->context),
                 ];
                 $mform->addElement('select', 'groupid',
                         get_string('overridegroup', 'assign'), $groupchoices);
@@ -130,9 +128,7 @@ class assign_override_form extends moodleform {
 
                 $groupchoices = array();
                 foreach ($groups as $group) {
-                    $groupchoices[$group->id] = format_string($group->name, true, [
-                        'context' => $this->context,
-                    ]);
+                    $groupchoices[$group->id] = format_string($group->name, true, $this->context);
                 }
                 unset($groups);
 
@@ -328,8 +324,8 @@ class assign_override_form extends moodleform {
         }
 
         if (!empty($data['allowsubmissionsfromdate']) && !empty($data['duedate'])) {
-            if ($data['duedate'] <= $data['allowsubmissionsfromdate']) {
-                $errors['duedate'] = get_string('duedateaftersubmissionvalidation', 'assign');
+            if ($data['duedate'] < $data['allowsubmissionsfromdate']) {
+                $errors['duedate'] = get_string('duedatevalidation', 'assign');
             }
         }
 

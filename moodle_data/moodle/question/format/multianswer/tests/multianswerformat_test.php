@@ -34,7 +34,7 @@ require_once($CFG->dirroot . '/question/engine/tests/helpers.php');
  * @copyright 2012 The Open University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class multianswerformat_test extends \question_testcase {
+class multianswerformat_test extends \question_testcase {
 
     public function test_import() {
         $lines = file(__DIR__ . '/fixtures/questions.multianswer.txt');

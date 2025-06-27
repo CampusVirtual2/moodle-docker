@@ -23,13 +23,13 @@ namespace repository_dropbox;
  * @copyright   Andrew Nicols <andrew@nicols.co.uk>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class api_test extends \advanced_testcase {
+class api_test extends \advanced_testcase {
     /**
      * Data provider for has_additional_results.
      *
      * @return array
      */
-    public static function has_additional_results_provider(): array {
+    public function has_additional_results_provider() {
         return [
             'No more results' => [
                 (object) [
@@ -88,7 +88,7 @@ final class api_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function check_and_handle_api_errors_provider(): array {
+    public function check_and_handle_api_errors_provider() {
         return [
             '200 http_code' => [
                 ['http_code' => 200],
@@ -180,7 +180,7 @@ final class api_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function supports_thumbnail_provider(): array {
+    public function supports_thumbnail_provider() {
         $tests = [
             'Only files support thumbnails' => [
                 (object) ['.tag' => 'folder'],

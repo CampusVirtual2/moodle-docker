@@ -37,7 +37,8 @@ require_once($CFG->dirroot . '/blog/lib.php');
  * @copyright  2018 Juan Leyva
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class external_test extends \advanced_testcase {
+class external_test extends \advanced_testcase {
+
     private $courseid;
     private $cmid;
     private $userid;

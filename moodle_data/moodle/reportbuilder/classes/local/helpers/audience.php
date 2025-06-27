@@ -26,7 +26,6 @@ use core_component;
 use core_plugin_manager;
 use core_reportbuilder\local\audiences\base;
 use core_reportbuilder\local\models\audience as audience_model;
-use invalid_parameter_exception;
 
 /**
  * Class containing report audience helper methods
@@ -86,17 +85,14 @@ class audience {
 
             // Generate audience SQL based on those for the current report.
             [$wheres, $params] = self::user_audience_sql($audiences);
-            if (count($wheres) === 0) {
-                continue;
-            }
+            $allwheres = implode(' OR ', $wheres);
 
             $paramuserid = database::generate_param_name();
             $params[$paramuserid] = $userid;
 
             $sql = "SELECT DISTINCT(u.id)
                       FROM {user} u
-                     WHERE (" . implode(' OR ', $wheres) . ")
-                       AND u.deleted = 0
+                     WHERE ({$allwheres})
                        AND u.id = :{$paramuserid}";
 
             // If we have a matching record, user can view the report.
@@ -232,30 +228,6 @@ class audience {
         }
 
         return [$wheres, $params];
-    }
-
-    /**
-     * Delete given audience from report
-     *
-     * @param int $reportid
-     * @param int $audienceid
-     * @return bool
-     * @throws invalid_parameter_exception
-     */
-    public static function delete_report_audience(int $reportid, int $audienceid): bool {
-        $audience = audience_model::get_record(['id' => $audienceid, 'reportid' => $reportid]);
-        if ($audience === false) {
-            throw new invalid_parameter_exception('Invalid audience');
-        }
-
-        $instance = base::instance(0, $audience->to_record());
-        if ($instance && $instance->user_can_edit()) {
-            $persistent = $instance->get_persistent();
-            $persistent->delete();
-            return true;
-        }
-
-        return false;
     }
 
     /**

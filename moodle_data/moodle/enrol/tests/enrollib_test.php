@@ -34,7 +34,7 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  2012 Petr Skoda {@link http://skodak.org}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class enrollib_test extends advanced_testcase {
+class enrollib_test extends advanced_testcase {
 
     public function test_enrol_get_all_users_courses() {
         global $DB, $CFG;
@@ -379,7 +379,7 @@ final class enrollib_test extends advanced_testcase {
      *
      * @return array
      */
-    public static function enrol_course_delete_with_userid_provider(): array {
+    public function enrol_course_delete_with_userid_provider() {
         return [
             'The teacher can un-enrol users in a course' =>
                 [
@@ -1041,7 +1041,7 @@ final class enrollib_test extends advanced_testcase {
      *
      * @return array
      */
-    public static function enrol_get_my_courses_by_time_provider(): array {
+    public function enrol_get_my_courses_by_time_provider(): array {
         return [
             'No start or end time' =>
                 [null, null, true],
@@ -1123,43 +1123,6 @@ final class enrollib_test extends advanced_testcase {
     }
 
     /**
-     * test_course_users in groups
-     *
-     * @covers \enrol_get_course_users()
-     * @return void
-     */
-    public function test_course_users_in_groups() {
-        $this->resetAfterTest();
-
-        $user1 = $this->getDataGenerator()->create_user();
-        $user2 = $this->getDataGenerator()->create_user();
-        $user3 = $this->getDataGenerator()->create_user();
-        $course = $this->getDataGenerator()->create_course();
-        $group1 = $this->getDataGenerator()->create_group(['courseid' => $course->id]);
-        $group2 = $this->getDataGenerator()->create_group(['courseid' => $course->id]);
-
-        $this->getDataGenerator()->enrol_user($user1->id, $course->id);
-        $this->getDataGenerator()->enrol_user($user2->id, $course->id);
-        $this->getDataGenerator()->enrol_user($user3->id, $course->id);
-
-        $this->getDataGenerator()->create_group_member(['groupid' => $group1->id, 'userid' => $user1->id]);
-        $this->getDataGenerator()->create_group_member(['groupid' => $group2->id, 'userid' => $user1->id]);
-        $this->getDataGenerator()->create_group_member(['groupid' => $group2->id, 'userid' => $user2->id]);
-
-        $this->assertCount(3, enrol_get_course_users($course->id));
-        $this->assertCount(1, enrol_get_course_users($course->id, false, [], [], [$group1->id]));
-        $this->assertCount(2, enrol_get_course_users($course->id, false, [], [], [$group2->id]));
-
-        $instances = enrol_get_instances($course->id, true);
-        $manualinstance = reset($instances);
-
-        $manualplugin = enrol_get_plugin('manual');
-        $manualplugin->update_user_enrol($manualinstance, $user1->id, ENROL_USER_SUSPENDED);
-        $this->assertCount(2, enrol_get_course_users($course->id, false, [], [], [$group2->id]));
-        $this->assertCount(1, enrol_get_course_users($course->id, true, [], [], [$group2->id]));
-    }
-
-    /**
      * Test count of enrolled users
      *
      * @return void
@@ -1203,7 +1166,7 @@ final class enrollib_test extends advanced_testcase {
     /**
      * Test cases for the test_enrol_get_my_courses_sort_by_last_access test.
      */
-    public static function get_enrol_get_my_courses_sort_by_last_access_test_cases(): array {
+    public function get_enrol_get_my_courses_sort_by_last_access_test_cases() {
         $now = time();
 
         $enrolledcoursesdata = [
@@ -1306,7 +1269,7 @@ final class enrollib_test extends advanced_testcase {
     /**
      * Test the get_enrolled_courses_by_timeline_classification function.
      *
-     * @dataProvider get_enrol_get_my_courses_sort_by_last_access_test_cases
+     * @dataProvider get_enrol_get_my_courses_sort_by_last_access_test_cases()
      * @param array $enrolledcoursesdata Courses to create and enrol the user in
      * @param array $unenrolledcoursesdata Courses to create nut not enrol the user in
      * @param string $sort Sort string for the enrol function
@@ -1456,7 +1419,7 @@ final class enrollib_test extends advanced_testcase {
     /**
      * Test get_enrolled_with_capabilities_join cannotmatchanyrows attribute.
      *
-     * @dataProvider get_enrolled_with_capabilities_join_cannotmatchanyrows_data
+     * @dataProvider get_enrolled_with_capabilities_join_cannotmatchanyrows_data()
      * @param string $capability the tested capability
      * @param bool $useprohibit if the capability must be assigned to prohibit
      * @param int $expectedmatch expected cannotmatchanyrows value
@@ -1503,7 +1466,7 @@ final class enrollib_test extends advanced_testcase {
      *
      * @return @array of testing scenarios
      */
-    public static function get_enrolled_with_capabilities_join_cannotmatchanyrows_data(): array {
+    public function get_enrolled_with_capabilities_join_cannotmatchanyrows_data() {
         return [
             'no prohibits, no capability' => [
                 'capability' => '',
@@ -1543,7 +1506,7 @@ final class enrollib_test extends advanced_testcase {
      * Data provided for test_enrol_check_plugins_with_empty_config_value test.
      * @return array
      */
-    public static function empty_config_data_provider(): array {
+    public function empty_config_data_provider(): array {
         return [
             [0],
             ["0"],

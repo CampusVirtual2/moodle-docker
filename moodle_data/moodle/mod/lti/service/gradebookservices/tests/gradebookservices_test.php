@@ -27,14 +27,7 @@ use ltiservice_gradebookservices\local\service\gradebookservices;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @coversDefaultClass \mod_lti\service\gradebookservices\local\gradebookservices
  */
-final class gradebookservices_test extends \advanced_testcase {
-    /**
-     * Load the necessary libs for the tests.
-     */
-    public static function setUpBeforeClass(): void {
-        global $CFG;
-        require_once($CFG->dirroot . '/mod/lti/locallib.php');
-    }
+class gradebookservices_test extends \advanced_testcase {
 
     /**
      * @covers ::instance_added

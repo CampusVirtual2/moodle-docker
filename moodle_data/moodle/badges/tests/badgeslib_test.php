@@ -14,19 +14,25 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-use core_badges\helper;
-use core_badges\tests\badges_testcase;
-use core\task\manager;
-
 /**
  * Unit tests for badges
  *
- * @package    core_badges
+ * @package    core
+ * @subpackage badges
  * @copyright  2013 onwards Totara Learning Solutions Ltd {@link http://www.totaralms.com/}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @author     Yuliya Bozhko <yuliya.bozhko@totaralms.com>
  */
-final class badgeslib_test extends badges_testcase {
+
+defined('MOODLE_INTERNAL') || die();
+
+global $CFG;
+require_once($CFG->libdir . '/badgeslib.php');
+require_once($CFG->dirroot . '/badges/lib.php');
+
+use core_badges\helper;
+
+class badgeslib_test extends advanced_testcase {
     protected $badgeid;
     protected $course;
     protected $user;
@@ -156,7 +162,7 @@ final class badgeslib_test extends badges_testcase {
             '"@context":"https:\/\/w3id.org\/openbadges\/v2","id":"%s","type":"Issuer"}';
     }
 
-    public function test_create_badge(): void {
+    public function test_create_badge() {
         $badge = new badge($this->badgeid);
 
         $this->assertInstanceOf('badge', $badge);
@@ -463,7 +469,7 @@ final class badgeslib_test extends badges_testcase {
 
     }
 
-    public static function data_for_message_from_template(): array {
+    public function data_for_message_from_template() {
         return array(
             array(
                 'This is a message with no variables',
@@ -503,84 +509,6 @@ final class badgeslib_test extends badges_testcase {
      */
     public function test_badge_message_from_template($message, $params, $result) {
         $this->assertEquals(badge_message_from_template($message, $params), $result);
-    }
-
-    /**
-     * Test for working around the 61 tables join limit of mysql in award_criteria_activity in combination with the scheduled task.
-     *
-     * @covers \core_badges\badge::review_all_criteria
-     */
-    public function test_badge_activity_criteria_with_a_huge_number_of_coursemodules() {
-        global $CFG;
-        require_once($CFG->dirroot.'/completion/criteria/completion_criteria_activity.php');
-
-        if (!PHPUNIT_LONGTEST) {
-            $this->markTestSkipped('PHPUNIT_LONGTEST is not defined');
-        }
-
-        // Messaging is not compatible with transactions.
-        $this->preventResetByRollback();
-
-        // Create more than 61 modules to potentially trigger an mysql db error.
-        $assigncount = 75;
-        $assigns = [];
-        for ($i = 1; $i <= $assigncount; $i++) {
-            $assigns[] = $this->getDataGenerator()->create_module('assign', ['course' => $this->course->id], ['completion' => 1]);
-        }
-        $assigncmids = array_flip(array_map(fn ($assign) => $assign->cmid, $assigns));
-        $criteriaactivityarray = array_fill_keys(array_keys($assigncmids), 1);
-
-        // Set completion criteria.
-        $criteriadata = (object) [
-            'id' => $this->course->id,
-            'criteria_activity' => $criteriaactivityarray,
-        ];
-        $criterion = new completion_criteria_activity();
-        $criterion->update_config($criteriadata);
-
-        $badge = new badge($this->coursebadge);
-
-        $criteriaoverall = award_criteria::build(array('criteriatype' => BADGE_CRITERIA_TYPE_OVERALL, 'badgeid' => $badge->id));
-        $criteriaoverall->save(array('agg' => BADGE_CRITERIA_AGGREGATION_ANY));
-        $criteriaactivity = award_criteria::build(['criteriatype' => BADGE_CRITERIA_TYPE_ACTIVITY, 'badgeid' => $badge->id]);
-
-        $modulescrit = ['agg' => BADGE_CRITERIA_AGGREGATION_ALL];
-        foreach ($assigns as $assign) {
-            $modulescrit['module_' . $assign->cmid] = $assign->cmid;
-        }
-        $criteriaactivity->save($modulescrit);
-
-        // Take one assign to complete it later.
-        $assigntemp = array_shift($assigns);
-
-        // Mark the user to complete the modules.
-        foreach ($assigns as $assign) {
-            $cmassign = get_coursemodule_from_id('assign', $assign->cmid);
-            $completion = new \completion_info($this->course);
-            $completion->update_state($cmassign, COMPLETION_COMPLETE, $this->user->id);
-        }
-
-        // Run the scheduled task to issue the badge. But the badge should not be issued.
-        ob_start();
-        $task = manager::get_scheduled_task('core\task\badges_cron_task');
-        $task->execute();
-        ob_end_clean();
-
-        $this->assertFalse($badge->is_issued($this->user->id));
-
-        // Now complete the last uncompleted module.
-        $cmassign = get_coursemodule_from_id('assign', $assigntemp->cmid);
-        $completion = new \completion_info($this->course);
-        $completion->update_state($cmassign, COMPLETION_COMPLETE, $this->user->id);
-
-        // Run the scheduled task to issue the badge. Now the badge schould be issued.
-        ob_start();
-        $task = manager::get_scheduled_task('core\task\badges_cron_task');
-        $task->execute();
-        ob_end_clean();
-
-        $this->assertDebuggingCalled('Error baking badge image!');
-        $this->assertTrue($badge->is_issued($this->user->id));
     }
 
     /**
@@ -1166,7 +1094,7 @@ final class badgeslib_test extends badges_testcase {
      *
      * @return array
      */
-    public static function save_backpack_credentials_provider(): array {
+    public function save_backpack_credentials_provider(): array {
         return [
             'Empty fields' => [
                 false,
@@ -1234,7 +1162,7 @@ final class badgeslib_test extends badges_testcase {
      *
      * @return array
      */
-    public static function badges_save_external_backpack_provider(): array {
+    public function badges_save_external_backpack_provider() {
         $data = [
             'apiversion' => 2,
             'backpackapiurl' => 'https://api.ca.badgr.io/v2',
@@ -1351,7 +1279,7 @@ final class badgeslib_test extends badges_testcase {
     /**
      * Provider for test_badges_(create/update)_site_backpack
      */
-    public static function badges_create_site_backpack_provider(): array {
+    public function badges_create_site_backpack_provider() {
         return [
             "Test as admin user - creation test" => [true, true],
             "Test as admin user - update test" => [true, false],
@@ -1522,7 +1450,7 @@ final class badgeslib_test extends badges_testcase {
      *
      * @return array
      */
-    public static function badges_get_site_primary_backpack_provider(): array {
+    public function badges_get_site_primary_backpack_provider() {
         return [
             "Test with auth details" => [true],
             "Test without auth details" => [false],
@@ -1577,8 +1505,7 @@ final class badgeslib_test extends badges_testcase {
      *
      * @return array
      */
-    public static function badges_change_sortorder_backpacks_provider(): array {
-        static::load_requirements();
+    public function badges_change_sortorder_backpacks_provider(): array {
         return [
             "Test up" => [
                 'backpacktomove' => 1,
@@ -1632,9 +1559,7 @@ final class badgeslib_test extends badges_testcase {
      * Data provider for test_badges_generate_badgr_open_url
      * @return array
      */
-    public static function badgr_open_url_generator(): array {
-        static::load_requirements();
-
+    public function badgr_open_url_generator() {
         return [
             'Badgr Assertion URL test' => [
                 OPEN_BADGES_V2_TYPE_ASSERTION, "https://api.ca.badgr.io/public/assertions/123455"
@@ -1681,7 +1606,7 @@ final class badgeslib_test extends badges_testcase {
      *
      * @return array
      */
-    public static function badges_external_get_mapping_provider(): array {
+    public function badges_external_get_mapping_provider() {
         return [
             "Get the site backpack value" => [
                 1234, 4321, 'id', 'sitebackpackid'

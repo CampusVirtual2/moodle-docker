@@ -47,11 +47,6 @@ if ($slashargument = min_get_slash_argument()) {
     $file = min_optional_param('jsfile', '', 'RAW'); // 'file' would collide with URL rewriting!
 }
 
-if (!min_is_revision_valid_and_current($rev)) {
-    // If the rev is invalid, normalise it to -1 to disable all caching.
-    $rev = -1;
-}
-
 // some security first - pick only files with .js extension in dirroot
 $jsfiles = array();
 $files = explode(',', $file);
@@ -84,7 +79,8 @@ if (!$jsfiles) {
 
 $etag = sha1($rev.implode(',', $jsfiles));
 
-if ($rev > 0) {
+// Use the caching only for meaningful revision numbers which prevents future cache poisoning.
+if ($rev > 0 and $rev < (time() + 60*60)) {
     $candidate = $CFG->localcachedir.'/js/'.$etag;
 
     if (file_exists($candidate)) {

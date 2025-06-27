@@ -97,7 +97,7 @@ class filter_test extends \advanced_testcase {
      *
      * @return  array
      */
-    public static function filter_emoticon_provider(): array {
+    public function filter_emoticon_provider() {
         $grr = '(grr)';
         return [
             'FORMAT_MOODLE is not filtered' => [

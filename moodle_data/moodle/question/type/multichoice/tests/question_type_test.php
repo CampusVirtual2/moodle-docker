@@ -31,12 +31,11 @@ require_once($CFG->dirroot . '/question/type/multichoice/edit_multichoice_form.p
 /**
  * Unit tests for the multiple choice question definition class.
  *
- * @package   qtype_multichoice
- * @copyright 2009 The Open University
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @covers    \qtype_multichoice
+ * @package    qtype_multichoice
+ * @copyright  2009 The Open University
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class question_type_test extends \advanced_testcase {
+class question_type_test extends \advanced_testcase {
     protected $qtype;
 
     protected function setUp(): void {
@@ -73,12 +72,6 @@ final class question_type_test extends \advanced_testcase {
         $this->assertEquals(0.5, $this->qtype->get_random_guess_score($q));
     }
 
-    public function test_get_random_guess_score_broken_question() {
-        $q = $this->get_test_question_data();
-        $q->options->answers = [];
-        $this->assertNull($this->qtype->get_random_guess_score($q));
-    }
-
     public function test_get_random_guess_score_multi() {
         $q = $this->get_test_question_data();
         $q->options->single = false;
@@ -107,7 +100,7 @@ final class question_type_test extends \advanced_testcase {
         ), $this->qtype->get_possible_responses($q));
     }
 
-    public static function get_question_saving_which(): array {
+    public function get_question_saving_which() {
         return array(array('two_of_four'), array('one_of_four'));
     }
 

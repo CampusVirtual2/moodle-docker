@@ -716,10 +716,9 @@ function blog_get_headers($courseid=null, $groupid=null, $userid=null, $tagid=nu
     // Note: if action is set to 'add' or 'edit', we do this at the end.
     if (empty($entryid) && empty($modid) && empty($courseid) && empty($userid) && !in_array($action, array('edit', 'add'))) {
         $PAGE->navbar->add($strblogentries, $blogurl);
-        $strsiteblog = get_string('siteblogheading', 'blog');
-        $PAGE->set_title($strsiteblog);
+        $PAGE->set_title($site->fullname);
         $PAGE->set_heading($site->fullname);
-        $headers['heading'] = $strsiteblog;
+        $headers['heading'] = get_string('siteblogheading', 'blog');
     }
 
     // Case 2: only entryid is requested, ignore all other filters. courseid is used to give more contextual information.
@@ -743,10 +742,9 @@ function blog_get_headers($courseid=null, $groupid=null, $userid=null, $tagid=nu
 
         $blogurl->remove_params('userid');
         $PAGE->navbar->add($entry->subject, $blogurl);
-        $blogentryby = get_string('blogentrybyuser', 'blog', fullname($user));
-        $PAGE->set_title($entry->subject . moodle_page::TITLE_SEPARATOR . $blogentryby);
+        $PAGE->set_title("$shortname: " . fullname($user) . ": $entry->subject");
         $PAGE->set_heading("$shortname: " . fullname($user) . ": $entry->subject");
-        $headers['heading'] = $blogentryby;
+        $headers['heading'] = get_string('blogentrybyuser', 'blog', fullname($user));
 
         // We ignore tag and search params.
         if (empty($action) || !$CFG->useblogassociations) {
@@ -760,7 +758,7 @@ function blog_get_headers($courseid=null, $groupid=null, $userid=null, $tagid=nu
 
         $shortname = format_string($site->shortname, true, array('context' => context_course::instance(SITEID)));
         $blogurl->param('userid', $userid);
-        $PAGE->set_title(fullname($user) . ": " . get_string('blog', 'blog'));
+        $PAGE->set_title("$shortname: " . fullname($user) . ": " . get_string('blog', 'blog'));
         $PAGE->set_heading("$shortname: " . fullname($user) . ": " . get_string('blog', 'blog'));
         $headers['heading'] = get_string('userblog', 'blog', fullname($user));
         $headers['strview'] = get_string('viewuserentries', 'blog', fullname($user));
@@ -768,10 +766,9 @@ function blog_get_headers($courseid=null, $groupid=null, $userid=null, $tagid=nu
     } else if (!$CFG->useblogassociations && empty($userid) && !in_array($action, array('edit', 'add'))) {
         // Case 4: No blog associations, no userid.
 
-        $strsiteblog = get_string('siteblogheading', 'blog');
-        $PAGE->set_title($strsiteblog);
+        $PAGE->set_title($site->fullname);
         $PAGE->set_heading($site->fullname);
-        $headers['heading'] = $strsiteblog;
+        $headers['heading'] = get_string('siteblogheading', 'blog');
     } else if (!empty($userid) && !empty($modid) && empty($entryid)) {
         // Case 5: Blog entries associated with an activity by a specific user (courseid ignored).
 
@@ -784,7 +781,7 @@ function blog_get_headers($courseid=null, $groupid=null, $userid=null, $tagid=nu
         $PAGE->navbar->add(fullname($user), "$CFG->wwwroot/user/view.php?id=$user->id");
         $PAGE->navbar->add($strblogentries, $blogurl);
 
-        $PAGE->set_title(fullname($user) . ': ' . get_string('blogentries', 'blog') . moodle_page::TITLE_SEPARATOR . $cm->name);
+        $PAGE->set_title("$shortname: $cm->name: " . fullname($user) . ': ' . get_string('blogentries', 'blog'));
         $PAGE->set_heading("$shortname: $cm->name: " . fullname($user) . ': ' . get_string('blogentries', 'blog'));
 
         $a = new stdClass();

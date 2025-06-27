@@ -26,9 +26,8 @@
 // comment out when debugging or better look into error log!
 define('NO_DEBUG_DISPLAY', true);
 
-// We need just the values from config.php and minlib.php.
-define('ABORT_AFTER_CONFIG', true);
-require('../config.php'); // This stops immediately at the beginning of lib/setup.php.
+require('../config.php');
+require_once("$CFG->dirroot/lib/configonlylib.php");
 require_once("$CFG->dirroot/lib/classes/requirejs.php");
 
 $slashargument = min_get_slash_argument();

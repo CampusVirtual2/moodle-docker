@@ -332,8 +332,7 @@ if ($user->id == -1 or ($user->id != $USER->id)) {
         $streditmyprofile = get_string('editmyprofile');
         $userfullname = fullname($user, true);
         $PAGE->set_heading($userfullname);
-        $coursename = $course->id !== SITEID ? "$course->shortname" : '';
-        $PAGE->set_title("$streditmyprofile: $userfullname" . moodle_page::TITLE_SEPARATOR . $coursename);
+        $PAGE->set_title("$course->shortname: $streditmyprofile - $userfullname");
         echo $OUTPUT->header();
         echo $OUTPUT->heading($userfullname);
     }

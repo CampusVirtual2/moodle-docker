@@ -19,8 +19,13 @@ declare(strict_types=1);
 namespace core_group\reportbuilder\datasource;
 
 use core_reportbuilder_generator;
+use core_reportbuilder_testcase;
 use core_reportbuilder\local\filters\{date, text};
-use core_reportbuilder\tests\core_reportbuilder_testcase;
+
+defined('MOODLE_INTERNAL') || die();
+
+global $CFG;
+require_once("{$CFG->dirroot}/reportbuilder/tests/helpers.php");
 
 /**
  * Unit tests for groups datasource
@@ -30,7 +35,7 @@ use core_reportbuilder\tests\core_reportbuilder_testcase;
  * @copyright   2022 Paul Holden <paulh@moodle.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class groups_test extends core_reportbuilder_testcase {
+class groups_test extends core_reportbuilder_testcase {
 
     /**
      * Test default datasource
@@ -189,7 +194,7 @@ final class groups_test extends core_reportbuilder_testcase {
      *
      * @return array[]
      */
-    public static function datasource_filters_provider(): array {
+    public function datasource_filters_provider(): array {
         return [
             // Course (just to test join).
             'Filter course name' => ['course:fullname', [
@@ -305,7 +310,7 @@ final class groups_test extends core_reportbuilder_testcase {
         $generator = $this->getDataGenerator()->get_plugin_generator('core_reportbuilder');
 
         // Create report containing single column, and given filter.
-        $report = $generator->create_report(['name' => 'Groups', 'source' => groups::class, 'default' => 0]);
+        $report = $generator->create_report(['name' => 'Tasks', 'source' => groups::class, 'default' => 0]);
         $generator->create_column(['reportid' => $report->get('id'), 'uniqueidentifier' => 'group:idnumber']);
 
         // Add filter, set it's values.

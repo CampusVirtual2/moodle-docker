@@ -1,13 +1,16 @@
-@editor @editor_atto @atto @atto_link
+@editor @editor_atto @atto @atto_link @_file_upload
 Feature: Add links to Atto
   To write rich text - I need to add links.
 
   @javascript
   Scenario: Insert a links
-    Given the following "user private file" exists:
-      | user     | admin                                          |
-      | filepath | lib/editor/atto/tests/fixtures/moodle-logo.png |
+    Given the following "blocks" exist:
+      | blockname     | contextlevel | reference | pagetypepattern | defaultregion |
+      | private_files | System       | 1         | my-index        | side-post     |
     And I log in as "admin"
+    And I follow "Manage private files..."
+    And I upload "lib/editor/atto/tests/fixtures/moodle-logo.png" file to "Files" filemanager
+    And I click on "Save changes" "button"
     When I open my profile in edit mode
     And I set the field "Description" to "Super cool"
     And I select the text in the "Description" Atto editor
@@ -82,10 +85,10 @@ Feature: Add links to Atto
 
   @javascript
   Scenario: Insert a link for an image
-    Given the following "user private file" exists:
-      | user     | admin                                          |
-      | filepath | lib/editor/atto/tests/fixtures/moodle-logo.png |
-    And I log in as "admin"
+    Given I log in as "admin"
+    And I follow "Private files" in the user menu
+    And I upload "lib/editor/atto/tests/fixtures/moodle-logo.png" file to "Files" filemanager
+    And I click on "Save changes" "button"
     And I open my profile in edit mode
     And I click on "Insert or edit image" "button"
     And I click on "Browse repositories..." "button"

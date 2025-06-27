@@ -204,8 +204,12 @@ class quiz_statistics_table extends flexible_table {
         } else if ($questionstat->question->qtype === 'missingtype') {
             return '';
         } else {
+            $random = null;
+            if ($questionstat->question->qtype === 'random') {
+                $random = true;
+            }
             return quiz_question_action_icons($this->quiz, $this->cmid,
-                    $questionstat->question, $this->baseurl, $questionstat->variant);
+                    $questionstat->question, $this->baseurl, $questionstat->variant, $random);
         }
     }
 

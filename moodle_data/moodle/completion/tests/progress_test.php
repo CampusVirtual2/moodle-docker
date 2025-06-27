@@ -26,7 +26,7 @@ use completion_completion;
  * @copyright 2017 Mark Nelson <markn@moodle.com>
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class progress_test extends \advanced_testcase {
+class progress_test extends \advanced_testcase {
 
     /**
      * Test setup.
@@ -126,9 +126,7 @@ final class progress_test extends \advanced_testcase {
      * @covers \core_completion\progress::get_course_progress_percentage.
      */
     public function test_course_progress_percentage_completion_state() {
-        global $DB, $CFG;
-
-        require_once("{$CFG->dirroot}/completion/criteria/completion_criteria_activity.php");
+        global $DB;
 
         // Add a course that supports completion.
         $course = $this->getDataGenerator()->create_course(['enablecompletion' => 1]);

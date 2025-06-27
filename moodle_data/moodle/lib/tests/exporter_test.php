@@ -34,7 +34,7 @@ global $CFG;
  * @copyright  2015 Damyon Wiese
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class exporter_test extends \advanced_testcase {
+class exporter_test extends \advanced_testcase {
 
     protected $validrelated = null;
     protected $invalidrelated = null;

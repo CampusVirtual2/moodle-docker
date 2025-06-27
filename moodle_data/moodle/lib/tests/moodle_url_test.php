@@ -341,7 +341,7 @@ class moodle_url_test extends \advanced_testcase {
      *
      * @return  array[]
      */
-    public static function make_pluginfile_url_provider(): array {
+    public function make_pluginfile_url_provider() {
         $baseurl = "https://www.example.com/moodle/pluginfile.php";
         $tokenbaseurl = "https://www.example.com/moodle/tokenpluginfile.php";
         return [

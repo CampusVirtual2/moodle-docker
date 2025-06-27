@@ -19,10 +19,15 @@ declare(strict_types=1);
 namespace core_cohort\reportbuilder\datasource;
 
 use core_reportbuilder_generator;
+use core_reportbuilder_testcase;
 use core_reportbuilder\manager;
 use core_reportbuilder\local\filters\user;
-use core_reportbuilder\tests\core_reportbuilder_testcase;
 use core_user;
+
+defined('MOODLE_INTERNAL') || die();
+
+global $CFG;
+require_once("{$CFG->dirroot}/reportbuilder/tests/helpers.php");
 
 /**
  * Unit tests for cohorts datasource
@@ -32,7 +37,7 @@ use core_user;
  * @copyright   2021 Paul Holden <paulh@moodle.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class cohorts_test extends core_reportbuilder_testcase {
+class cohorts_test extends core_reportbuilder_testcase {
 
     /**
      * Test cohorts datasource
@@ -75,7 +80,7 @@ final class cohorts_test extends core_reportbuilder_testcase {
      *
      * @return array[]
      */
-    public static function datasource_filters_provider(): array {
+    public function cohorts_datasource_user_select_provider(): array {
         return [
             ['user01', 'Cohort01'],
             ['user02', 'Cohort02'],
@@ -88,7 +93,7 @@ final class cohorts_test extends core_reportbuilder_testcase {
      * @param string $username
      * @param string $expectedcohort
      *
-     * @dataProvider datasource_filters_provider
+     * @dataProvider cohorts_datasource_user_select_provider
      */
     public function test_cohorts_datasource_user_select(string $username, string $expectedcohort): void {
         $this->resetAfterTest();

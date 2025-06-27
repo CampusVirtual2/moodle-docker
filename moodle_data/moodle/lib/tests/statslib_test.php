@@ -32,7 +32,7 @@ require_once(__DIR__ . '/fixtures/stats_events.php');
  * @copyright  2012 Tyler Bannister
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class statslib_test extends \advanced_testcase {
+class statslib_test extends \advanced_testcase {
     /** The day to use for testing **/
     const DAY = 1272672000;
 
@@ -187,7 +187,7 @@ final class statslib_test extends \advanced_testcase {
      *
      * @return array of fixture XML log file names.
      */
-    public static function daily_log_provider(): array {
+    public function daily_log_provider() {
         $logfiles = array();
         $fileno = array('00', '01', '02', '03', '04', '05', '06', '07', '08');
 
@@ -203,7 +203,7 @@ final class statslib_test extends \advanced_testcase {
      *
      * @return array Dates and timezones for which the first day of the week will be calculated
      */
-    public static function get_base_weekly_provider(): array {
+    public function get_base_weekly_provider() {
         return [
             [
                 "startwday" => 0,

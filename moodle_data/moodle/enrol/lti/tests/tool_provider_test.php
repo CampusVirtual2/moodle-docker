@@ -40,7 +40,7 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright 2016 Jun Pataleta <jun@moodle.com>
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class tool_provider_test extends \advanced_testcase {
+class tool_provider_test extends \advanced_testcase {
 
     /**
      * @var \stdClass $tool The LTI tool.

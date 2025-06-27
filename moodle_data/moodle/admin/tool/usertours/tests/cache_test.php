@@ -28,7 +28,7 @@ require_once(__DIR__ . '/helper_trait.php');
  * @copyright  2016 Andrew Nicols <andrew@nicols.co.uk>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class cache_test extends \advanced_testcase {
+class cache_test extends \advanced_testcase {
     // There are shared helpers for these tests in the helper trait.
     use \tool_usertours_helper_trait;
 
@@ -126,7 +126,7 @@ final class cache_test extends \advanced_testcase {
      *
      * @return  array
      */
-    public static function get_matching_tourdata_provider(): array {
+    public function get_matching_tourdata_provider() {
         $tourconfigs = [
             (object) [
                 'name' => 'my_exact_1',

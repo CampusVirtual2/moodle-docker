@@ -25,7 +25,7 @@ use core_competency\api;
  * @copyright 2015 Damyon Wiese
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class import_test extends \advanced_testcase {
+class import_test extends \advanced_testcase {
 
     public function test_import_framework() {
         $this->resetAfterTest(true);

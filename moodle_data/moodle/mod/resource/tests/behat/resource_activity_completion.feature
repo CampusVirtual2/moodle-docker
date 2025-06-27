@@ -10,21 +10,28 @@ Feature: View activity completion information for file resources
       | student1 | Vinnie    | Student1 | student1@example.com |
       | teacher1 | Darrell   | Teacher1 | teacher1@example.com |
     And the following "courses" exist:
-      | fullname | shortname | category | enablecompletion |
-      | Course 1 | C1        | 0        | 1                |
+      | fullname | shortname | category |
+      | Course 1 | C1        | 0        |
     And the following "course enrolments" exist:
       | user     | course | role           |
       | student1 | C1     | student        |
       | teacher1 | C1     | editingteacher |
     And the following config values are set as admin:
       | displayoptions | 0,1,2,3,4,5,6 | resource |
+    And I am on the "Course 1" course page logged in as teacher1
+    And I navigate to "Settings" in current page administration
+    And I expand all fieldsets
+    And I set the following fields to these values:
+      | Enable completion tracking | Yes |
+      | Show activity completion conditions | No  |
+    And I press "Save and display"
 
   @javascript
   Scenario Outline: The manual completion button will be shown on the course page for Open, In pop-up, New window and Force download display mode if Show activity completion conditions is set to No
     Given the following "activities" exist:
       | activity | course | name   | display   | showsize | showtype | showdate | completion | defaultfilename                            | popupwidth | popupheight | uploaded |
       | resource | C1     | Myfile | <display> | 0        | 0        | 0        | 1          | mod/resource/tests/fixtures/samplefile.txt | 620        | 450         | 1        |
-    And I am on the "Course 1" course page logged in as teacher1
+    And I am on "Course 1" course homepage with editing mode on
     # Teacher view.
     And the manual completion button for "Myfile" should exist
     And the manual completion button for "Myfile" should be disabled
@@ -47,7 +54,8 @@ Feature: View activity completion information for file resources
     Given the following "activities" exist:
       | activity | course | name   | display | defaultfilename                            | uploaded |
       | resource | C1     | Myfile | 1       | mod/resource/tests/fixtures/samplefile.txt | 1        |
-    And I am on the "Course 1" "course editing" page logged in as "teacher1"
+    And I am on "Course 1" course homepage with editing mode on
+    And I navigate to "Settings" in current page administration
     And I expand all fieldsets
     And I set the field "Show activity completion conditions" to "Yes"
     And I press "Save and display"
@@ -70,11 +78,11 @@ Feature: View activity completion information for file resources
     And the manual completion button of "Myfile" is displayed as "Done"
 
   @javascript
-  Scenario: A student can complete a resource activity by viewing it
+  Scenario: View automatic completion items
     Given the following "activities" exist:
       | activity | course | name   | display | defaultfilename                            | uploaded |
       | resource | C1     | Myfile | 1       | mod/resource/tests/fixtures/samplefile.txt | 1        |
-    And I am on the "Course 1" "course editing" page logged in as "teacher1"
+    And I navigate to "Settings" in current page administration
     And I expand all fieldsets
     And I set the field "Show activity completion conditions" to "Yes"
     And I press "Save and display"

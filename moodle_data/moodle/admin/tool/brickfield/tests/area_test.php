@@ -28,7 +28,7 @@ require_once($CFG->dirroot . '/admin/tool/brickfield/tests/area_test_base.php');
  * @copyright  2020 onward: Brickfield Education Labs, https://www.brickfield.ie
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class area_test extends area_test_base {
+class area_test extends area_test_base {
     /**
      * Test for the area assign intro
      */

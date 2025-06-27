@@ -34,13 +34,10 @@ import {component} from "./common";
 import Modal from './embedmodal';
 import Selectors from './selectors';
 import {getEmbedPermissions} from './options';
-import {getFilePicker} from 'editor_tiny/options';
 
 export const MediaEmbed = class {
     editor = null;
     canShowFilePicker = false;
-    canShowFilePickerPoster = false;
-    canShowFilePickerTrack = false;
 
     /**
      * @property {Object} The names of the alignment options.
@@ -52,19 +49,9 @@ export const MediaEmbed = class {
      */
     isUpdating = false;
 
-    /**
-     * @property {Object} The currently selected media.
-     */
-    selectedMedia = null;
-
     constructor(editor) {
         const permissions = getEmbedPermissions(editor);
-
-        // Indicates whether the file picker can be shown.
-        this.canShowFilePicker = permissions.filepicker && (typeof getFilePicker(editor, 'media') !== 'undefined');
-        this.canShowFilePickerPoster = permissions.filepicker && (typeof getFilePicker(editor, 'image') !== 'undefined');
-        this.canShowFilePickerTrack = permissions.filepicker && (typeof getFilePicker(editor, 'subtitle') !== 'undefined');
-
+        this.canShowFilePicker = permissions.filepicker;
         this.editor = editor;
     }
 
@@ -99,8 +86,6 @@ export const MediaEmbed = class {
         return Object.assign({}, {
             elementid: this.editor.getElement().id,
             showfilepicker: this.canShowFilePicker,
-            showfilepickerposter: this.canShowFilePickerPoster,
-            showfilepickertrack: this.canShowFilePickerTrack,
             langsinstalled: languages.installed,
             langsavailable: languages.available,
             link: true,
@@ -111,7 +96,6 @@ export const MediaEmbed = class {
     }
 
     async displayDialogue() {
-        this.selectedMedia = this.getSelectedMedia();
         const data = Object.assign({}, this.getCurrentEmbedData());
         this.isUpdating = Object.keys(data).length !== 0;
 
@@ -179,7 +163,7 @@ export const MediaEmbed = class {
         };
         const sources = [];
 
-        const medium = this.selectedMedia;
+        const medium = this.getSelectedMedia();
         if (!medium) {
             return null;
         }
@@ -441,7 +425,8 @@ export const MediaEmbed = class {
         const {html} = await this.getMediaHTML(modal.getRoot()[0]);
         if (html) {
             if (this.isUpdating) {
-                this.selectedMedia.outerHTML = html;
+                const selectedNode = this.getSelectedMedia();
+                selectedNode.outerHTML = html;
                 this.isUpdating = false;
             } else {
                 this.editor.insertContent(html);
@@ -453,7 +438,7 @@ export const MediaEmbed = class {
         await modal.getBody();
         const $root = modal.getRoot();
         const root = $root[0];
-        if (this.canShowFilePicker || this.canShowFilePickerPoster || this.canShowFilePickerTrack) {
+        if (this.canShowFilePicker) {
             root.addEventListener('click', this.clickHandler.bind(this));
         }
 

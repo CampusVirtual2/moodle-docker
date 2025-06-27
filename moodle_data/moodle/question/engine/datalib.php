@@ -149,7 +149,6 @@ class question_engine_data_mapper {
 
     /**
      * Helper method used by insert_question_attempt_step and update_question_attempt_step
-     *
      * @param question_attempt_step $step the step to store.
      * @param int $questionattemptid the question attept id this step belongs to.
      * @param int $seq the sequence number of this stop.
@@ -159,7 +158,7 @@ class question_engine_data_mapper {
         $record = new stdClass();
         $record->questionattemptid = $questionattemptid;
         $record->sequencenumber = $seq;
-        $record->state = $step->get_state() ? $step->get_state()->__toString() : null;
+        $record->state = (string) $step->get_state();
         $record->fraction = $step->get_fraction();
         $record->timecreated = $step->get_timecreated();
         $record->userid = $step->get_user_id();
@@ -561,9 +560,7 @@ ORDER BY
      * @return array of records. See the SQL in this function to see the fields available.
      */
     public function load_questions_usages_latest_steps(qubaid_condition $qubaids, $slots = null, $fields = null) {
-        if ($slots === []) {
-            return [];
-        } else if ($slots !== null) {
+        if ($slots !== null) {
             [$slottest, $params] = $this->db->get_in_or_equal($slots, SQL_PARAMS_NAMED, 'slot');
             $slotwhere = " AND qa.slot {$slottest}";
         } else {

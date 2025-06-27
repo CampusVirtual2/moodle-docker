@@ -32,8 +32,8 @@ require_once($CFG->dirroot . '/question/type/numerical/question.php');
  * @copyright 2008 The Open University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class answer_test extends \advanced_testcase {
-    public function test_within_tolerance_nominal(): void {
+class answer_test extends \advanced_testcase {
+    public function test_within_tolerance_nominal() {
         $answer = new qtype_numerical_answer(13, 7.0, 1.0, '', FORMAT_MOODLE, 1.0);
 
         $this->assertFalse($answer->within_tolerance(5.99));

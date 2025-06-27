@@ -2110,8 +2110,7 @@ function block_instance($blockname, $instance = NULL, $page = NULL) {
 function block_load_class($blockname) {
     global $CFG;
 
-    $blocknameclean = clean_param($blockname, PARAM_PLUGIN);
-    if (empty($blockname) || empty($blocknameclean)) {
+    if(empty($blockname)) {
         return false;
     }
 

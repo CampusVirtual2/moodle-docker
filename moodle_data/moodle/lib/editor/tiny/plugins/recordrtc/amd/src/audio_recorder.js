@@ -33,18 +33,12 @@ export default class Audio extends BaseClass {
 
     getSupportedTypes() {
         return [
-            // Firefox supports webm and ogg but Chrome only supports ogg.
-            // So we use ogg to maximize the compatibility.
+            'audio/webm;codecs=opus',
             'audio/ogg;codecs=opus',
-
-            // Safari supports mp4.
-            'audio/mp4;codecs=opus',
-            'audio/mp4;codecs=wav',
-            'audio/mp4;codecs=mp3',
         ];
     }
 
-    getRecordingOptions() {
+    getParsedRecordingOptions() {
         return {
             audioBitsPerSecond: parseInt(this.config.audiobitrate),
         };
@@ -69,18 +63,7 @@ export default class Audio extends BaseClass {
     }
 
     getFileName(prefix) {
-        return `${prefix}-audio.${this.getFileExtension()}`;
-    }
-
-    getFileExtension() {
-        if (window.MediaRecorder.isTypeSupported('audio/ogg')) {
-            return 'ogg';
-        } else if (window.MediaRecorder.isTypeSupported('audio/mp4')) {
-            return 'mp4';
-        }
-
-        window.console.warn(`Unknown file type for MediaRecorder API`);
-        return '';
+        return `${prefix}-audio.ogg`;
     }
 
     static getModalClass() {

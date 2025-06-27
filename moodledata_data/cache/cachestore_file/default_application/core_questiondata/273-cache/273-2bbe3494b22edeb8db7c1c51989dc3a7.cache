@@ -1,0 +1,31 @@
+O:8:"stdClass":26:{s:2:"id";s:3:"273";s:8:"category";s:2:"61";s:6:"parent";s:1:"0";s:4:"name";s:20:"Parte I - Questão 3";s:12:"questiontext";s:1522:"<p>Um estudante de programação está aprendendo sobre as operações de entrada e saída no VisualG. Ele deseja criar um programa que solicite o nome e a idade do usuário e, em seguida, exiba uma mensagem de saudação personalizada.&nbsp;</p><div class="console-visualg">
+  <div><span class="keyword">algoritmo</span> <span class="string">"SaudacaoUsuario"</span></div>
+
+  <div><span class="keyword">var</span></div>
+  <div><span class="variable">nome_usuario</span>: <span class="keyword">caractere</span></div>
+  <div><span class="variable">idade_usuario</span>: <span class="keyword">inteiro</span></div>
+
+  <div><br></div>
+
+  <div><span class="keyword">inicio</span></div>
+
+  <div><span class="function">escreva</span>("Por favor, digite seu nome: ")</div>
+  <div><span class="function">leia</span>(<span class="variable">nome_usuario</span>)</div>
+
+  <div><br></div>
+
+  <div><span class="function">escreva</span>("Agora, digite sua idade: ")</div>
+  <div><span class="function">leia</span>(<span class="variable">idade_usuario</span>)</div>
+
+  <div><br></div>
+
+  <div><span class="function">escreval</span>("Olá, ", <span class="variable">nome_usuario</span>, "! Seja bem-vindo. Você tem ", <span class="variable">idade_usuario</span>, " <br>anos.")</div>
+
+  <div><br></div>
+
+  <div><span class="keyword">fimalgoritmo<br><br><br></span></div>
+</div>
+<p>Se um usuário executar este programa, digitar "Carlos" como nome e "30" como idade, qual será a saída exata exibida na tela?</p>";s:18:"questiontextformat";s:1:"1";s:15:"generalfeedback";s:411:"<br><p>A resposta correta é a alternativa <strong>"A"</strong>.<br><br></p>
+<div class="destaque-dica">
+    <strong><span style="font-size: 1.5em;">📌 Dica:</span><br></strong><br><span style="font-size: 16px">Analise como os comandos `escreva` e `leia` interagem com o usuário e como o comando `escreval` formata a saída, combinando texto literal e o conteúdo das variáveis.<br><br>
+</span></div><br>";s:21:"generalfeedbackformat";s:1:"1";s:11:"defaultmark";d:1;s:7:"penalty";d:0;s:5:"qtype";s:11:"multichoice";s:6:"length";s:1:"1";s:5:"stamp";s:38:"campusvirtual2.com+250626184125+yzTsBj";s:11:"timecreated";s:10:"1750963285";s:12:"timemodified";s:10:"1750963285";s:9:"createdby";s:1:"4";s:10:"modifiedby";s:1:"4";s:8:"idnumber";N;s:9:"contextid";s:3:"552";s:6:"status";s:5:"ready";s:9:"versionid";s:3:"241";s:7:"version";s:1:"1";s:19:"questionbankentryid";s:3:"236";s:14:"categoryobject";O:8:"stdClass":9:{s:2:"id";s:2:"61";s:4:"name";s:7:"Parte I";s:9:"contextid";s:3:"552";s:4:"info";s:0:"";s:10:"infoformat";s:1:"1";s:5:"stamp";s:52:"addiemooc38.escolavirtual.gov.br+221014194013+Zlu2uj";s:6:"parent";s:2:"60";s:9:"sortorder";s:3:"999";s:8:"idnumber";N;}s:7:"options";O:8:"stdClass":15:{s:2:"id";s:3:"151";s:10:"questionid";s:3:"273";s:6:"layout";s:1:"0";s:6:"single";s:1:"1";s:14:"shuffleanswers";s:1:"0";s:15:"correctfeedback";s:27:"Sua resposta está correta.";s:21:"correctfeedbackformat";s:1:"1";s:24:"partiallycorrectfeedback";s:40:"Sua resposta está parcialmente correta.";s:30:"partiallycorrectfeedbackformat";s:1:"1";s:17:"incorrectfeedback";s:29:"Sua resposta está incorreta.";s:23:"incorrectfeedbackformat";s:1:"1";s:15:"answernumbering";s:4:"ABCD";s:14:"shownumcorrect";s:1:"1";s:23:"showstandardinstruction";s:1:"0";s:7:"answers";a:5:{i:942;O:8:"stdClass":7:{s:2:"id";s:3:"942";s:8:"question";s:3:"273";s:6:"answer";s:91:"<p dir="ltr" style="text-align: left;">Olá, Carlos! Seja bem-vindo. Você tem 30 anos.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"1.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:943;O:8:"stdClass":7:{s:2:"id";s:3:"943";s:8:"question";s:3:"273";s:6:"answer";s:108:"<p dir="ltr" style="text-align: left;">Olá, nome_usuario! Seja bem-vindo. Você tem idade_usuario anos.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:944;O:8:"stdClass":7:{s:2:"id";s:3:"944";s:8:"question";s:3:"273";s:6:"answer";s:93:"<p dir="ltr" style="text-align: left;">Olá, Carlos! Seja bem-vindo. \nVocê tem 30 anos.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:945;O:8:"stdClass":7:{s:2:"id";s:3:"945";s:8:"question";s:3:"273";s:6:"answer";s:173:"<p dir="ltr" style="text-align: left;">O programa gerará um erro, pois não é possível concatenar texto (caractere) e números (inteiro) em um mesmo comando escreval.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:946;O:8:"stdClass":7:{s:2:"id";s:3:"946";s:8:"question";s:3:"273";s:6:"answer";s:156:"<p dir="ltr" style="text-align: left;">Por favor, digite seu nome: Carlos\nAgora, digite sua idade: 30\nOlá, Carlos! Seja bem-vindo. Você tem 30 anos.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}}}s:5:"hints";a:0:{}}

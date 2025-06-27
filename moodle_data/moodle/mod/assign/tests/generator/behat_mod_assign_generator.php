@@ -37,22 +37,16 @@ class behat_mod_assign_generator extends behat_generator_base {
                 'required' => ['assign', 'user'],
                 'switchids' => ['assign' => 'assignid', 'user' => 'userid'],
             ],
-            'extensions' => [
-                'singular' => 'extension',
-                'datagenerator' => 'extension',
-                'required' => ['assign', 'user', 'extensionduedate'],
-                'switchids' => ['assign' => 'cmid', 'user' => 'userid'],
-            ],
         ];
     }
 
     /**
-     * Get the assignment cmid using an activity name or idnumber.
+     * Get the assignment CMID using an activity idnumber.
      *
-     * @param string $identifier activity name or idnumber
+     * @param string $idnumber
      * @return int The cmid
      */
-    protected function get_assign_id(string $identifier): int {
-        return $this->get_cm_by_activity_name('assign', $identifier)->id;
+    protected function get_assign_id(string $idnumber): int {
+        return $this->get_activity_id($idnumber);
     }
 }

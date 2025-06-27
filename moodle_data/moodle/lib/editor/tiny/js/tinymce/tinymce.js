@@ -7046,10 +7046,6 @@
         processor: 'boolean',
         default: true
       });
-      registerOption('xss_sanitization', {
-        processor: 'boolean',
-        default: true
-      });
       editor.on('ScriptsLoaded', () => {
         registerOption('directionality', {
           processor: 'string',
@@ -7149,7 +7145,6 @@
     const getEditableClass = option('editable_class');
     const getNonEditableRegExps = option('noneditable_regexp');
     const shouldPreserveCData = option('preserve_cdata');
-    const shouldSanitizeXss = option('xss_sanitization');
     const hasTextPatternsLookup = editor => editor.options.isSet('text_patterns_lookup');
     const getFontStyleValues = editor => Tools.explode(editor.options.get('font_size_style_values'));
     const getFontSizeClasses = editor => Tools.explode(editor.options.get('font_size_classes'));
@@ -15468,6 +15463,7 @@
           var _attr = attr, name = _attr.name, namespaceURI = _attr.namespaceURI;
           value = name === 'value' ? attr.value : stringTrim(attr.value);
           lcName = transformCaseFunc(name);
+          var initValue = value;
           hookEvent.attrName = lcName;
           hookEvent.attrValue = value;
           hookEvent.keepAttr = true;
@@ -15477,8 +15473,8 @@
           if (hookEvent.forceKeepAttr) {
             continue;
           }
-          _removeAttribute(name, currentNode);
           if (!hookEvent.keepAttr) {
+            _removeAttribute(name, currentNode);
             continue;
           }
           if (regExpTest(/\/>/i, value)) {
@@ -15491,16 +15487,19 @@
           }
           var lcTag = transformCaseFunc(currentNode.nodeName);
           if (!_isValidAttribute(lcTag, lcName, value)) {
+            _removeAttribute(name, currentNode);
             continue;
           }
-          try {
-            if (namespaceURI) {
-              currentNode.setAttributeNS(namespaceURI, name, value);
-            } else {
-              currentNode.setAttribute(name, value);
+          if (value !== initValue) {
+            try {
+              if (namespaceURI) {
+                currentNode.setAttributeNS(namespaceURI, name, value);
+              } else {
+                currentNode.setAttribute(name, value);
+              }
+            } catch (_) {
+              _removeAttribute(name, currentNode);
             }
-            arrayPop(DOMPurify.removed);
-          } catch (_) {
           }
         }
         _executeHook('afterSanitizeAttributes', currentNode, null);
@@ -16597,7 +16596,6 @@
       const defaultedSettings = {
         validate: true,
         root_name: 'body',
-        sanitize: true,
         ...settings
       };
       const parser = new DOMParser();
@@ -16608,10 +16606,8 @@
         const content = isSpecialRoot ? `<${ rootName }>${ html }</${ rootName }>` : html;
         const wrappedHtml = format === 'xhtml' ? `<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>${ content }</body></html>` : `<body>${ content }</body>`;
         const body = parser.parseFromString(wrappedHtml, mimeType).body;
-        if (defaultedSettings.sanitize) {
-          purify.sanitize(body, getPurifyConfig(defaultedSettings, mimeType));
-          purify.removed = [];
-        }
+        purify.sanitize(body, getPurifyConfig(defaultedSettings, mimeType));
+        purify.removed = [];
         return isSpecialRoot ? body.firstChild : body;
       };
       const addNodeFilter = nodeFilterRegistry.addFilter;
@@ -16724,7 +16720,7 @@
     };
 
     const serializeContent = content => isTreeNode(content) ? HtmlSerializer({ validate: false }).serialize(content) : content;
-    const withSerializedContent = (content, fireEvent, sanitize) => {
+    const withSerializedContent = (content, fireEvent) => {
       const serializedContent = serializeContent(content);
       const eventArgs = fireEvent(serializedContent);
       if (eventArgs.isDefaultPrevented()) {
@@ -16733,8 +16729,7 @@
         if (eventArgs.content !== serializedContent) {
           const rootNode = DomParser({
             validate: false,
-            forced_root_block: false,
-            sanitize
+            forced_root_block: false
           }).parse(eventArgs.content, { context: content.name });
           return {
             ...eventArgs,
@@ -16769,10 +16764,10 @@
       if (args.no_events) {
         return content;
       } else {
-        const processedEventArgs = withSerializedContent(content, content => fireGetContent(editor, {
+        const processedEventArgs = withSerializedContent(content, c => fireGetContent(editor, {
           ...args,
-          content
-        }), shouldSanitizeXss(editor));
+          content: c
+        }));
         return processedEventArgs.content;
       }
     };
@@ -16783,7 +16778,7 @@
         const processedEventArgs = withSerializedContent(args.content, content => fireBeforeSetContent(editor, {
           ...args,
           content
-        }), shouldSanitizeXss(editor));
+        }));
         if (processedEventArgs.isDefaultPrevented()) {
           fireSetContent(editor, processedEventArgs);
           return Result.error(undefined);
@@ -24414,7 +24409,7 @@
     };
 
     const preProcess = (editor, html) => {
-      const parser = DomParser({ sanitize: shouldSanitizeXss(editor) }, editor.schema);
+      const parser = DomParser({}, editor.schema);
       parser.addNodeFilter('meta', nodes => {
         Tools.each(nodes, node => {
           node.remove();
@@ -26660,7 +26655,6 @@
         remove_trailing_brs: getOption('remove_trailing_brs'),
         inline_styles: getOption('inline_styles'),
         root_name: getRootName(editor),
-        sanitize: getOption('xss_sanitization'),
         validate: true,
         blob_cache: blobCache,
         document: editor.getDoc()

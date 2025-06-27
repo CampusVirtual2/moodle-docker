@@ -33,8 +33,8 @@ require_once(__DIR__ . '/helpers.php');
  * @copyright  2009 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class questionattemptstep_test extends \advanced_testcase {
-    public function test_initial_state_unprocessed(): void {
+class questionattemptstep_test extends \advanced_testcase {
+    public function test_initial_state_unprocessed() {
         $step = new question_attempt_step();
         $this->assertEquals(question_state::$unprocessed, $step->get_state());
     }

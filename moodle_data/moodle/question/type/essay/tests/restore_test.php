@@ -28,7 +28,7 @@ require_once($CFG->libdir . "/phpunit/classes/restore_date_testcase.php");
  * @copyright  2019 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class restore_test extends \restore_date_testcase {
+class restore_test extends \restore_date_testcase {
 
     /**
      * Test missing qtype_essay_options creation.

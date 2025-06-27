@@ -23,7 +23,7 @@
  *
  * For more information, take a look to the documentation available:
  *     - Message API: {@link http://docs.moodle.org/dev/Message_API}
- *     - Upgrade API: {@link https://moodledev.io/docs/guides/upgrade}
+ *     - Upgrade API: {@link http://docs.moodle.org/dev/Upgrade_API}
  *
  * @package   core
  * @category  message

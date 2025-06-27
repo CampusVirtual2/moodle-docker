@@ -34,9 +34,7 @@ defined('MOODLE_INTERNAL') || die();
  * 2 different forms of lock functions, some accepting a single int, and some accepting 2 ints. This implementation
  * uses the 2 int version so that it uses a separate namespace from the session locking. The second note,
  * is because postgres uses integer keys for locks, we first need to map strings to a unique integer. This is done
- * using a prefix of a sha1 hash converted to an integer. There is a realistic chance of collisions by using this
- * prefix when locking multiple resources at the same time (multiple resource identifiers leading to the
- * same token/prefix). We need to deal with that.
+ * using a prefix of a sha1 hash converted to an integer.
  *
  * @package   core
  * @category  lock
@@ -57,11 +55,8 @@ class postgres_lock_factory implements lock_factory {
     /** @var string $type Used to prefix lock keys */
     protected $type;
 
-    /** @var int[] $resourcetokens Mapping of held locks (resource identifier => internal token) */
-    protected $resourcetokens = [];
-
-    /** @var int[] $locksbytoken Mapping of held locks (db connection => internal token => number of locks held) */
-    static protected $locksbytoken = [];
+    /** @var array $openlocks - List of held locks - used by auto-release */
+    protected $openlocks = array();
 
     /**
      * Calculate a unique instance id based on the database name and prefix.
@@ -158,24 +153,15 @@ class postgres_lock_factory implements lock_factory {
      * @param string $resource - The identifier for the lock. Should use frankenstyle prefix.
      * @param int $timeout - The number of seconds to wait for a lock before giving up.
      * @param int $maxlifetime - Unused by this lock type.
-     * @return \core\lock\lock|boolean - An instance of \core\lock\lock if the lock was obtained, or false.
+     * @return boolean - true if a lock was obtained.
      */
     public function get_lock($resource, $timeout, $maxlifetime = 86400) {
-        $dbid = spl_object_id($this->db);
         $giveuptime = time() + $timeout;
-        $resourcekey = $this->type . '_' . $resource;
-        $token = $this->get_index_from_key($resourcekey);
 
-        if (isset($this->resourcetokens[$resourcekey])) {
+        $token = $this->get_index_from_key($this->type . '_' . $resource);
+
+        if (isset($this->openlocks[$token])) {
             return false;
-        }
-
-        if (isset(self::$locksbytoken[$dbid][$token])) {
-            // There is a hash collision, another resource identifier leads to the same token.
-            // As we already hold an advisory lock for this token, we just increase the counter.
-            self::$locksbytoken[$dbid][$token]++;
-            $this->resourcetokens[$resourcekey] = $token;
-            return new lock($resourcekey, $this);
         }
 
         $params = [
@@ -195,9 +181,8 @@ class postgres_lock_factory implements lock_factory {
         } while (!$locked && time() < $giveuptime);
 
         if ($locked) {
-            self::$locksbytoken[$dbid][$token] = 1;
-            $this->resourcetokens[$resourcekey] = $token;
-            return new lock($resourcekey, $this);
+            $this->openlocks[$token] = 1;
+            return new lock($token, $this);
         }
         return false;
     }
@@ -208,32 +193,12 @@ class postgres_lock_factory implements lock_factory {
      * @return boolean - true if the lock is no longer held (including if it was never held).
      */
     public function release_lock(lock $lock) {
-        $dbid = spl_object_id($this->db);
-        $resourcekey = $lock->get_key();
-
-        if (isset($this->resourcetokens[$resourcekey])) {
-            $token = $this->resourcetokens[$resourcekey];
-        } else {
-            return true;
-        }
-
-        if (self::$locksbytoken[$dbid][$token] > 1) {
-            // There are multiple resource identifiers that lead to the same token.
-            // We will unlock the token later when the last resource is released.
-            unset($this->resourcetokens[$resourcekey]);
-            self::$locksbytoken[$dbid][$token]--;
-            return true;
-        }
-
-        $params = [
-            'locktype' => $this->dblockid,
-            'token' => $token,
-        ];
+        $params = array('locktype' => $this->dblockid,
+                        'token' => $lock->get_key());
         $result = $this->db->get_record_sql('SELECT pg_advisory_unlock(:locktype, :token) AS unlocked', $params);
         $result = $result->unlocked === 't';
         if ($result) {
-            unset($this->resourcetokens[$resourcekey]);
-            unset(self::$locksbytoken[$dbid][$token]);
+            unset($this->openlocks[$lock->get_key()]);
         }
         return $result;
     }
@@ -259,8 +224,8 @@ class postgres_lock_factory implements lock_factory {
      */
     public function auto_release() {
         // Called from the shutdown handler. Must release all open locks.
-        foreach ($this->resourcetokens as $resourcekey => $unused) {
-            $lock = new lock($resourcekey, $this);
+        foreach ($this->openlocks as $key => $unused) {
+            $lock = new lock($key, $this);
             $lock->release();
         }
     }

@@ -17,7 +17,7 @@
 /**
  * Check that, as in the coding guidelines, every to-do comment links to a tracker issue.
  *
- * As required by https://moodledev.io/general/development/policies/codingstyle.
+ * As required by http://docs.moodle.org/dev/Coding_style.
  *
  * @package    core
  * @copyright  2009 Tim Hunt

@@ -121,7 +121,7 @@ class behat_data_generators extends behat_base {
     }
 
     /**
-     * Creates the specified (singular) element.
+     * Creates the specified element.
      *
      * See the class comment for an overview.
      *

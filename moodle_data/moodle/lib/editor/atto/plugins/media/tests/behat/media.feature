@@ -1,17 +1,20 @@
-@editor @editor_atto @atto @atto_media
+@editor @editor_atto @atto @atto_media @_file_upload
 Feature: Add media to Atto
   To write rich text - I need to add media.
 
   Background:
-    Given the following "user private files" exist:
-      | user  | filepath                                          |
-      | admin | lib/editor/atto/tests/fixtures/moodle-logo.webm   |
-      | admin | lib/editor/atto/tests/fixtures/moodle-logo.mp4    |
-      | admin | lib/editor/atto/tests/fixtures/moodle-logo.png    |
-      | admin | lib/editor/atto/tests/fixtures/pretty-good-en.vtt |
-      | admin | lib/editor/atto/tests/fixtures/pretty-good-sv.vtt |
+    Given the following "blocks" exist:
+      | blockname     | contextlevel | reference | pagetypepattern | defaultregion |
+      | private_files | System       | 1         | my-index        | side-post     |
     And I log in as "admin"
     And I change window size to "large"
+    And I follow "Manage private files..."
+    And I upload "lib/editor/atto/tests/fixtures/moodle-logo.webm" file to "Files" filemanager
+    And I upload "lib/editor/atto/tests/fixtures/moodle-logo.mp4" file to "Files" filemanager
+    And I upload "lib/editor/atto/tests/fixtures/moodle-logo.png" file to "Files" filemanager
+    And I upload "lib/editor/atto/tests/fixtures/pretty-good-en.vtt" file to "Files" filemanager
+    And I upload "lib/editor/atto/tests/fixtures/pretty-good-sv.vtt" file to "Files" filemanager
+    And I click on "Save changes" "button"
     And I follow "Profile" in the user menu
     And I follow "Blog entries"
     And I follow "Add a new entry"
@@ -29,11 +32,8 @@ Feature: Add media to Atto
     And the field "Enter name" matches value "moodle-logo.webm"
     And I wait until the page is ready
     And I click on "Insert media" "button"
-    And I click on "Show more buttons" "button"
-    When I click on "HTML" "button"
-    Then I should see "moodle-logo.webm\">moodle-logo.webm</a>"
-    And I click on "Save changes" "button"
-    And ".video-js" "css_element" should exist
+    When I click on "Save changes" "button"
+    Then "//a[. = 'moodle-logo.webm']" "xpath_element" should exist
 
   @javascript @atto_media_video
   Scenario: Insert some media as a plain video

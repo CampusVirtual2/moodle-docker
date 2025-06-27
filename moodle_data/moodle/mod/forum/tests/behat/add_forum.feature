@@ -26,7 +26,9 @@ Feature: Add forum activities and discussions
     And I add a new discussion to "Test forum name" forum with:
       | Subject | Forum post 1 |
       | Message | This is the body |
-    And I am on the "Course 1" course page logged in as student1
+    And I log out
+    And I log in as "student1"
+    And I am on "Course 1" course homepage
     When I add a new discussion to "Test forum name" forum with:
       | Subject | Post with attachment |
       | Message | This is the body |
@@ -42,10 +44,6 @@ Feature: Add forum activities and discussions
     And I should see "empty.txt"
     And I follow "Edit"
     And the field "Attachment" matches value "empty.txt"
-
-    # Check the page that lists all the forums in a course.
-    And I am on the "C1" "forum index" page
-    And I should see "Test forum name"
 
   @javascript
   Scenario: Test forum settings validation

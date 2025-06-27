@@ -414,20 +414,9 @@ form.popupform div {
 
 // Position required for table sizing inside a flex container.
 .no-overflow > .generaltable {
+    position: relative;
     margin-bottom: 0;
 }
-
-.no-overflow,
-.table-responsive {
-    .generaltable {
-        .sr-only,
-        .accesshide {
-            position: relative;
-            display: block;
-        }
-    }
-}
-
 // Accessibility features
 
 // Accessibility: text 'seen' by screen readers but not visual users.
@@ -2087,7 +2076,7 @@ a.disabled {
     text-decoration: none;
     cursor: default;
     font-style: italic;
-    color: $text-muted;
+    color: #808080;
 }
 
 body.lockscroll {
@@ -2413,10 +2402,6 @@ $footer-link-color: $bg-inverse-link-color !default;
             font-size: 0.7rem;
         }
     }
-}
-
-.dropdown-menu {
-    width: fit-content;
 }
 
 .competency-tree {
@@ -3059,14 +3044,7 @@ blockquote {
     margin: 0 0.5rem 1rem;
     padding-left: 1rem;
     color: $gray-700;
-    border-left: 5px solid $gray-500;
-}
-
-.pagelayout-maintenance,
-.pagelayout-secure {
-    .page-header-headings {
-        background-color: $body-bg;
-    }
+    border-left: 5px solid $gray-400;
 }
 
 /* Prevent long strings exceeding page width */

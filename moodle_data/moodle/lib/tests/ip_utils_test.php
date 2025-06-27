@@ -24,7 +24,7 @@ namespace core;
  * @copyright  2016 Jake Dallimore <jrhdallimore@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class ip_utils_test extends \basic_testcase {
+class ip_utils_test extends \basic_testcase {
     /**
      * Test for \core\ip_utils::is_domain_name().
      *
@@ -41,7 +41,7 @@ final class ip_utils_test extends \basic_testcase {
      *
      * @return array
      */
-    public static function domain_name_data_provider(): array {
+    public function domain_name_data_provider() {
         return [
             ["com", true],
             ["i.net", true], // Single char, alpha tertiary domain.
@@ -91,7 +91,7 @@ final class ip_utils_test extends \basic_testcase {
      *
      * @return array
      */
-    public static function domain_matching_patterns_data_provider(): array {
+    public function domain_matching_patterns_data_provider() {
         return [
             ["*.com", true],
             ["*.example.com", true],
@@ -136,7 +136,7 @@ final class ip_utils_test extends \basic_testcase {
      *
      * @return array
      */
-    public static function ip_address_data_provider(): array {
+    public function ip_address_data_provider() {
         return [
             ["127.0.0.1", true],
             ["10.1", false],
@@ -183,7 +183,7 @@ final class ip_utils_test extends \basic_testcase {
      *
      * @return array
      */
-    public static function ipv4_address_data_provider(): array {
+    public function ipv4_address_data_provider() {
         return [
             ["127.0.0.1", true],
             ["0.0.0.0", true],
@@ -219,7 +219,7 @@ final class ip_utils_test extends \basic_testcase {
      *
      * @return array
      */
-    public static function ipv4_range_data_provider(): array {
+    public function ipv4_range_data_provider() {
         return [
             ["127.0.0.1/24", true],
             ["127.0.0.20-20", true],
@@ -260,7 +260,7 @@ final class ip_utils_test extends \basic_testcase {
      *
      * @return array
      */
-    public static function ipv6_address_data_provider(): array {
+    public function ipv6_address_data_provider() {
         return [
             ["::", true],
             ["::0", true],
@@ -300,7 +300,7 @@ final class ip_utils_test extends \basic_testcase {
      *
      * @return array
      */
-    public static function ipv6_range_data_provider(): array {
+    public function ipv6_range_data_provider() {
         return [
             ["::/128", true],
             ["::1/128", true],
@@ -352,7 +352,7 @@ final class ip_utils_test extends \basic_testcase {
      *
      * @return array
      */
-    public static function data_domain_addresses(): array {
+    public function data_domain_addresses() {
         return [
             [true, 'example.com'],
             [true, 'ExAmPle.com'],
@@ -378,7 +378,7 @@ final class ip_utils_test extends \basic_testcase {
      *
      * @return array
      */
-    public static function data_is_ip_in_subnet_list(): array {
+    public function data_is_ip_in_subnet_list() {
         return [
             [true, '1.1.1.1', '1.1.1.1', "\n"],
             [false, '1.1.1.1', '2.2.2.2', "\n"],

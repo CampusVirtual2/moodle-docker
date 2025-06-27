@@ -25,8 +25,6 @@ define('NO_OUTPUT_BUFFERING', true);
 require_once(__DIR__ . '/../../../config.php');
 require_once($CFG->libdir.'/adminlib.php');
 
-admin_externalpage_setup('toollpimportcsv');
-
 $pagetitle = get_string('pluginname', 'tool_lpimportcsv');
 
 $context = context_system::instance();

@@ -47,7 +47,7 @@ require_once($CFG->dirroot . '/user/profile/definelib.php');
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @since Moodle 2.6
  */
-final class calendartype_test extends \advanced_testcase {
+class calendartype_test extends \advanced_testcase {
     /** @var MoodleQuickForm Keeps reference of dummy form object */
     private $mform;
 

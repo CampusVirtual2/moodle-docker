@@ -29,7 +29,6 @@ namespace core_user;
 use core_files_external;
 use core_user_external;
 use externallib_advanced_testcase;
-use external_api;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -553,7 +552,7 @@ class externallib_test extends externallib_advanced_testcase {
     /**
      * Data provider for \core_user_externallib_testcase::test_create_users_with_same_emails().
      */
-    public static function create_users_provider_with_same_emails(): array {
+    public function create_users_provider_with_same_emails() {
         return [
             'Same emails allowed, same case' => [
                 1, false
@@ -639,7 +638,7 @@ class externallib_test extends externallib_advanced_testcase {
      *
      * @return array
      */
-    public static function data_create_users_invalid_parameter(): array {
+    public function data_create_users_invalid_parameter() {
         return [
             'blank_username' => [
                 'data' => [
@@ -898,7 +897,7 @@ class externallib_test extends externallib_advanced_testcase {
      *
      * @return array
      */
-    public static function users_with_same_emails(): array {
+    public function users_with_same_emails() {
         return [
             'Same emails not allowed: Update name using exactly the same email' => [
                 0, 'John', 's1@example.com', 'Johnny', 's1@example.com', false, true
@@ -1057,8 +1056,7 @@ class externallib_test extends externallib_advanced_testcase {
         core_user_external::add_user_private_files($draftid);
 
         // Force the quota so we are sure it won't be space to add the new file.
-        $fileareainfo = file_get_file_area_info($contextid, 'user', 'private');
-        $CFG->userquota = $fileareainfo['filesize_without_references'] + 1;
+        $CFG->userquota = file_get_user_used_space() + 1;
 
         // Generate a new draftitemid for the same testfile.
         $draftfile = core_files_external::upload($contextid, $component, $filearea, $itemid, $filepath,
@@ -1087,8 +1085,7 @@ class externallib_test extends externallib_advanced_testcase {
                 'platform' => 'Android',
                 'version' => '4.2.2',
                 'pushid' => 'apushdkasdfj4835',
-                'uuid' => 'asdnfl348qlksfaasef859',
-                'publickey' => null,
+                'uuid' => 'asdnfl348qlksfaasef859'
                 );
 
         // Call the external function.
@@ -1109,10 +1106,9 @@ class externallib_test extends externallib_advanced_testcase {
 
         // Test update an existing device.
         $device['pushid'] = 'different than before';
-        $device['publickey'] = 'MFsxCzAJBgNVBAYTAkZSMRMwEQYDVQQ';
         $warnings = core_user_external::add_user_device($device['appid'], $device['name'], $device['model'], $device['platform'],
-            $device['version'], $device['pushid'], $device['uuid'], $device['publickey']);
-        $warnings = external_api::clean_returnvalue(core_user_external::add_user_device_returns(), $warnings);
+                                                        $device['version'], $device['pushid'], $device['uuid']);
+        $warnings = \external_api::clean_returnvalue(core_user_external::add_user_device_returns(), $warnings);
 
         $this->assertEquals(1, $DB->count_records('user_devices'));
         $updated = $DB->get_record('user_devices', array('pushid' => $device['pushid']));

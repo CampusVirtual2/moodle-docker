@@ -24,7 +24,7 @@ namespace quizaccess_seb;
  * @copyright 2020 Catalyst IT
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class property_list_test extends \advanced_testcase {
+class property_list_test extends \advanced_testcase {
 
     /**
      * Test that an empty PList with a root dictionary is created.
@@ -304,7 +304,7 @@ final class property_list_test extends \advanced_testcase {
      *
      * @return array Array with test data.
      */
-    public static function good_update_data_provider(): array {
+    public function good_update_data_provider() : array {
         return [
             'Update string' => ['<key>testKey</key><string>testValue</string>', 'testKey', 'newValue'],
             'Update bool' => ['<key>testKey</key><true/>', 'testKey', false],
@@ -317,7 +317,7 @@ final class property_list_test extends \advanced_testcase {
      *
      * @return array Array with test data.
      */
-    public static function bad_update_data_provider(): array {
+    public function bad_update_data_provider() : array {
 
         return [
             'Update string with bool' => ['<key>testKey</key><string>testValue</string>', 'testKey', true, 'testValue',
@@ -379,7 +379,7 @@ final class property_list_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function json_data_provider(): array {
+    public function json_data_provider() : array {
         $data = "blahblah";
         $base64data = base64_encode($data);
 

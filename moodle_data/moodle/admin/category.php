@@ -131,7 +131,8 @@ if ($savebutton) {
     $outputhtml .= html_writer::end_tag('div');
 }
 
-$PAGE->set_title(implode(moodle_page::TITLE_SEPARATOR, $settingspage->visiblepath));
+$visiblepathtosection = array_reverse($settingspage->visiblepath);
+$PAGE->set_title("$SITE->shortname: " . implode(": ",$visiblepathtosection));
 $PAGE->set_heading($SITE->fullname);
 if ($buttons) {
     $PAGE->set_button($buttons);

@@ -1,28 +1,24 @@
-                                 .-..-.
-   _____                         | || |
-  /____/-.---_  .---.  .---.  .-.| || | .---.
-  | |  _   _  |/  _  \/  _  \/  _  || |/  __ \
-  * | | | | | || |_| || |_| || |_| || || |___/
-    |_| |_| |_|\_____/\_____/\_____||_|\_____)
 
-Moodle - the world's open source learning platform
+1. INFORMAÇÕES GERAIS
+================================================
+O projeto tem por objetivo a criação de um ambiente EAD, utilizando a plataforma LMS Moodle, que deverá abrigar os cursos de capacitação do CampusVirtual2.
+ - Ambiente de homologação: homol.moodle.agu.redes.unb.br 
+ - Versão do Moodle atual: 4.0 
+ - Obs: Há outro projeto no repositório GIT, chamado "Daniel Alves / AGU". Favor desconsiderar, pois nunca foi utilizado.
 
-Moodle <https://moodle.org> is a learning platform designed to provide
-educators, administrators and learners with a single robust, secure and
-integrated system to create personalised learning environments.
 
-You can download Moodle <https://download.moodle.org> and run it on your own
-web server, ask one of our Moodle Partners <https://moodle.com/partners/> to
-assist you, or have a MoodleCloud site <https://moodle.com/cloud/> set up for
-you.
+2. INFORMAÇÕES DE INSTALAÇÃO 
+================================================
 
-Moodle is widely used around the world by universities, schools, companies and
-all manner of organisations and individuals.
+2.1. PRÉ-REQUISITOS 
+================================================ 
+ - Servidor WEB: Apache ou Nginx 
+ - Versão do PHP: 7.4.3 ou superior (recomendado habilitar o (OPCache) 
+ - Banco de Dados: Postgres 13.6
 
-Moodle is provided freely as open source software, under the GNU General Public
-License <https://moodledev.io/general/license>.
-
-Moodle is written in PHP and JavaScript and uses an SQL database for storing
-the data.
-
-See <https://docs.moodle.org> for details of Moodle's many features.
+2.2. ARQUIVO DE CONFIGURAÇÃO DO BANCO DE DADOS 
+================================================ 
+O Moodle utiliza o arquivo "config.php" existente no diretório principal da instalação para configuração. 
+Neste arquivo encontram-se as 2 informações importantes, relativas aos dados que deverão ser migrados para o ambiente de produção: 
+ 1) Dados de conexão com o banco de dados; 
+ 2) Diretório do "moodledata", ou seja, onde se encontram os dados moodle "$CFG->dataroot";

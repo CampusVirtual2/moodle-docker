@@ -18,7 +18,9 @@ Feature: Calculated grade items can be used in the gradebook
       | teacher1 | C1     | editingteacher |
       | student1 | C1     | student        |
       | student2 | C1     | student        |
-    And I am on the "Course 1" "grades > gradebook setup" page logged in as "admin"
+    And I log in as "admin"
+    And I am on "Course 1" course homepage
+    And I navigate to "Setup > Gradebook setup" in the course gradebook
 
   @javascript
   Scenario: The max grade for a category item, with a calculation using Natural aggregation, can be changed

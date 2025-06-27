@@ -30,7 +30,7 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @copyright 2021 Jun Pataleta <jun@moodle.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class activity_custom_completion_test extends advanced_testcase {
+class activity_custom_completion_test extends advanced_testcase {
 
     /**
      * Fetches a mocked activity_custom_completion instance.
@@ -48,7 +48,7 @@ final class activity_custom_completion_test extends advanced_testcase {
     /**
      * Data provider for test_get_overall_completion_state().
      */
-    public static function overall_completion_state_provider(): array {
+    public function overall_completion_state_provider(): array {
         global $CFG;
         require_once($CFG->libdir . '/completionlib.php');
         return [
@@ -121,7 +121,7 @@ final class activity_custom_completion_test extends advanced_testcase {
      *
      * @return array[]
      */
-    public static function validate_rule_provider(): array {
+    public function validate_rule_provider() {
         return [
             'Not defined' => [
                 false, true, coding_exception::class

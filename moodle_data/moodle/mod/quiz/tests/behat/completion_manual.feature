@@ -32,7 +32,7 @@ Feature: Manually complete a quiz
       | First question | 1    |
 
   @javascript
-  Scenario: A student can manually mark the quiz activity as done but a teacher cannot
+  Scenario: Use manual completion
     Given I am on the "Test quiz name" "quiz activity" page logged in as teacher1
     And the manual completion button for "Test quiz name" should be disabled
     And I log out

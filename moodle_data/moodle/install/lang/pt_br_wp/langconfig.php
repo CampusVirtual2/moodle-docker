@@ -30,4 +30,4 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['parentlanguage'] = 'pt_br';
-$string['thislanguage'] = 'Português - Brasil';
+$string['thislanguage'] = 'Português para Workplace';

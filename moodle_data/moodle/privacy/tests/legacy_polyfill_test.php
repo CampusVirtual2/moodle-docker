@@ -21,6 +21,7 @@
  * @category    test
  * @copyright   2018 Andrew Nicols <andrew@nicols.co.uk>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @coversDefaultClass \core_privacy\local\legacy_polyfill
  */
 
 namespace core_privacy;
@@ -42,7 +43,7 @@ global $CFG;
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @coversDefaultClass \core_privacy\local\legacy_polyfill
  */
-final class legacy_polyfill_test extends \advanced_testcase {
+class legacy_polyfill_test extends \advanced_testcase {
     /**
      * Test that the null_provider polyfill works and that the static _get_reason can be
      * successfully called.

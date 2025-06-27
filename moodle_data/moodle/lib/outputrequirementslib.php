@@ -209,6 +209,7 @@ class page_requirements_manager {
         $this->YUI_config->combine      = $this->yui3loader->combine;
 
         // If we've had to patch any YUI modules between releases, we must override the YUI configuration to include them.
+        // For important information on patching YUI modules, please see http://docs.moodle.org/dev/YUI/Patching.
         if (!empty($CFG->yuipatchedmodules) && !empty($CFG->yuipatchlevel)) {
             $this->YUI_config->define_patched_core_modules($this->yui3loader->local_comboBase,
                     $CFG->yui3version,
@@ -335,7 +336,6 @@ class page_requirements_manager {
                 'admin'                 => $CFG->admin,
                 'svgicons'              => $page->theme->use_svg_icons(),
                 'usertimezone'          => usertimezone(),
-                'language'              => current_language(),
                 'courseId'              => isset($courseid) ? (int) $courseid : 0,
                 'courseContextId'       => isset($coursecontext) ? $coursecontext->id : 0,
                 'contextid'             => $contextid,
@@ -468,7 +468,7 @@ class page_requirements_manager {
      *
      * NOTE: this should not be used in official Moodle distribution!
      *
-     * {@link https://moodledev.io/docs/guides/javascript/jquery}
+     * {@see http://docs.moodle.org/dev/jQuery}
      */
     public function jquery() {
         $this->jquery_plugin('jquery');
@@ -516,7 +516,7 @@ class page_requirements_manager {
      *   }
      * </code>
      *
-     * {@link https://moodledev.io/docs/guides/javascript/jquery}
+     * {@see http://docs.moodle.org/dev/jQuery}
      *
      * @param string $plugin name of the jQuery plugin as defined in jquery/plugins.php
      * @param string $component name of the component
@@ -627,7 +627,7 @@ class page_requirements_manager {
      * This code prevents loading of standard 'ui-css' which my be requested by other plugins,
      * the 'yourtheme-ui-css' gets loaded only if some other code requires jquery.
      *
-     * {@link https://moodledev.io/docs/guides/javascript/jquery}
+     * {@see http://docs.moodle.org/dev/jQuery}
      *
      * @param string $oldplugin original plugin
      * @param string $newplugin the replacement
@@ -1657,7 +1657,7 @@ EOF;
      * @return string the HTML code to to at the end of the page.
      */
     public function get_end_code() {
-        global $CFG, $USER;
+        global $CFG;
         $output = '';
 
         // Set the log level for the JS logging.
@@ -1670,9 +1670,6 @@ EOF;
         // Add any global JS that needs to run on all pages.
         $this->js_call_amd('core/page_global', 'init');
         $this->js_call_amd('core/utility');
-        $this->js_call_amd('core/storage_validation', 'init', [
-            !empty($USER->currentlogin) ? (int) $USER->currentlogin : null
-        ]);
 
         // Call amd init functions.
         $output .= $this->get_amd_footercode();

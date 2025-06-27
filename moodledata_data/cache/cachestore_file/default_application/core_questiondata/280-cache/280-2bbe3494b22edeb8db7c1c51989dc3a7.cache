@@ -1,0 +1,31 @@
+O:8:"stdClass":26:{s:2:"id";s:3:"280";s:8:"category";s:2:"61";s:6:"parent";s:1:"0";s:4:"name";s:20:"Parte I - Questão 8";s:12:"questiontext";s:2316:"<p dir="ltr" style="text-align: left;">Para garantir a integridade dos dados, um sistema precisa que o usuário digite um percentual de comissão que esteja obrigatoriamente entre 0 e 10. O programa deve insistir, solicitando o valor novamente, até que um valor válido seja inserido. Um desenvolvedor escolheu a estrutura Repita...Ate para essa tarefa.<br></p>
+<div class="console-visualg">
+  <div><span class="keyword">algoritmo</span> <span class="string">"ValidarEntrada"</span></div>
+
+  <div><span class="keyword">var</span></div>
+  <div><span class="variable">comissao</span>: <span class="keyword">real</span></div>
+
+  <div><br></div>  <div><span class="keyword">inicio</span></div>
+
+  <div><span class="keyword">repita</span></div>
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">escreva</span>("Digite o percentual de comissão (entre 0 e 10): ")</div>
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">leia</span>(<span class="variable">comissao</span>)</div>
+  <div><span class="keyword">ate</span> <span class="variable">comissao</span> &gt;= 0 <span class="keyword">e</span> <span class="variable">comissao</span> &lt;= 10</div>
+
+  <div><span class="function">escreval</span>("Valor válido inserido: ", <span class="variable">comissao</span>)</div>
+
+  <div><br></div>
+
+  <div><span class="keyword">fimalgoritmo<br><br><br></span></div>
+</div>
+
+<p dir="ltr" style="text-align: left;">Com base no funcionamento da estrutura Repita...Ate, analise as seguintes assertivas:</p>
+<ol type="I" style="font-size: 17px;">
+    <li>Se o usuário digitar&nbsp; 0 na primeira tentativa, o programa solicitará o valor novamente, pois a condição comissao &gt;= 0 e comissao &lt;= 10 será FALSA.</li>
+    <li>A estrutura Repita...Ate é adequada para este cenário porque garante que o bloco de comandos (o escreva e o leia) seja executado pelo menos uma vez, o que é necessário para obter a primeira entrada do usuário.</li>
+    <li>Se o usuário digitar 7 na primeira tentativa, o laço terminará imediatamente e a mensagem "Valor válido inserido: 7" será exibida, pois a condição comissao &gt;= 0 e comissao &lt;= 10 se tornará VERDADEIRA.</li>
+</ol>
+<p dir="ltr" style="text-align: left;"><br>Assinale a alternativa que indica quais assertivas estão corretas.</p>";s:18:"questiontextformat";s:1:"1";s:15:"generalfeedback";s:487:"<p>A resposta correta é a alternativa <strong>"C"</strong>.<br><br></p>
+<div class="destaque-dica">
+    <strong><span style="font-size: 1.5em;">📌 Dica:</span><br></strong><br><span style="font-size: 16px">Lembre-se das duas características principais da estrutura `Repita...Ate`: a condição é testada no final (pós-teste), garantindo ao menos uma execução, e o laço continua enquanto a condição for FALSA, terminando quando se torna VERDADEIRA.<br><br>
+</span></div><br>";s:21:"generalfeedbackformat";s:1:"1";s:11:"defaultmark";d:1;s:7:"penalty";d:0;s:5:"qtype";s:11:"multichoice";s:6:"length";s:1:"1";s:5:"stamp";s:38:"campusvirtual2.com+250626191636+6ZtTxQ";s:11:"timecreated";s:10:"1750965396";s:12:"timemodified";s:10:"1750965396";s:9:"createdby";s:1:"4";s:10:"modifiedby";s:1:"4";s:8:"idnumber";N;s:9:"contextid";s:3:"552";s:6:"status";s:5:"ready";s:9:"versionid";s:3:"248";s:7:"version";s:1:"1";s:19:"questionbankentryid";s:3:"241";s:14:"categoryobject";O:8:"stdClass":9:{s:2:"id";s:2:"61";s:4:"name";s:7:"Parte I";s:9:"contextid";s:3:"552";s:4:"info";s:0:"";s:10:"infoformat";s:1:"1";s:5:"stamp";s:52:"addiemooc38.escolavirtual.gov.br+221014194013+Zlu2uj";s:6:"parent";s:2:"60";s:9:"sortorder";s:3:"999";s:8:"idnumber";N;}s:7:"options";O:8:"stdClass":15:{s:2:"id";s:3:"158";s:10:"questionid";s:3:"280";s:6:"layout";s:1:"0";s:6:"single";s:1:"1";s:14:"shuffleanswers";s:1:"0";s:15:"correctfeedback";s:27:"Sua resposta está correta.";s:21:"correctfeedbackformat";s:1:"1";s:24:"partiallycorrectfeedback";s:40:"Sua resposta está parcialmente correta.";s:30:"partiallycorrectfeedbackformat";s:1:"1";s:17:"incorrectfeedback";s:29:"Sua resposta está incorreta.";s:23:"incorrectfeedbackformat";s:1:"1";s:15:"answernumbering";s:4:"ABCD";s:14:"shownumcorrect";s:1:"1";s:23:"showstandardinstruction";s:1:"0";s:7:"answers";a:5:{i:977;O:8:"stdClass":7:{s:2:"id";s:3:"977";s:8:"question";s:3:"280";s:6:"answer";s:85:"<p dir="ltr" style="text-align: left;">As assertivas I, II e III estão corretas.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:978;O:8:"stdClass":7:{s:2:"id";s:3:"978";s:8:"question";s:3:"280";s:6:"answer";s:87:"<p dir="ltr" style="text-align: left;">Apenas as assertivas I e II estão corretas.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:979;O:8:"stdClass":7:{s:2:"id";s:3:"979";s:8:"question";s:3:"280";s:6:"answer";s:89:"<p dir="ltr" style="text-align: left;">Apenas as assertivas II e III estão corretas.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"1.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:980;O:8:"stdClass":7:{s:2:"id";s:3:"980";s:8:"question";s:3:"280";s:6:"answer";s:78:"<p dir="ltr" style="text-align: left;">Apenas a assertiva I está correta.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:981;O:8:"stdClass":7:{s:2:"id";s:3:"981";s:8:"question";s:3:"280";s:6:"answer";s:80:"<p dir="ltr" style="text-align: left;">Nenhuma das assertivas está correta.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}}}s:5:"hints";a:0:{}}

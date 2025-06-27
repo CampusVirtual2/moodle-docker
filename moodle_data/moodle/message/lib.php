@@ -734,14 +734,10 @@ function message_output_fragment_processor_settings($args = []) {
         throw new moodle_exception('Must provide a userid');
     }
 
-    $type = clean_param($args['type'], PARAM_SAFEDIR);
-    $userid = clean_param($args['userid'], PARAM_INT);
+    $type = $args['type'];
+    $userid = $args['userid'];
 
     $user = core_user::get_user($userid, '*', MUST_EXIST);
-    if (!core_message_can_edit_message_profile($user)) {
-        throw new moodle_exception('Cannot edit message profile');
-    }
-
     $processor = get_message_processor($type);
     $providers = message_get_providers_for_user($userid);
     $processorwrapper = new stdClass();

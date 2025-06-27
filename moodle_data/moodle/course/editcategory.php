@@ -72,7 +72,7 @@ if ($id) {
     } else {
         $context = context_system::instance();
         $fullname = $SITE->fullname;
-        $title = $strtitle;
+        $title = "$SITE->shortname: $strtitle";
         $PAGE->set_secondary_active_tab('courses');
     }
 

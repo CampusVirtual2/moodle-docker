@@ -1,0 +1,25 @@
+{
+    "name": "pinpoint-apm/pinpoint-php-aop",
+    "description": "A simple Aop library via php-parse",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "eeliu",
+            "email": "liu.mingyi@navercorp.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Pinpoint\\": "lib/Pinpoint/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    },
+    "require": {
+        "php": ">=7",
+        "nikic/php-parser": "^4.1"
+    }
+}

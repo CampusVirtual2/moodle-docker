@@ -598,7 +598,7 @@ abstract class base {
     public function get_dir() {
         global $CFG;
 
-        if (!isset($this->rootdir)) {
+        if (!isset($pluginfo->rootdir)) {
             return '';
         }
 

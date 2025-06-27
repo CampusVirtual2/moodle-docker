@@ -36,7 +36,7 @@ use core_course\test\mock_hooks;
 /**
  * Functional test for class core_course_category methods invoking hooks.
  */
-final class category_hooks_test extends \advanced_testcase {
+class category_hooks_test extends \advanced_testcase {
 
     protected function setUp(): void {
         $this->resetAfterTest();

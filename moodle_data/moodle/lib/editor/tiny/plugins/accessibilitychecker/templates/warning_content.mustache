@@ -36,9 +36,10 @@
 }}
 <div class="warning-desc">
     {{#warnings}}
-            <p>{{{description}}}</p>
-            <ol class="accessibilitywarnings">
-                {{#nodeData}}
+        <p>
+            {{{description}}}
+            {{#nodeData}}
+                <ol class="accessibilitywarnings">
                     <li>
                         {{#text}}
                             {{text}}
@@ -48,8 +49,9 @@
                         {{/src}}
                         - <a href="#" data-action="highlightfault" data-node-name="{{nodeName}}" data-node-index="{{nodeIndex}}">{{#str}} viewissue, tiny_accessibilitychecker {{/str}}</a>
                     </li>
-                {{/nodeData}}
-            </ol>
+                </ol>
+            {{/nodeData}}
+        </p>
     {{/warnings}}
     {{^warnings}}
         <p>{{#str}} nowarnings, tiny_accessibilitychecker {{/str}}</p>

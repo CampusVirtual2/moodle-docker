@@ -30,8 +30,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-import Logger from 'core/local/reactive/logger';
-
 /**
  * State manager class.
  *
@@ -122,8 +120,6 @@ export default class StateManager {
             };
             this.target.addEventListener('state:loaded', initialStateDone);
         });
-
-        this.logger = new Logger();
     }
 
     /**
@@ -445,24 +441,6 @@ export default class StateManager {
             }
             state[updateName] = fields;
         }
-    }
-
-    /**
-     * Set the logger class instance.
-     *
-     * Reactive instances can provide alternative loggers to provide advanced logging.
-     * @param {Logger} logger
-     */
-    setLogger(logger) {
-        this.logger = logger;
-    }
-
-    /**
-     * Add a new log entry into the reactive logger.
-     * @param {LoggerEntry} entry
-     */
-    addLoggerEntry(entry) {
-        this.logger.add(entry);
     }
 
     /**

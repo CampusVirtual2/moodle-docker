@@ -33,7 +33,7 @@ use xmldb_table;
  * @copyright  2008 Nicolas Connault
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class ddl_test extends \database_driver_testcase {
+class ddl_test extends \database_driver_testcase {
     /** @var xmldb_table[] keys are table name. Created in setUp. */
     private $tables = array();
     /** @var array table name => array of stdClass test records loaded into that table. Created in setUp. */
@@ -2266,7 +2266,7 @@ final class ddl_test extends \database_driver_testcase {
      *
      * @return array The type-value pair fixture.
      */
-    public static function get_enc_quoted_provider(): array {
+    public function get_enc_quoted_provider() {
         return array(
             // Reserved: some examples from SQL-92.
             [true, 'from'],
@@ -2315,7 +2315,7 @@ final class ddl_test extends \database_driver_testcase {
      *
      * @return array The type-old-new tuple fixture.
      */
-    public static function sql_generator_get_rename_field_sql_provider(): array {
+    public function sql_generator_get_rename_field_sql_provider() {
         return array(
             // Reserved: an example from SQL-92.
             // Both names should be reserved.

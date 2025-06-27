@@ -159,8 +159,8 @@ class enrol_self_plugin extends enrol_plugin {
 
         \core\notification::success(get_string('youenrolledincourse', 'enrol'));
 
-        // Test whether the password is also used as a group key.
-        if ($instance->password && $instance->customint1) {
+        if ($instance->password and $instance->customint1 and $data->enrolpassword !== $instance->password) {
+            // It must be a group enrolment, let's assign group too.
             $groups = $DB->get_records('groups', array('courseid'=>$instance->courseid), 'id', 'id, enrolmentkey');
             foreach ($groups as $group) {
                 if (empty($group->enrolmentkey)) {
@@ -876,9 +876,6 @@ class enrol_self_plugin extends enrol_plugin {
      * @return void
      */
     public function edit_instance_validation($data, $files, $instance, $context) {
-        global $CFG;
-        require_once("{$CFG->dirroot}/enrol/self/locallib.php");
-
         $errors = array();
 
         $checkpassword = false;
@@ -891,11 +888,6 @@ class enrol_self_plugin extends enrol_plugin {
 
             // Check the password if the instance is enabled and the password has changed.
             if (($data['status'] == ENROL_INSTANCE_ENABLED) && ($instance->password !== $data['password'])) {
-                $checkpassword = true;
-            }
-
-            // Check the password if we are enabling group enrolment keys.
-            if (!$instance->customint1 && $data['customint1']) {
                 $checkpassword = true;
             }
         } else {
@@ -912,10 +904,6 @@ class enrol_self_plugin extends enrol_plugin {
                 if (!check_password_policy($data['password'], $errmsg)) {
                     $errors['password'] = $errmsg;
                 }
-            } else if (!empty($data['password']) && $data['customint1'] &&
-                    enrol_self_check_group_enrolment_key($data['courseid'], $data['password'])) {
-
-                $errors['password'] = get_string('passwordmatchesgroupkey', 'enrol_self');
             }
         }
 

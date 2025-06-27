@@ -30,7 +30,7 @@ require_once($CFG->dirroot . '/course/lib.php');
  * @copyright  2017 Andrés Melo <andres.torres@blackboard.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class markerallocation_test extends \advanced_testcase {
+class markerallocation_test extends \advanced_testcase {
 
     /**
      * Create all the needed elements to test the difference between both functions.

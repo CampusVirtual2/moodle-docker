@@ -27,7 +27,7 @@ use mod_quiz\question\bank\qbank_helper;
  * @copyright  2018 Shamim Rezaie <shamim@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class local_structure_slot_random_test extends \advanced_testcase {
+class local_structure_slot_random_test extends \advanced_testcase {
     /**
      * Constructor test.
      */

@@ -20,11 +20,16 @@ namespace core_reportbuilder;
 
 use context_system;
 use core_reportbuilder_generator;
-use core_reportbuilder\local\models\report;
-use core_reportbuilder\local\report\base;
-use core_reportbuilder\tests\core_reportbuilder_testcase;
+use core_reportbuilder_testcase;
 use core_user\reportbuilder\datasource\users;
 use stdClass;
+use core_reportbuilder\local\models\report;
+use core_reportbuilder\local\report\base;
+
+defined('MOODLE_INTERNAL') || die();
+
+global $CFG;
+require_once("{$CFG->dirroot}/reportbuilder/tests/helpers.php");
 
 /**
  * Unit tests for the report manager class
@@ -34,7 +39,7 @@ use stdClass;
  * @copyright   2020 Paul Holden <paulh@moodle.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class manager_test extends core_reportbuilder_testcase {
+class manager_test extends core_reportbuilder_testcase {
 
     /**
      * Test creating a report instance from persistent
@@ -175,7 +180,7 @@ final class manager_test extends core_reportbuilder_testcase {
      *
      * @return array
      */
-    public static function report_limit_reached_provider(): array {
+    public function report_limit_reached_provider(): array {
         return [
             [0, 1, false],
             [1, 1, true],

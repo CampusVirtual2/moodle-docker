@@ -95,7 +95,7 @@ switch ($action) {
 
             foreach($groupmemberroles as $roleid=>$roledata) {
                 $shortroledata = new stdClass();
-                $shortroledata->name = html_entity_decode($roledata->name, ENT_QUOTES, 'UTF-8');
+                $shortroledata->name = $roledata->name;
                 $shortroledata->users = array();
                 foreach($roledata->users as $member) {
                     $shortmember = new stdClass();
@@ -183,7 +183,7 @@ if ($groups) {
     foreach ($groups as $group) {
         $selected = false;
         $usercount = $DB->count_records('groups_members', array('groupid' => $group->id));
-        $groupname = format_string($group->name, true, ['context' => $context, 'escape' => false]) . ' (' . $usercount . ')';
+        $groupname = format_string($group->name) . ' (' . $usercount . ')';
         if (in_array($group->id, $groupids)) {
             $selected = true;
             if ($singlegroup) {
@@ -234,9 +234,8 @@ if ($singlegroup) {
 
                 $users[] = $shortmember;
             }
-
             $members[] = (object)[
-                'role' => html_entity_decode($roledata->name, ENT_QUOTES, 'UTF-8'),
+                'role' => s($roledata->name),
                 'rolemembers' => $users
             ];
         }

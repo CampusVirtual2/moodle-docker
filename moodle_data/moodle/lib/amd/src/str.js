@@ -24,7 +24,6 @@
  */
 import $ from 'jquery';
 import Ajax from 'core/ajax';
-import Config from 'core/config';
 import LocalStorage from 'core/localstorage';
 
 // Module cache for the promises so that we don't make multiple
@@ -102,7 +101,7 @@ export const get_string = (key, component, param, lang) => {
 // eslint-disable-next-line camelcase
 export const get_strings = (requests) => {
     let requestData = [];
-    const pageLang = Config.language;
+    const pageLang = $('html').attr('lang').replace(/-/g, '_');
 
     // Helper function to construct the cache key.
     const getCacheKey = ({key, component, lang = pageLang}) => `core_str/${key}/${component}/${lang}`;
@@ -192,11 +191,13 @@ export const get_strings = (requests) => {
  * @param {string} strings.key The string identifer to fetch
  * @param {string} strings.value The string value
  * @param {string} [strings.component='core'] The componet to fetch from
- * @param {string} [strings.lang=Config.language] The language to fetch a string for. Defaults to current page language.
+ * @param {string} [strings.lang] The language to fetch a string for. Defaults to current page language.
  */
 // eslint-disable-next-line camelcase
 export const cache_strings = (strings) => {
-    strings.forEach(({key, component, value, lang = Config.language}) => {
+    const defaultLang = $('html').attr('lang').replace(/-/g, '_');
+
+    strings.forEach(({key, component, value, lang = defaultLang}) => {
         const cacheKey = ['core_str', key, component, lang].join('/');
 
         // Check M.str caching.

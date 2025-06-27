@@ -33,7 +33,7 @@ Feature: View activity completion in the SCORM activity
       | completionusegrade           | 1                                                             |
 
   @javascript
-  Scenario: A teacher can view a SCORM activity automatic completion conditions
+  Scenario: View automatic completion items as a teacher
     Given I am on the "Music history" "scorm activity" page logged in as teacher1
     Then "Music history" should have the "View" completion condition
     And "Music history" should have the "Receive a score of 3 or more" completion condition
@@ -42,7 +42,7 @@ Feature: View activity completion in the SCORM activity
     And "Music history" should have the "Complete or pass the activity" completion condition
 
   @javascript
-  Scenario: Any grade and Passing grade options are hidden
+  Scenario: View automatic completion items as a student
     Given I am on the "Music history" "scorm activity" page logged in as student1
     # We need a little taller window because Firefox is, apparently, unable to auto-scroll within
     # an iframe, so we need to ensure that the "Save changes" button is visible in the viewport.
@@ -108,7 +108,7 @@ Feature: View activity completion in the SCORM activity
     And the "Complete or pass the activity" completion condition of "Music history" is displayed as "done"
 
   @javascript
-  Scenario: A student can manually mark the scorm activity as done but a teacher cannot
+  Scenario: Use manual completion
     Given I am on the "Music history" "scorm activity" page logged in as teacher1
     And I navigate to "Settings" in current page administration
     And I expand all fieldsets

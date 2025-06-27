@@ -29,7 +29,7 @@ require_once(__DIR__ . '/helper_trait.php');
  * @copyright  2016 Andrew Nicols <andrew@nicols.co.uk>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class manager_test extends \advanced_testcase {
+class manager_test extends \advanced_testcase {
     // There are shared helpers for these tests in the helper trait.
     use \tool_usertours_helper_trait;
 
@@ -74,7 +74,7 @@ final class manager_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function sesskey_required_provider(): array {
+    public function sesskey_required_provider() {
         $tourid = rand(1, 100);
         $stepid = rand(1, 100);
 
@@ -121,7 +121,7 @@ final class manager_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function move_tour_provider(): array {
+    public function move_tour_provider() {
         $alltours = [
             ['name' => 'Tour 1'],
             ['name' => 'Tour 2'],
@@ -198,7 +198,7 @@ final class manager_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function get_matching_tours_provider(): array {
+    public function get_matching_tours_provider() {
         global $CFG;
 
         $alltours = [

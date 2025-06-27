@@ -30,7 +30,7 @@ use tool_dataprivacy\task\process_data_request_task;
  * @copyright  2018 Jun Pataleta
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class api_test extends \advanced_testcase {
+class api_test extends \advanced_testcase {
 
     /**
      * Ensure that the check_can_manage_data_registry function fails cap testing when a user without capabilities is
@@ -545,7 +545,7 @@ final class api_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function data_request_creation_provider(): array {
+    public function data_request_creation_provider() {
         return [
             'Export request by user, automatic approval off' => [
                 false, api::DATAREQUEST_TYPE_EXPORT, 'automaticdataexportapproval', false, 0,
@@ -705,7 +705,7 @@ final class api_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function get_data_requests_provider(): array {
+    public function get_data_requests_provider() {
         $completeonly = [api::DATAREQUEST_STATUS_COMPLETE, api::DATAREQUEST_STATUS_DOWNLOAD_READY, api::DATAREQUEST_STATUS_DELETED];
         $completeandcancelled = array_merge($completeonly, [api::DATAREQUEST_STATUS_CANCELLED]);
 
@@ -842,7 +842,7 @@ final class api_test extends \advanced_testcase {
     /**
      * Data provider for test_has_ongoing_request.
      */
-    public static function status_provider(): array {
+    public function status_provider() {
         return [
             [api::DATAREQUEST_STATUS_AWAITING_APPROVAL, true],
             [api::DATAREQUEST_STATUS_APPROVED, true],
@@ -932,7 +932,7 @@ final class api_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function notify_dpo_provider(): array {
+    public function notify_dpo_provider() {
         return [
             [false, api::DATAREQUEST_TYPE_EXPORT, 'requesttypeexport', 'Export my user data'],
             [false, api::DATAREQUEST_TYPE_DELETE, 'requesttypedelete', 'Delete my user data'],
@@ -1284,7 +1284,7 @@ final class api_test extends \advanced_testcase {
     /**
      * Data provider for invalid contextlevel fetchers.
      */
-    public static function invalid_effective_contextlevel_provider(): array {
+    public function invalid_effective_contextlevel_provider() {
         return [
             [CONTEXT_COURSECAT],
             [CONTEXT_COURSE],
@@ -1844,7 +1844,7 @@ final class api_test extends \advanced_testcase {
     /**
      * Data provider for \tool_dataprivacy_api_testcase::test_set_context_defaults
      */
-    public static function set_context_defaults_provider(): array {
+    public function set_context_defaults_provider() {
         $contextlevels = [
             [CONTEXT_COURSECAT],
             [CONTEXT_COURSE],
@@ -2319,7 +2319,7 @@ final class api_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function queue_data_request_task_provider(): array {
+    public function queue_data_request_task_provider() {
         return [
             'With user ID provided' => [true],
             'Without user ID provided' => [false],
@@ -2356,7 +2356,7 @@ final class api_test extends \advanced_testcase {
     /**
      * Data provider for test_is_automatic_request_approval_on().
      */
-    public static function automatic_request_approval_setting_provider(): array {
+    public function automatic_request_approval_setting_provider() {
         return [
             'Data export, not set' => [
                 'automaticdataexportapproval', api::DATAREQUEST_TYPE_EXPORT, null, false

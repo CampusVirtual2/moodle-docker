@@ -22,8 +22,14 @@ use context_course;
 use context_user;
 use core_collator;
 use core_reportbuilder_generator;
-use core_reportbuilder\local\filters\{boolean_select, date, select, tags as tags_filter};
-use core_reportbuilder\tests\core_reportbuilder_testcase;
+use core_reportbuilder_testcase;
+use core_reportbuilder\local\filters\{boolean_select, date, select};
+use core_reportbuilder\local\filters\tags as tags_filter;
+
+defined('MOODLE_INTERNAL') || die();
+
+global $CFG;
+require_once("{$CFG->dirroot}/reportbuilder/tests/helpers.php");
 
 /**
  * Unit tests for tags datasource
@@ -33,7 +39,7 @@ use core_reportbuilder\tests\core_reportbuilder_testcase;
  * @copyright   2022 Paul Holden <paulh@moodle.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class tags_test extends core_reportbuilder_testcase {
+class tags_test extends core_reportbuilder_testcase {
 
     /**
      * Test default datasource
@@ -49,7 +55,7 @@ final class tags_test extends core_reportbuilder_testcase {
 
         /** @var core_reportbuilder_generator $generator */
         $generator = $this->getDataGenerator()->get_plugin_generator('core_reportbuilder');
-        $report = $generator->create_report(['name' => 'Tags', 'source' => tags::class, 'default' => 1]);
+        $report = $generator->create_report(['name' => 'Notes', 'source' => tags::class, 'default' => 1]);
 
         $content = $this->get_custom_report_content($report->get('id'));
         $this->assertCount(2, $content);
@@ -78,13 +84,12 @@ final class tags_test extends core_reportbuilder_testcase {
     public function test_datasource_non_default_columns(): void {
         $this->resetAfterTest();
 
-        $this->getDataGenerator()->create_tag(['name' => 'Horses', 'description' => 'Neigh', 'flag' => 2]);
         $course = $this->getDataGenerator()->create_course(['tags' => ['Horses']]);
         $coursecontext = context_course::instance($course->id);
 
         /** @var core_reportbuilder_generator $generator */
         $generator = $this->getDataGenerator()->get_plugin_generator('core_reportbuilder');
-        $report = $generator->create_report(['name' => 'Tags', 'source' => tags::class, 'default' => 0]);
+        $report = $generator->create_report(['name' => 'Notes', 'source' => tags::class, 'default' => 0]);
 
         // Collection.
         $generator->create_column(['reportid' => $report->get('id'), 'uniqueidentifier' => 'collection:default']);
@@ -120,8 +125,8 @@ final class tags_test extends core_reportbuilder_testcase {
 
         // Tag.
         $this->assertEquals('Horses', $courserow[4]);
-        $this->assertEquals('<div class="text_to_html">Neigh</div>', $courserow[5]);
-        $this->assertEquals('Yes', $courserow[6]);
+        $this->assertEmpty($courserow[5]);
+        $this->assertEquals('No', $courserow[6]);
         $this->assertNotEmpty($courserow[7]);
 
         // Instance.
@@ -140,7 +145,7 @@ final class tags_test extends core_reportbuilder_testcase {
      *
      * @return array[]
      */
-    public static function datasource_filters_provider(): array {
+    public function datasource_filters_provider(): array {
         return [
             // Collection.
             'Filter collection name' => ['collection:name', [
@@ -182,10 +187,10 @@ final class tags_test extends core_reportbuilder_testcase {
                 'tag:standard_operator' => boolean_select::CHECKED,
             ], false],
             'Filter tag flagged' => ['tag:flagged', [
-                'tag:flagged_operator' => boolean_select::CHECKED,
+                'tag:flagged_operator' => boolean_select::NOT_CHECKED,
             ], true],
             'Filter tag flagged (no match)' => ['tag:flagged', [
-                'tag:flagged_operator' => boolean_select::NOT_CHECKED,
+                'tag:flagged_operator' => boolean_select::CHECKED,
             ], false],
             'Filter tag time modified' => ['tag:timemodified', [
                 'tag:timemodified_operator' => date::DATE_RANGE,
@@ -240,7 +245,6 @@ final class tags_test extends core_reportbuilder_testcase {
     ): void {
         $this->resetAfterTest();
 
-        $this->getDataGenerator()->create_tag(['name' => 'Horses', 'flag' => 2]);
         $this->getDataGenerator()->create_course(['tags' => ['Horses']]);
 
         /** @var core_reportbuilder_generator $generator */

@@ -30,7 +30,7 @@ use stdClass;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @coversDefaultClass \mod_data\manager
  */
-final class manager_test extends \advanced_testcase {
+class manager_test extends \advanced_testcase {
 
     /**
      * Test for static create methods.
@@ -162,33 +162,6 @@ final class manager_test extends \advanced_testcase {
         $this->assertEquals($moodleurl, $event->get_url());
         $this->assertEventContextNotUsed($event);
         $this->assertNotEmpty($event->get_name());
-    }
-
-    /**
-     * Test for has_records().
-     *
-     * @covers ::has_records
-     */
-    public function test_has_records() {
-        global $DB;
-
-        $this->resetAfterTest();
-
-        $course = $this->getDataGenerator()->create_course();
-        $data = $this->getDataGenerator()->create_module(manager::MODULE, ['course' => $course]);
-        $manager = manager::create_from_instance($data);
-
-        // Empty database should return false.
-        $this->assertFalse($manager->has_records());
-
-        // Create data record.
-        $datarecords = new \stdClass();
-        $datarecords->userid = '2';
-        $datarecords->dataid = $data->id;
-        $datarecords->id = $DB->insert_record('data_records', $datarecords);
-
-        // Database with records should return true.
-        $this->assertTrue($manager->has_records());
     }
 
     /**
@@ -482,7 +455,7 @@ final class manager_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function can_view_preset_provider(): array {
+    public function can_view_preset_provider(): array {
         return [
             // User presets.
             'Teacher owned preset without user id param' => [
@@ -737,7 +710,7 @@ final class manager_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function reset_template_provider(): array {
+    public function reset_template_provider(): array {
         return [
             // User presets.
             'listtemplate' => [

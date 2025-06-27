@@ -27,6 +27,8 @@
  * Space between define and ( critical in comment but not allowed in code in order to function
  * correctly with Moodle's requirejs.php
  *
+ * More details: https://docs.moodle.org/dev/Sortable_list
+ *
  * For the full list of possible parameters see var defaultParameters below.
  *
  * The following jQuery events are fired:
@@ -101,7 +103,6 @@ function($, log, autoScroll, str, ModalFactory, ModalEvents, Notification) {
 
         try {
             options = Object.defineProperty({}, "passive", {
-                // eslint-disable-next-line getter-return
                 get: function() {
                     passivesupported = true;
                 }

@@ -27,7 +27,7 @@ namespace enrol_database;
  * @copyright  2011 Petr Skoda {@link http://skodak.org}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class sync_test extends \advanced_testcase {
+class sync_test extends \advanced_testcase {
     protected static $courses = array();
     protected static $users = array();
     protected static $roles = array();

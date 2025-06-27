@@ -32,7 +32,9 @@ Feature: We can use natural aggregation and weights will be normalised to a tota
       | assign | C1 | a7 | Test assignment seven | Submit nothing! | <span lang="en" class="multilang">EN</span><span lang="fr" class="multilang">FR</span> Sub category 1 | 15 |
     And the "multilang" filter is "on"
     And the "multilang" filter applies to "content and headings"
-    And I am on the "Course 1" "grades > gradebook setup" page logged in as "teacher1"
+    And I log in as "teacher1"
+    And I am on "Course 1" course homepage
+    And I navigate to "Setup > Gradebook setup" in the course gradebook
 
   @javascript
   Scenario: Setting all weights in a category to exactly one hundred in total.

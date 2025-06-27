@@ -8,6 +8,7 @@ RUN set -eux;
 #Download e instalação das bibliotecas do SO
 RUN apt-get update \
   && apt-get install -f -y --no-install-recommends \
+  git \
   rsync \
   libz-dev \
   libpq-dev \
@@ -126,5 +127,36 @@ RUN a2ensite 000-default.conf
 RUN a2enmod rewrite && a2enmod headers && a2enmod expires
 #Define o correto nome do servidor para remover warning do log do docker
 RUN echo "ServerName campusvirtual2.com" >> /etc/apache2/apache2.conf
+
+# === Instalação do Pinpoint PHP Agent via PECL e AOP ===
+
+RUN mkdir -p /var/www/html/var/cache/pinpoint && chown www-data:www-data /var/www/html/var/cache/pinpoint -R
+
+# Instala o Composer globalmente
+RUN curl -sS https://getcomposer.org/installer | php \
+  && mv composer.phar /usr/local/bin/composer
+
+# Instala extensão via PECL
+RUN pecl install pinpoint_php && docker-php-ext-enable pinpoint_php
+
+# Instala pacote AOP via Composer
+RUN composer require pinpoint-apm/pinpoint-php-aop
+
+# Configuração do agente
+RUN { \
+    echo "extension=pinpoint_php.so"; \
+    echo "pinpoint_agent.application_name=moodle_apm"; \
+    echo "pinpoint_agent.agent_id=moodle_agent"; \
+    echo "pinpoint_collector.host=pinpoint-collector"; \
+    echo "pinpoint_collector.tcp_port=9994"; \
+    echo "pinpoint_collector.stat_port=9995"; \
+    echo "pinpoint_collector.span_port=9996"; \
+    echo "pinpoint_agent.log_level=INFO"; \
+    echo "pinpoint_agent.log_dir=/tmp/pinpoint_log"; \
+} > /usr/local/etc/php/conf.d/99-pinpoint.ini
+
+# Cria diretório de log do agente
+RUN mkdir -p /tmp/pinpoint_log && chmod 777 /tmp/pinpoint_log
+
 #Abre as portas 80 e 443
 EXPOSE 80 

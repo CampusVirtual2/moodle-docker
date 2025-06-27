@@ -31,10 +31,9 @@ require_once($CFG->libdir . '/questionlib.php');
  * @category   test
  * @copyright  2009 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @covers \question_state
  */
-final class questionstate_test extends \advanced_testcase {
-    public function test_is_active(): void {
+class questionstate_test extends \advanced_testcase {
+    public function test_is_active() {
         $this->assertFalse(question_state::$notstarted->is_active());
         $this->assertFalse(question_state::$unprocessed->is_active());
         $this->assertTrue(question_state::$todo->is_active());
@@ -154,15 +153,5 @@ final class questionstate_test extends \advanced_testcase {
 
         $this->assertEquals(question_state::$mangrright,
                 question_state::$gradedpartial->corresponding_commented_state(1));
-    }
-
-    public function test_get(): void {
-        $this->assertEquals(question_state::$todo, question_state::get('todo'));
-    }
-
-    public function test_get_bad_data(): void {
-        question_state::get('');
-        $this->assertDebuggingCalled('Attempt to create a state from an empty string. ' .
-                'This is probably a sign of bad data in your database. See MDL-80127.');
     }
 }

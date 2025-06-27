@@ -1,22 +1,22 @@
 .block_accessreview_success,
 .block_accessreview.block_accessreview_success.hasinfo {
     color: #1e451e;
-    background: #eff5ef;
-    box-shadow: 0 0 2px 2px #619a61;
+    background: #d7e6d7;
+    border-color: #c8ddc8;
 }
 
 .block_accessreview_danger,
 .block_accessreview.block_accessreview_danger.hasinfo {
     color: #6e211e;
-    background: #fdf7f7;
-    box-shadow: 0 0 2px 2px #da6960;
+    background: #f6d9d8;
+    border-color: #f3c9c8;
 }
 
 .block_accessreview_warning,
 .block_accessreview.block_accessreview_warning.hasinfo {
-    color: #694b21;
-    background: #fdf2e3;
-    box-shadow: 0 0 2px 2px #c97a0e;
+    color: #7d5a29;
+    background: #fcefdc;
+    border-color: #fbe8cd;
 }
 
 .block_accessreview_table {

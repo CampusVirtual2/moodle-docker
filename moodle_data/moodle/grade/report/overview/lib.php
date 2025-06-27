@@ -80,17 +80,14 @@ class grade_report_overview extends grade_report {
      * @param string $context
      */
     public function __construct($userid, $gpr, $context) {
-        global $CFG, $COURSE, $DB, $USER;
+        global $CFG, $COURSE, $DB;
         parent::__construct($COURSE->id, $gpr, $context);
 
         // Get the user (for full name).
         $this->user = $DB->get_record('user', array('id' => $userid));
 
-        // Set onlyactive flag to true if the user's viewing his/her report.
-        $onlyactive = ($this->user->id === $USER->id);
-
         // Load the user's courses.
-        $this->courses = enrol_get_users_courses($this->user->id, $onlyactive, 'id, shortname, showgrades');
+        $this->courses = enrol_get_users_courses($this->user->id, false, 'id, shortname, showgrades');
 
         $this->showrank = array();
         $this->showrank['any'] = false;

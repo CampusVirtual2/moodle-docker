@@ -25,7 +25,7 @@ namespace core_adminpresets\local\setting;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @coversDefaultClass \core_adminpresets\local\setting\adminpresets_setting
  */
-final class adminpresets_setting_test extends \advanced_testcase {
+class adminpresets_setting_test extends \advanced_testcase {
 
     /**
      * Test the behaviour of save_value() method.
@@ -77,7 +77,7 @@ final class adminpresets_setting_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function save_value_provider(): array {
+    public function save_value_provider(): array {
         return [
             'Core setting with the same value is not saved' => [
                 'category' => 'optionalsubsystems',
@@ -167,7 +167,7 @@ final class adminpresets_setting_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function save_attributes_values_provider(): array {
+    public function save_attributes_values_provider(): array {
         return [
             'Plugin setting with the same value is not saved' => [
                 'category' => 'modsettinglesson',

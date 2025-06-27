@@ -95,24 +95,16 @@ class get_enrolled_users_for_search_widget extends external_api {
 
         $users = [];
 
-        $userfieldsapi = \core_user\fields::for_identity($coursecontext, false)->with_userpic();
-        $extrauserfields = $userfieldsapi->get_required_fields([\core_user\fields::PURPOSE_IDENTITY]);
-
         while ($userdata = $gui->next_user()) {
             $guiuser = $userdata->user;
             $user = new \stdClass();
             $user->fullname = fullname($guiuser);
-            foreach (\core_user\fields::get_name_fields() as $field) {
-                $user->$field = $guiuser->$field ?? null;
-            }
             $user->id = $guiuser->id;
             $user->url = (new moodle_url($actionbaseurl, ['id' => $courseid, 'userid' => $guiuser->id]))->out(false);
             $userpicture = new \user_picture($guiuser);
             $userpicture->size = 1;
             $user->profileimage = $userpicture->get_url($PAGE)->out(false);
-            foreach ($extrauserfields as $field) {
-                $user->$field = $userdata->user->$field ?? null;
-            }
+            $user->email = $guiuser->email;
             $user->active = false; // @TODO MDL-76246
 
             $users[] = $user;

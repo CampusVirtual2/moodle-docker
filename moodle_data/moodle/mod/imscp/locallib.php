@@ -38,7 +38,12 @@ require_once("$CFG->libdir/resourcelib.php");
 function imscp_print_content($imscp, $cm, $course) {
     global $PAGE, $CFG;
 
-    $items = array_filter((array) unserialize_array($imscp->structure));
+    $items = unserialize($imscp->structure);
+    $first = reset($items);
+    $context = context_module::instance($cm->id);
+    $urlbase = "$CFG->wwwroot/pluginfile.php";
+    $path = '/'.$context->id.'/mod_imscp/content/'.$imscp->revision.'/'.$first['href'];
+    $firsturl = file_encode_url($urlbase, $path, false);
 
     echo '<div id="imscp_layout">';
     echo '<div id="imscp_toc">';
@@ -55,6 +60,7 @@ function imscp_print_content($imscp, $cm, $course) {
     echo '</div>';
 
     $PAGE->requires->js_init_call('M.mod_imscp.init');
+    return;
 }
 
 /**

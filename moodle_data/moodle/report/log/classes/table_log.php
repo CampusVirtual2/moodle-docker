@@ -295,7 +295,7 @@ class report_log_table_log extends table_sql {
      */
     public function col_description($event) {
         // Description.
-        return format_text($event->get_description(), FORMAT_PLAIN);
+        return $event->get_description();
     }
 
     /**

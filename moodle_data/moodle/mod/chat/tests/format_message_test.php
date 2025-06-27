@@ -28,12 +28,12 @@ require_once($CFG->dirroot . '/mod/chat/lib.php');
  * @copyright  2016 Andrew NIcols
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class format_message_test extends \advanced_testcase {
+class format_message_test extends \advanced_testcase {
 
     const USER_CURRENT = 1;
     const USER_OTHER = 2;
 
-    public static function chat_format_message_manually_provider(): array {
+    public function chat_format_message_manually_provider() {
         $dateregexp = '\d{2}:\d{2}';
         return [
             'Beep everyone' => [

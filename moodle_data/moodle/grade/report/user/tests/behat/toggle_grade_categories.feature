@@ -23,11 +23,13 @@ Feature: User can toggle the visibility of the grade categories within the user 
       | activity | course | idnumber | name                | intro             | grade |
       | assign   | C1     | a1       | Test assignment one | Submit something! | 300   |
     And the following "activities" exist:
-      | activity | course | idnumber | name                | gradecategory | grade | gradepass |
-      | assign   | C1     | a2       | Test assignment two | Category 1    | 100   | 50        |
+      | activity | course | idnumber | name                | intro             | gradecategory | grade | gradepass |
+      | assign   | C1     | a2       | Test assignment two | Submit something! | Category 1    | 100   | 50        |
+    And I log in as "teacher1"
+    And I am on "Course" course homepage
 
   Scenario: A teacher can search for and find a user to view
-    Given I am on the "Course" "grades > User report > View" page logged in as "teacher1"
+    Given I navigate to "View > User report" in the course gradebook
     And I click on "Student 1" in the "user" search widget
     And I should see "Test assignment one" in the "user-grade" "table"
     And I should see "Test assignment two" in the "user-grade" "table"

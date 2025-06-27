@@ -95,7 +95,7 @@ $site = get_site();
 $strpreferences = get_string('preferences');
 $strblogs       = get_string('blogs', 'blog');
 
-$title = "$strblogs : $strpreferences";
+$title = "$site->shortname: $strblogs : $strpreferences";
 $PAGE->set_title($title);
 $PAGE->set_heading(fullname($USER));
 

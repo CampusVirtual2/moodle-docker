@@ -107,12 +107,6 @@ class file_storage {
      * @return string sha1 hash
      */
     public static function get_pathname_hash($contextid, $component, $filearea, $itemid, $filepath, $filename) {
-        if (substr($filepath, 0, 1) != '/') {
-            $filepath = '/' . $filepath;
-        }
-        if (substr($filepath, - 1) != '/') {
-            $filepath .= '/';
-        }
         return sha1("/$contextid/$component/$filearea/$itemid".$filepath.$filename);
     }
 
@@ -1247,7 +1241,7 @@ class file_storage {
             $tmpfile = tempnam($this->tempdir, 'newfromurl');
             $content = download_file_content($url, $headers, $postdata, $fullresponse, $timeout, $connecttimeout, $skipcertverify, $tmpfile, $calctimeout);
             if ($content === false) {
-                throw new file_exception('storedfileproblem', 'Cannot fetch file from URL');
+                throw new file_exception('storedfileproblem', 'Can not fetch file form URL');
             }
             try {
                 $newfile = $this->create_file_from_pathname($filerecord, $tmpfile);
@@ -1261,7 +1255,7 @@ class file_storage {
         } else {
             $content = download_file_content($url, $headers, $postdata, $fullresponse, $timeout, $connecttimeout, $skipcertverify, NULL, $calctimeout);
             if ($content === false) {
-                throw new file_exception('storedfileproblem', 'Cannot fetch file from URL');
+                throw new file_exception('storedfileproblem', 'Can not fetch file form URL');
             }
             return $this->create_file_from_string($filerecord, $content);
         }
@@ -1957,7 +1951,7 @@ class file_storage {
         if ($decoded === false) {
             throw new file_reference_exception(null, $str, null, null, 'Invalid base64 format');
         }
-        $params = unserialize_array($decoded);
+        $params = @unserialize($decoded); // hide E_NOTICE
         if ($params === false) {
             throw new file_reference_exception(null, $decoded, null, null, 'Not an unserializeable value');
         }

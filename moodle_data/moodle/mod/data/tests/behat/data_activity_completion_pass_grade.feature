@@ -12,20 +12,28 @@ Feature: Completion pass grade
       | student2 | Vinnie    | Student2 | student2@example.com |
       | teacher1 | Darrell   | Teacher1 | teacher1@example.com |
     And the following "courses" exist:
-      | fullname | shortname | category | enablecompletion |
-      | Course 1 | C1        | 0        | 1                |
+      | fullname | shortname | category |
+      | Course 1 | C1        | 0        |
     And the following "course enrolments" exist:
       | user     | course | role           |
       | student1 | C1     | student        |
       | student2 | C1     | student        |
       | teacher1 | C1     | editingteacher |
+    And I log in as "teacher1"
+    And I am on "Course 1" course homepage
+    And I navigate to "Settings" in current page administration
+    And I expand all fieldsets
+    And I set the following fields to these values:
+      | Enable completion tracking | Yes |
+      | Show activity completion conditions | Yes |
+    And I press "Save and display"
     And the following "activity" exists:
       | activity | data          |
       | course   | C1            |
       | idnumber | mh1           |
       | name     | Music history |
       | section  | 1             |
-    And I am on the "Music history" "data activity" page logged in as teacher1
+    And I am on the "Music history" "data activity" page
     And I navigate to "Settings" in current page administration
     And I expand all fieldsets
     And I set the following fields to these values:
@@ -45,7 +53,7 @@ Feature: Completion pass grade
     And I log out
 
   @javascript
-  Scenario: Database module completion conditions are displayed regardless of the view
+  Scenario: View automatic completion items as a teacher
     Given I am on the "Music history" "data activity" page logged in as teacher1
 #   We add an entry to let the user change to a different view.
     When I add an entry to "Music history" database with:
@@ -62,7 +70,7 @@ Feature: Completion pass grade
     And "Music history" should have the "Receive a passing grade" completion condition
 
   @javascript
-  Scenario: Student cannot complete a database activity if one of the conditions are not met
+  Scenario: View automatic completion items as a failing student
     Given I am on the "Music history" "data activity" page logged in as student1
     And the "View" completion condition of "Music history" is displayed as "done"
     And the "Make entries: 2" completion condition of "Music history" is displayed as "todo"
@@ -101,7 +109,7 @@ Feature: Completion pass grade
     And "Vinnie Student1" user has completed "Music history" activity
 
   @javascript
-  Scenario: Student can complete a database activity when all conditions are met
+  Scenario: View automatic completion items as a passing student
     Given I am on the "Music history" "data activity" page logged in as student1
     And the "View" completion condition of "Music history" is displayed as "done"
     And the "Make entries: 2" completion condition of "Music history" is displayed as "todo"

@@ -37,7 +37,7 @@ require_once($CFG->dirroot . '/backup/util/includes/restore_includes.php');
  * @copyright  2006 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class questionlib_test extends \advanced_testcase {
+class questionlib_test extends \advanced_testcase {
 
     /**
      * Test set up.
@@ -320,33 +320,6 @@ final class questionlib_test extends \advanced_testcase {
                 'to avoid errors, but this may mean that some data like ' .
                 'files, tags, are not cleaned up.');
         $this->assertFalse($DB->record_exists('question', ['id' => $q1->id]));
-    }
-
-    /**
-     * Test deleting a broken question whose category refers to a missing context
-     */
-    public function test_question_delete_question_missing_context() {
-        global $DB;
-
-        $coursecategory = $this->getDataGenerator()->create_category();
-        $context = $coursecategory->get_context();
-
-        /** @var \core_question_generator $generator */
-        $generator = $this->getDataGenerator()->get_plugin_generator('core_question');
-        $questioncategory = $generator->create_question_category(['contextid' => $context->id]);
-        $question = $generator->create_question('shortanswer', null, ['category' => $questioncategory->id]);
-
-        // Now delete the context, to simulate what happens in old sites where
-        // referential integrity has failed.
-        $DB->delete_records('context', ['id' => $context->id]);
-
-        question_delete_question($question->id);
-
-        $this->assertDebuggingCalled('Deleting question ' . $question->id .
-            ' which is no longer linked to a context. Assuming system context ' .
-            'to avoid errors, but this may mean that some data like ' .
-            'files, tags, are not cleaned up.');
-        $this->assertFalse($DB->record_exists('question', ['id' => $question->id]));
     }
 
     /**
@@ -1536,7 +1509,7 @@ final class questionlib_test extends \advanced_testcase {
      *
      * @return  array
      */
-    public static function question_capability_on_question_provider(): array {
+    public function question_capability_on_question_provider() {
         return [
             'Unrelated capability which is present' => [
                 'capabilities' => [
@@ -2023,7 +1996,7 @@ final class questionlib_test extends \advanced_testcase {
      *
      * @return array test cases.
      */
-    public static function find_next_unused_idnumber_cases(): array {
+    public function find_next_unused_idnumber_cases(): array {
         return [
             [null, null],
             ['id', null],

@@ -619,7 +619,6 @@ class core_enrol_external extends external_api {
                 'searchanywhere' => new external_value(PARAM_BOOL, 'find a match anywhere, or only at the beginning'),
                 'page' => new external_value(PARAM_INT, 'Page number'),
                 'perpage' => new external_value(PARAM_INT, 'Number per page'),
-                'contextid' => new external_value(PARAM_INT, 'Context ID', VALUE_DEFAULT, null),
             ]
         );
     }
@@ -632,12 +631,11 @@ class core_enrol_external extends external_api {
      * @param bool $searchanywhere Match anywhere in the string
      * @param int $page Page number
      * @param int $perpage Max per page
-     * @param ?int $contextid Context ID we are in - we might use search on activity level and its group mode can be different from course group mode.
      * @return array An array of users
      * @throws moodle_exception
      */
-    public static function search_users(int $courseid, string $search, bool $searchanywhere, int $page, int $perpage, ?int $contextid = null): array {
-        global $PAGE, $CFG;
+    public static function search_users(int $courseid, string $search, bool $searchanywhere, int $page, int $perpage): array {
+        global $PAGE, $DB, $CFG;
 
         require_once($CFG->dirroot.'/enrol/locallib.php');
         require_once($CFG->dirroot.'/user/lib.php');
@@ -649,15 +647,10 @@ class core_enrol_external extends external_api {
                     'search'         => $search,
                     'searchanywhere' => $searchanywhere,
                     'page'           => $page,
-                    'perpage'        => $perpage,
-                    'contextid'      => $contextid,
-                ],
+                    'perpage'        => $perpage
+                ]
         );
-        if (isset($contextid)) {
-            $context = context::instance_by_id($params['contextid']);
-        } else {
-            $context = context_course::instance($params['courseid']);
-        }
+        $context = context_course::instance($params['courseid']);
         try {
             self::validate_context($context);
         } catch (Exception $e) {
@@ -671,14 +664,10 @@ class core_enrol_external extends external_api {
         $course = get_course($params['courseid']);
         $manager = new course_enrolment_manager($PAGE, $course);
 
-        $users = $manager->search_users(
-            $params['search'],
-            $params['searchanywhere'],
-            $params['page'],
-            $params['perpage'],
-            false,
-            $params['contextid']
-        );
+        $users = $manager->search_users($params['search'],
+                                        $params['searchanywhere'],
+                                        $params['page'],
+                                        $params['perpage']);
 
         $results = [];
         // Add also extra user fields.

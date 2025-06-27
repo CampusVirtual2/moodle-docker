@@ -37,7 +37,8 @@ require_once($CFG->dirroot . '/webservice/tests/helpers.php');
  * @copyright  2012 Jerome Mouneyrac
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class externallib_test extends externallib_advanced_testcase {
+class externallib_test extends externallib_advanced_testcase {
+    //core_course_externallib_testcase
 
     /**
      * Tests set up
@@ -363,44 +364,6 @@ final class externallib_test extends externallib_advanced_testcase {
     }
 
     /**
-     * Test update_categories method for moving categories
-     */
-    public function test_update_categories_moving() {
-        $this->resetAfterTest();
-
-        // Create data.
-        $categorya  = self::getDataGenerator()->create_category([
-            'name' => 'CAT_A',
-        ]);
-        $categoryasub = self::getDataGenerator()->create_category([
-            'name' => 'SUBCAT_A',
-            'parent' => $categorya->id
-        ]);
-        $categoryb  = self::getDataGenerator()->create_category([
-            'name' => 'CAT_B',
-        ]);
-
-        // Create a new test user.
-        $testuser = self::getDataGenerator()->create_user();
-        $this->setUser($testuser);
-
-        // Set the capability for CAT_A only.
-        $contextcata = context_coursecat::instance($categorya->id);
-        $roleid = $this->assignUserCapability('moodle/category:manage', $contextcata->id);
-
-        // Then we move SUBCAT_A parent: CAT_A => CAT_B.
-        $categories = [
-            [
-                'id' => $categoryasub->id,
-                'parent' => $categoryb->id
-            ]
-        ];
-
-        $this->expectException('required_capability_exception');
-        core_course_external::update_categories($categories);
-    }
-
-    /**
      * Test create_courses numsections
      */
     public function test_create_course_numsections() {
@@ -597,7 +560,7 @@ final class externallib_test extends externallib_advanced_testcase {
      *
      * @return array
      */
-    public static function course_empty_field_provider(): array {
+    public function course_empty_field_provider(): array {
         return [
             [[
                 'fullname' => '',
@@ -3091,7 +3054,7 @@ final class externallib_test extends externallib_advanced_testcase {
     /**
      * Test cases for the get_enrolled_courses_by_timeline_classification test.
      */
-    public static function get_get_enrolled_courses_by_timeline_classification_test_cases(): array {
+    public function get_get_enrolled_courses_by_timeline_classification_test_cases():array {
         $now = time();
         $day = 86400;
 
@@ -3353,6 +3316,16 @@ final class externallib_test extends externallib_advanced_testcase {
                 'classification' => 'all',
                 'limit' => 5,
                 'offset' => 5,
+                'sort' => "ul.timeaccess abcdasc",
+                'expectedcourses' => [],
+                'expectednextoffset' => 0,
+                'expectedexception' => 'Invalid sort direction in $sort parameter in enrol_get_my_courses()',
+            ],
+            'all limit and offset with wrong sort direction' => [
+                'coursedata' => $coursedata,
+                'classification' => 'all',
+                'limit' => 5,
+                'offset' => 5,
                 'sort' => "ul.timeaccess.foo ascd",
                 'expectedcourses' => [],
                 'expectednextoffset' => 0,
@@ -3364,6 +3337,16 @@ final class externallib_test extends externallib_advanced_testcase {
                 'limit' => 5,
                 'offset' => 5,
                 'sort' => "foobar",
+                'expectedcourses' => [],
+                'expectednextoffset' => 0,
+                'expectedexception' => 'Invalid $sort parameter in enrol_get_my_courses()',
+            ],
+            'all limit and offset with wrong field name' => [
+                'coursedata' => $coursedata,
+                'classification' => 'all',
+                'limit' => 5,
+                'offset' => 5,
+                'sort' => "ul.foobar",
                 'expectedcourses' => [],
                 'expectednextoffset' => 0,
                 'expectedexception' => 'Invalid $sort parameter in enrol_get_my_courses()',
@@ -3494,7 +3477,7 @@ final class externallib_test extends externallib_advanced_testcase {
     /**
      * Test the get_enrolled_courses_by_timeline_classification function.
      *
-     * @dataProvider get_get_enrolled_courses_by_timeline_classification_test_cases
+     * @dataProvider get_get_enrolled_courses_by_timeline_classification_test_cases()
      * @param array $coursedata Courses to create
      * @param string $classification Timeline classification
      * @param int $limit Maximum number of results
@@ -3639,12 +3622,6 @@ final class externallib_test extends externallib_advanced_testcase {
         $this->assignUserCapability('moodle/user:viewdetails', $usercontext, $teacherroleid);
 
         // Sorted by course id DESC.
-        // User without moodle/user:viewalldetails capability will not be able to see the course details.
-        $result = core_course_external::get_recent_courses($student->id);
-        $this->assertCount(0, $result);
-
-        // User with moodle/user:viewalldetails capability will be able to see the course details.
-        $this->assignUserCapability('moodle/user:viewalldetails', $usercontext, $teacherroleid);
         $result = core_course_external::get_recent_courses($student->id);
         $this->assertCount(1, $result);
         $this->assertEquals($courses[0]->id, array_shift($result)->id);
@@ -3748,12 +3725,6 @@ final class externallib_test extends externallib_advanced_testcase {
 
         $this->assertEquals(2, count($users['users']));
         $this->assertEquals($expectedusers, $users);
-
-        // Prohibit the capability for viewing course participants.
-        $this->unassignUserCapability('moodle/course:viewparticipants', null, null, $course1->id);
-        $this->expectException(required_capability_exception::class);
-        $this->expectExceptionMessage('Sorry, but you do not currently have permissions to do that (View participants)');
-        core_course_external::get_enrolled_users_by_cmid($forum1->cmid);
     }
 
     /**

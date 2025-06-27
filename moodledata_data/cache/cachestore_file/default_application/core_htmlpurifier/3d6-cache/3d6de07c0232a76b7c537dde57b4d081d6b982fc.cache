@@ -1,0 +1,6 @@
+s:503:"<p>Quando selecionado, o progresso do usuário com as atividades será mostrado em cada bloco, como uma <em>fração</em> (por exemplo: 'Progresso 2/10' que significa que 2 de 10 atividades serão concluídas) ou como uma <em> porcentagem</em> em um círculo.</p>
+
+<p>Isso só pode ser usado se "Conclusão &gt; Ativar acompanhamento de conclusão" tiver sido ativado.</p>
+
+<p>Se não houverem atividades à acompanhar dentro de um determinado bloco, o indicador não será exibido para esse bloco.</p>
+";

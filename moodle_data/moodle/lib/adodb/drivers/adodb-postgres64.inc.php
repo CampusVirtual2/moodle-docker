@@ -136,8 +136,7 @@ class ADODB_postgres64 extends ADOConnection{
 	// get the last id - never tested
 	function pg_insert_id($tablename,$fieldname)
 	{
-		$sequence = pg_escape_identifier($this->_connectionID, $tablename .'_'. $fieldname .'_seq');
-		$result = pg_query($this->_connectionID, 'SELECT last_value FROM '. $sequence);
+		$result=pg_query($this->_connectionID, 'SELECT last_value FROM '. $tablename .'_'. $fieldname .'_seq');
 		if ($result) {
 			$arr = @pg_fetch_row($result,0);
 			pg_free_result($result);

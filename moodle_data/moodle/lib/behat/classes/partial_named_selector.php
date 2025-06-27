@@ -104,7 +104,6 @@ class behat_partial_named_selector extends \Behat\Mink\Selector\PartialNamedSele
         'group_message_tab' => 'group_message_tab',
         'group_message_list_area' => 'group_message_list_area',
         'group_message_message_content' => 'group_message_message_content',
-        'heading' => 'heading',
         'icon_container' => 'icon_container',
         'icon' => 'icon',
         'link' => 'link',
@@ -207,9 +206,6 @@ XPATH
     , 'group_message_message_content' => <<<XPATH
         .//*[@data-region='message-drawer']//*[@data-region='message' and @data-message-id and contains(., %locator%)]
 XPATH
-    , 'heading' => <<<XPATH
-        .//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6][contains(normalize-space(.), %locator%)]
-XPATH
     , 'icon_container' => <<<XPATH
         .//span[contains(@data-region, concat(%locator%,'-icon-container'))]
 XPATH
@@ -293,13 +289,7 @@ XPATH
 XPATH
         ,
             'date_time' => <<<XPATH
-.//*[
-    (%idMatch% or ./legend[%exactTagTextMatch%]
-        or parent::div[@data-groupname=%locator% or ./label[contains(normalize-space(string(.)), %locator%)]]
-    ) and
-    (@data-fieldtype='date' or @data-fieldtype='date_time'
-        or @data-fieldtype='date_selector' or @data-fieldtype='date_time_selector')
-]
+.//fieldset[(%idMatch% or ./legend[%exactTagTextMatch%]) and (@data-fieldtype='date' or @data-fieldtype='date_time')]
 XPATH
         ,
             'select_menu' => <<<XPATH

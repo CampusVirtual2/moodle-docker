@@ -101,14 +101,13 @@ class block_tag_flickr extends block_base {
             $request .= '&api_key='.FLICKR_DEV_KEY;
             $request .= '&photoset_id='.$this->config->photoset;
             $request .= '&per_page='.$numberofphotos;
-            $request .= '&format=json';
-            // We need to add nojsoncallback=? here, otherwise, Flickr will return the jsonFlickrApi object.
-            $request .= '&nojsoncallback=?';
+            $request .= '&format=php_serial';
 
             $response = $this->fetch_request($request);
-            $search = @json_decode($response, true);
-            if (!is_array($search) || json_last_error() !== JSON_ERROR_NONE) {
-                // The response didn't appear to be in correct format.
+
+            $search = @unserialize($response);
+            if ($search === false && $search != serialize(false)) {
+                // The response didn't appear to be anything serialized, exit...
                 return;
             }
 
@@ -127,14 +126,13 @@ class block_tag_flickr extends block_base {
             $request .= '&tags='.$tagscsv;
             $request .= '&per_page='.$numberofphotos;
             $request .= '&sort='.$sortby;
-            $request .= '&format=json';
-            // We need to add nojsoncallback=? here, otherwise, Flickr will return the jsonFlickrApi object.
-            $request .= '&nojsoncallback=?';
+            $request .= '&format=php_serial';
 
             $response = $this->fetch_request($request);
-            $search = @json_decode($response, true);
-            if (!is_array($search) || json_last_error() !== JSON_ERROR_NONE) {
-                // The response didn't appear to be in correct format.
+
+            $search = @unserialize($response);
+            if ($search === false && $search != serialize(false)) {
+                // The response didn't appear to be anything serialized, exit...
                 return;
             }
             $photos = array_values($search['photos']['photo']);

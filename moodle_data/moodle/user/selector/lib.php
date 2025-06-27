@@ -763,11 +763,11 @@ abstract class groups_user_selector_base extends user_selector_base {
         foreach ($roles as $role) {
             if ($search) {
                 $a = new stdClass;
-                $a->role = html_entity_decode($role->name, ENT_QUOTES, 'UTF-8');
+                $a->role = $role->name;
                 $a->search = $search;
                 $groupname = get_string('matchingsearchandrole', '', $a);
             } else {
-                $groupname = html_entity_decode($role->name, ENT_QUOTES, 'UTF-8');
+                $groupname = $role->name;
             }
             $groupedusers[$groupname] = $role->users;
             foreach ($groupedusers[$groupname] as &$user) {

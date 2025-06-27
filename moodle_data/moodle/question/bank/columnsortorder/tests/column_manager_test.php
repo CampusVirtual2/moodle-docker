@@ -38,7 +38,7 @@ require_once($CFG->dirroot . '/question/classes/external.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @coversDefaultClass \qbank_columnsortorder\column_manager
  */
-final class column_manager_test extends advanced_testcase {
+class column_manager_test extends advanced_testcase {
 
     /**
      * Setup testcase.

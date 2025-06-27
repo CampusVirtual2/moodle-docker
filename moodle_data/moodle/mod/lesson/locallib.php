@@ -323,7 +323,7 @@ function lesson_grade($lesson, $ntries, $userid = 0) {
                 $attempt = end($attempts);
                 // If essay question, handle it, otherwise add to score
                 if ($page->requires_manual_grading()) {
-                    $useranswerobj = unserialize_object($attempt->useranswer);
+                    $useranswerobj = unserialize($attempt->useranswer);
                     if (isset($useranswerobj->score)) {
                         $earned += $useranswerobj->score;
                     }
@@ -1063,7 +1063,7 @@ function lesson_get_overview_report_table_and_data(lesson $lesson, $currentgroup
             $row = [$studentname];
 
             foreach ($extrafields as $field) {
-                $row[] = s($student->$field);
+                $row[] = $student->$field;
             }
 
             $row[] = $attempts;
@@ -2886,17 +2886,15 @@ class lesson extends lesson_base {
 
         if ($this->properties->usepassword && empty($USER->lessonloggedin[$this->id])) {
             $correctpass = false;
-
-            $userpassword = trim((string) $userpassword);
-            if ($userpassword !== '' &&
-                    ($this->properties->password === md5($userpassword) || $this->properties->password === $userpassword)) {
+            if (!empty($userpassword) &&
+                    (($this->properties->password == md5(trim($userpassword))) || ($this->properties->password == trim($userpassword)))) {
                 // With or without md5 for backward compatibility (MDL-11090).
                 $correctpass = true;
                 $USER->lessonloggedin[$this->id] = true;
             } else if (isset($this->properties->extrapasswords)) {
                 // Group overrides may have additional passwords.
                 foreach ($this->properties->extrapasswords as $password) {
-                    if ($password === md5($userpassword) || $password === $userpassword) {
+                    if (strcmp($password, md5(trim($userpassword))) === 0 || strcmp($password, trim($userpassword)) === 0) {
                         $correctpass = true;
                         $USER->lessonloggedin[$this->id] = true;
                     }
@@ -2921,11 +2919,11 @@ class lesson extends lesson_base {
 
         if ($dependentlesson = $DB->get_record('lesson', array('id' => $this->properties->dependency))) {
             // Lesson exists, so we can proceed.
-            $conditions = unserialize_object($this->properties->conditions);
+            $conditions = unserialize($this->properties->conditions);
             // Assume false for all.
             $errors = array();
             // Check for the timespent condition.
-            if (!empty($conditions->timespent)) {
+            if ($conditions->timespent) {
                 $timespent = false;
                 if ($attempttimes = $DB->get_records('lesson_timer', array("userid" => $USER->id, "lessonid" => $dependentlesson->id))) {
                     // Go through all the times and test to see if any of them satisfy the condition.
@@ -2941,7 +2939,7 @@ class lesson extends lesson_base {
                 }
             }
             // Check for the gradebetterthan condition.
-            if (!empty($conditions->gradebetterthan)) {
+            if ($conditions->gradebetterthan) {
                 $gradebetterthan = false;
                 if ($studentgrades = $DB->get_records('lesson_grades', array("userid" => $USER->id, "lessonid" => $dependentlesson->id))) {
                     // Go through all the grades and test to see if any of them satisfy the condition.
@@ -2956,7 +2954,7 @@ class lesson extends lesson_base {
                 }
             }
             // Check for the completed condition.
-            if (!empty($conditions->completed)) {
+            if ($conditions->completed) {
                 if (!$DB->count_records('lesson_grades', array('userid' => $USER->id, 'lessonid' => $dependentlesson->id))) {
                     $errors[] = get_string('completederror', 'lesson');
                 }

@@ -30,10 +30,9 @@ Feature: Restrict activities availability
 
   @javascript @skip_chrome_zerosize
   Scenario: Activities can not be added when the admin restricts the permissions
-    Given the following "role capability" exists:
-      | role                 | editingteacher  |
-      | mod/chat:addinstance | prohibit        |
-    And I log in as "admin"
+    Given I log in as "admin"
+    And I set the following system permissions of "Teacher" role:
+      | mod/chat:addinstance | Prohibit |
     And I am on the "Course 1" "permissions" page
     And I override the system permissions of "Teacher" role with:
       | mod/glossary:addinstance | Prohibit |

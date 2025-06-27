@@ -113,19 +113,13 @@ if ($mform->is_cancelled()) {
 
 // Build header to match the rest of the UI.
 $PAGE->add_body_class('mediumwidth');
-$pagename = get_string('exportentries', 'data');
-$titleparts = [
-    $pagename,
-    format_string($data->name),
-    format_string($course->fullname),
-];
-$PAGE->set_title(implode(moodle_page::TITLE_SEPARATOR, $titleparts));
+$PAGE->set_title($data->name);
 $PAGE->set_heading($course->fullname);
 $PAGE->force_settings_menu(true);
 $PAGE->set_secondary_active_tab('modulepage');
 $PAGE->activityheader->disable();
 echo $OUTPUT->header();
-echo $OUTPUT->heading($pagename);
+echo $OUTPUT->heading(get_string('exportentries', 'data'));
 
 groups_print_activity_menu($cm, $url);
 

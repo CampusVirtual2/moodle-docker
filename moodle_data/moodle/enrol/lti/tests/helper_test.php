@@ -23,7 +23,7 @@ namespace enrol_lti;
  * @copyright 2016 Mark Nelson <markn@moodle.com>
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class helper_test extends \advanced_testcase {
+class helper_test extends \advanced_testcase {
 
     /**
      * @var \stdClass $user1 A user.
@@ -404,7 +404,7 @@ final class helper_test extends \advanced_testcase {
     /**
      * Data provider for the set_xpath test.
      */
-    public static function set_xpath_provider(): array {
+    public function set_xpath_provider() {
         return [
             "Correct structure" => [
                 "parameters" => [

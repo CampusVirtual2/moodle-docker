@@ -10,12 +10,20 @@ Feature: View activity completion information for the label
       | student1 | Vinnie    | Student1 | student1@example.com |
       | teacher1 | Darrell   | Teacher1 | teacher1@example.com |
     And the following "courses" exist:
-      | fullname | shortname | category | enablecompletion |
-      | Course 1 | C1        | 0        | 1                |
+      | fullname | shortname | category |
+      | Course 1 | C1        | 0        |
     And the following "course enrolments" exist:
       | user     | course | role           |
       | student1 | C1     | student        |
       | teacher1 | C1     | editingteacher |
+    And I log in as "teacher1"
+    And I am on "Course 1" course homepage
+    And I navigate to "Settings" in current page administration
+    And I expand all fieldsets
+    And I set the following fields to these values:
+      | Enable completion tracking | Yes |
+      | Show activity completion conditions | No  |
+    And I press "Save and display"
     And the following "activity" exists:
       | activity       | label         |
       | course         | C1            |
@@ -25,7 +33,7 @@ Feature: View activity completion information for the label
 
   @javascript
   Scenario: The manual completion button will be shown on the course page if the Show activity completion conditions is set to No
-    Given I am on the "Course 1" course page logged in as teacher1
+    Given I am on "Course 1" course homepage
     # Teacher view.
     And the manual completion button for "Test label 1" should exist
     And the manual completion button for "Test label 1" should be disabled
@@ -40,7 +48,7 @@ Feature: View activity completion information for the label
 
   @javascript
   Scenario: The manual completion button will be shown on the course page if the Show activity completion conditions is set to Yes
-    Given I am on the "Course 1" course page logged in as teacher1
+    Given I am on "Course 1" course homepage
     And I navigate to "Settings" in current page administration
     And I expand all fieldsets
     And I set the field "Show activity completion conditions" to "Yes"

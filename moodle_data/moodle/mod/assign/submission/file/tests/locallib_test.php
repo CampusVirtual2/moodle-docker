@@ -169,7 +169,7 @@ class locallib_test extends \advanced_testcase {
      *
      * @return array of testcases
      */
-    public static function submission_is_empty_testcases(): array {
+    public function submission_is_empty_testcases() {
         return [
             'With file' => [
                 [

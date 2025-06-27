@@ -38,7 +38,7 @@ use \core_privacy\tests\provider_testcase;
  * @copyright  2020 Ferran Recio <ferran@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class provider_test extends provider_testcase {
+class provider_test extends provider_testcase {
 
     /** @var stdClass User without any attempt. */
     protected $student0;

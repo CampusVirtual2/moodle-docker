@@ -291,6 +291,7 @@ Feature: Users can view and manage data presets
     And I should see "This is a short text"
     Then "Use this preset" "button" should exist
 
+  @javascript
   Scenario: Teachers can export any saved preset
     Given I am on the "Mountain landscapes" "data activity" page logged in as teacher1
     When I follow "Presets"
@@ -299,12 +300,10 @@ Feature: Users can view and manage data presets
     # The teacher should be able to export any saved preset.
     And I open the action menu in "Saved preset by teacher1" "table_row"
     Then I should see "Export"
-    And following "Export" in the "Saved preset by teacher1" "table_row" should download a file that:
-      | Contains file in zip | preset.xml |
+    And following "Export" "link" in the "Saved preset by teacher1" "table_row" should download between "1" and "5000" bytes
     And I open the action menu in "Saved preset 1" "table_row"
     And I should see "Export"
-    And following "Export" in the "Saved preset 1" "table_row" should download a file that:
-      | Contains file in zip | preset.xml |
+    And following "Export" "link" in the "Saved preset 1" "table_row" should download between "1" and "5000" bytes
 
   @javascript @_file_upload
   Scenario Outline: Admins and Teachers can load a preset from a file

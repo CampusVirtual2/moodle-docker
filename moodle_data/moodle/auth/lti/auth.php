@@ -116,7 +116,7 @@ class auth_plugin_lti extends \auth_plugin_base {
             if (isloggedin()) {
                 // If a different user is currently logged in, authenticate the linked user instead.
                 global $USER;
-                if ($USER->id !== $user->id) {
+                if ((int) $USER->id !== $user->id) {
                     complete_user_login($user);
                 }
                 // If the linked user is already logged in, skip the call to complete_user_login() because this affects deep linking
@@ -199,6 +199,7 @@ class auth_plugin_lti extends \auth_plugin_base {
                 }
             }
             $user = $this->create_new_account($member, $iss);
+            $this->update_user_account($user, $member, $iss);
             return \core_user::get_user($user->id);
         }
     }
@@ -380,11 +381,7 @@ class auth_plugin_lti extends \auth_plugin_base {
             'lastname' => $userdata['family_name'] ?? $iss,
             'email' => $email
         ];
-        $userfieldstocompare = array_intersect_key((array) $user, $update);
-
-        if (!empty(array_diff($update, $userfieldstocompare))) {
-            user_update_user($update); // Only update if there's a change.
-        }
+        user_update_user($update);
 
         if (!empty($userdata['picture'])) {
             try {

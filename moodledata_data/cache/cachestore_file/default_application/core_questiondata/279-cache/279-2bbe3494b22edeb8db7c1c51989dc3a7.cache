@@ -1,0 +1,26 @@
+O:8:"stdClass":26:{s:2:"id";s:3:"279";s:8:"category";s:2:"61";s:6:"parent";s:1:"0";s:4:"name";s:20:"Parte I - Questão 7";s:12:"questiontext";s:1246:"<p dir="ltr" style="text-align: left;">Um programador iniciante tentou criar um algoritmo que deveria exibir os números de 1 a 5 na tela. No entanto, ele cometeu um erro na lógica da estrutura de repetição. Analise o código abaixo:</p>
+<div class="console-visualg">
+  <div><span class="keyword">algoritmo</span> <span class="string">"ContagemErrada"</span></div>
+
+  <div><span class="keyword">var</span></div>
+  <div><span class="variable">contador</span>: <span class="keyword">inteiro</span></div>
+
+  <div><br></div> <div><span class="keyword">inicio</span></div>
+
+  <div><span class="variable">contador</span> &lt;- 1</div>
+
+  <div><span class="keyword">enquanto</span> <span class="variable">contador</span> &lt;= 5 <span class="keyword">faca</span></div>
+  <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">escreval</span>("O número é: ", <span class="variable">contador</span>)</div>
+  <div><span class="keyword">fimenquanto</span></div>
+
+  <div><span class="function">escreval</span>("Fim da contagem.")</div>
+
+  <div><br></div>
+
+  <div><span class="keyword">fimalgoritmo<br><br><br></span></div>
+</div>
+
+<p dir="ltr" style="text-align: left;">Qual será o comportamento deste algoritmo ao ser executado?</p>";s:18:"questiontextformat";s:1:"1";s:15:"generalfeedback";s:491:"<p>A resposta correta é a alternativa <strong>"C"</strong>.<br><br></p>
+<div class="destaque-dica">
+    <strong><span style="font-size: 1.5em;">📌 Dica:</span><br></strong><br><span style="font-size: 16px">Analise a estrutura `Enquanto...Faca`. A condição é testada antes de cada iteração. O que acontece com o valor da variável `contador` dentro do laço? Ela é modificada de alguma forma que eventualmente torne a condição `contador &lt;= 5` falsa?<br><br>
+</span></div><br>";s:21:"generalfeedbackformat";s:1:"1";s:11:"defaultmark";d:1;s:7:"penalty";d:0;s:5:"qtype";s:11:"multichoice";s:6:"length";s:1:"1";s:5:"stamp";s:38:"campusvirtual2.com+250626191208+yxhbr8";s:11:"timecreated";s:10:"1750965128";s:12:"timemodified";s:10:"1750965128";s:9:"createdby";s:1:"4";s:10:"modifiedby";s:1:"4";s:8:"idnumber";N;s:9:"contextid";s:3:"552";s:6:"status";s:5:"ready";s:9:"versionid";s:3:"247";s:7:"version";s:1:"1";s:19:"questionbankentryid";s:3:"240";s:14:"categoryobject";O:8:"stdClass":9:{s:2:"id";s:2:"61";s:4:"name";s:7:"Parte I";s:9:"contextid";s:3:"552";s:4:"info";s:0:"";s:10:"infoformat";s:1:"1";s:5:"stamp";s:52:"addiemooc38.escolavirtual.gov.br+221014194013+Zlu2uj";s:6:"parent";s:2:"60";s:9:"sortorder";s:3:"999";s:8:"idnumber";N;}s:7:"options";O:8:"stdClass":15:{s:2:"id";s:3:"157";s:10:"questionid";s:3:"279";s:6:"layout";s:1:"0";s:6:"single";s:1:"1";s:14:"shuffleanswers";s:1:"0";s:15:"correctfeedback";s:27:"Sua resposta está correta.";s:21:"correctfeedbackformat";s:1:"1";s:24:"partiallycorrectfeedback";s:40:"Sua resposta está parcialmente correta.";s:30:"partiallycorrectfeedbackformat";s:1:"1";s:17:"incorrectfeedback";s:29:"Sua resposta está incorreta.";s:23:"incorrectfeedbackformat";s:1:"1";s:15:"answernumbering";s:4:"ABCD";s:14:"shownumcorrect";s:1:"1";s:23:"showstandardinstruction";s:1:"0";s:7:"answers";a:5:{i:972;O:8:"stdClass":7:{s:2:"id";s:3:"972";s:8:"question";s:3:"279";s:6:"answer";s:122:"<p dir="ltr" style="text-align: left;">O programa exibirá os números de 1 a 5 e depois a mensagem "Fim da contagem."</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:973;O:8:"stdClass":7:{s:2:"id";s:3:"973";s:8:"question";s:3:"279";s:6:"answer";s:134:"<p dir="ltr" style="text-align: left;">O programa não exibirá nada, pois a condição contador &lt;= 5 é falsa desde o início.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:974;O:8:"stdClass":7:{s:2:"id";s:3:"974";s:8:"question";s:3:"279";s:6:"answer";s:142:"<p dir="ltr" style="text-align: left;">O programa exibirá "O número é: 1" infinitamente e nunca chegará à mensagem "Fim da contagem."</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"1.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:975;O:8:"stdClass":7:{s:2:"id";s:3:"975";s:8:"question";s:3:"279";s:6:"answer";s:130:"<p dir="ltr" style="text-align: left;">O programa exibirá apenas "O número é: 1" uma única vez e depois "Fim da contagem."</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:976;O:8:"stdClass":7:{s:2:"id";s:3:"976";s:8:"question";s:3:"279";s:6:"answer";s:104:"<p dir="ltr" style="text-align: left;">O programa gerará um erro de sintaxe e não será executado.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}}}s:5:"hints";a:0:{}}

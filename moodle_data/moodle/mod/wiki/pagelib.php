@@ -660,6 +660,7 @@ class page_wiki_comments extends page_wiki {
             $cell1 = new html_table_cell($OUTPUT->user_picture($user, array('popup' => true)));
             $cell2 = new html_table_cell(get_string('bynameondate', 'forum', $by));
             $cell3 = new html_table_cell();
+            $cell3->atributtes ['width'] = "80%";
             $cell4 = new html_table_cell();
             $cell5 = new html_table_cell();
 
@@ -834,7 +835,7 @@ class page_wiki_editcomment extends page_wiki {
 
         if ($this->format == 'html') {
             $com->action = 'edit';
-            $com->entrycomment_editor['text'] = clean_text($com->content, $this->format);
+            $com->entrycomment_editor['text'] = $com->content;
             $com->commentoptions = array('trusttext' => true, 'maxfiles' => 0);
 
             $this->form->set_data($com);

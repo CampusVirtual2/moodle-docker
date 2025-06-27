@@ -35,7 +35,7 @@ use grade_item;
  * @copyright 2019 Andrew Nicols <andrew@nicols.co.uk>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class store_test extends advanced_testcase {
+class store_test extends advanced_testcase {
 
     public static function setupBeforeClass(): void {
         global $CFG;
@@ -298,7 +298,7 @@ final class store_test extends advanced_testcase {
      *
      * @return array
      */
-    public static function execute_out_of_range_provider(): array {
+    public function execute_out_of_range_provider(): array {
         return [
             'above' => [
                 'max' => 100,

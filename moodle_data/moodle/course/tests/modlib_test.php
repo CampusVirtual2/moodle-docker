@@ -16,6 +16,12 @@
 
 namespace core_course;
 
+defined('MOODLE_INTERNAL') || die();
+
+global $CFG;
+require_once($CFG->dirroot . '/course/lib.php');
+require_once($CFG->dirroot . '/course/modlib.php');
+
 /**
  * Module lib related unit tests
  *
@@ -24,16 +30,7 @@ namespace core_course;
  * @copyright  2016 Juan Leyva
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class modlib_test extends \advanced_testcase {
-    /**
-     * Setup to ensure that fixtures are loaded.
-     */
-    public static function setUpBeforeClass(): void {
-        global $CFG;
-        require_once($CFG->dirroot . '/course/lib.php');
-        require_once($CFG->dirroot . '/course/modlib.php');
-        parent::setUpBeforeClass();
-    }
+class modlib_test extends \advanced_testcase {
 
     /**
      * Test prepare_new_moduleinfo_data

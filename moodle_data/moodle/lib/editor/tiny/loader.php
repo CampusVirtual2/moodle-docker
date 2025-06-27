@@ -49,12 +49,6 @@ class loader {
     /** @var string The mimetype to send */
     protected $mimetype = null;
 
-    /** @var string The component to use */
-    protected $component;
-
-    /** @var string The complete path to the candidate file */
-    protected $candidatefile;
-
     /**
      * Initialise the class, parse the request and serve the content.
      */
@@ -114,8 +108,7 @@ class loader {
      */
     public function serve_file(): void {
         // Attempt to send the cached filepathpack.
-        // We only cache the file if the rev is valid.
-        if (min_is_revision_valid_and_current($this->rev)) {
+        if ($this->rev > 0) {
             if ($this->is_candidate_file_available()) {
                 // The send_cached_file_if_available function will exit if successful.
                 // In theory the file could become unavailable after checking that the file exists.

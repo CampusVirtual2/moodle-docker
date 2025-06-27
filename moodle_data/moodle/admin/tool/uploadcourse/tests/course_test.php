@@ -26,7 +26,7 @@ use tool_uploadcourse_course;
  * @copyright  2013 Frédéric Massart
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or late
  */
-final class course_test extends \advanced_testcase {
+class course_test extends \advanced_testcase {
 
     public function test_proceed_without_prepare() {
         $this->resetAfterTest(true);
@@ -425,7 +425,6 @@ final class course_test extends \advanced_testcase {
             'groupmode' => '2',
             'groupmodeforce' => '1',
             'enablecompletion' => '1',
-            'showactivitydates' => '1',
             'tags' => 'Cat, Dog',
 
             'role_teacher' => 'Knight',
@@ -479,7 +478,6 @@ final class course_test extends \advanced_testcase {
         $this->assertEquals($data['groupmode'], $course->groupmode);
         $this->assertEquals($data['groupmodeforce'], $course->groupmodeforce);
         $this->assertEquals($data['enablecompletion'], $course->enablecompletion);
-        $this->assertEquals($data['showactivitydates'], $course->showactivitydates);
         $this->assertEquals($data['tags'], join(', ', \core_tag_tag::get_item_tags_array('core', 'course', $course->id)));
 
         // Roles.
@@ -532,7 +530,6 @@ final class course_test extends \advanced_testcase {
             'groupmode' => '1',
             'groupmodeforce' => '0',
             'enablecompletion' => '0',
-            'showactivitydates' => '0',
 
             'role_teacher' => 'Teacher',
             'role_manager' => 'Manager',
@@ -586,7 +583,6 @@ final class course_test extends \advanced_testcase {
         $this->assertEquals($data['groupmode'], $course->groupmode);
         $this->assertEquals($data['groupmodeforce'], $course->groupmodeforce);
         $this->assertEquals($data['enablecompletion'], $course->enablecompletion);
-        $this->assertEquals($data['showactivitydates'], $course->showactivitydates);
 
         // Roles.
         $roleids = array();
@@ -648,7 +644,6 @@ final class course_test extends \advanced_testcase {
             'groupmode' => '2',
             'groupmodeforce' => '1',
             'enablecompletion' => '1',
-            'showactivitydates' => '1',
         );
 
         $this->assertFalse($DB->record_exists('course', array('shortname' => 'c1')));
@@ -678,7 +673,6 @@ final class course_test extends \advanced_testcase {
         $this->assertEquals($defaultdata['groupmode'], $course->groupmode);
         $this->assertEquals($defaultdata['groupmodeforce'], $course->groupmodeforce);
         $this->assertEquals($defaultdata['enablecompletion'], $course->enablecompletion);
-        $this->assertEquals($defaultdata['showactivitydates'], $course->showactivitydates);
 
         // Update.
         $cat = $this->getDataGenerator()->create_category();
@@ -707,7 +701,6 @@ final class course_test extends \advanced_testcase {
             'groupmode' => '1',
             'groupmodeforce' => '0',
             'enablecompletion' => '0',
-            'showactivitydates' => '0',
         );
 
         $this->assertTrue($DB->record_exists('course', array('shortname' => 'c1')));
@@ -737,7 +730,6 @@ final class course_test extends \advanced_testcase {
         $this->assertEquals($defaultdata['groupmode'], $course->groupmode);
         $this->assertEquals($defaultdata['groupmodeforce'], $course->groupmodeforce);
         $this->assertEquals($defaultdata['enablecompletion'], $course->enablecompletion);
-        $this->assertEquals($defaultdata['showactivitydates'], $course->showactivitydates);
     }
 
     public function test_rename() {
@@ -1182,7 +1174,7 @@ final class course_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function enrolment_uploaddata_error_provider(): array {
+    public function enrolment_uploaddata_error_provider(): array {
         return [
             ['errorcannotcreateorupdateenrolment', [
                 'shortname' => 'C1',

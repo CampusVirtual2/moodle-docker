@@ -21,6 +21,11 @@ use question_engine;
 use quiz;
 use quiz_attempt;
 
+defined('MOODLE_INTERNAL') || die();
+
+global $CFG;
+require_once($CFG->dirroot . '/mod/quiz/locallib.php');
+
 /**
  * Quiz attempt walk through.
  *
@@ -31,15 +36,7 @@ use quiz_attempt;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @covers \quiz_attempt
  */
-final class attempt_walkthrough_test extends \advanced_testcase {
-    #[\Override]
-    public static function setUpBeforeClass(): void {
-        global $CFG;
-
-        parent::setUpBeforeClass();
-
-        require_once($CFG->dirroot . '/mod/quiz/locallib.php');
-    }
+class attempt_walkthrough_test extends \advanced_testcase {
 
     /**
      * Create a quiz with questions and walk through a quiz attempt.
@@ -62,13 +59,11 @@ final class attempt_walkthrough_test extends \advanced_testcase {
         $saq = $questiongenerator->create_question('shortanswer', null, array('category' => $cat->id));
         $numq = $questiongenerator->create_question('numerical', null, array('category' => $cat->id));
         $matchq = $questiongenerator->create_question('match', null, ['category' => $cat->id]);
-        $description = $questiongenerator->create_question('description', null, ['category' => $cat->id]);
 
         // Add them to the quiz.
         quiz_add_quiz_question($saq->id, $quiz);
         quiz_add_quiz_question($numq->id, $quiz);
         quiz_add_quiz_question($matchq->id, $quiz);
-        quiz_add_quiz_question($description->id, $quiz);
 
         // Make a user to do the quiz.
         $user1 = $this->getDataGenerator()->create_user();
@@ -83,7 +78,7 @@ final class attempt_walkthrough_test extends \advanced_testcase {
         $attempt = quiz_create_attempt($quizobj, 1, false, $timenow, false, $user1->id);
 
         quiz_start_new_attempt($quizobj, $quba, $attempt, 1, $timenow);
-        $this->assertEquals('1,2,3,4,0', $attempt->layout);
+        $this->assertEquals('1,2,3,0', $attempt->layout);
 
         quiz_attempt_save_started($quizobj, $quba, $attempt);
 
@@ -375,8 +370,9 @@ final class attempt_walkthrough_test extends \advanced_testcase {
         }
     }
 
-    public static function get_correct_response_for_variants(): array {
-        return [[1, 9.9], [2, 8.5], [5, 14.2], [10, 6.8, true]];
+
+    public function get_correct_response_for_variants() {
+        return array(array(1, 9.9), array(2, 8.5), array(5, 14.2), array(10, 6.8, true));
     }
 
     protected $quizwithvariants = null;

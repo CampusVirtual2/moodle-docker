@@ -194,9 +194,10 @@ class subscription_manager {
                 if (!is_null($coursecontext)) {
                     $context = $coursecontext;
                     $courseid = $subscription->courseid;
-                } else if (!empty($subscription->courseid) && ($context =
+                } else if (!empty($subscription->courseid) && ($coursecontext =
                         \context_course::instance($subscription->courseid, IGNORE_MISSING))) {
                     $courseid = $subscription->courseid;
+                    $context = $coursecontext;
                 } else {
                     $courseid = 0;
                     $context = \context_system::instance();

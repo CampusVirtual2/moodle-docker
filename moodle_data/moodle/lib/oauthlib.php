@@ -449,7 +449,7 @@ abstract class oauth2_client extends curl {
     public function is_logged_in() {
         // Has the token expired?
         if (isset($this->accesstoken->expires) && time() >= $this->accesstoken->expires) {
-            $this->store_token(null);
+            $this->log_out();
             return false;
         }
 

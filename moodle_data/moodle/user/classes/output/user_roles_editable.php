@@ -102,10 +102,8 @@ class user_roles_editable extends \core\output\inplace_editable {
                 }
             }
         }
-
-        $fullname = htmlspecialchars(fullname($user), ENT_QUOTES, 'utf-8');
-        $this->edithint = get_string('xroleassignments', 'role', $fullname);
-        $this->editlabel = get_string('xroleassignments', 'role', $fullname);
+        $this->edithint = get_string('xroleassignments', 'role', fullname($user));
+        $this->editlabel = get_string('xroleassignments', 'role', fullname($user));
 
         $attributes = ['multiple' => true];
         $this->set_type_autocomplete($options, $attributes);

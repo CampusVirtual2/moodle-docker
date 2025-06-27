@@ -63,8 +63,7 @@ $mform->set_data($data);
     ]);
     $PAGE->add_body_class('limitedwidth');
     echo $OUTPUT->header();
-    $headinglevel = $PAGE->activityheader->get_heading_level();
-    echo $OUTPUT->heading_with_help($strimportquestions, 'importquestions', 'lesson', '', '', $headinglevel);
+    echo $OUTPUT->heading_with_help($strimportquestions, 'importquestions', 'lesson', '', '', 3);
 
 if ($data = $mform->get_data()) {
 

@@ -36,7 +36,6 @@ import {dispatchEvent} from 'core/event_dispatcher';
 import {eventTypes} from './events';
 import {get_string as getString} from 'core/str';
 import {prefetchStrings} from 'core/prefetch';
-import PendingPromise from 'core/pending';
 
 /**
  * The minimum spacing for tour step to display.
@@ -486,22 +485,14 @@ const Tour = class {
             return this.endTour();
         }
 
-        const pendingPromise = new PendingPromise(`tool_usertours/tour:_gotoStep-${stepConfig.stepNumber}`);
-
         if (typeof stepConfig.delay !== 'undefined' && stepConfig.delay && !stepConfig.delayed) {
             stepConfig.delayed = true;
-            window.setTimeout(function(stepConfig, direction) {
-                this._gotoStep(stepConfig, direction);
-                pendingPromise.resolve();
-            }, stepConfig.delay, stepConfig, direction);
+            window.setTimeout(this._gotoStep.bind(this), stepConfig.delay, stepConfig, direction);
 
             return this;
         } else if (!stepConfig.orphan && !this.isStepActuallyVisible(stepConfig)) {
-            const fn = direction == -1 ? 'getPreviousStepNumber' : 'getNextStepNumber';
-            this.gotoStep(this[fn](stepConfig.stepNumber), direction);
-
-            pendingPromise.resolve();
-            return this;
+            let fn = direction == -1 ? 'getPreviousStepNumber' : 'getNextStepNumber';
+            return this.gotoStep(this[fn](stepConfig.stepNumber), direction);
         }
 
         this.hide();
@@ -512,7 +503,6 @@ const Tour = class {
             this.dispatchEvent(eventTypes.stepRendered, {stepConfig});
         }
 
-        pendingPromise.resolve();
         return this;
     }
 
@@ -830,14 +820,12 @@ const Tour = class {
                 left: 0,
             });
 
-            const pendingPromise = new PendingPromise(`tool_usertours/tour:addStepToPage-${stepConfig.stepNumber}`);
             animationTarget
                 .animate({
                     scrollTop: this.calculateScrollTop(stepConfig),
                 }).promise().then(function() {
                         this.positionStep(stepConfig);
                         this.revealStep(stepConfig);
-                        pendingPromise.resolve();
                         return;
                     }.bind(this))
                     .catch(function() {
@@ -909,7 +897,6 @@ const Tour = class {
      */
     revealStep(stepConfig) {
         // Fade the step in.
-        const pendingPromise = new PendingPromise(`tool_usertours/tour:revealStep-${stepConfig.stepNumber}`);
         this.currentStepNode.fadeIn('', $.proxy(function() {
                 // Announce via ARIA.
                 this.announceStep(stepConfig);
@@ -923,7 +910,6 @@ const Tour = class {
                     if (this.currentStepNode) {
                         this.currentStepNode.focus();
                     }
-                    pendingPromise.resolve();
                 }, this), 100);
 
             }, this));
@@ -1171,7 +1157,6 @@ const Tour = class {
             return this;
         }
 
-        const pendingPromise = new PendingPromise('tool_usertours/tour:hide');
         if (this.currentStepNode && this.currentStepNode.length) {
             this.currentStepNode.hide();
             if (this.currentStepPopper) {
@@ -1206,22 +1191,17 @@ const Tour = class {
             this.currentStepConfig = null;
         }
 
+        let fadeTime = 0;
+        if (transition) {
+            fadeTime = 400;
+        }
+
         // Remove the backdrop features.
         $('[data-flexitour="step-background"]').remove();
         $('[data-flexitour="step-backdrop"]').removeAttr('data-flexitour');
-
-        const backdrop = $('[data-flexitour="backdrop"]');
-        if (backdrop.length) {
-            if (transition) {
-                const backdropRemovalPromise = new PendingPromise('tool_usertours/tour:hide:backdrop');
-                backdrop.fadeOut(400, function() {
-                    $(this).remove();
-                    backdropRemovalPromise.resolve();
-                });
-            } else {
-                backdrop.remove();
-            }
-        }
+        $('[data-flexitour="backdrop"]').fadeOut(fadeTime, function() {
+            $(this).remove();
+        });
 
         // Remove aria-describedby and tabindex attributes.
         if (this.currentStepNode && this.currentStepNode.length) {
@@ -1242,8 +1222,6 @@ const Tour = class {
 
         this.currentStepNode = null;
         this.currentStepPopper = null;
-
-        pendingPromise.resolve();
         return this;
     }
 

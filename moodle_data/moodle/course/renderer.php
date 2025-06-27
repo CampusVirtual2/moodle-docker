@@ -97,6 +97,8 @@ class core_course_renderer extends plugin_renderer_base {
      *
      * @deprecated since 2.5
      *
+     * Please see http://docs.moodle.org/dev/Courses_lists_upgrade_to_2.5
+     *
      * @param array $ignored argument ignored
      * @return string
      */
@@ -109,6 +111,8 @@ class core_course_renderer extends plugin_renderer_base {
      * Renderers a category for use with course_category_tree
      *
      * @deprecated since 2.5
+     *
+     * Please see http://docs.moodle.org/dev/Courses_lists_upgrade_to_2.5
      *
      * @param array $category
      * @param int $depth
@@ -1206,7 +1210,7 @@ class core_course_renderer extends plugin_renderer_base {
                 $file->get_filearea() . $file->get_filepath() . $file->get_filename(), !$isimage);
             if ($isimage) {
                 $contentimages .= html_writer::tag('div',
-                    html_writer::empty_tag('img', ['src' => $url, 'alt' => '']),
+                    html_writer::empty_tag('img', ['src' => $url]),
                     ['class' => 'courseimage']);
             } else {
                 $image = $this->output->pix_icon(file_file_icon($file, 24), $file->get_filename(), 'moodle');
@@ -1214,7 +1218,7 @@ class core_course_renderer extends plugin_renderer_base {
                     html_writer::tag('span', $file->get_filename(), ['class' => 'fp-filename']);
                 $contentfiles .= html_writer::tag('span',
                     html_writer::link($url, $filename),
-                    ['class' => 'coursefile fp-filename-icon text-break']);
+                    ['class' => 'coursefile fp-filename-icon']);
             }
         }
         return $contentimages . $contentfiles;
@@ -1658,13 +1662,13 @@ class core_course_renderer extends plugin_renderer_base {
         if (core_course_category::is_simple_site()) {
             // There is only one category in the system, do not display link to it.
             $strfulllistofcourses = get_string('fulllistofcourses');
-            $this->page->set_title($strfulllistofcourses);
+            $this->page->set_title("$site->shortname: $strfulllistofcourses");
         } else if (!$coursecat->id || !$coursecat->is_uservisible()) {
             $strcategories = get_string('categories');
-            $this->page->set_title($strcategories);
+            $this->page->set_title("$site->shortname: $strcategories");
         } else {
             $strfulllistofcourses = get_string('fulllistofcourses');
-            $this->page->set_title($strfulllistofcourses);
+            $this->page->set_title("$site->shortname: $strfulllistofcourses");
         }
 
         // Print current category description
@@ -1757,14 +1761,7 @@ class core_course_renderer extends plugin_renderer_base {
             // This is a request for the course information.
             $courseid = required_param('courseid', PARAM_INT);
 
-            $course = $DB->get_record('course', ['id' => $courseid], '*', IGNORE_MISSING);
-            if ($course === false) {
-                throw new \moodle_exception('invalidcourseid');
-            }
-            $coursecontext = context_course::instance($course->id, MUST_EXIST);
-            if ($course->visible == 0 && !has_capability('moodle/course:viewhiddencourses', $coursecontext)) {
-                throw new \moodle_exception('invalidcourseid');
-            }
+            $course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
 
             $chelper = new coursecat_helper();
             $chelper->set_show_courses(self::COURSECAT_SHOW_COURSES_EXPANDED);

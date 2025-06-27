@@ -30,7 +30,7 @@ use tool_brickfield\area_test_base;
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @coversDefaultClass \tool_brickfield\local\areas\core_question\base
  */
-final class questiontext_test extends area_test_base {
+class questiontext_test extends area_test_base {
     /**
      * Set up before class.
      */

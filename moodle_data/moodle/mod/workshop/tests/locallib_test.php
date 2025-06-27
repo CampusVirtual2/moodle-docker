@@ -39,7 +39,7 @@ require_once(__DIR__ . '/fixtures/testable.php');
 /**
  * Test cases for the internal workshop api
  */
-final class locallib_test extends \advanced_testcase {
+class locallib_test extends \advanced_testcase {
 
     /** @var object */
     protected $course;

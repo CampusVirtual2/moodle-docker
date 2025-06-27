@@ -48,7 +48,8 @@ Feature: View gradebook when single item scales are used
     And I click on "Grade" "link" in the "Student 1" "table_row"
     And I set the field "Grade" to "A"
     And I press "Save changes"
-    When I am on the "Course 1" "grades > course grade settings" page
+    And I am on "Course 1" course homepage
+    And I navigate to "Setup > Course grade settings" in the course gradebook
     And I set the field "Show weightings" to "Show"
     And I set the field "Show contribution to course total" to "Show"
     And I press "Save changes"

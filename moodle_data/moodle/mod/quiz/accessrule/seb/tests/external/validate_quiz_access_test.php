@@ -33,7 +33,7 @@ require_once($CFG->libdir . '/externallib.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @covers \quizaccess_seb\external\validate_quiz_access
  */
-final class validate_quiz_access_test extends \advanced_testcase {
+class validate_quiz_access_test extends \advanced_testcase {
     use \quizaccess_seb_test_helper_trait;
 
     /**
@@ -56,7 +56,7 @@ final class validate_quiz_access_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function bad_parameters_provider(): array {
+    public function bad_parameters_provider(): array {
         return [
             'no params' => [
                 'cmid' => null,

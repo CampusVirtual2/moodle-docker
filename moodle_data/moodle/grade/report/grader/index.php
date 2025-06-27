@@ -107,11 +107,13 @@ if (!empty($target) && !empty($action) && confirm_sesskey()) {
     grade_report_grader::do_process_action($target, $action, $courseid);
 }
 
+$reportname = get_string('pluginname', 'gradereport_grader');
+
 // Do this check just before printing the grade header (and only do it once).
 grade_regrade_final_grades_if_required($course);
 
 // Print header
-print_grade_page_head($COURSE->id, 'report', 'grader', false, false, $buttons);
+print_grade_page_head($COURSE->id, 'report', 'grader', $reportname, false, $buttons);
 
 //Initialise the grader report object that produces the table
 //the class grade_report_grader_ajax was removed as part of MDL-21562

@@ -33,7 +33,7 @@ require_once($CFG->libdir . '/filestorage/file_system_filedir.php');
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @coversDefaultClass \file_system_filedir
  */
-final class file_system_filedir_test extends \advanced_testcase {
+class file_system_filedir_test extends \advanced_testcase {
 
     /**
      * Shared test setUp.
@@ -1107,7 +1107,7 @@ final class file_system_filedir_test extends \advanced_testcase {
      *
      * @return  array
      */
-    public static function contenthash_dataprovider(): array {
+    public function contenthash_dataprovider() {
         return array(
             array(
                 'contenthash'   => 'eee4943847a35a4b6942c6f96daafde06bcfdfab',

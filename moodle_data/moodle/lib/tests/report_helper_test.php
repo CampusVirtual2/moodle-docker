@@ -31,7 +31,7 @@ use core\report_helper;
 /**
  * Tests the functions for report_helper class.
  */
-final class report_helper_test extends \advanced_testcase {
+class report_helper_test extends \advanced_testcase {
     /**
      * Data provider for testing selected report for same and different courses
      *

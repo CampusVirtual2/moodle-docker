@@ -67,14 +67,14 @@ class enrolment {
     /**
      * Return enrolment status for user
      *
-     * @param string|null $value
+     * @param string $value
+     * @param stdClass $row
      * @return string|null
      */
-    public static function enrolment_status(?string $value): ?string {
-        if ($value === null) {
+    public static function enrolment_status(string $value, stdClass $row): ?string {
+        if (!$row->userid) {
             return null;
         }
-
         $statusvalues = self::enrolment_values();
 
         $value = (int) $value;

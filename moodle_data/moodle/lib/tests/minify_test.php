@@ -28,8 +28,8 @@ use core_minify;
  * @copyright  2013 Petr Skoda {@link http://skodak.org}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class minify_test extends \advanced_testcase {
-    public function test_css(): void {
+class minify_test extends \advanced_testcase {
+    public function test_css() {
         $css = "
 body {
 background: #fff;

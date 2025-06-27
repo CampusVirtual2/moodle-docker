@@ -43,7 +43,7 @@ require_once($CFG->dirroot.'/mod/wiki/locallib.php');
  * @copyright  2018 Marina Glancy
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class provider_test extends provider_testcase {
+class provider_test extends provider_testcase {
 
     /** @var array */
     protected $users = [];

@@ -216,12 +216,7 @@ function mnet_sign_message($message, $privatekey = null) {
     // The '$sig' value below is returned by reference.
     // We initialize it first to stop my IDE from complaining.
     $sig  = '';
-    $bool = openssl_sign($message, $sig, $privatekey);
-
-    // Avoid passing null values to base64_encode.
-    if ($bool === false) {
-        throw new \moodle_exception('opensslsignerror');
-    }
+    $bool = openssl_sign($message, $sig, $privatekey); // TODO: On failure?
 
     $message = '<?xml version="1.0" encoding="iso-8859-1"?>
     <signedMessage>
@@ -288,12 +283,6 @@ function mnet_encrypt_message($message, $remote_certificate) {
 
     //        passed by ref ->     &$encryptedstring &$symmetric_keys
     $bool = openssl_seal($message, $encryptedstring, $symmetric_keys, array($publickey), 'RC4');
-
-    // Avoid passing null values to base64_encode.
-    if ($bool === false) {
-        throw new \moodle_exception('opensslsealerror');
-    }
-
     $message = $encryptedstring;
     $symmetrickey = array_pop($symmetric_keys);
 

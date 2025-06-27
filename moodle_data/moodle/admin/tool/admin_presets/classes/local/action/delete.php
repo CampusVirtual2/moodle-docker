@@ -64,7 +64,7 @@ class delete extends base {
      * Delete the DB preset
      */
     public function execute(): void {
-        require_sesskey();
+        confirm_sesskey();
 
         $this->manager->delete_preset($this->id);
 

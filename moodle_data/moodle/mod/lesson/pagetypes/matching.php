@@ -79,22 +79,19 @@ class lesson_page_type_matching extends lesson_page {
             $answers[$getanswer->id] = $getanswer;
         }
 
-        // Calculate the text for the dropdown, keyed by the non formatted version.
         $responses = array();
         foreach ($answers as $answer) {
-            // Get all the response.
+            // get all the response
             if ($answer->response != null) {
-                $responses[trim($answer->response)] = format_text(trim($answer->response));
+                $responses[] = trim($answer->response);
             }
         }
 
-        // Now shuffle the answers to randomise the order of the items in the dropdown.
-        $responseoptions = ['' => get_string('choosedots')];
+        $responseoptions = array(''=>get_string('choosedots'));
         if (!empty($responses)) {
-            $keys = array_keys($responses);
-            shuffle($keys);
-            foreach ($keys as $key) {
-                $responseoptions[$key] = $responses[$key];
+            shuffle($responses);
+            foreach ($responses as  $response) {
+                $responseoptions[htmlspecialchars($response, ENT_COMPAT)] = $response;
             }
         }
         if (isset($USER->modattempts[$this->lesson->id]) && !empty($attempt->useranswer)) {
@@ -214,6 +211,7 @@ class lesson_page_type_matching extends lesson_page {
                 $result->noanswer = true;
                 return $result;
             }
+            $value = htmlspecialchars_decode($value, ENT_COMPAT);
             $userresponse[] = $value;
             // Make sure the user's answer exists in question's answer
             if (array_key_exists($id, $answers)) {

@@ -41,7 +41,7 @@ require_once(__DIR__ . '/fixtures/test_analysis.php');
  * @copyright 2017 David Monllaó {@link http://www.davidmonllao.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class model_test extends \advanced_testcase {
+class model_test extends \advanced_testcase {
 
     public function setUp(): void {
 

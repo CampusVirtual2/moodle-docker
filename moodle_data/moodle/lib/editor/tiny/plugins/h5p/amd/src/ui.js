@@ -32,7 +32,6 @@ import Modal from 'tiny_h5p/modal';
 import ModalEvents from 'core/modal_events';
 import ModalFactory from 'core/modal_factory';
 import Pending from 'core/pending';
-import {getFilePicker} from 'editor_tiny/options';
 
 let openingSelection = null;
 
@@ -51,8 +50,7 @@ export const handleAction = (editor) => {
 const getTemplateContext = (editor, data) => {
     const permissions = getPermissions(editor);
 
-    const canShowFilePicker = typeof getFilePicker(editor, 'h5p') !== 'undefined';
-    const canUpload = (permissions.upload && canShowFilePicker) ?? false;
+    const canUpload = permissions.upload ?? false;
     const canEmbed = permissions.embed ?? false;
     const canUploadAndEmbed = canUpload && canEmbed;
 
@@ -71,9 +69,10 @@ const getTemplateContext = (editor, data) => {
  *
  * @param {FormNode} form
  * @param {string} submittedUrl
+ * @param {object} permissions
  * @returns {URL|null}
  */
-const getUrlFromSubmission = (form, submittedUrl) => {
+const getUrlFromSubmission = (form, submittedUrl, permissions) => {
     if (!submittedUrl || (!submittedUrl.startsWith(Config.wwwroot) && !isValidUrl(submittedUrl))) {
         return null;
     }
@@ -81,18 +80,18 @@ const getUrlFromSubmission = (form, submittedUrl) => {
     // Generate a URL Object for the submitted URL.
     const url = new URL(submittedUrl);
 
-    const downloadElement = form.querySelector('[name="download"]');
-    if (downloadElement?.checked) {
-        url.searchParams.append('export', 1);
+    if (permissions?.upload) {
+        if (form.querySelector('[name="download"]').checked) {
+            url.searchParams.append('export', 1);
+        }
     }
 
-    const embedElement = form.querySelector('[name="embed"]');
-    if (embedElement?.checked) {
-        url.searchParams.append('embed', 1);
+    if (permissions?.embed) {
+        if (form.querySelector('[name="embed"]').checked) {
+            url.searchParams.append('embed', 1);
+        }
     }
-
-    const copyrightElement = form.querySelector('[name="copyright"]');
-    if (copyrightElement?.checked) {
+    if (form.querySelector('[name="copyright"]').checked) {
         url.searchParams.append('copyright', 1);
     }
 
@@ -129,7 +128,7 @@ const handleDialogueSubmission = async(editor, modal, data) => {
 
     // Get the URL from the submitted form.
     const submittedUrl = form.querySelector('input[name="url"]').value;
-    const url = getUrlFromSubmission(form, submittedUrl);
+    const url = getUrlFromSubmission(form, submittedUrl, getPermissions(editor));
 
     if (!url) {
         // The URL is invalid.

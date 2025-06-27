@@ -16,8 +16,11 @@
          * Other platforms could/should be added
          */
         public function __construct() {
-            // Construct directory structure.
-            $this->temp_dir = make_request_directory();
+            global $CFG;
+
+            // construct directory structure
+            $this->temp_dir = $CFG->tempdir . "/latex";
+            make_temp_directory('latex');
         }
 
         /**
@@ -157,4 +160,26 @@
 
             return $img;
         }
+
+        /**
+         * Delete files created in temporary area
+         * Don't forget to copy the final gif/png before calling this
+         * @param string $filename file base (no extension)
+         */
+        function clean_up( $filename ) {
+            global $CFG;
+
+            unlink( "{$this->temp_dir}/$filename.tex" );
+            unlink( "{$this->temp_dir}/$filename.dvi" );
+            unlink( "{$this->temp_dir}/$filename.ps" );
+            $convertformat = get_config('filter_tex', 'convertformat');
+            unlink( "{$this->temp_dir}/$filename.{$convertformat}" );
+            unlink( "{$this->temp_dir}/$filename.aux" );
+            unlink( "{$this->temp_dir}/$filename.log" );
+            return;
+        }
+
     }
+
+
+

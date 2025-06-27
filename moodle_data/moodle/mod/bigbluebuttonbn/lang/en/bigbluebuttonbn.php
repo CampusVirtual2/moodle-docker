@@ -648,5 +648,4 @@ $string['taskname:check_dismissed_recordings'] = 'Check for recordings that have
 $string['userlimitreached'] = 'The number of users allowed in a session has been reached.';
 $string['waitformoderator'] = 'Waiting for a moderator to join.';
 
-$string['recordingnotfound'] = 'The recording was not found.';
 $string['recordingurlnotfound'] = 'The recording URL is invalid.';

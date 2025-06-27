@@ -43,7 +43,7 @@ use stdClass;
  * @copyright  2020 Ferran Recio <ferran@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class handler_test extends \advanced_testcase {
+class handler_test extends \advanced_testcase {
 
     /**
      * Generate a valid scenario for each tests.
@@ -202,7 +202,7 @@ final class handler_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function xapi_handler_errors_data(): array {
+    public function xapi_handler_errors_data(): array {
         return [
             // Invalid Definitions and results possibilities.
             'Invalid definition and result' => [
@@ -221,17 +221,17 @@ final class handler_test extends \advanced_testcase {
             'Invalid verb and result' => [
                 false, true, false, true, true, false
             ],
-            'Invalid verb and definition' => [
+            'Invalid verb and result' => [
                 false, false, true, true, true, false
             ],
             // Invalid context possibilities.
             'Invalid definition, result and context' => [
                 true, false, false, false, true, false
             ],
-            'Invalid result and context' => [
+            'Invalid result' => [
                 true, true, false, false, true, false
             ],
-            'Invalid definition and context' => [
+            'Invalid result and context' => [
                 true, false, true, false, true, false
             ],
             'Invalid verb, definition result and context' => [
@@ -240,7 +240,7 @@ final class handler_test extends \advanced_testcase {
             'Invalid verb, result and context' => [
                 false, true, false, false, true, false
             ],
-            'Invalid verb, definition and context' => [
+            'Invalid verb, result and context' => [
                 false, false, true, false, true, false
             ],
             // Invalid user possibilities.
@@ -259,7 +259,7 @@ final class handler_test extends \advanced_testcase {
             'Invalid verb, result and user' => [
                 false, true, false, true, false, false
             ],
-            'Invalid verb, definition and user' => [
+            'Invalid verb, result and user' => [
                 false, false, true, true, false, false
             ],
             'Invalid definition, result, context and user' => [
@@ -277,7 +277,7 @@ final class handler_test extends \advanced_testcase {
             'Invalid verb, result, context and user' => [
                 false, true, false, false, false, false
             ],
-            'Invalid verb, definition, context and user' => [
+            'Invalid verb, result, context and user' => [
                 false, false, true, false, false, false
             ],
         ];

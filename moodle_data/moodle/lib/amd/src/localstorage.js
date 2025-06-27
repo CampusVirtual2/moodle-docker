@@ -50,15 +50,6 @@ define(['core/config', 'core/storagewrapper'], function(config, StorageWrapper) 
          */
         set: function(key, value) {
             return storage.set(key, value);
-        },
-
-        /**
-         * Clean local storage
-         *
-         * @method clean
-         */
-        clean: function() {
-            return storage.clean();
         }
 
     };

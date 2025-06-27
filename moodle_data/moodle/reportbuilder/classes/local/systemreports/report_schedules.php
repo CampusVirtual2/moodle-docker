@@ -91,10 +91,7 @@ class report_schedules extends system_report {
      * @return bool
      */
     protected function can_view(): bool {
-        $reportid = $this->get_parameter('reportid', 0, PARAM_INT);
-        $report = report::get_record(['id' => $reportid], MUST_EXIST);
-
-        return permission::can_edit_report($report);
+        return permission::can_view_reports_list();
     }
 
     /**

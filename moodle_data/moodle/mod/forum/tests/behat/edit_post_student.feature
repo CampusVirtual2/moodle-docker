@@ -15,15 +15,16 @@ Feature: Students can edit or delete their forum posts within a set time limit
       | user | course | role |
       | student1 | C1 | student |
     And the following "activities" exist:
-      | activity   | name                   | course  | idnumber  |
-      | forum      | Test forum name        | C1      | forum     |
+      | activity   | name                   | intro                   | course  | idnumber  |
+      | forum      | Test forum name        | Test forum description  | C1      | forum     |
+    And I log in as "student1"
+    And I am on "Course 1" course homepage
+    And I add a new discussion to "Test forum name" forum with:
+      | Subject | Forum post subject |
+      | Message | This is the body |
 
   Scenario: Edit forum post
-    Given the following "mod_forum > discussions" exist:
-      | user     | forum | name               | message          |
-      | student1 | forum | Forum post subject | This is the body |
-    And I am on the "Test forum name" "forum activity" page logged in as "student1"
-    And I follow "Forum post subject"
+    Given I follow "Forum post subject"
     And I follow "Edit"
     When I set the following fields to these values:
       | Subject | Edited post subject |
@@ -34,26 +35,22 @@ Feature: Students can edit or delete their forum posts within a set time limit
     And I should see "Edited post body"
 
   Scenario: Delete forum post
-    Given the following "mod_forum > discussions" exist:
-      | user     | forum | name               | message          |
-      | student1 | forum | Forum post subject | This is the body |
-    And I am on the "Test forum name" "forum activity" page logged in as "student1"
-    And I follow "Forum post subject"
+    Given I follow "Forum post subject"
     When I follow "Delete"
     And I press "Continue"
     Then I should not see "Forum post subject"
 
-  @block_recent_activity
+  @javascript @block_recent_activity
   Scenario: Time limit expires
-    Given the following "blocks" exist:
-      | blockname       | contextlevel | reference | pagetypepattern | defaultregion |
-      | recent_activity | Course       | C1        | course-view-*   | side-pre      |
+    Given I log out
+    And I log in as "admin"
     And the following config values are set as admin:
       | maxeditingtime | 1 |
-    And the following "mod_forum > discussions" exist:
-      | user     | forum | name               | message          | timemodified       |
-      | student1 | forum | Forum post subject | This is the body | ##now +1 second##  |
-    And I am on the "Course 1" course page logged in as student1
+    And I am on "Course 1" course homepage with editing mode on
+    And I add the "Recent activity" block
+    And I log out
+    And I log in as "student1"
+    And I am on "Course 1" course homepage
     And I should see "New forum posts:" in the "Recent activity" "block"
     And I should see "Forum post subject" in the "Recent activity" "block"
     When I wait "2" seconds

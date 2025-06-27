@@ -184,7 +184,7 @@ function(
                         component: component,
                         template: name,
                         themename: theme,
-                        lang: config.language,
+                        lang: $('html').attr('lang').replace(/-/g, '_')
                     }
                 });
                 // Remember the index in the requests list for this template so that

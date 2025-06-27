@@ -82,7 +82,7 @@ class GlobalFunctionsHelper
      * @param int|null $length
      * @param string|null $delimiter
      * @param string|null $enclosure
-     * @return array|false
+     * @return array
      */
     public function fgetcsv($handle, $length = null, $delimiter = null, $enclosure = null)
     {

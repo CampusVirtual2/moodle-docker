@@ -31,7 +31,7 @@ require_once(__DIR__ . '/../../../analytics/tests/fixtures/test_target_course_us
  * @copyright 2017 David Monllaó {@link http://www.davidmonllao.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class indicators_test extends \advanced_testcase {
+class indicators_test extends \advanced_testcase {
 
     /**
      * test_no_teacher

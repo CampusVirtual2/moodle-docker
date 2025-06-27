@@ -678,7 +678,7 @@ EOF;
      *
      * @return array
      */
-    public static function block_contents_is_fake_provider(): array {
+    public function block_contents_is_fake_provider() {
         return [
             'Null' => [null, false],
             'Not set' => [false, false],

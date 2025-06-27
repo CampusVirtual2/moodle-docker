@@ -645,6 +645,7 @@ trait behat_session_trait {
      * @return void Throws an exception if it times out without the element being visible
      */
     protected function ensure_node_is_visible($node) {
+
         if (!$this->running_javascript()) {
             return;
         }
@@ -714,6 +715,7 @@ trait behat_session_trait {
      * @return NodeElement Throws an exception if it times out without being visible
      */
     protected function ensure_element_is_visible($element, $selectortype) {
+
         if (!$this->running_javascript()) {
             return;
         }
@@ -761,14 +763,9 @@ trait behat_session_trait {
      *
      * @param string $windowsize size of window.
      * @param bool $viewport If true, changes viewport rather than window size
-     * @param bool $scalesize Whether to scale the size by the WINDOWSCALE environment variable
      * @throws ExpectationException
      */
-    protected function resize_window(
-        string $windowsize,
-        bool $viewport = false,
-        bool $scalesize = true
-    ): void {
+    protected function resize_window($windowsize, $viewport = false) {
         global $CFG;
 
         // Non JS don't support resize window.
@@ -810,16 +807,6 @@ trait behat_session_trait {
         if (isset($CFG->behat_window_size_modifier) && is_numeric($CFG->behat_window_size_modifier)) {
             $width *= $CFG->behat_window_size_modifier;
             $height *= $CFG->behat_window_size_modifier;
-        }
-
-        if ($scalesize) {
-            // Scale the window size by the WINDOWSCALE environment variable.
-            // This is intended to be used for Behat reruns to negate the impact of browser window size issues.
-            // This allows a per-run, runtime configuration of the scaling, unlike behat_window_size_modifier which
-            // typically applies to all runs.
-            $scalefactor = getenv('WINDOWSCALE') ? floatval(getenv('WINDOWSCALE')) : 1;
-            $width *= $scalefactor;
-            $height *= $scalefactor;
         }
 
         if ($viewport) {
@@ -1733,20 +1720,5 @@ EOF;
         ]);
 
         return $result ?: null;
-    }
-
-    /**
-     * Prepare an xpath for insertion into Selenium JavaScript.
-     *
-     * @param string $xpath
-     * @return string
-     */
-    protected function prepare_xpath_for_javascript(string $xpath): string {
-        $newlines = [
-            "\r\n",
-            "\r",
-            "\n",
-        ];
-        return str_replace($newlines, ' ', $xpath);
     }
 }

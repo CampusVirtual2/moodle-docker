@@ -250,6 +250,7 @@ EOF;
  * @param object $url
  * @param object $cm
  * @param object $course
+ * @return does not return
  */
 function url_print_workaround($url, $cm, $course) {
     global $OUTPUT, $PAGE, $USER;
@@ -257,26 +258,26 @@ function url_print_workaround($url, $cm, $course) {
     $PAGE->activityheader->set_description(url_get_intro($url, $cm, true));
     url_print_header($url, $cm, $course);
 
-    $fullurl = new moodle_url(url_get_full_url($url, $cm, $course));
+    $fullurl = url_get_full_url($url, $cm, $course);
 
     $display = url_get_final_display_type($url);
     if ($display == RESOURCELIB_DISPLAY_POPUP) {
-        $jsfullurl = addslashes_js($fullurl->out(false));
+        $jsfullurl = addslashes_js($fullurl);
         $options = empty($url->displayoptions) ? [] : (array) unserialize_array($url->displayoptions);
         $width  = empty($options['popupwidth'])  ? 620 : $options['popupwidth'];
         $height = empty($options['popupheight']) ? 450 : $options['popupheight'];
         $wh = "width=$width,height=$height,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes";
-        $attributes = ['onclick' => "window.open('$jsfullurl', '', '$wh'); return false;"];
+        $extra = "onclick=\"window.open('$jsfullurl', '', '$wh'); return false;\"";
 
     } else if ($display == RESOURCELIB_DISPLAY_NEW) {
-        $attributes = ['onclick' => "this.target='_blank';"];
+        $extra = "onclick=\"this.target='_blank';\"";
 
     } else {
-        $attributes = [];
+        $extra = '';
     }
 
     echo '<div class="urlworkaround">';
-    print_string('clicktoopen', 'url', html_writer::link($fullurl, format_string($cm->name), $attributes));
+    print_string('clicktoopen', 'url', "<a href=\"$fullurl\" $extra>$fullurl</a>");
     echo '</div>';
 
     echo $OUTPUT->footer();
@@ -288,6 +289,7 @@ function url_print_workaround($url, $cm, $course) {
  * @param object $url
  * @param object $cm
  * @param object $course
+ * @return does not return
  */
 function url_display_embed($url, $cm, $course) {
     global $PAGE, $OUTPUT;
@@ -296,9 +298,9 @@ function url_display_embed($url, $cm, $course) {
     $fullurl  = url_get_full_url($url, $cm, $course);
     $title    = $url->name;
 
-    $moodleurl = new moodle_url($fullurl);
-    $link = html_writer::link($moodleurl, format_string($cm->name));
+    $link = html_writer::tag('a', $fullurl, array('href'=>str_replace('&amp;', '&', $fullurl)));
     $clicktoopen = get_string('clicktoopen', 'url', $link);
+    $moodleurl = new moodle_url($fullurl);
 
     $extension = resourcelib_get_extension($url->externalurl);
 

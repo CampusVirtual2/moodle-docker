@@ -333,9 +333,8 @@ export default class {
                 return (lum2 + 0.05) / (lum1 + 0.05);
             }
         };
-
-        this.editor.dom.select('body *')
-            .filter((node) => node.hasChildNodes() && node.childNodes[0].nodeValue !== null)
+        this.editor.dom.select('body > *')
+            .filter((node) => node.textContent?.trim().length)
             .forEach((node) => {
                 const foreground = this.colorBase.fromArray(
                     this.getComputedBackgroundColor(

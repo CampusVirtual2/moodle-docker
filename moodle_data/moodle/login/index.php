@@ -49,7 +49,6 @@ $context = context_system::instance();
 $PAGE->set_url("$CFG->wwwroot/login/index.php");
 $PAGE->set_context($context);
 $PAGE->set_pagelayout('login');
-$PAGE->set_cacheable(false);
 
 /// Initialize variables
 $errormsg = '';
@@ -245,7 +244,7 @@ if ($frm and isset($frm->username)) {                             // Login WITH 
                 $passwordchangeurl = $CFG->wwwroot.'/login/change_password.php';
             }
             $days2expire = $userauth->password_expire($USER->username);
-            $PAGE->set_title($loginsite);
+            $PAGE->set_title("$site->fullname: $loginsite");
             $PAGE->set_heading("$site->fullname");
             if (intval($days2expire) > 0 && intval($days2expire) < intval($userauth->config->expiration_warning)) {
                 echo $OUTPUT->header();
@@ -315,7 +314,7 @@ if (!empty($CFG->alternateloginurl)) {
 
     $loginurlstr = $loginurl->out(false);
 
-    if (strpos($SESSION->wantsurl ?? '', $loginurlstr) === 0) {
+    if (strpos($SESSION->wantsurl, $loginurlstr) === 0) {
         // We do not want to return to alternate url.
         $SESSION->wantsurl = null;
     }
@@ -362,7 +361,7 @@ if (!empty($SESSION->loginerrormsg)) {
     redirect(new moodle_url('/login/index.php'));
 }
 
-$PAGE->set_title($loginsite);
+$PAGE->set_title("$site->fullname: $loginsite");
 $PAGE->set_heading("$site->fullname");
 
 echo $OUTPUT->header();

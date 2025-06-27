@@ -30,7 +30,6 @@ import Selectors from './selectors';
 import Modal from './imagemodal';
 import {getImagePermissions} from './options';
 import {component} from "./common";
-import {getFilePicker} from 'editor_tiny/options';
 
 export const MediaImage = class {
 
@@ -49,10 +48,7 @@ export const MediaImage = class {
 
     constructor(editor) {
         const permissions = getImagePermissions(editor);
-
-        // Indicates whether the file picker can be shown.
-        this.canShowFilePicker = permissions.filepicker && (typeof getFilePicker(editor, 'image') !== 'undefined');
-
+        this.canShowFilePicker = permissions.filepicker;
         this.editor = editor;
     }
 

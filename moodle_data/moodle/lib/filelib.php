@@ -186,9 +186,7 @@ function file_prepare_standard_editor($data, $field, array $options, $context=nu
             $data->{$field.'format'} = editors_get_preferred_format();
         }
         if (!$options['noclean']) {
-            if ($data->{$field.'format'} != FORMAT_MARKDOWN) {
-                $data->{$field} = clean_text($data->{$field}, $data->{$field . 'format'});
-            }
+            $data->{$field} = clean_text($data->{$field}, $data->{$field.'format'});
         }
 
     } else {
@@ -200,11 +198,7 @@ function file_prepare_standard_editor($data, $field, array $options, $context=nu
             $data = trusttext_pre_edit($data, $field, $context);
         } else {
             if (!$options['noclean']) {
-                // We do not have a way to sanitise Markdown texts,
-                // luckily editors for this format should not have XSS problems.
-                if ($data->{$field.'format'} != FORMAT_MARKDOWN) {
-                    $data->{$field} = clean_text($data->{$field}, $data->{$field.'format'});
-                }
+                $data->{$field} = clean_text($data->{$field}, $data->{$field.'format'});
             }
         }
         $contextid = $context->id;
@@ -2068,12 +2062,9 @@ function get_mimetype_description($obj, $capitalise=false) {
  */
 function file_get_typegroup($element, $groups) {
     static $cached = array();
-
-    // Turn groups into a list.
     if (!is_array($groups)) {
-        $groups = preg_split('/[\s,;:"\']+/', $groups, -1, PREG_SPLIT_NO_EMPTY);
+        $groups = array($groups);
     }
-
     if (!array_key_exists($element, $cached)) {
         $cached[$element] = array();
     }
@@ -3133,7 +3124,7 @@ class curl {
     public $rawresponse = array();
     /** @var array http header */
     public  $header   = array();
-    /** @var array cURL information */
+    /** @var string cURL information */
     public  $info;
     /** @var string error */
     public  $error;
@@ -3163,8 +3154,6 @@ class curl {
     private $ignoresecurity;
     /** @var array $mockresponses For unit testing only - return the head of this list instead of making the next request. */
     private static $mockresponses = [];
-    /** @var array $curlresolveinfo Resolve addresses for the URL that have passed cuRL security checks, in a CURLOPT_RESOLVE compatible format. */
-    private $curlresolveinfo = [];
 
     /**
      * Curl constructor.
@@ -3761,9 +3750,6 @@ class curl {
             return $this->error;
         }
 
-        // Set allowed resolve info if the URL is not blocked.
-        $this->curlresolveinfo = $this->securityhelper->get_resolve_info();
-
         return null;
     }
 
@@ -3798,10 +3784,6 @@ class curl {
 
         // Set the URL as a curl option.
         $this->setopt(array('CURLOPT_URL' => $url));
-
-        // Force cURL to only resolve the URL from IP/port combinations that were validated by the security helper.
-        // This prevents re-fetching DNS data on subsequent requests, which could return un-validated hosts/ports.
-        $this->setopt(['CURLOPT_RESOLVE' => $this->curlresolveinfo]);
 
         // Create curl instance.
         $curl = curl_init();
@@ -3854,7 +3836,6 @@ class curl {
 
                 $redirects++;
 
-                $currenturl = $redirecturl ?? $url;
                 $redirecturl = null;
                 if (isset($this->info['redirect_url'])) {
                     if (preg_match('|^https?://|i', $this->info['redirect_url'])) {
@@ -3912,29 +3893,6 @@ class curl {
                 }
 
                 curl_setopt($curl, CURLOPT_URL, $redirecturl);
-
-                // Force cURL to only resolve the URL from IP/port combinations that were validated by the security helper.
-                // This prevents re-fetching DNS data on subsequent requests, which could return un-validated hosts/ports.
-                $this->setopt(['CURLOPT_RESOLVE' => $this->curlresolveinfo]);
-
-                // If CURLOPT_UNRESTRICTED_AUTH is empty/false, don't send credentials to other hosts.
-                // Ref: https://curl.se/libcurl/c/CURLOPT_UNRESTRICTED_AUTH.html.
-                $isdifferenthost = parse_url($currenturl)['host'] !== parse_url($redirecturl)['host'];
-                $sendauthentication = !empty($this->options['CURLOPT_UNRESTRICTED_AUTH']);
-                if ($isdifferenthost && !$sendauthentication) {
-                    curl_setopt($curl, CURLOPT_HTTPAUTH, null);
-                    curl_setopt($curl, CURLOPT_USERPWD, null);
-                    // Check whether the CURLOPT_HTTPHEADER is specified.
-                    if (!empty($this->options['CURLOPT_HTTPHEADER'])) {
-                        // Remove the "Authorization:" header, if any.
-                        $headerredirect = array_filter(
-                            $this->options['CURLOPT_HTTPHEADER'],
-                            fn($header) => strpos($header, 'Authorization:') === false
-                        );
-                        curl_setopt($curl, CURLOPT_HTTPHEADER, $headerredirect);
-                    }
-                }
-
                 $ret = curl_exec($curl);
 
                 $this->info  = curl_getinfo($curl);
@@ -4210,7 +4168,7 @@ class curl {
     /**
      * Get curl information
      *
-     * @return array
+     * @return string
      */
     public function get_info() {
         return $this->info;

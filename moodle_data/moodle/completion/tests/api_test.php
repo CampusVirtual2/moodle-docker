@@ -24,7 +24,7 @@ namespace core_completion;
  * @copyright 2017 Mark Nelson <markn@moodle.com>
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class api_test extends \advanced_testcase {
+class api_test extends \advanced_testcase {
 
     /**
      * Test setup.

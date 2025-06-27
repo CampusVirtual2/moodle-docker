@@ -33,7 +33,8 @@ namespace auth_ldap;
  * @copyright  2013 Petr Skoda {@link http://skodak.org}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class plugin_test extends \advanced_testcase {
+class plugin_test extends \advanced_testcase {
+
     /**
      * Data provider for auth_ldap tests
      *
@@ -44,7 +45,7 @@ final class plugin_test extends \advanced_testcase {
      *
      * @return array[]
      */
-    public static function auth_ldap_provider(): array {
+    public function auth_ldap_provider() {
         $pagesizes = [1, 3, 5, 1000];
         $subcontexts = [0, 1];
         $combinations = [];

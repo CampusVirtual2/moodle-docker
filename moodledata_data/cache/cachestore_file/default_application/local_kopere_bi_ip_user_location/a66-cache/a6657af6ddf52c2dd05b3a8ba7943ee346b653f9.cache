@@ -1,0 +1,1 @@
+O:8:"stdClass":7:{s:4:"city";N;s:7:"country";N;s:9:"longitude";N;s:8:"latitude";N;s:5:"error";s:184:"Não foi possível conectar com o servidor geoPlugin em http://www.geoplugin.com, por favor verifique as configurações de proxy ou instale o arquivo de dados do MaxMind GeoLite City.";s:4:"note";s:0:"";s:5:"title";a:0:{}}

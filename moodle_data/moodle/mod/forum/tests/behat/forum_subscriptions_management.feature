@@ -24,8 +24,11 @@ Feature: A teacher can control the subscription to a forum
       | activity         | forum                  |
       | course           | C1                     |
       | idnumber         | f01                    |
+      | intro            | Test forum description |
       | name             | Test forum name        |
-    When I am on the "Test forum name" "forum activity" page logged in as teacher
+    When I log in as "teacher"
+    And I am on "Course 1" course homepage
+    And I follow "Test forum name"
     And I navigate to "Subscriptions" in current page administration
     Then I select "Manage subscribers" from the "Subscribers" singleselect
     And "Add" "button" should exist

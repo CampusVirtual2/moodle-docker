@@ -44,4 +44,4 @@ Feature: Workshop assessment with grade to pass
     And I should see "You must enter a number here."
     And I set the field "Assessment grade to pass" to "10"
     And I press "Save and display"
-    Then "Setup phase" "heading" should exist
+    Then I should see "Setup phase" in the "h3#mod_workshop-userplanheading" "css_element"

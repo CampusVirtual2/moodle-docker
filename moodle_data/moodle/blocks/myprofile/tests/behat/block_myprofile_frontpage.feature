@@ -8,9 +8,11 @@ Feature: The logged in user block allows users to view their profile information
     Given the following "users" exist:
       | username | firstname | lastname | email                | idnumber |
       | teacher1 | Teacher   | One      | teacher1@example.com | T1       |
-    And the following "blocks" exist:
-      | blockname | contextlevel | reference | pagetypepattern | defaultregion |
-      | myprofile | System       | 1         | site-index      | side-pre      |
+    And I log in as "admin"
+    And I am on site homepage
+    And I turn editing mode on
+    And I add the "Logged in user" block
+    And I log out
 
   Scenario: Try to view the logged in user block as a guest
     Given I log in as "guest"

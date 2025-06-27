@@ -51,15 +51,14 @@ class cohorts extends system_report {
         $this->add_entity($cohortentity);
 
         // Any columns required by actions should be defined here to ensure they're always available.
-        $this->add_base_fields("{$entitymainalias}.id, {$entitymainalias}.contextid, {$entitymainalias}.visible, " .
-            "{$entitymainalias}.component");
+        $this->add_base_fields("{$entitymainalias}.id, {$entitymainalias}.contextid, {$entitymainalias}.visible");
 
         // Check if report needs to show a specific category.
-        if (!$this->get_context() instanceof context_system || !$this->get_parameter('showall', false, PARAM_BOOL)) {
+        $contextid = $this->get_parameter('contextid', 0, PARAM_INT);
+        $showall = $this->get_parameter('showall', true, PARAM_BOOL);
+        if (!$showall) {
             $paramcontextid = database::generate_param_name();
-            $this->add_base_condition_sql("{$entitymainalias}.contextid = :{$paramcontextid}", [
-                $paramcontextid => $this->get_context()->id,
-            ]);
+            $this->add_base_condition_sql("{$entitymainalias}.contextid = :$paramcontextid", [$paramcontextid => $contextid]);
         }
 
         // Now we can call our helper methods to add the content we want to include in the report.
@@ -77,7 +76,14 @@ class cohorts extends system_report {
      * @return bool
      */
     protected function can_view(): bool {
-        return has_any_capability(['moodle/cohort:manage', 'moodle/cohort:view'], $this->get_context());
+        $contextid = $this->get_parameter('contextid', 0, PARAM_INT);
+        if ($contextid) {
+            $context = context::instance_by_id($contextid, MUST_EXIST);
+        } else {
+            $context = context_system::instance();
+        }
+
+        return has_any_capability(['moodle/cohort:manage', 'moodle/cohort:view'], $context);
     }
 
     /**
@@ -91,8 +97,10 @@ class cohorts extends system_report {
     public function add_columns(cohort $cohortentity): void {
 
         $entitymainalias = $cohortentity->get_table_alias('cohort');
+        $showall = $this->get_parameter('showall', false, PARAM_BOOL);
+
         // Category column. An extra callback is appended in order to extend the current column formatting.
-        if ($this->get_context() instanceof context_system && $this->get_parameter('showall', false, PARAM_BOOL)) {
+        if ($showall) {
             $this->add_column_from_entity('cohort:context')
                 ->add_callback(static function(string $value, stdClass $cohort): string {
                     $context = context::instance_by_id($cohort->contextid);
@@ -186,11 +194,10 @@ class cohorts extends system_report {
      */
     protected function add_actions(): void {
 
-        $returnurl = (new moodle_url('/cohort/index.php', [
-            'id' => ':id',
-            'contextid' => $this->get_context()->id,
-            'showall' => $this->get_parameter('showall', false, PARAM_BOOL),
-        ]))->out(false);
+        $contextid = $this->get_parameter('contextid', 0, PARAM_INT);
+        $showall = $this->get_parameter('showall', true, PARAM_BOOL);
+        $returnurl = (new moodle_url('/cohort/index.php',
+            ['id' => ':id', 'contextid' => $contextid, 'showall' => $showall]))->out(false);
 
         // Hide action. It will be only shown if the property 'visible' is true and user has 'moodle/cohort:manage' capabillity.
         $this->add_action((new action(
@@ -199,9 +206,8 @@ class cohorts extends system_report {
             [],
             false,
             new lang_string('hide')
-        ))->add_callback(function(stdClass $row): bool {
-            return empty($row->component) && $row->visible
-                && has_capability('moodle/cohort:manage', context::instance_by_id($row->contextid));
+        ))->add_callback(function($row) {
+            return $row->visible && has_capability('moodle/cohort:manage', context::instance_by_id($row->contextid));
         }));
 
         // Show action. It will be only shown if the property 'visible' is false and user has 'moodle/cohort:manage' capabillity.
@@ -211,9 +217,8 @@ class cohorts extends system_report {
             [],
             false,
             new lang_string('show')
-        ))->add_callback(function(stdClass $row): bool {
-            return empty($row->component) && !$row->visible
-                && has_capability('moodle/cohort:manage', context::instance_by_id($row->contextid));
+        ))->add_callback(function($row) {
+            return !$row->visible && has_capability('moodle/cohort:manage', context::instance_by_id($row->contextid));
         }));
 
         // Edit action. It will be only shown if user has 'moodle/cohort:manage' capabillity.
@@ -223,8 +228,8 @@ class cohorts extends system_report {
             [],
             false,
             new lang_string('edit')
-        ))->add_callback(function(stdClass $row): bool {
-            return empty($row->component) && has_capability('moodle/cohort:manage', context::instance_by_id($row->contextid));
+        ))->add_callback(function($row) {
+            return has_capability('moodle/cohort:manage', context::instance_by_id($row->contextid));
         }));
 
         // Delete action. It will be only shown if user has 'moodle/cohort:manage' capabillity.
@@ -234,8 +239,8 @@ class cohorts extends system_report {
             [],
             false,
             new lang_string('delete')
-        ))->add_callback(function(stdClass $row): bool {
-            return empty($row->component) && has_capability('moodle/cohort:manage', context::instance_by_id($row->contextid));
+        ))->add_callback(function($row) {
+            return has_capability('moodle/cohort:manage', context::instance_by_id($row->contextid));
         }));
 
         // Assign members to cohort action. It will be only shown if user has 'moodle/cohort:assign' capabillity.
@@ -245,8 +250,8 @@ class cohorts extends system_report {
             [],
             false,
             new lang_string('assign', 'core_cohort')
-        ))->add_callback(function(stdClass $row): bool {
-            return empty($row->component) && has_capability('moodle/cohort:assign', context::instance_by_id($row->contextid));
+        ))->add_callback(function($row) {
+            return has_capability('moodle/cohort:assign', context::instance_by_id($row->contextid));
         }));
     }
 

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<configuration>
+    <!-- Endereço do Zookeeper (padrão no docker-compose) -->
+    <property>
+        <name>hbase.zookeeper.quorum</name>
+        <value>pinpoint-hbase</value>
+    </property>
+
+    <!-- Porta do Zookeeper -->
+    <property>
+        <name>hbase.zookeeper.property.clientPort</name>
+        <value>2181</value>
+    </property>
+
+    <!-- Diretório raiz usado pelo HBase no Zookeeper -->
+    <property>
+        <name>zookeeper.znode.parent</name>
+        <value>/hbase</value>
+    </property>
+
+    <!-- Timeout para conexão -->
+    <property>
+        <name>hbase.rpc.timeout</name>
+        <value>60000</value>
+    </property>
+</configuration>
+

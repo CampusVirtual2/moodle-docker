@@ -26,9 +26,8 @@ import $ from 'jquery';
 import Pending from 'core/pending';
 
 const SELECTORS = {
-    FORM: '.mform',
     FORMHEADER: '.fheader',
-    FORMCONTAINER: 'fieldset > .fcontainer',
+    FORMCONTAINER: '.fcontainer',
 };
 
 const CLASSES = {
@@ -45,10 +44,7 @@ export const init = collapsesections => {
     // All jQuery in this code can be replaced when MDL-71979 is integrated (move to Bootstrap 5).
     const pendingPromise = new Pending('core_form/collapsesections');
     const collapsemenu = document.querySelector(collapsesections);
-
-    const formParent = collapsemenu.closest(SELECTORS.FORM);
-    const formContainers = formParent.querySelectorAll(SELECTORS.FORMCONTAINER);
-
+    const formParent = collapsemenu.closest('form');
     collapsemenu.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
@@ -59,8 +55,8 @@ export const init = collapsesections => {
     // Override default collapse class if all containers are expanded on page load
     let expandedcount = 0;
     const formcontainercount = $(SELECTORS.FORMCONTAINER).length;
-    formContainers.forEach(container => {
-        if (container.classList.contains(CLASSES.SHOW)) {
+    $(SELECTORS.FORMCONTAINER).each((_, collapsecontainer) => {
+        if (collapsecontainer.classList.contains(CLASSES.SHOW)) {
             expandedcount++;
         }
     });
@@ -70,42 +66,48 @@ export const init = collapsesections => {
         collapsemenu.setAttribute('aria-expanded', true);
     }
 
-    // When the collapse menu is toggled, update each form container to match.
     collapsemenu.addEventListener('click', () => {
         let action = 'hide';
         if (collapsemenu.classList.contains(CLASSES.COLLAPSED)) {
             action = 'show';
         }
 
-        if (formContainers.length) {
-            const pendingPromiseToggle = new Pending('core_form/collapsesections:toggle-' + action);
-            formContainers.forEach((container, index, array) => {
-                $(container).collapse(action);
-                if (index === array.length - 1) {
-                    pendingPromiseToggle.resolve();
-                }
-            });
-        }
+        formParent.querySelectorAll(SELECTORS.FORMCONTAINER).forEach((collapsecontainer) => {
+            $(collapsecontainer).collapse(action);
+        });
     });
 
     // Ensure collapse menu button adds aria-controls attribute referring to each collapsible element.
-    const collapseElements = formParent.querySelectorAll(SELECTORS.FORMHEADER);
+    const collapseElements = $(SELECTORS.FORMHEADER);
     const collapseElementIds = [...collapseElements].map((element, index) => {
         element.id = element.id || `collapseElement-${index}`;
         return element.id;
     });
     collapsemenu.setAttribute('aria-controls', collapseElementIds.join(' '));
 
-    // When any form container is toggled, re-calculate collapse menu state.
     $(SELECTORS.FORMCONTAINER).on('hidden.bs.collapse', () => {
-        const allCollapsed = [...formContainers].every(container => !container.classList.contains(CLASSES.SHOW));
+        let allCollapsed = true;
+
+        formParent.querySelectorAll(SELECTORS.FORMCONTAINER).forEach((collapsecontainer) => {
+            if (collapsecontainer.classList.contains(CLASSES.SHOW)) {
+                allCollapsed = false;
+            }
+        });
+
         if (allCollapsed) {
             collapsemenu.classList.add(CLASSES.COLLAPSED);
             collapsemenu.setAttribute('aria-expanded', false);
         }
     });
     $(SELECTORS.FORMCONTAINER).on('shown.bs.collapse', () => {
-        const allExpanded = [...formContainers].every(container => container.classList.contains(CLASSES.SHOW));
+        let allExpanded = true;
+
+        formParent.querySelectorAll(SELECTORS.FORMCONTAINER).forEach((collapsecontainer) => {
+            if (!collapsecontainer.classList.contains(CLASSES.SHOW)) {
+                allExpanded = false;
+            }
+        });
+
         if (allExpanded) {
             collapsemenu.classList.remove(CLASSES.COLLAPSED);
             collapsemenu.setAttribute('aria-expanded', true);

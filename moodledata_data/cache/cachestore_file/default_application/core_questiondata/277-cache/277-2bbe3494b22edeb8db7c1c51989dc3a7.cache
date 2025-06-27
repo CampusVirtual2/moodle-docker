@@ -1,0 +1,32 @@
+O:8:"stdClass":26:{s:2:"id";s:3:"277";s:8:"category";s:2:"61";s:6:"parent";s:1:"0";s:4:"name";s:20:"Parte I - Questão 6";s:12:"questiontext";s:2840:"<p dir="ltr" style="text-align: left;">Para ser admitido em um programa de estágio, um candidato precisa ter idade entre 18 e 25 anos (inclusive) E possuir um coeficiente de rendimento acadêmico (CRA) maior ou igual a 7.0. Um programador criou um algoritmo para verificar se um candidato é elegível, mas está com dúvidas sobre a lógica.</p><div class="console-visualg">
+    <div><span class="keyword">algoritmo</span> <span class="string">"VerificaElegibilidade"</span></div>
+
+    <div><span class="keyword">var</span></div>
+    <div><span class="variable">idade</span>: <span class="keyword">inteiro</span></div>
+    <div><span class="variable">cra</span>: <span class="keyword">real</span></div>
+
+    <div>   </div><div><span class="keyword">inicio</span></div>
+
+    <div style="margin-left: 30px;" class="editor-indent"><div><span class="function">escreva</span>("Digite a idade: ")</div>
+    <div><span class="function">leia</span>(<span class="variable">idade</span>)</div>
+    <div><span class="function">escreva</span>("Digite o CRA: ")</div>
+    <div><span class="function">leia</span>(<span class="variable">cra</span>)</div></div>
+
+    <div><br></div>  <div><span class="keyword">se</span> (<span class="variable">idade</span> &gt;= 18 <span class="keyword">e</span> <span class="variable">idade</span> &lt;= 25) <span class="keyword">ou</span> (<span class="variable">cra</span> &gt;= 7.0) <span class="keyword">entao</span></div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">escreval</span>("Candidato ELEGÍVEL")</div>
+    <div><span class="keyword">senao</span></div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">escreval</span>("Candidato NÃO ELEGÍVEL")</div>
+    <div><span class="keyword">fimse</span></div>
+    <div><span class="keyword">fimalgoritmo<br><br><br></span></div>
+</div><br><p dir="ltr" style="text-align: left;">Considerando o uso de operadores lógicos (E, OU) e a regra de negócio descrita, analise as assertivas:</p>
+<ol type="I" style="font-size: 17px;">
+    <li>O algoritmo está incorreto. Um candidato com 26 anos e CRA 8.0 será considerado "ELEGÍVEL", o que viola a regra de negócio que exige que AMBAS as condições (idade e CRA) sejam atendidas simultaneamente.</li>
+    <li>Para corrigir o algoritmo, o operador OU deveria ser substituído por um operador XOU, resultando na condição: se (idade &gt;= 18 e idade &lt;= 25) xou (cra &gt;= 7.0) entao.</li>
+    <li>Com o código atual, um candidato de 17 anos com CRA 6.0 será considerado "NÃO ELEGÍVEL", pois nenhuma das condições ligadas pelo OU é verdadeira.</li>
+</ol>
+<p dir="ltr" style="text-align: left;">Assinale a alternativa que indica quais assertivas estão corretas.</p>
+<p dir="ltr" style="text-align: left;"><br></p>
+<p dir="ltr" style="text-align: left;"><br></p>";s:18:"questiontextformat";s:1:"1";s:15:"generalfeedback";s:511:"<p>A resposta correta é a alternativa <strong>"C"</strong>.<br><br></p>
+<div class="destaque-dica">
+    <strong><span style="font-size: 1.5em;">📌 Dica:</span><br></strong><br><span style="font-size: 16px">A regra de negócio exige que duas condições sejam verdadeiras simultaneamente. Analise qual operador lógico (`E` ou `OU`) impõe essa restrição e compare com o código. O `E` exige que todas as condições sejam verdadeiras, enquanto o `OU` exige que apenas uma seja.<br><br>
+</span></div><br>";s:21:"generalfeedbackformat";s:1:"1";s:11:"defaultmark";d:1;s:7:"penalty";d:0;s:5:"qtype";s:11:"multichoice";s:6:"length";s:1:"1";s:5:"stamp";s:38:"campusvirtual2.com+250626190359+ihBaxp";s:11:"timecreated";s:10:"1750964639";s:12:"timemodified";s:10:"1750964639";s:9:"createdby";s:1:"4";s:10:"modifiedby";s:1:"4";s:8:"idnumber";N;s:9:"contextid";s:3:"552";s:6:"status";s:5:"ready";s:9:"versionid";s:3:"245";s:7:"version";s:1:"1";s:19:"questionbankentryid";s:3:"239";s:14:"categoryobject";O:8:"stdClass":9:{s:2:"id";s:2:"61";s:4:"name";s:7:"Parte I";s:9:"contextid";s:3:"552";s:4:"info";s:0:"";s:10:"infoformat";s:1:"1";s:5:"stamp";s:52:"addiemooc38.escolavirtual.gov.br+221014194013+Zlu2uj";s:6:"parent";s:2:"60";s:9:"sortorder";s:3:"999";s:8:"idnumber";N;}s:7:"options";O:8:"stdClass":15:{s:2:"id";s:3:"155";s:10:"questionid";s:3:"277";s:6:"layout";s:1:"0";s:6:"single";s:1:"1";s:14:"shuffleanswers";s:1:"0";s:15:"correctfeedback";s:27:"Sua resposta está correta.";s:21:"correctfeedbackformat";s:1:"1";s:24:"partiallycorrectfeedback";s:40:"Sua resposta está parcialmente correta.";s:30:"partiallycorrectfeedbackformat";s:1:"1";s:17:"incorrectfeedback";s:29:"Sua resposta está incorreta.";s:23:"incorrectfeedbackformat";s:1:"1";s:15:"answernumbering";s:4:"ABCD";s:14:"shownumcorrect";s:1:"1";s:23:"showstandardinstruction";s:1:"0";s:7:"answers";a:5:{i:962;O:8:"stdClass":7:{s:2:"id";s:3:"962";s:8:"question";s:3:"277";s:6:"answer";s:79:"<p dir="ltr" style="text-align: left;">Apenas a assertiva II está correta.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:963;O:8:"stdClass":7:{s:2:"id";s:3:"963";s:8:"question";s:3:"277";s:6:"answer";s:85:"<p dir="ltr" style="text-align: left;">As assertivas I, II e III estão corretas.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:964;O:8:"stdClass":7:{s:2:"id";s:3:"964";s:8:"question";s:3:"277";s:6:"answer";s:88:"<p dir="ltr" style="text-align: left;">Apenas as assertivas I e III estão corretas.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"1.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:965;O:8:"stdClass":7:{s:2:"id";s:3:"965";s:8:"question";s:3:"277";s:6:"answer";s:78:"<p dir="ltr" style="text-align: left;">Apenas a assertiva I está correta.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}i:966;O:8:"stdClass":7:{s:2:"id";s:3:"966";s:8:"question";s:3:"277";s:6:"answer";s:80:"<p dir="ltr" style="text-align: left;">Nenhuma das assertivas está correta.</p>";s:12:"answerformat";s:1:"1";s:8:"fraction";s:9:"0.0000000";s:8:"feedback";s:0:"";s:14:"feedbackformat";s:1:"1";}}}s:5:"hints";a:0:{}}

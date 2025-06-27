@@ -42,7 +42,7 @@ require_once($CFG->libdir . '/completionlib.php');
  * @copyright 2021 Jun Pataleta <jun@moodle.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class cm_completion_details_test extends advanced_testcase {
+class cm_completion_details_test extends advanced_testcase {
 
     /** @var completion_info A completion object. */
     protected $completioninfo = null;
@@ -104,7 +104,7 @@ final class cm_completion_details_test extends advanced_testcase {
      *
      * @return array[]
      */
-    public static function has_completion_provider(): array {
+    public function has_completion_provider(): array {
         return [
             'Automatic' => [
                 COMPLETION_TRACKING_AUTOMATIC, true
@@ -136,7 +136,7 @@ final class cm_completion_details_test extends advanced_testcase {
      *
      * @return array[]
      */
-    public static function is_automatic_provider(): array {
+    public function is_automatic_provider(): array {
         return [
             'Automatic' => [
                 COMPLETION_TRACKING_AUTOMATIC, true
@@ -167,7 +167,7 @@ final class cm_completion_details_test extends advanced_testcase {
      * Data provider for test_get_overall_completion().
      * @return array[]
      */
-    public static function overall_completion_provider(): array {
+    public function overall_completion_provider(): array {
         return [
             'Complete' => [COMPLETION_COMPLETE],
             'Incomplete' => [COMPLETION_INCOMPLETE],
@@ -190,7 +190,7 @@ final class cm_completion_details_test extends advanced_testcase {
      * Data provider for test_get_details().
      * @return array[]
      */
-    public static function get_details_provider(): array {
+    public function get_details_provider() {
         return [
             'No completion tracking' => [
                 COMPLETION_TRACKING_NONE, null, null, null, []
@@ -350,7 +350,7 @@ final class cm_completion_details_test extends advanced_testcase {
      * Data provider for test_get_details_custom_order().
      * @return array[]
      */
-    public static function get_details_custom_order_provider(): array {
+    public function get_details_custom_order_provider() {
         return [
             'Custom and view/grade standard conditions, view first and grade last' => [
                 true,

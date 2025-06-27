@@ -50,9 +50,6 @@ class lang {
     /** @var bool Whether Moodle is fully loaded or not */
     protected $fullyloaded = false;
 
-    /** @var string The complete path to the candidate file */
-    protected $candidatefile;
-
     /**
      * Constructor to load and serve the langfile.
      */
@@ -95,8 +92,7 @@ class lang {
      */
     protected function serve_file(): void {
         // Attempt to send the cached langpack.
-        // We only cache the file if the rev is valid.
-        if (min_is_revision_valid_and_current($this->rev)) {
+        if ($this->rev > 0) {
             if ($this->is_candidate_file_available()) {
                 // The send_cached_file_if_available function will exit if successful.
                 // In theory the file could become unavailable after checking that the file exists.

@@ -31,8 +31,8 @@ namespace core_question;
  * @copyright  2013 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class generator_test extends \advanced_testcase {
-    public function test_create(): void {
+class generator_test extends \advanced_testcase {
+    public function test_create() {
         global $DB;
 
         $this->resetAfterTest();

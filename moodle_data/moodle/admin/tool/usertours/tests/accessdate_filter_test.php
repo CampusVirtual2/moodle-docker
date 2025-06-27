@@ -25,7 +25,8 @@ use tool_usertours\local\filter\accessdate;
  * @copyright  2019 Tom Dickman <tomdickman@catalyst-au.net>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class accessdate_filter_test extends \advanced_testcase {
+class accessdate_filter_test extends \advanced_testcase {
+
     public function setUp(): void {
         $this->resetAfterTest(true);
     }
@@ -35,7 +36,7 @@ final class accessdate_filter_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function filter_matches_provider(): array {
+    public function filter_matches_provider() {
         return [
             'No config set; Matches' => [
                 [],

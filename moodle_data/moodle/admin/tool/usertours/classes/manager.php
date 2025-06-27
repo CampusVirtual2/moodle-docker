@@ -512,9 +512,8 @@ class manager {
      * @param   int         $tourid     The ID of the tour to duplicate.
      */
     protected function duplicate_tour($tourid) {
-        require_sesskey();
-
         $tour = helper::get_tour($tourid);
+
         $export = $tour->to_record();
         // Remove the id.
         unset($export->id);

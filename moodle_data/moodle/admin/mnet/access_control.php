@@ -6,7 +6,7 @@ require_once(__DIR__ . '/../../config.php');
 require_once($CFG->libdir.'/adminlib.php');
 include_once($CFG->dirroot.'/mnet/lib.php');
 
-$sort         = optional_param('sort', 'username', PARAM_ALPHAEXT);
+$sort         = optional_param('sort', 'username', PARAM_ALPHA);
 $dir          = optional_param('dir', 'ASC', PARAM_ALPHA);
 $page         = optional_param('page', 0, PARAM_INT);
 $perpage      = optional_param('perpage', 30, PARAM_INT);
@@ -153,15 +153,7 @@ foreach ($columns as $column) {
     $headings[$column] = "<a href=\"?sort=$column&amp;dir=$columndir&amp;\">".$string[$column]."</a>$columnicon";
 }
 $headings['delete'] = '';
-
-$sortorder = get_safe_orderby([
-    'username' => 'username',
-    'mnet_host_id' => 'mnet_host_id',
-    'access' => 'accessctrl',
-    'default' => 'username',
-], $sort, $dir, false);
-
-$acl = $DB->get_records('mnet_sso_access_control', null, $sortorder);
+$acl = $DB->get_records('mnet_sso_access_control', null, "$sort $dir", '*'); //, $page * $perpage, $perpage);
 $aclcount = $DB->count_records('mnet_sso_access_control');
 
 if (!$acl) {

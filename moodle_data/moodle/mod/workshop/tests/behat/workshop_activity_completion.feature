@@ -25,16 +25,16 @@ Feature: View activity completion information in the Workshop activity
     And I set the following fields to these values:
       | Require grade       | Submission                                        |
     And I press "Save and return to course"
-    And I edit assessment form in workshop "Music history" as:
+    And I edit assessment form in workshop "Music history" as:"
       | id_description__idx_0_editor | Aspect1 |
     And I change phase in workshop "Music history" to "Submission phase"
 
-  Scenario: The workshop module displays automatic completion conditions to teachers
+  Scenario: View automatic completion items as a teacher
     Given I am on the "Music history" "workshop activity" page
     Then "Music history" should have the "Receive a grade" completion condition
     And "Music history" should have the "View" completion condition
 
-  Scenario: Students can complete a workshop activity by achieving a passing grade
+  Scenario: View automatic completion items as a student
     Given I am on the "Music history" "workshop activity" page logged in as student1
     And the "View" completion condition of "Music history" is displayed as "done"
     And the "Receive a grade" completion condition of "Music history" is displayed as "todo"
@@ -45,12 +45,12 @@ Feature: View activity completion information in the Workshop activity
     And I press "Save changes"
     And I am on the "Course 1" course page logged in as teacher1
     And I change phase in workshop "Music history" to "Assessment phase"
-    And I allocate submissions in workshop "Music history" as:
+    And I allocate submissions in workshop "Music history" as:"
       | Participant     | Reviewer      |
       | Vinnie Student1 | Rex Student2  |
     # Assess the submission.
     And I am on the "Music history" "workshop activity" page logged in as student2
-    And I assess submission "Pinch harmonics" in workshop "Music history" as:
+    And I assess submission "Pinch harmonics" in workshop "Music history" as:"
       | grade__idx_0            | 9 / 10      |
       | peercomment__idx_0      | Well done   |
     # Evaluate and close the workshop so a grade is recorded for the student.
@@ -65,7 +65,7 @@ Feature: View activity completion information in the Workshop activity
     And the "Receive a grade" completion condition of "Music history" is displayed as "done"
 
   @javascript
-  Scenario: A student can manually mark the workshop activity as done but a teacher cannot
+  Scenario: Use manual completion
     Given I am on the "Music history" "workshop activity" page
     And I am on the "Music history" "workshop activity editing" page
     And I expand all fieldsets

@@ -314,7 +314,7 @@ EOF;
             return get_string('allparticipants');
         }
 
-        return format_string(groups_get_group_name($groupid), true, ['context' => $this->get_context()]);
+        return groups_get_group_name($groupid);
     }
 
     /**
@@ -779,8 +779,8 @@ EOF;
         if (!config::get('importrecordings_enabled')) {
             return false;
         }
-        if (!$this->can_manage_recordings()) {
-            return false;
+        if ($this->can_manage_recordings()) {
+            return true;
         }
 
         return $this->is_feature_enabled('importrecordings');
@@ -1034,8 +1034,7 @@ EOF;
         return new moodle_url('/mod/bigbluebuttonbn/bbb_view.php', [
             'action' => 'logout',
             'id' => $this->cm->id,
-            'courseid' => $this->cm->course, // Used to find the course if ever the activity is deleted
-            'sesskey' => sesskey(),
+            'courseid' => $this->cm->course // Used to find the course if ever the activity is deleted
             // while the meeting is running.
         ]);
     }
@@ -1074,7 +1073,6 @@ EOF;
             'action' => 'join',
             'id' => $this->cm->id,
             'bn' => $this->instancedata->id,
-            'sesskey' => sesskey(),
         ]);
     }
 

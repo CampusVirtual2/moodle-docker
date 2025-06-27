@@ -46,7 +46,7 @@ class http_response_test extends \basic_testcase {
      *
      * @return array the test case data.
      */
-    public static function response_data_provider(): array {
+    public function response_data_provider() {
         return [
             'valid headers and body' => [
                 'payload' => [

@@ -239,11 +239,6 @@ define([
     var deselectItem = function(options, state, item, originalSelect) {
         var selectedItemValue = $(item).attr('data-value');
 
-        // Preprend an empty option to the select list to avoid having a default selected option.
-        if (originalSelect.find('option').first().attr('value') !== undefined) {
-            originalSelect.prepend($('<option>'));
-        }
-
         // Look for a match, and toggle the selected property if there is a match.
         originalSelect.children('option').each(function(index, ele) {
             if ($(ele).attr('value') == selectedItemValue) {
@@ -660,7 +655,10 @@ define([
             var processedResults = ajaxHandler.processResults(options.selector, results);
             var existingValues = [];
 
-            // Now destroy all options that are not current
+            // Now destroy all options that are not currently selected.
+            if (!options.multiple) {
+                originalSelect.children('option').remove();
+            }
             originalSelect.children('option').each(function(optionIndex, option) {
                 option = $(option);
                 if (!option.prop('selected')) {

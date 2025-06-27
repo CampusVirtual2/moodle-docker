@@ -19,8 +19,13 @@ Feature: Completion with no calendar capabilites
       | course      | C1                          |
       | idnumber    | 00001                       |
       | name        | Test forum name             |
+      | intro       | Test forum name description |
+      | section     | 1                           |
       | completion  | 2                           |
-    And I am on the "Test forum name" "forum activity editing" page logged in as admin
+    And I log in as "admin"
+    And I am on "Course 1" course homepage
+    And I follow "Test forum name"
+    And I navigate to "Settings" in current page administration
     And I set the following fields to these values:
       | id_completionexpected_enabled | 1    |
       | id_completionexpected_day     | 1    |
@@ -31,9 +36,13 @@ Feature: Completion with no calendar capabilites
     And I override the system permissions of "Teacher" role with:
       | capability | permission |
       | moodle/calendar:manageentries | Prohibit |
+    And I log out
 
   Scenario: Editing completion date
-    When I am on the "Test forum name" "forum activity editing" page logged in as teacher1
+    When I log in as "teacher1"
+    And I am on "Course 1" course homepage with editing mode on
+    And I follow "Test forum name"
+    And I navigate to "Settings" in current page administration
     And I set the following fields to these values:
       | id_completionexpected_year | 2018 |
     And I press "Save and return to course"

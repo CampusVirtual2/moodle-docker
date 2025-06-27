@@ -28,7 +28,8 @@ require_once($CFG->libdir . '/formslib.php');
  * @copyright  2016 Andrew Nicols <andrew@nicols.co.uk>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-final class step_test extends \advanced_testcase {
+class step_test extends \advanced_testcase {
+
     /**
      * @var moodle_database
      */
@@ -72,7 +73,7 @@ final class step_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function dirty_value_provider(): array {
+    public function dirty_value_provider() {
         return [
                 'tourid' => [
                         'tourid',
@@ -159,7 +160,7 @@ final class step_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function step_sortorder_provider(): array {
+    public function step_sortorder_provider() {
         return [
                 [0, 5, true, false],
                 [1, 5, false, false],
@@ -253,7 +254,7 @@ final class step_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function get_config_provider(): array {
+    public function get_config_provider() {
         $allvalues = (object) [
                 'some' => 'value',
                 'another' => 42,
@@ -409,7 +410,7 @@ final class step_test extends \advanced_testcase {
     /**
      * Data provider for set_config.
      */
-    public static function set_config_provider(): array {
+    public function set_config_provider() {
         $allvalues = (object) [
                 'some' => 'value',
                 'another' => 42,
@@ -763,7 +764,7 @@ final class step_test extends \advanced_testcase {
      *
      * @return array
      */
-    public static function getter_provider(): array {
+    public function getter_provider() {
         return [
                 'id' => [
                         'id',

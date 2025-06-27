@@ -32,7 +32,7 @@ global $CFG;
 // Used to create a wiki page to tag.
 require_once($CFG->dirroot . '/mod/wiki/locallib.php');
 
-final class events_test extends \advanced_testcase {
+class events_test extends \advanced_testcase {
 
     /**
      * Test set up.
