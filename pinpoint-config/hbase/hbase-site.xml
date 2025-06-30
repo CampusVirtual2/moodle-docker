@@ -1,27 +1,47 @@
 <?xml version="1.0"?>
 <configuration>
-    <!-- Endereço do Zookeeper (padrão no docker-compose) -->
+
+    <!-- Diretório raiz do HBase -->
     <property>
-        <name>hbase.zookeeper.quorum</name>
-        <value>pinpoint-hbase</value>
+        <name>hbase.rootdir</name>
+        <value>file:///home/pinpoint/hbase</value>
     </property>
 
-    <!-- Porta do Zookeeper -->
+    <!-- Cluster distribuído habilitado -->
     <property>
-        <name>hbase.zookeeper.property.clientPort</name>
-        <value>2181</value>
+        <name>hbase.cluster.distributed</name>
+        <value>true</value>
     </property>
 
-    <!-- Diretório raiz usado pelo HBase no Zookeeper -->
+    <!-- Caminho no ZooKeeper onde o HBase armazena seus dados -->
     <property>
         <name>zookeeper.znode.parent</name>
         <value>/hbase</value>
     </property>
 
-    <!-- Timeout para conexão -->
+    <!-- Nome DNS (ou hostname do container) do ZooKeeper -->
     <property>
-        <name>hbase.rpc.timeout</name>
+        <name>hbase.zookeeper.quorum</name>
+        <value>zookeeper</value>
+    </property>
+
+    <!-- Porta padrão do ZooKeeper -->
+    <property>
+        <name>hbase.zookeeper.property.clientPort</name>
+        <value>2181</value>
+    </property>
+
+    <!-- Porta do master HBase -->
+    <property>
+        <name>hbase.master.port</name>
         <value>60000</value>
     </property>
+
+    <!-- Porta do regionserver -->
+    <property>
+        <name>hbase.regionserver.port</name>
+        <value>60020</value>
+    </property>
+
 </configuration>
 

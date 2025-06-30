@@ -5,3 +5,6 @@ moodledata_data/cache/
 moodledata_data/localcache/
 moodledata_data/temp/
 moodledata_data/filedir/
+zk_data/
+zk_datalog/
+redis/

@@ -32,6 +32,29 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
     $_SERVER['HTTPS'] = 'on';
 }
 
+//
+// 🚀 Tuning de desempenho com cache em memória (RAM)
+//
+$CFG->localcachedir = '/dev/shm/moodlecache';   // cache local mais rápido
+$CFG->tempdir       = '/dev/shm/moodletemp';    // arquivos temporários em memória
+
+// Sessões no Redis (ótimo para ambientes com múltiplos containers)
+$CFG->session_handler_class = '\core\session\redis';
+$CFG->session_redis_host = 'redis';  // nome do container Redis
+$CFG->session_redis_port = 6379;
+$CFG->session_redis_database = 0;  // Pode usar de 0 a 15
+$CFG->session_redis_prefix = 'sess_';
+$CFG->session_redis_acquire_lock_timeout = 120;
+$CFG->session_redis_lock_expire = 7200;
+$CFG->session_redis_lock_retry = 100;
+
+$CFG->sessiontimeout = 7200; // 2 horas
+
+// ⚡️ Usa APCu para armazenar sessões e configurações
+//$CFG->session_handler_class = '\core\session\apcu_session'; // armazena sessões no APCu (ótimo para 1 container PHP)
+$CFG->rcache = true;
+$CFG->rcachetype = 'apcu';
+
 //debug - development
 @error_reporting(E_ALL | E_STRICT);   // NOT FOR PRODUCTION SERVERS!
 @ini_set('display_errors', '1');         // NOT FOR PRODUCTION SERVERS!

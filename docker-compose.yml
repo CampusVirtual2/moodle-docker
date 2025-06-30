@@ -24,11 +24,13 @@ services:
     restart: always
     volumes:
       - ./pg_data:/var/lib/postgresql/data
+      - ./postgresql.conf:/etc/postgresql/postgresql.conf
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
       - TZ=America/Sao_Paulo
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
     networks:
       - default
 
@@ -50,6 +52,7 @@ services:
       - TZ=America/Sao_Paulo
       - PINPOINT_COLLECTOR_HOST=pinpoint-collector # 🆕 Necessário para agente PHP localizar o collector
     volumes:
+      - ./php.ini:/usr/local/etc/php/conf.d/99-custom.ini
       - ./moodle_data:/var/www/html
       - ./moodledata_data:/var/www/moodledata
       - ./logs:/var/log/apache2
@@ -80,10 +83,16 @@ services:
 
   redis:
     image: redis:7.4.1-alpine
+    container_name: ${DOMAIN}_redis
     volumes:
       - ./redis:/data
-    ports:
-      - 6379:6379
+    command: >
+      redis-server --save 900 1
+                   --rename-command SLAVEOF ""
+                   --rename-command REPLICAOF ""
+                   --rename-command CONFIG ""
+                   --dir /data
+    restart: always
     networks:
       - default
 
@@ -108,48 +117,29 @@ services:
       - rede_proxy_reverso
       - default
 
-  pinpoint-hbase: # 🆕 Serviço HBase necessário para o funcionamento do Pinpoint
-    image: pinpointdocker/pinpoint-hbase:2.5.2
-    container_name: pinpoint-hbase
-    ports:
-      - "16010:16010"
-      - "2181:2181"
-      - "60000:60000"
-      - "60010:60010"
-    networks:
-      - default
-
-  pinpoint-collector: # ✅ Já estava, mas adicionamos dependência ao HBase
-    image: pinpointdocker/pinpoint-collector:2.5.2
-    container_name: pinpoint-collector
-    depends_on:
-      - pinpoint-hbase # 🆕 Necessário para aguardar o HBase subir
+  moodle-backup:
+    build:
+      context: ./backup
+    container_name: ${DOMAIN}_backup
+    env_file: .env
     environment:
-      - HBASE_HOST=pinpoint-hbase # 🆕 Configuração do host HBase
-    ports:
-      - "9994:9994"
-      - "9995:9995"
-      - "9996:9996"
-    networks:
-      - rede_proxy_reverso
-      - default
-
-  pinpoint-web:
-    image: pinpointdocker/pinpoint-web:2.5.2
-    container_name: pinpoint-web
-    depends_on:
-      - pinpoint-collector
-    environment:
-      - SPRING_PROFILES_ACTIVE=release
-      - COLLECTOR_IP=pinpoint-collector
-      - HBASE_HOST=pinpoint-hbase # 🆕 Garante conexão com HBase
-    ports:
-      - "28080:8080"
+      - TZ=America/Sao_Paulo
+      - POSTGRES_HOST=moodlepgdb
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - AWS_BUCKET_NAME=${AWS_BUCKET_NAME}
+      - AWS_BUCKET_PATH=${AWS_BUCKET_PATH}
+      - AWS_REGION=${AWS_REGION}
     volumes:
-      - ./pinpoint-config/hbase/hbase-site.xml:/pinpoint/web/WEB-INF/classes/hbase-site.xml
+      - ./backup:/backup
+      - ./moodle_data:/var/www/html:ro
+      - ./moodledata_data:/var/www/moodledata:ro
+    restart: unless-stopped
     networks:
       - rede_proxy_reverso
       - default
+
 
 volumes:
   mariadb_data:
