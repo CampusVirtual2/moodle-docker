@@ -8,3 +8,4 @@ moodledata_data/filedir/
 zk_data/
 zk_datalog/
 redis/
+backup/moodle/
