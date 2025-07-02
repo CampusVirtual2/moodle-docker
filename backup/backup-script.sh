@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# Carrega manualmente variáveis do .env se necessário
+[ -f /backup/.env ] && export $(grep -v '^#' /backup/.env | xargs)
+
 DATE=$(date +'%Y-%m-%d_%H-%M')
 BACKUP_DIR="/backup/moodle/$DATE"
 mkdir -p "$BACKUP_DIR"

@@ -68,6 +68,21 @@ services:
       - rede_proxy_reverso
       - default
 
+  cdn-nginx:
+    image: nginx:latest
+    container_name: ${DOMAIN}_cdn
+    environment:
+      - TZ=America/Sao_Paulo
+    ports:
+      - "8003:80"
+    volumes:
+      - ./videos:/usr/share/nginx/html:ro
+      - ./nginx_cdn.conf:/etc/nginx/nginx.conf:ro
+    restart: unless-stopped
+    networks:
+      - rede_proxy_reverso
+      - default
+
   cron:
     image: moodlehq/moodle-php-apache:8.1
     container_name: ${DOMAIN}_cron
@@ -135,6 +150,7 @@ services:
       - ./backup:/backup
       - ./moodle_data:/var/www/html:ro
       - ./moodledata_data:/var/www/moodledata:ro
+      - ./.env:/backup/.env:ro
     restart: unless-stopped
     networks:
       - rede_proxy_reverso
