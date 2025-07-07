@@ -35,8 +35,11 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
 //
 // 🚀 Tuning de desempenho com cache em memória (RAM)
 //
-$CFG->localcachedir = '/dev/shm/moodlecache';   // cache local mais rápido
-$CFG->tempdir       = '/dev/shm/moodletemp';    // arquivos temporários em memória
+#$CFG->localcachedir = '/dev/shm/moodlecache';   // cache local mais rápido
+$CFG->localcachedir = '/var/www/moodledata/cache';   // cache local mais rápido
+#$CFG->tempdir       = '/dev/shm/moodletemp';    // arquivos temporários em memória
+$CFG->tempdir       = '/var/www/html/moodle/temp';    // arquivos temporários em memória
+
 
 // Sessões no Redis (ótimo para ambientes com múltiplos containers)
 $CFG->session_handler_class = '\core\session\redis';
@@ -63,6 +66,7 @@ $CFG->rcachetype = 'apcu';
  
 $CFG->mod_hvp_dev = 1;
 $CFG->mod_hvp_aggregate_assets = 1;
+$CFG->smtpmaxbulk = 5;
 
 require_once(__DIR__ . '/lib/setup.php');
 

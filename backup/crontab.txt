@@ -1,2 +1,2 @@
-0 3 * * * root /usr/local/bin/backup-script.sh >> /var/log/cron.log 2>&1
-
+*/1 * * * * root /bin/bash -c 'echo "teste $(/bin/date)" >> /tmp/teste-cron.log'
+0 3 * * * root /bin/bash -c 'echo "===== $(/bin/date) =====" >> /var/log/cron.log && /usr/local/bin/backup-script.sh >> /var/log/cron.log 2>&1'

@@ -30,6 +30,7 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
       - TZ=America/Sao_Paulo
+      - PGTZ=America/Sao_Paulo
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
     networks:
       - default
@@ -38,8 +39,8 @@ services:
     container_name: ${DOMAIN}_web
     env_file: .env
     build: .
-    ports:
-      - '8002:80'
+#    ports:
+#      - '8002:80'
     environment:
       - MOODLE_DATABASE_TYPE=pgsql
       - MOODLE_DATABASE_HOST=moodlepgdb
@@ -60,6 +61,13 @@ services:
       - ./default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
+    entrypoint: >
+      /bin/sh -c "
+        mkdir -p /tmp/moodle_temp &&
+        chown www-data:www-data /tmp/moodle_temp &&
+        chmod 700 /tmp/moodle_temp &&
+        exec docker-php-entrypoint apache2-foreground
+      "
     depends_on:
       - moodlepgdb
     extra_hosts:
@@ -73,8 +81,8 @@ services:
     container_name: ${DOMAIN}_cdn
     environment:
       - TZ=America/Sao_Paulo
-    ports:
-      - "8003:80"
+#    ports:
+#      - "8003:80"
     volumes:
       - ./videos:/usr/share/nginx/html:ro
       - ./nginx_cdn.conf:/etc/nginx/nginx.conf:ro
@@ -91,8 +99,13 @@ services:
     volumes:
       - ./moodle_data:/var/www/html
       - ./moodledata_data:/var/www/moodledata
+      - ./cron-logs:/var/log/moodle
     entrypoint: >
-      /bin/sh -c "while true; do php /var/www/html/moodle/admin/cli/cron.php; sleep 60; done"
+      /bin/sh -c "mkdir -p /var/log/moodle && \
+        while true; do \
+          php /var/www/html/moodle/admin/cli/cron.php >> /var/log/moodle/cron.log 2>&1; \
+          sleep 60; \
+        done"
     depends_on:
       - campusvirtual2.com
 
@@ -146,6 +159,8 @@ services:
       - AWS_BUCKET_NAME=${AWS_BUCKET_NAME}
       - AWS_BUCKET_PATH=${AWS_BUCKET_PATH}
       - AWS_REGION=${AWS_REGION}
+      - AWS_ACCESS_KEY_ID=LPOLDVFGXP0PSO8L63R2
+      - AWS_SECRET_ACCESS_KEY=96dVKhBIoycL50HXjIPg8DeYTTz2Ii68RtsttdNI
     volumes:
       - ./backup:/backup
       - ./moodle_data:/var/www/html:ro

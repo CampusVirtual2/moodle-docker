@@ -93,7 +93,7 @@ for VIDEO in "$DIR"/*.mp4; do
       <svg id='svg2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 315.07 80'></svg>
     </div>
     <div class='title'>
-      <h2>$BASENAME</h2>
+      <h2></h2>
     </div>
   </div>
   <video id='video' controls='' preload='metadata'>
