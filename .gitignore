@@ -10,3 +10,5 @@ zk_data/
 zk_datalog/
 redis/
 backup/moodle/
+cron-logs/
+*.log

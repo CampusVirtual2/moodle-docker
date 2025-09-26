@@ -171,6 +171,25 @@ services:
       - rede_proxy_reverso
       - default
 
+  beyla:
+    image: grafana/beyla:latest
+    # Beyla precisa ver os processos do container-alvo:
+    pid: "service:campusvirtual2.com"
+    privileged: true
+    environment:
+      BEYLA_OPEN_PORT: 80
+      BEYLA_PRINT_TRACES: true 
+      OTEL_EXPORTER_OTLP_ENDPOINT: "https://otlp-gateway-prod-sa-east-0.grafana.net/otlp" 
+      OTEL_EXPORTER_OTLP_HEADERS: "Authorization=Basic NjYyMDIzOmdsY19leUp2SWpvaU1UY3hOakFpTENKdUlqb2ljM1JoWTJzdE5qWXlNREl6TFc5MGJIQXRkM0pwZEdVdGJXOXZaR3hsSWl3aWF5STZJa2czUm1nMWFIZ3lVakJOZHpGM01td3pZek0xVEdRNGJ5SXNJbTBpT25zaWNpSTZJbkJ5YjJRdGMyRXRaV0Z6ZEMwd0luMTk=" 
+      OTEL_EXPORTER_OTLP_PROTOCOL: "http/protobuf"
+      OTEL_SERVICE_NAME: moodle
+      OTEL_RESOURCE_ATTRIBUTES: deployment.environment=production,service.namespace=moodle-group,service.version=<Version>
+      BEYLA_LOG_LEVEL: "debug"
+    depends_on:
+      - campusvirtual2.com
+    networks:
+      - rede_proxy_reverso
+      - default
 
 volumes:
   mariadb_data:
