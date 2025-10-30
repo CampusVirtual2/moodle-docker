@@ -1,23 +1,4 @@
 services:
-  moodledb:
-    image: mariadb:latest
-    container_name: ${DOMAIN}_db
-    command: '--default-authentication-plugin=mysql_native_password'
-    volumes:
-      - ./db_data:/var/lib/mysql
-    restart: always
-    env_file: .env
-    environment:
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_DATABASE=${MYSQL_DB}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
-      - MARIADB_CHARACTER_SET=utf8mb4
-      - MARIADB_COLLATE=utf8mb4_unicode_ci
-      - TZ=America/Sao_Paulo
-    networks:
-      - default
-
   moodlepgdb: # 🛠 Corrigido nome duplicado e conflito com mariadb/postgres
     image: postgres:13
     container_name: ${DOMAIN}_pgdb
@@ -126,14 +107,14 @@ services:
 
   nginx-proxy-manager:
     image: 'jc21/nginx-proxy-manager:latest'
-    container_name: nginx_proxy_manager
+    container_name: ${DOMAIN}_npm
     restart: unless-stopped
     ports:
       - '80:80'
       - '443:443'
       - '81:81'
     environment:
-      DB_MYSQL_HOST: moodledb
+      DB_MYSQL_HOST: mnginx-proxy-manager-db
       DB_MYSQL_PORT: 3306
       DB_MYSQL_USER: npm_user
       DB_MYSQL_PASSWORD: secure_npm_password
@@ -141,6 +122,26 @@ services:
     volumes:
       - ./data/npm:/data
       - ./data/letsencrypt:/etc/letsencrypt
+    networks:
+      - rede_proxy_reverso
+      - default
+
+  nginx-proxy-manager-db:
+    image: mariadb:latest
+    container_name: ${DOMAIN}_db_npm
+    command: '--default-authentication-plugin=mysql_native_password'
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=root_password
+      - MARIADB_DATABASE=npm_database
+      - MARIADB_USER=npm_user
+      - MARIADB_PASSWORD=secure_npm_password
+      - MARIADB_CHARACTER_SET=utf8mb4
+      - MARIADB_COLLATE=utf8mb4_unicode_ci
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ./data/npm/mysql-data:/var/lib/mysql
+      - ./data/npm/mysql-config:/etc/mysql/conf.d
     networks:
       - rede_proxy_reverso
       - default
@@ -167,26 +168,6 @@ services:
       - ./moodledata_data:/var/www/moodledata:ro
       - ./.env:/backup/.env:ro
     restart: unless-stopped
-    networks:
-      - rede_proxy_reverso
-      - default
-
-  beyla:
-    image: grafana/beyla:latest
-    # Beyla precisa ver os processos do container-alvo:
-    pid: "service:campusvirtual2.com"
-    privileged: true
-    environment:
-      BEYLA_OPEN_PORT: 80
-      BEYLA_PRINT_TRACES: true 
-      OTEL_EXPORTER_OTLP_ENDPOINT: "https://otlp-gateway-prod-sa-east-0.grafana.net/otlp" 
-      OTEL_EXPORTER_OTLP_HEADERS: "Authorization=Basic NjYyMDIzOmdsY19leUp2SWpvaU1UY3hOakFpTENKdUlqb2ljM1JoWTJzdE5qWXlNREl6TFc5MGJIQXRkM0pwZEdVdGJXOXZaR3hsSWl3aWF5STZJa2czUm1nMWFIZ3lVakJOZHpGM01td3pZek0xVEdRNGJ5SXNJbTBpT25zaWNpSTZJbkJ5YjJRdGMyRXRaV0Z6ZEMwd0luMTk=" 
-      OTEL_EXPORTER_OTLP_PROTOCOL: "http/protobuf"
-      OTEL_SERVICE_NAME: moodle
-      OTEL_RESOURCE_ATTRIBUTES: deployment.environment=production,service.namespace=moodle-group,service.version=<Version>
-      BEYLA_LOG_LEVEL: "debug"
-    depends_on:
-      - campusvirtual2.com
     networks:
       - rede_proxy_reverso
       - default
