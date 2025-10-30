@@ -114,7 +114,7 @@ services:
       - '443:443'
       - '81:81'
     environment:
-      DB_MYSQL_HOST: mnginx-proxy-manager-db
+      DB_MYSQL_HOST: nginx-proxy-manager-db
       DB_MYSQL_PORT: 3306
       DB_MYSQL_USER: npm_user
       DB_MYSQL_PASSWORD: secure_npm_password
