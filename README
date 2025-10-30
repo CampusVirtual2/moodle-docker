@@ -1,0 +1,10 @@
+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
+
+ssh mds@172.16.28.203
+172.16.28.204
+
+mds
+VxUqrj36b4Knls
+
+install-docker.sh
+docker compose up -d

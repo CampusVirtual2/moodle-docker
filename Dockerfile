@@ -25,7 +25,7 @@ RUN apt-get update \
   unixodbc-dev \
   uuid-dev \
   ghostscript \
-  libaio1 \
+  libaio \
   libgss3 \
   locales \
   sassc \
