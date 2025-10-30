@@ -1,3 +1,4 @@
+fabio.tabosa@gmail.com
 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
 
 ssh mds@172.16.28.203
@@ -8,3 +9,14 @@ VxUqrj36b4Knls
 
 install-docker.sh
 docker compose up -d
+
+NPM - Proxy
+http://172.16.28.203:81/login
+
+primeiro acesso 
+admin@example.com  changeme
+admin@campusvirtual.unb.br  C@mpusvirtua1
+
+Comandos DOCKER pra limpar
+docker compose down -v --rmi all --remove-orphans
+docker system prune -a --volumes
