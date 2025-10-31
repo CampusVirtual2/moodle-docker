@@ -12,3 +12,4 @@ redis/
 backup/moodle/
 cron-logs/
 *.log
+data/npm/mysql-data/ib_logfile0
