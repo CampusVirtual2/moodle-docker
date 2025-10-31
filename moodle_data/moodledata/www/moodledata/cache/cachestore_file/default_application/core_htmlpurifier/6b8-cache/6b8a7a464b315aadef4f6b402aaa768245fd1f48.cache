@@ -1,2 +1,0 @@
-s:367:"<p>Esta opção ativa modo de manutenção durante e após a migração do banco de dados, que impede o acesso de todos os usuários, até a conclusão da migração. Por favor, note que o administrador tem que apagar manualmente o arquivo $CFG-&gt;dataroot/climaintenance.html, depois atualizar as configurações no config.php para retomar a operação normal.</p>
-";

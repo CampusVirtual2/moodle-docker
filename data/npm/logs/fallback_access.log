@@ -1632,3 +1632,8 @@
 [26/Sep/2025:19:59:57 +0000] 400 - - http localhost-nginx-proxy-manager "-" [Client 45.142.193.125] [Length 154] [Gzip -] "-" "-"
 [26/Sep/2025:20:01:47 +0000] 404 - POST http 157.180.119.231 "/boaform/admin/formLogin" [Client 196.251.70.174] [Length 122] [Gzip 1.35] "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0" "http://157.180.119.231:80/admin/login.asp"
 [26/Sep/2025:20:01:47 +0000] 400 - - http localhost-nginx-proxy-manager "-" [Client 196.251.70.174] [Length 0] [Gzip -] "-" "-"
+[30/Oct/2025:22:03:45 +0000] 200 - GET http 172.16.28.203 "/" [Client 164.41.222.2] [Length 568] [Gzip 1.86] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "-"
+[30/Oct/2025:22:03:45 +0000] 404 - GET http 172.16.28.203 "/robots.txt?489406" [Client 164.41.222.2] [Length 183] [Gzip 3.21] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "-"
+[30/Oct/2025:22:03:46 +0000] 400 - GET http 172.16.28.203 "/favicon.ico" [Client 127.0.0.1] [Length 230] [Gzip -] "-" "-"
+[30/Oct/2025:22:03:54 +0000] 404 - GET http 172.16.28.203 "/npm" [Client 164.41.222.2] [Length 183] [Gzip 3.21] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "-"
+[30/Oct/2025:22:03:54 +0000] 404 - GET http 172.16.28.203 "/robots.txt?489406" [Client 164.41.222.2] [Length 183] [Gzip 3.21] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" "-"
