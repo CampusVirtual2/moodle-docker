@@ -10,6 +10,7 @@ zk_data/
 zk_datalog/
 redis/
 backup/moodle/
+backup/
 cron-logs/
 *.log
-data/npm/mysql-data/ib_logfile0
+data/npm/
