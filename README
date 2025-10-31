@@ -20,3 +20,10 @@ admin@campusvirtual.unb.br  C@mpusvirtua1
 Comandos DOCKER pra limpar
 docker compose down -v --rmi all --remove-orphans
 docker system prune -a --volumes
+
+| Situação                               | Comando recomendado                                        |
+| -------------------------------------- | ---------------------------------------------------------- |
+| Mudou variáveis ou `.env`              | `docker compose up -d`                                     |
+| Quer baixar novas versões das imagens  | `docker compose pull && docker compose up -d`              |
+| Mudou estrutura (rede, nomes, volumes) | `docker compose down && docker compose up -d`              |
+| Quer resetar tudo (inclusive dados)    | `docker compose down -v --rmi all && docker compose up -d` |
