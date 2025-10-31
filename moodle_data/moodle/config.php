@@ -17,7 +17,7 @@ $CFG->dboptions = array (
   'dbsocket' => '',
 );
 
-$CFG->wwwroot   = 'https://campusvirtual2.com';
+$CFG->wwwroot   = 'https://www.campusvirtual.unb.br';
 $CFG->dataroot  = '/var/www/moodledata';
 $CFG->admin     = 'admin';
 $CFG->sslproxy  = 1;
