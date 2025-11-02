@@ -16,7 +16,7 @@ services:
     networks:
       - default
 
-  campusvirtual2.com:
+  moodleweb:
     container_name: ${DOMAIN}_web
     env_file: .env
     command: >
@@ -24,8 +24,6 @@ services:
                chmod -R 775 /var/www/moodledata &&
                apache2-foreground"
     build: .
-#    ports:
-#      - '8002:80'
     environment:
       - MOODLE_DATABASE_TYPE=pgsql
       - MOODLE_DATABASE_HOST=moodlepgdb
@@ -44,6 +42,7 @@ services:
       - ./logs:/var/log/apache2
       - ./000-default.conf:/etc/apache2/sites-available/000-default.conf
       - ./default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
+      - ./apache2/mpm_prefork.conf:/etc/apache2/mods-available/mpm_prefork.conf
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     entrypoint: >
@@ -92,7 +91,7 @@ services:
           sleep 60; \
         done"
     depends_on:
-      - campusvirtual2.com
+      - moodleweb 
 
   redis:
     image: redis:7.4.1-alpine
