@@ -1,24 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Anchura",
-      "description": "Anchura do iFrame nun formato compatible con CSS. Por defecto: \"500px\""
-    },
-    {
-      "label": "Anchura mínima",
-      "description": "Anchura mínima do iFrame nun formato compatible con CSS. Por defecto: \"300px\""
-    },
-    {
-      "label": "Altura",
-      "description": "Altura do iFrame nun formato compatible con CSS. Por defecto: \"500px\""
-    },
-    {
-      "label": "Orixe",
-      "description": "URI a documento externo ou ruta a documento dentro de H5P (baixo /content)"
-    },
-    {
-      "label": "Redimensionado permitido",
-      "description": "Se está activado, amosarase o botón de pantalla completa e o contido H5P redimensionarase para encher o contedor"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b30d7d9eaa8c54e67db95ec9b227d8ba48be8e9b9f731882209576fd1c79149a
+size 772

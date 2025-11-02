@@ -1,14 +1,3 @@
-function SetBookmark() {
-    var SD = window.parent,
-        loc = window.location.href
-    ;
-
-    SD.SetBookmark(
-        loc.substring(loc.toLowerCase().lastIndexOf("/scormcontent/") + 14, loc.length),
-        document.title
-    );
-    SD.CommitData();
-}
-
-//Automatically set a bookmark for this page.
-SetBookmark();
+version https://git-lfs.github.com/spec/v1
+oid sha256:f7ce545be204916dfee0f8b273210612b86f0f921f7824eba1141b01da3e5b48
+size 319

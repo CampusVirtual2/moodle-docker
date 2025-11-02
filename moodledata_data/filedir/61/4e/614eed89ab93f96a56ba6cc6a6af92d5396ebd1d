@@ -1,30 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Spørsmål eller beskrivelse"
-    },
-    {
-      "label": "Plassholder",
-      "default": "Skriver her...",
-      "description": "Text that initially will be shown in the input field. Will be removed automatically when the user starts writing."
-    },
-    {
-      "label": "Rader av tekst",
-      "description": "Antall rader of tekst som brukeren kan fylle inn",
-      "options": [
-        {
-          "label": "1 linje"
-        },
-        {
-          "label": "2 linjer"
-        },
-        {
-          "label": "3 linjer"
-        },
-        {
-          "label": "10 linjer"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e2960088bb5c0fa311eebe68fa7194a0357d55ec318875028817e24bcfc0c375
+size 646

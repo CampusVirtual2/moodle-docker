@@ -1,20 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Raumname",
-      "description": "Name des Raums"
-    },
-    {
-      "label": "An den Container anpassen",
-      "description": "Passt den Raum dem Container an, überschreibt jegliche Höhe und Breite mit 100 %."
-    },
-    {
-      "label": "Höhe",
-      "description": "Setze die Höhe des Chatrooms"
-    },
-    {
-      "label": "Breite",
-      "description": "Setze die Breite des Chatrooms"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:f13adbff4fe4176ed1b116dcbc4249c4a7e1b604b9e93c00ccff37d43fb97f35
+size 448

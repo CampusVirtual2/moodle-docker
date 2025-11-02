@@ -1,15 +1,3 @@
-{
-  "title": "Flowplayer",
-  "contentType": "Media",
-  "description": "Provides you with flowplayer for all your Flash needs.",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 5,
-  "runnable": 0,
-  "machineName": "flowplayer",
-  "preloadedJs": [
-    {
-      "path": "scripts/flowplayer-3.2.12.min.js"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a0977acb4d3927252069400543a1a0bef2c6cdce3aee6ba2a5c36feda5d307fd
+size 324

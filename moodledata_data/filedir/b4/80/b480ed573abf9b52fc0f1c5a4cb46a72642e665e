@@ -1,29 +1,3 @@
-{
-  "semantics":[
-    {
-      "label":"Elenco dei contenuti di Column",
-      "entity":"contenuto",
-      "field":{
-        "fields":[
-          {
-            "label":"Contenuto"
-          },
-          {
-            "label":"Separa il contenuto con una riga orizzontale",
-            "options":[
-              {
-                "label":"Automatico (impostazione predefinita)"
-              },
-              {
-                "label":"Non utilizzare mai la riga di separazione qui sopra"
-              },
-              {
-                "label":"Usa sempre la riga di separazione qui sopra"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e4b1a9ef470ab19fff31f2335da1b1f783205890611c72d535793bce171fc315
+size 662

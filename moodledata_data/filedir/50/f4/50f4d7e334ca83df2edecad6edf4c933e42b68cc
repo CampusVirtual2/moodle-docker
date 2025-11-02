@@ -1,16 +1,3 @@
-{
-  "title": "Material Design Icons",
-  "contentType": "Font",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 0,
-  "runnable": 0,
-  "machineName": "H5P.MaterialDesignIcons",
-  "license": "GPL3",
-  "author": "Joubel",
-  "preloadedCss": [
-    {
-      "path": "h5p-material-icons.css"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:175451a5bbca7d46ab937dab994694bbc2c3dd69f0fea3e8040807c697dcd532
+size 307

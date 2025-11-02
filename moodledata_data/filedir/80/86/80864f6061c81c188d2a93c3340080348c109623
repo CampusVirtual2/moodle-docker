@@ -1,23 +1,3 @@
-{
-  "libraryStrings": {
-    "title": "Аудио бичигч",
-    "recordAnswer": "Бичлэг",
-    "pause": "Түр зогсоох",
-    "continue": "Үргэлжлүүлэх",
-    "done": "Дуусгах",
-    "retry": "Дахин тохируулах",
-    "microphoneNotSupported": "Микрофоныг дэмждэггүй. Та микрофон бичлэг хийх боломжтой хөтөч ашиглаж байгаа эсэхээ шалгаарай.",
-    "microphoneInaccessible": "Микрофонд хандах боломжгүй. Хөтөчийн микрофон идэвхжсэн эсэхийг шалгаарай.",
-    "insecureNotAllowed": "Энэ хуудсыг HTTPS ашиглан үйлчилдэггүй тул таны хөтөч дээр микрофон руу нэвтрэхийг зөвшөөрөхгүй. Зохиогчтой холбогдож, HTTPS ашиглан үүнийг ашиглах боломжтой болгохыг түүнээс хүснэ үү",
-    "statusReadyToRecord": "Бичлэг хийж эхлэхийн тулд доорх товчийг дарна уу.",
-    "statusRecording": "Бичлэг хийж байна...",
-    "statusPaused": "Бичлэг түр зогссон.",
-    "statusFinishedRecording": "Доорх бичлэгийг сонсоорой.",
-    "downloadRecording": "Энэ бичлэгийг ашиглахын тулд \"Оруулах\" товчийг дарна уу.",
-    "retryDialogHeaderText": "Дахин бичлэг хийх үү?",
-    "retryDialogBodyText": "\"Дахин оролдох\" дээр дарснаар та одоогийн бичлэгээ алдах болно.",
-    "retryDialogConfirmText": "Дахин оролдоно уу",
-    "retryDialogCancelText": "Цуцлах",
-    "statusCantCreateTheAudioFile": "Аудио файл үүсгэх боломжгүй байна."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:806167424683a429467976f02f76e0d32eb1778c5302e7e5be8cd2b82366208b
+size 1902

@@ -1,21 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Elements",
-      "entity": "element",
-      "field": {
-        "label": "Tipus d’element",
-        "description": "Biblioteca per a aquesta pàgina."
-      }
-    },
-    {
-      "label": "Etiqueta per al text d’ajuda",
-      "description": "Etiqueta per mostra la informació addicional útil per l’usuari.",
-      "default": "Més informació"
-    },
-    {
-      "label": "Omple la informació addicional d’ajuda",
-      "description": "Aquí podeu introduir informació addicional per a l’usuari, que estarà disponible en fer clic."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a95735e7c62471829fabdee3aafd7015bb169ba410052ffa893c4d7a6f97d63c
+size 597

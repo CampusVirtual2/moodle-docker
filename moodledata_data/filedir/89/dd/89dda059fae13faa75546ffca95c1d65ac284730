@@ -1,32 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Tekst pitanja",
-      "description": "Pitanje na temelju kojeg će korinik odabrati."
-    },
-    {
-      "label": "Opcije",
-      "entity": "opcija",
-      "field": {
-        "fields": [
-          {
-            "label": "Tekst opcije",
-            "description": "Tekst koji će stajati na dugmetu za opcije."
-          },
-          {
-            "label": "Idi na",
-            "description": "Ciljano vrijeme koje će korisnik koristiti kada klikne na dugme za opcije. Unesite vrijeme u formatu M:SS."
-          },
-          {
-            "label": "Tekst uvjetnog izbora",
-            "description": "Tekst koji će se pojaviti kada korisnik klikne na dugme za opcije. Nije obavezno."
-          }
-        ]
-      }
-    },
-    {
-      "label": "Oznaka za dugme za nastavak",
-      "default": "Nastavi"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e592e29adcbdf56e637bf87c3eba82ba3d6da64375204122a8dc18485f5821ee
+size 854

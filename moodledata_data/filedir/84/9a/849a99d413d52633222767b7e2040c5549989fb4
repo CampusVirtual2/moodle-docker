@@ -1,21 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "所有元件",
-      "entity": "元件",
-      "field": {
-        "label": "元件",
-        "description": "從可使用的資源挑選一個元件。"
-      }
-    },
-    {
-      "label": "幫助按鈕的顯示文字",
-      "description": "匯出頁面上幫助按鈕的顯示文字，若不需要有幫助或是額外資訊，可留空不填。",
-      "default": "幫助"
-    },
-    {
-      "label": "幫助說明文字",
-      "description": "用來告知用戶以協助其瞭解使用方式的說明內容。"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:83491b20b757eb8d0d7a8c36232af3f4a2622a51686a8bda2a20bfb853d7cc89
+size 568

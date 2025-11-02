@@ -1,29 +1,3 @@
-{
-  "semantics":[
-    {
-      "label":"Liste med kolonneinnhold",
-      "entity":"innhold",
-      "field":{
-        "fields":[
-          {
-            "label":"Innhold"
-          },
-          {
-            "label":"Del innhold med en horisontal linje",
-            "options":[
-              {
-                "label":"Automatisk (standard)"
-              },
-              {
-                "label":"Aldri bruk linje over"
-              },
-              {
-                "label":"Alltid bruk linje over"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ccd71b4be858d72ead0ab6845d872905688054673355de726c43bb46ce76183f
+size 576

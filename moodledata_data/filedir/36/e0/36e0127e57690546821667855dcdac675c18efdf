@@ -1,16 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Label",
-      "description": "Etikett/rubrik för svar när användaren exporterar alla svar"
-    },
-    {},
-    {
-      "label": "Etikett för att export inte stöds",
-      "default": "Export stöds inte på din enhet"
-    },
-    {
-      "label": "Inkludera kommentarer i det exporterade dokumentet"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d4541d72f62388ca2584d98159ac3e3131e55e485f80c504ad301dcf3b7a0270
+size 355

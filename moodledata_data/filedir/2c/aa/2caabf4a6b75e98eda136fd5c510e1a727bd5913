@@ -1,24 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Lled",
-      "description": "Lled iFrame mewn fformat sy'n ufudd i CSS. Diofyn: \"500px\""
-    },
-    {
-      "label": "Lled lleiaf",
-      "description": "Lled lleiaf iFrame mewn fformat sy'n ufudd i CSS. Diofyn: \"300px\""
-    },
-    {
-      "label": "Uchder",
-      "description": "Uchder iFrame mewn fformat sy'n ufudd i CSS. Diofyn: \"500px\""
-    },
-    {
-      "label": "Ffynhonnell",
-      "description": "URI i ddogfen allanol neu lwybr at ddogfen tu fewn H5P (o dan /content)"
-    },
-    {
-      "label": "Caniatawyd ailfeintio",
-      "description": "Os wedi'i alluogi, caiff botwm sgrin lawn ei ddangos, a chaiff H5P ei ailfeintio i ffitio'i amgylchedd"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d05b7be0b26bf161c634d0083f6eed7e13313100d7711494877f2a91c613a56d
+size 719

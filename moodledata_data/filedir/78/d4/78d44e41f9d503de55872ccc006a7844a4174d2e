@@ -1,36 +1,3 @@
-{
-  "title": "Image",
-  "contentType": "Media",
-  "description": "Simple library that displays an image.",
-  "majorVersion": 1,
-  "minorVersion": 1,
-  "patchVersion": 20,
-  "runnable": 0,
-  "machineName": "H5P.Image",
-  "author": "Joubel",
-  "coreApi": {
-    "majorVersion": 1,
-    "minorVersion": 19
-  },
-  "preloadedJs": [
-    {
-      "path": "image.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "image.css"
-    }
-  ],
-  "metadataSettings": {
-    "disable": 0,
-    "disableExtraTitleField": 1
-  },
-  "editorDependencies": [
-    {
-      "machineName": "H5PEditor.ShowWhen",
-      "majorVersion": 1,
-      "minorVersion": 0
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:25d20908d230375f081bd58f11fc1405489b527ffe1f58418b72eb3e6a737923
+size 644

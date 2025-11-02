@@ -1,20 +1,3 @@
-{
-  "libraryStrings": {
-    "done": "Дууслаа",
-    "image": "Зураг",
-    "noTaskSize": "Эхлээд ажлын хэмжээг зааж өгнө үү.",
-    "backgroundOpacityOverridden": "Арын тунгалаг байдлыг дарсан байна",
-    "dropzone": "Унах бүс",
-    "deselectAll": "Бүгдийг нь цуцлах",
-    "cancel": "Цуцлах",
-    "ok": "Болж байна",
-    "text": "Текст",
-    "insertElement": "Нэмэх :type",
-    "remove": "Устгах",
-    "confirmRemoval": "Та энэ элементийг устгахдаа итгэлтэй байна уу?",
-    "advancedtext": "Текст",
-    "selectAll": "Бүгдийг сонгох",
-    "deleteTaskTitle": "Даалгаврыг устгаж байна",
-    "confirm": "Баталгаажуулах"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:306495892b6eb7f574f880ff261626c03d6780a067fc57665f937011a180edd0
+size 834

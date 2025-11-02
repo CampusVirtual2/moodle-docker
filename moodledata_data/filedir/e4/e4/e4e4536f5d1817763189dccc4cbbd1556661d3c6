@@ -1,26 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Uppgiftsbeskrivning",
-      "description": "Beskriv hur användaren ska lösa uppgiften."
-    },
-    {
-      "label": "Media",
-      "fields": [
-        {
-          "label": "Typ",
-          "description": "Valfri media att visa ovanför frågan."
-        }
-      ]
-    },
-    {
-      "label": "Etrikett för lösningsbeskrivning",
-      "default": "Klicka för att se svaret.",
-      "description": "Klickbart textområde där lösningen visas."
-    },
-    {
-      "label": "Löstningtext",
-      "description": "Lösningen för bilden."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1675027e1d7221d958d397018aa8a9ea871ee2f9ee463345e466cf9442c26c38
+size 592

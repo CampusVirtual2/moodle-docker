@@ -1,26 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Disgrifiad y dasg",
-      "description": "Disgrifiwch sut y ddylai'r defnyddiwr ddatrys y dasg."
-    },
-    {
-      "label": "Cyfrwng",
-      "fields": [
-        {
-          "label": "Math",
-          "description": "Cyfrwng opsiynol i'w ddangos uwchben y cwestiwn."
-        }
-      ]
-    },
-    {
-      "label": "Label disgrifiadol y datrysiad",
-      "default": "Cliciwch i weld yr ateb.",
-      "description": "Testun sydd modd ei glicio i ddangos lle caiff y datrysiad ei ddangos."
-    },
-    {
-      "label": "Testun datrysiad",
-      "description": "Datrysiad am y llun."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b906eca3640e16da7b7a6699caf27b9e73d10ea1ea380d84d8e121dc322431ff
+size 631

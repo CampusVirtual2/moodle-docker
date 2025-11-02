@@ -1,20 +1,3 @@
-{
-  "machineName": "H5P.AFrameAR",
-  "title": "aframe-ar.js",
-  "description": "An H5P wrapper around the AR.js library",
-  "license": "MIT",
-  "author": "AR.js",
-  "majorVersion": 3,
-  "minorVersion": 1,
-  "patchVersion": 1,
-  "runnable": 0,
-  "coreApi": {
-    "majorVersion": 1,
-    "minorVersion": 12
-  },
-  "preloadedJs": [
-    {
-      "path": "aframe-ar.js"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:3d7516418f4bba89553512c9024c20d070588f89911dc5cb9b6812bf23254252
+size 375

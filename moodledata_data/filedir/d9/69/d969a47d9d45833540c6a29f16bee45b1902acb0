@@ -1,9 +1,3 @@
-{
-  "libraryStrings": {
-    "example": "Ejemplo",
-    "hide": "Ocultar",
-    "hideImportantInstructions": "Ocultar instrucciones importantes",
-    "importantInstructions": "Instrucciones importantes",
-    "showImportantInstructions": "Mostrar instrucciones"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:16e2f68754e3bd51ec422c3819ff8f07f5e2ea0ee5fd72b221f6155cb85c3ab1
+size 264

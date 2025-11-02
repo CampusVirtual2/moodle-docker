@@ -1,18 +1,3 @@
-{
-  "libraryStrings": {
-    "confirmReset": "Kas oled kindel, et soovid muuta paigutust? Sellega lähtestatakse eelvaade.",
-    "sameAsSpacing": "Sama, mis vahekaugus",
-    "noFrame": "Ilma raamita",
-    "uploadError": "Ei saa pilti üles laadida. Fail on tõenäoliselt liiga suur.",
-    "zoomIn": "Suumi sisse",
-    "zoomOut": "Suumi välja",
-    "noMoreZoom": "Suumi ei ole enam",
-    "addImage": "Lisa pilt",
-    "changeImage": "Muuda pilti",
-    "imageSettings": "Pildi seaded",
-    "close": "Sulge",
-    "imageAltLabel": "Alternatiivne tekst",
-    "imageTitleLabel": "Hõljuva kursori tekst",
-    "pleaseConfirm": "Please confirm"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:6af6c35ee8599cbdd42aaf272e92a2137c9df702f8a47f226f762cbaa1726178
+size 643

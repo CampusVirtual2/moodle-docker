@@ -1,32 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Jautājuma teksts",
-      "description": "Jautājums, uz kura pamata lietotājs izdarīs izvēli."
-    },
-    {
-      "label": "Izvēles",
-      "entity": "izvēle",
-      "field": {
-        "fields": [
-          {
-            "label": "Izvēles teksts",
-            "description": "Etiķete, kas tiks parādīta uz izvēles pogas."
-          },
-          {
-            "label": "Iet uz",
-            "description": "Mērķa laiks uz kuru lietotājs tiks novirzīts pēc izvēles pogas nospiešanas. Ievadiet laika kodu formātā M:SS."
-          },
-          {
-            "label": "Teksts, ja izvēlēts",
-            "description": "Neobligāts apstiprinājuma teksts, kas tiks parādīts pēc tam, kad lietotājs būs nospiedis izvēles pogu."
-          }
-        ]
-      }
-    },
-    {
-      "label": "Turpināt pogas etiķete",
-      "default": "Turpināt"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:c777b43e58734b536fc703fc47bede0139b7b6e81fd45f1575e1c0a3f7924199
+size 916

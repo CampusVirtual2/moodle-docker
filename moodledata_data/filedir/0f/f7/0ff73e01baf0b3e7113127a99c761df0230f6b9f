@@ -1,14 +1,3 @@
-{
-  "libraryStrings":{
-    "transformLabel":"Transformer",
-    "editLabel":"Editer",
-    "removeLabel":"Supprimer",
-    "bringToFrontLabel":"Amener au premier plan",
-    "sendToBackLabel":"Send to Back",
-    "unableToPaste":"Impossible de coller cet objet. Malheureusemennt l'objet que vous essayez de coller n'est pas supporté par ce type de contenu ou la version en cours.",
-    "sizeLabel":"Dimensions",
-    "positionLabel":"Position",
-    "heightLabel":"Hauteur",
-    "widthLabel":"Largeur"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:fa7ce136d2e5603b69f61b93e0026bc5c90a16803005a570189c9bb1cfb6fe4d
+size 501

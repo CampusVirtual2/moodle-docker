@@ -1,28 +1,3 @@
-var H5PUpgrades = H5PUpgrades || {};
-
-H5PUpgrades['H5P.ThreeImage'] = (function () {
-  return {
-    0: {
-      2: function (parameters, finished) {
-        if (parameters && parameters.context &&
-            parameters.context.behaviour && parameters.context.behaviour.length) {
-          // Add wrapper for audio
-          const audio = parameters.context.behaviour;
-          parameters.context.behaviour = {
-            audio: audio
-          };
-        }
-        finished(null, parameters);
-      },
-      4: function (parameters, finished) {
-        if (parameters && parameters.behaviour) {
-          parameters.behaviour.label = {
-            showLabel: false,
-            labelPosition: 'right'
-          };
-        }
-        finished(null, parameters);
-      }
-    }
-  };
-})();
+version https://git-lfs.github.com/spec/v1
+oid sha256:9f3f64cb650034a45a95d10973cb940b16b33e267387ed73fe5c862392fd6e5e
+size 787

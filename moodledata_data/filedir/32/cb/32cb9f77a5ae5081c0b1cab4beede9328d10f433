@@ -1,34 +1,3 @@
-{
-  "title": "Personality Quiz",
-  "machineName": "H5P.PersonalityQuiz",
-  "description": "Create a personality quiz and test which Game of Thrones or Hogwarts House your friends belong in.",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 8,
-  "runnable": 1,
-  "author": "Lumenia AS",
-  "license": "MIT",
-  "embedTypes": [
-    "iframe"
-  ],
-  "preloadedJs": [
-    {
-      "path": "js/personalityQuiz.js"
-    },
-    {
-      "path": "js/wheelAnimation.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "css/personalityQuiz.css"
-    }
-  ],
-  "editorDependencies": [
-    {
-      "machineName": "H5PEditor.ColorSelector",
-      "majorVersion": 1,
-      "minorVersion": 0
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:226c98bc0bb1976564859485087fb8593613adb32a7a7c0029a01b816fdd09b2
+size 696

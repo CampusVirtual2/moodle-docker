@@ -1,29 +1,3 @@
-{
-  "semantics":[
-    {
-      "label":"Seznam obsahu sloupců",
-      "entity":"obsah",
-      "field":{
-        "fields":[
-          {
-            "label":"Obsah"
-          },
-          {
-            "label":"Oddělit obsah vodorovným pravítkem",
-            "options":[
-              {
-                "label":"Automaticky (výchozí)"
-              },
-              {
-                "label":"Nikdy nepoužívat pravítko výše"
-              },
-              {
-                "label":"Vždy používat pravítko výše"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4b66b677c42c8deb795656085bba770b092588ffa650a4933e8e14b1564d2bda
+size 599

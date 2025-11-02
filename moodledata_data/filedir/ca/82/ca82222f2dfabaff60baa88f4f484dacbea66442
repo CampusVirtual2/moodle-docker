@@ -1,28 +1,3 @@
-{
-  "title": "Drop",
-  "description": "Drop.js is a powerful Javascript and CSS library for creating dropdowns and other floating displays.",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 2,
-  "runnable": 0,
-  "author": "Hubspot. Wrapped as H5P by Joubel (fnoks)",
-  "license": "MIT",
-  "machineName": "Drop",
-  "preloadedJs": [
-    {
-      "path": "js/drop.min.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "css/drop-theme-arrows-bounce.min.css"
-    }
-  ],
-  "preloadedDependencies": [
-    {
-      "machineName": "Tether",
-      "majorVersion": 1,
-      "minorVersion": 0
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:19b133843960d9e3a4512d3285b41176460defe131aa53758d2eefd4a7d5571c
+size 607

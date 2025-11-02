@@ -1,24 +1,3 @@
-{
-  "title": "Exportable Text Area",
-  "contentType": "Static content",
-  "description": "Library that displays an area where the user may input text, which is exportable as a doc-file",
-  "majorVersion": 1,
-  "minorVersion": 3,
-  "patchVersion": 15,
-  "coreApi": {
-    "majorVersion": 1,
-    "minorVersion": 19
-  },
-  "runnable": 0,
-  "machineName": "H5P.ExportableTextArea",
-  "author": "H5P Group",
-  "metadataSettings": {
-    "disable": 0,
-    "disableExtraTitleField": 1
-  },
-  "preloadedJs": [
-    {
-      "path": "dist/h5p-exportable-text-area.js"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:96a548c7e9d970d78ee834f1619a3c675b9567a855ebfc62640194d6ac0b3a25
+size 566

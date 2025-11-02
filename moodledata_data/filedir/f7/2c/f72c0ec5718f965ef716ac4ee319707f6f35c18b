@@ -1,17 +1,3 @@
-{
-  "libraryStrings": {
-    "transformLabel": "Преобразование",
-    "editLabel": "Изменить",
-    "removeLabel": "Удалить",
-    "bringToFrontLabel": "На передний план",
-    "sendToBackLabel": "Отправить на задний план",
-    "unableToPaste": "Невозможно вставить этот объект. К сожалению, объект, который вы пытаетесь вставить, не поддерживается этим типом контента или версией.",
-    "sizeLabel": "Размер",
-    "positionLabel": "Позиция",
-    "heightLabel": "Высота",
-    "widthLabel": "Ширина",
-    "copyLabel": "Копировать",
-    "paste": "Вставить",
-    "moreElements": "Больше элементов"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2ee32aaf0cfbea4a4c984013920180a38ca803275b66c3a0f37033d38298e90a
+size 831

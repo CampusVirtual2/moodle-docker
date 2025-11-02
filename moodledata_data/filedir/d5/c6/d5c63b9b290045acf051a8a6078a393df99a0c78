@@ -1,17 +1,3 @@
-{
-  "libraryStrings": {
-    "confirmReset": "Är du säker på att du vill ändra denna layout? Detta kommer att återställa förhandsgranskningen.",
-    "sameAsSpacing": "Samma som mellanrum",
-    "noFrame": "Ingen ram",
-    "uploadError": "Kunde inte ladda upp bild. Filen är antagligen för stor.",
-    "zoomIn": "Zooma in",
-    "zoomOut": "Zooma ut",
-    "noMoreZoom": "Ingen mer zoom",
-    "addImage": "Lägg till bild",
-    "changeImage": "Ändra bild",
-    "imageSettings": "Bildinställningar",
-    "close": "Stäng",
-    "imageAltLabel": "Alternativ text",
-    "imageTitleLabel": "Hovringstext"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:f2f422865836804a6a506a4531603d31fc8c2bd7b282521189430a89020f3c48
+size 612

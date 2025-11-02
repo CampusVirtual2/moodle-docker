@@ -1,17 +1,3 @@
-{
-  "libraryStrings": {
-    "transformLabel": "Transformar",
-    "editLabel": "Editar",
-    "removeLabel": "Eliminar",
-    "bringToFrontLabel": "Traer á Fronte",
-    "sendToBackLabel": "Mandar Atrás",
-    "unableToPaste": "Non se pode pegar este obxecto. Por desgraza, o obxecto que estás a intentar pegar non está soportado por este tipo de contido ou versión.",
-    "sizeLabel": "Tamaño",
-    "positionLabel": "Posición",
-    "heightLabel": "Altura",
-    "widthLabel": "Anchura",
-    "copyLabel": "Copiar",
-    "paste": "Pegar",
-    "moreElements": "Máis elementos"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:112c39bf03b8c217cc76403d4c24e2926581d649557aed1c40592ba839f3f852
+size 582

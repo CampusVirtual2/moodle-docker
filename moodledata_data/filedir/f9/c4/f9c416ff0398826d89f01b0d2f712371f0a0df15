@@ -1,29 +1,3 @@
-{
-  "semantics":[
-    {
-      "label":"רשימה של תכנים בעמוד",
-      "entity":"תוכן",
-      "field":{
-        "fields":[
-          {
-            "label":"תוכן"
-          },
-          {
-            "label":"הפרדת תכנים בעזרת קו אופקי",
-            "options":[
-              {
-                "label":"אוטומטי (בררת־מחדל)"
-              },
-              {
-                "label":"ללא הפרדה"
-              },
-              {
-                "label":"הפרדה תמיד"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1f92112c564efe4c8fd9afd539dec8c08d43873da0b0c973f6bc8110acf05b01
+size 611

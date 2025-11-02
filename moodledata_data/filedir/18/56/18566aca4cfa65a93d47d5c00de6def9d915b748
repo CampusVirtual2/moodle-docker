@@ -1,21 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Prvky",
-      "entity": "prvek",
-      "field": {
-        "label": "Typ prvku",
-        "description": "Knihovna pro tuto stránku."
-      }
-    },
-    {
-      "label": "Popisek pro text nápovědy",
-      "description": "Popisek pro zobrazení dalších užitečných informací uživateli.",
-      "default": "Více informací"
-    },
-    {
-      "label": "Vyplňte další informace nápovědy",
-      "description": "Zde můžete vyplnit další informace pro uživatele, které budou k dispozici po kliknutí."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e573db4bfa09aff6a31e2ab633b0c10e04ef0d76a20b3f6d9264e21c1d1271ab
+size 569

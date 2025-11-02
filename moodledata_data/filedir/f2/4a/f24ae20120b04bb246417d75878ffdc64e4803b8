@@ -1,29 +1,3 @@
-{
-  "title": "H5PEditor.ARMarkerGenerator",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 2,
-  "runnable": 0,
-  "machineName": "H5PEditor.ARMarkerGenerator",
-  "coreApi": {
-    "majorVersion": 1,
-    "minorVersion": 12
-  },
-  "author": "Oliver Tacke",
-  "preloadedJs": [
-    {
-      "path": "scripts/h5peditor-ar-marker-generator-spinner.js"
-    },
-    {
-      "path": "scripts/h5peditor-ar-marker-generator.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "styles/h5peditor-ar-marker-generator-spinner.css"
-    },
-    {
-      "path": "styles/h5peditor-ar-marker-generator.css"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:14733af2526368a4178b32b4b7f7528caa09b7ff3cc6f05182ac8967e633aa3f
+size 610

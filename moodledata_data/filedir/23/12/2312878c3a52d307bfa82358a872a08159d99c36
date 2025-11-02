@@ -1,21 +1,3 @@
-{
-  "title": "Tether",
-  "description": "Tether is a JavaScript library for efficiently making an absolutely positioned element stay next to another element on the page (http://github.hubspot.com/tether/)",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 2,
-  "runnable": 0,
-  "author": "Hubspot. Wrapped as H5P by Joubel (fnoks)",
-  "license": "MIT",
-  "machineName": "Tether",
-  "preloadedJs": [
-    {
-      "path": "scripts/tether.min.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "styles/tether.min.css"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:36e5f98e2acfb858892e7109943e1d2e75d10ac0e440c7365678a4a35bfb9c4a
+size 540

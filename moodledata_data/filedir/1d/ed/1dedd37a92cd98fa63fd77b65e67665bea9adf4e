@@ -1,23 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "تصویر"
-    },
-    {
-      "label": "Decorative only",
-      "description": "Enable this option if the image is purely decorative and does not add any information to the content on the page. It will be ignored by screen readers and not given any alternative text."
-    },
-    {
-      "label": "متن جایگزین",
-      "description": "الزامی. اگر مروگر نتواند تصویر را بارگیری کند، این متن به جای آن نمایش داده خواهد شد. همچنین مبدل متن به گفتار از آن استفاده خواهد کرد."
-    },
-    {
-      "label": "متن شناور",
-      "description": "اختیاری. این متن وقتی نمایش داده می‌شود که کاربر نشانگر موس را روی تصویر می‌برد."
-    },
-    {
-      "label": "نام محتوای تصویر",
-      "default": "تصویر"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b1cc57006dbd69a7ca4585099e1200cb09e5ca6c08f2aea61e86044a336cba8f
+size 951

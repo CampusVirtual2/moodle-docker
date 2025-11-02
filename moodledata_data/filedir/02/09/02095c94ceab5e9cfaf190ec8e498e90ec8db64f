@@ -1,21 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Elementi",
-      "entity": "elemento",
-      "field": {
-        "label": "Tipo di elemento",
-        "description": "Libreria per questa pagina"
-      }
-    },
-    {
-      "label": "Etichetta per il testo di aiuto",
-      "description": "Etichetta per mostrare all'utente utili informazioni aggiuntive",
-      "default": "Più informazioni"
-    },
-    {
-      "label": "Riempi con informazioni di aiuto aggiuntive",
-      "description": "Qui puoi aggiungere ulteriori informazioni che si renderanno disponibili al clic dell'utente"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d602bfd5b59e2142129e5aaac6aa44f710df871f03bef75132315e1decdc8caa
+size 585

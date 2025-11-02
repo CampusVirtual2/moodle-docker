@@ -1,24 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Largeur",
-      "description": "Largeur du cadre au format CSS standard. Défaut: \"500px\""
-    },
-    {
-      "label": "Largeur minimale",
-      "description": "Largeur minimale du cadre au format CSS standard. Défaut: \"300px\""
-    },
-    {
-      "label": "Hauteur",
-      "description": "Hauteur du cadre au format CSS standard. Défaut: \"500px\""
-    },
-    {
-      "label": "Source",
-      "description": "URL du document externe, ou chemin vers un document H5P (dans /content)"
-    },
-    {
-      "label": "Redimensionnement supporté",
-      "description": "Si cette option est activée, un bouton \"Plein écran\" apparaîtra, et le contenu H5P sera redimensionné afin d'occuper au maximum l'espace disponible"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e90eb8ed1f1f16cfd29787039e9a33cbeeffd10b8189671ed4010897b76bf17f
+size 777

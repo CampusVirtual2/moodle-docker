@@ -1,20 +1,3 @@
-{
-  "libraryStrings": {
-    "insertElement": "添加 :type",
-    "done": "完成",
-    "remove": "移除",
-    "image": "圖像",
-    "text": "文字",
-    "noTaskSize": "請先指定任務尺寸。",
-    "confirmRemoval": "確定要移除這個元素？",
-    "backgroundOpacityOverridden": "背景不透明度已被覆寫",
-    "advancedtext": "文字",
-    "dropzone": "拖曳區",
-    "selectAll": "全選",
-    "deselectAll": "取消全選",
-    "deleteTaskTitle": "删除任务",
-    "cancel": "取消",
-    "confirm": "确认",
-    "ok": "我知道了"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4af49fe46129194d6002a33033902cfc65a4ab8c7976113489b1c847c112a110
+size 566

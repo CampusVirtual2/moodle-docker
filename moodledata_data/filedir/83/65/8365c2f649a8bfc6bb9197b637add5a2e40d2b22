@@ -1,28 +1,3 @@
-var H5PUpgrades = H5PUpgrades || {};
-
-H5PUpgrades['H5P.SpeakTheWords'] = (function () {
-  return {
-    1: {
-      /**
-       * Makes incorrect and correct answer texts more visible
-       *
-       * @param parameters
-       * @param finished
-       */
-      2: function (parameters, finished) {
-        if (parameters.l10n) {
-          if (parameters.l10n.incorrectAnswerText) {
-            parameters.incorrectAnswerText = parameters.l10n.incorrectAnswerText;
-            delete parameters.l10n.incorrectAnswerText;
-          }
-
-          if (parameters.l10n.correctAnswerText) {
-            parameters.correctAnswerText = parameters.l10n.correctAnswerText;
-            delete parameters.l10n.correctAnswerText;
-          }
-        }
-        finished(null, parameters);
-      }
-    }
-  }
-})();
+version https://git-lfs.github.com/spec/v1
+oid sha256:46035491e51200ba19b8479598e33a7106a6cd31959396885fec6094800ef589
+size 795

@@ -1,16 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Label",
-      "description": "Label/pennawd am ateb pan fydd defnyddiwr yn allforio pob ateb"
-    },
-    {},
-    {
-      "label": "Label am allforio heb ei gynnal",
-      "default": "Does dim modd allforio (heb ei gynnal) ar y ddyfais hon"
-    },
-    {
-      "label": "Cynnwys sylwadau yn y ddogfen i'w hallforio"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:9926306cc45b3111d6f9d1f956562f4c1b275e9c43594108a7fe62151b0380ab
+size 367

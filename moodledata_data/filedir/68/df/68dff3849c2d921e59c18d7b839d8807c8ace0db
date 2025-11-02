@@ -1,26 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Oppgavebeskrivelse",
-      "description": "Beskriv hva brukeren må gjøre for å løse oppgaven."
-    },
-    {
-      "label": "Media",
-      "fields": [
-        {
-          "label": "Type",
-          "description": "Valgfrit media-element som vises over spørsmålet."
-        }
-      ]
-    },
-    {
-      "label": "Etikett for løsningsknapp",
-      "default": "Klikk for å se svar",
-      "description": "Knapp som vil vise løsningen."
-    },
-    {
-      "label": "Løsningstekst",
-      "description": "Løsningen på oppgaven gitt av beskrivelse og bildet."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:3a2b0a7931e6858a89fb075373391724163f849c13140fad01a0fa75c56a015f
+size 618

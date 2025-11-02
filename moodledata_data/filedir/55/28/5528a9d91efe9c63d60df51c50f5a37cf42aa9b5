@@ -1,21 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Elemendid",
-      "entity": "element",
-      "field": {
-        "label": "Elemendi tüüp",
-        "description": "Selle lehe teek."
-      }
-    },
-    {
-      "label": "Abiteksti silt",
-      "description": "Kasutajale täiendava abiteabe näitamise silt.",
-      "default": "Rohkem teavet"
-    },
-    {
-      "label": "Sisesta täiendav abiteave",
-      "description": "Siia saad sisestada kasutaja jaoks täiendava abiteabe, mis avaneb vajutuse peale."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:141836a5eb89d737aa9ee39515cd21f35794ef490c217afb3826e8c0eafc8d3b
+size 509

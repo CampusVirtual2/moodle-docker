@@ -1,29 +1,3 @@
-{
-  "semantics":[
-    {
-      "label":"Lista do Conteúdo da Coluna",
-      "entity":"conteúdo",
-      "field":{
-        "fields":[
-          {
-            "label":"Conteúdo"
-          },
-          {
-            "label":"Separar conteúdo com uma linha horizontal",
-            "options":[
-              {
-                "label":"Automático (predefinição)"
-              },
-              {
-                "label":"Nunca utilizar a regra acima"
-              },
-              {
-                "label":"Utilizar sempre a regra acima"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ad129c4b623dda2351b112e7afa71892c3a9a3fe505424694404a9274ed76404
+size 612

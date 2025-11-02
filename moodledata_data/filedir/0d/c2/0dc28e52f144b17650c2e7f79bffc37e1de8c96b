@@ -1,5 +1,3 @@
-{
-  "libraryStrings": {
-    "invalidTime": "\":property\" contém um formato de data/hora inválido."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:42aa8f1365883afd53eccd65c329c540ec4448b2a95289741ea1c836088d89f9
+size 108

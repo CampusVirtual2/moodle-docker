@@ -1,17 +1,3 @@
-{
-  "libraryStrings": {
-    "confirmReset": "Ziur zaude diseinua aldatu nahi duzula? Honek aurrebista berrabiaraziko du.",
-    "sameAsSpacing": "Tartearen berdina",
-    "noFrame": "Markorik ez",
-    "uploadError": "Ezin izan da irudia kargatu. Oso litekeena da fitxategia handiegia izatea.",
-    "zoomIn": "Handiagotu",
-    "zoomOut": "Txikiagotu",
-    "noMoreZoom": "Zoomaren topea",
-    "addImage": "Gehitu irudia",
-    "changeImage": "Aldatu irudia",
-    "imageSettings": "Irudiaren ezarpenak",
-    "close": "Itxi",
-    "imageAltLabel": "Ordezko testua",
-    "imageTitleLabel": "Desplazamendu testua"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:20ccb02d437683aba8a2a020fea0232a24b987936933ef66f4b3e6ec2f1ea422
+size 610

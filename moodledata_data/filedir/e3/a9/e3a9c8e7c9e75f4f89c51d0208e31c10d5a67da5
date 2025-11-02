@@ -1,26 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Ülesande kirjeldus",
-      "description": "Kirjelda, kuidas kasutaja peaks ülesande lahendama."
-    },
-    {
-      "label": "Meedia",
-      "fields": [
-        {
-          "label": "Tüüp",
-          "description": "Valikuline meedia küsimusest üleval näitamiseks."
-        }
-      ]
-    },
-    {
-      "label": "Lahendust kirjeldav silt",
-      "default": "Vastuse nägemiseks kliki siin.",
-      "description": "Klikitav tekstiala, kus näidatakse lahendust."
-    },
-    {
-      "label": "Lahenduse tekst",
-      "description": "Lahendus pildile."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:9ece184a7c7a521c418abb5f0c31f7c5d00dff6d76c2544815156eb13ff25ad6
+size 608

@@ -1,26 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Descrición da tarefa",
-      "description": "Describe como debería resolver a tarefa o usuario."
-    },
-    {
-      "label": "Medios",
-      "fields": [
-        {
-          "label": "Tipo",
-          "description": "Medios opcionais amosados enriba da pregunta."
-        }
-      ]
-    },
-    {
-      "label": "Etiqueta de solución descritiva",
-      "default": "Preme para ver a resposta.",
-      "description": "Área de texto clicable onde se amosará a solución."
-    },
-    {
-      "label": "Texto da solución",
-      "description": "A solución para a imaxe."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b716bc75f3700bb5de4c5313488fd19df29e82c3e477e59b39370975841762d5
+size 623

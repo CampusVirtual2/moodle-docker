@@ -1,16 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Exporter les réponses",
-      "description": "Texte d'entête pour l'exportation des réponses."
-    },
-    {},
-    {
-      "label": "Texte d'exportation non supportée",
-      "default": "La fonction export n'est pas supportée sur cet équipement."
-    },
-    {
-      "label": "Inclure les commentaires dans le document exporté"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4c460342a9cd4a0b8fce859e0aa4c92b8cdcb65ea820ab02d7483544945edabf
+size 385

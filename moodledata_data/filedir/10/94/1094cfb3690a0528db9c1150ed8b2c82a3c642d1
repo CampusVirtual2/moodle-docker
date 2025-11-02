@@ -1,26 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Lanaren deskribapena",
-      "description": "Deskribatu zereginaren irtenbidea aurkitzeko modua."
-    },
-    {
-      "label": "Multimedia",
-      "fields": [
-        {
-          "label": "Mota",
-          "description": "Galderaren azpiko aukerako multimedia."
-        }
-      ]
-    },
-    {
-      "label": "Emaitza deskriptiboa etiketa",
-      "default": "Klikatu emaitza ikusteko.",
-      "description": "Testu area klikagarria non erakutsikoda emaitza."
-    },
-    {
-      "label": "Soluzioaren testua",
-      "description": "Irudiaren emaitza."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b02c6f3571dc63a4a6684028cadd448c9b5bc89229f2220ee4bf54c4b6bf4b34
+size 602

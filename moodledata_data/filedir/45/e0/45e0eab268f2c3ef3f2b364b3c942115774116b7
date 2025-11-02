@@ -1,33 +1,3 @@
-{
-  "title": "Three Image Editor",
-  "description": "Editor for a tool that can explore 3D spaces.",
-  "majorVersion": 0,
-  "minorVersion": 4,
-  "patchVersion": 7,
-  "runnable": 0,
-  "author": "Joubel",
-  "license": "MIT",
-  "machineName": "H5PEditor.ThreeImage",
-  "preloadedJs": [
-    {
-      "path": "dist/editor-three-image.js"
-    }
-  ],
-  "preloadedDependencies": [
-    {
-      "machineName": "H5P.ThreeImage",
-      "majorVersion": 0,
-      "minorVersion": 4
-    },
-    {
-      "machineName": "FontAwesome",
-      "majorVersion": 4,
-      "minorVersion": 5
-    },
-    {
-      "machineName": "H5P.FontIcons",
-      "majorVersion": 1,
-      "minorVersion": 0
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:185837b5769c159b5cd8390030fc1591e14c3bcb4792681380e264cecc81533c
+size 676

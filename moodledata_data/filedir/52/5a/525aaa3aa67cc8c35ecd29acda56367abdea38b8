@@ -1,17 +1,3 @@
-{
-  "libraryStrings": {
-    "transformLabel": "تحويل",
-    "editLabel": "تحرير",
-    "removeLabel": "إزالة",
-    "bringToFrontLabel": "سحب إلى الأمام",
-    "sendToBackLabel": "إرسال إلى الخلف",
-    "unableToPaste": "لا يمكن لصق هذا العنصر. للأسف، لا يدعم المحتوى أو الإصدار العنصر الذي تحاول لصقه.",
-    "sizeLabel": "الحجم",
-    "positionLabel": "الموضع",
-    "heightLabel": "الارتفاع",
-    "widthLabel": "العرض",
-    "copyLabel": "نسخ",
-    "paste": "لصق",
-    "moreElements": "المزيد من العناصر"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1574590b074aa8fc1dc88868bd4116860238c3845555b2a874b88ff0996261a0
+size 655

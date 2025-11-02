@@ -1,24 +1,3 @@
-{
-  "title": "Timecode Editor",
-  "description": "Editor widget for timecodes",
-  "majorVersion": 1,
-  "minorVersion": 2,
-  "patchVersion": 14,
-  "runnable": 0,
-  "machineName": "H5PEditor.Timecode",
-  "author": "Joubel",
-  "coreApi": {
-    "majorVersion": 1,
-    "minorVersion": 12
-  },
-  "preloadedJs": [
-    {
-      "path": "timecode.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "timecode.css"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:bce82708bd1f8aea7e9a0f007c75e05724f8a82139109f6463e041efc56d634f
+size 418

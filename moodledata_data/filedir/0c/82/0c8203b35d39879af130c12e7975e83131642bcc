@@ -1,28 +1,3 @@
-{
-  "title": "Text input field editor element",
-  "description": "A configurable editor element that can be used to describe an input field.",
-  "majorVersion": 1,
-  "minorVersion": 2,
-  "patchVersion": 8,
-  "runnable": 0,
-  "author": "Joubel",
-  "license": "MIT",
-  "machineName": "H5P.TextInputField",
-  "preloadedCss": [
-    {
-      "path": "text-input-field.css"
-    }
-  ],
-  "preloadedJs": [
-    {
-      "path": "text-input-field.js"
-    },
-    {
-      "path": "xapi-generator.js"
-    }
-  ],
-  "metadataSettings": {
-    "disable": 1,
-    "disableExtraTitleField": 1
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:70590580a16e68e734b908049f28291967435a6271ebcb0bcdf48088347daece
+size 577

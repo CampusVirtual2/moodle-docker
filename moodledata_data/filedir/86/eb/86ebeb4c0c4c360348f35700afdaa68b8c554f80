@@ -1,16 +1,3 @@
-.turnjs-slide{
-	width:600px;
-	height:8px;
-	background-color:#B4B4B4;
-	border-radius:5px;
-	margin:20px auto;
-}
-
-.turnjs-slide .ui-slider .ui-slider-handle{
-	background-color:#8F8F8F;
-	z-index:10000;
-}
-
-.turnjs-slide .thumbnail{
-	background: #666;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:6c614fe8c9ae55be107bc412eef75d8b9ffa5f7fbe2c7157451cc7f24973d918
+size 247

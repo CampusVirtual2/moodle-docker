@@ -1,30 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Pregunta o descripción"
-    },
-    {
-      "label": "Texto por defecto",
-      "default": "Empieza a escribir...",
-      "description": "Texto mostrado inicialmente en el campo de entrada. Se eliminará automáticamente cuando el usuario empiece a escribir."
-    },
-    {
-      "label": "Filas de entrada",
-      "description": "Determina la altura del campo de entrada.",
-      "options": [
-        {
-          "label": "1 línea"
-        },
-        {
-          "label": "2 líneas"
-        },
-        {
-          "label": "3 líneas"
-        },
-        {
-          "label": "10 líneas"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:225b7d78e7f717c50a73cee0dc5ce573a3dd9b93e076a9e5b31cf17f008457a8
+size 661

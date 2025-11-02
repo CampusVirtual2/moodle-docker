@@ -1,34 +1,3 @@
-.h5p-collage-wrapper {
-  border: 0 solid transparent;
-}
-.h5p-collage-template {
-  width: 100%;
-  height: 100%;
-}
-.h5p-collage-row {
-  border: 0 solid transparent;
-  box-sizing: border-box;
-}
-.h5p-collage-col {
-  float: left;
-  height: 100%;
-  overflow: hidden;
-  border: 0 solid transparent;
-  box-sizing: border-box;
-  position: relative;
-}
-.h5p-collage-photo {
-  height: 100%;
-}
-.h5p-collage-empty:before {
-  position: absolute;
-  content: "";
-  background: #f6f6f6 url('h5p.svg') no-repeat center;
-  background-size: 50% 50%;
-  width: 100%;
-  height: 100%;
-}
-.h5p-collage img {
-  max-width: none !important; /* Override responsive designs */
-  position: absolute;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:fa27090c4f3c114448e0826d4a7ab3abfe802807cb1eff6904a2c05076b858d0
+size 669

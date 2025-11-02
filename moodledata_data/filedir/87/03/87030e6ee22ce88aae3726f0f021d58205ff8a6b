@@ -1,26 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Beskriving av oppgåva",
-      "description": "Beskriv kva brukaren må gjere for å løyse oppgåva."
-    },
-    {
-      "label": "Media",
-      "fields": [
-        {
-          "label": "Type",
-          "description": "Valfritt media-element som blir vist over spørsmålet."
-        }
-      ]
-    },
-    {
-      "label": "Etikett for løsyingsknapp",
-      "default": "Klikk for å sjå svar",
-      "description": "Knapp som vil vise løsyinga."
-    },
-    {
-      "label": "Løysingstekst",
-      "description": "Løysinga på oppgåva gitt av beskriving og biletet."
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a1b904cf1076ae2b6a847c530c364c288555ecb39a9d802f49ccf3f50014bfe2
+size 626

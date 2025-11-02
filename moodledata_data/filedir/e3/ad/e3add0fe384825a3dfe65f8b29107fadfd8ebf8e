@@ -1,20 +1,3 @@
-{
-  "libraryStrings":{
-    "insertElement": "Добавить :type",
-    "done": "Готово",
-    "remove": "Удалить",
-    "image": "Изображение",
-    "text":"Текст",
-    "noTaskSize":"Пожалуйста, сначала укажите размер задания.",
-    "confirmRemoval": "Вы уверены, что хотите удалить этот элемент?",
-    "backgroundOpacityOverridden":"Непрозрачность фона переопределена",
-    "advancedtext":"Текст",
-    "dropzone":"Зона перемещения",
-    "selectAll":"Выбрать все",
-    "deselectAll":"Отменить выбор всех",
-    "deleteTaskTitle": "Удаление задачи",
-    "cancel": "Отменить",
-    "confirm": "Подтвердить",
-    "ok": "Ok"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:86c85e1ba4767115b63099d220374e8616d87a493ea5b6fd39ae09dc66cdd9d4
+size 839

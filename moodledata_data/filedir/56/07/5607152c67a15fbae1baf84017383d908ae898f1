@@ -1,20 +1,3 @@
-{
-  "libraryStrings": {
-    "insertElement": "Lägg till :type",
-    "done": "Färdig",
-    "remove": "Ta bort",
-    "image": "Bild",
-    "text": "Text",
-    "noTaskSize": "Ange uppgiftens storlek först.",
-    "confirmRemoval": "Är du säker på att du vill ta bort detta element?",
-    "backgroundOpacityOverridden": "Bakgrundens opacitet är ignorerad",
-    "advancedtext": "Text",
-    "dropzone": "Målområde",
-    "selectAll": "Välj alla",
-    "deselectAll": "Välj bort alla",
-    "deleteTaskTitle": "Raderar uppgift",
-    "cancel": "Avbryt",
-    "confirm": "Bekräfta",
-    "ok": "OK"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a34f5d059fc9eb958ed5e5dbb46b920c9d695ae15843974e9df6c37d20e046e5
+size 601

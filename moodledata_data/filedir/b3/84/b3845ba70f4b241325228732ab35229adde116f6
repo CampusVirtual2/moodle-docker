@@ -1,30 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Frage bzw. Aufgabenbeschreibung"
-    },
-    {
-      "label": "Platzhaltertext",
-      "default": "Schreibe hier hinein...",
-      "description": "Text der anfangs im Eingabefeld angezeigt wird. Wird automatisch entfernt, wenn der Nutzer anfängt zu schreiben."
-    },
-    {
-      "label": "Zeilen",
-      "description": "Bestimmt die Höhe des Eingabefelds.",
-      "options": [
-        {
-          "label": "1 Zeile"
-        },
-        {
-          "label": "2 Zeilen"
-        },
-        {
-          "label": "3 Zeilen"
-        },
-        {
-          "label": "10 Zeilen"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:f683d3ed364c3fd581de044bf339593fea4297427190fcf00531ac5e4475802f
+size 643

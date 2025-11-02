@@ -1,30 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Pregunta o descripció"
-    },
-    {
-      "label": "Text de l’espai reservat",
-      "default": "Comenceu a escriure...",
-      "description": "Text que inicialment es mostrarà al camp d’entrada. S’eliminarà automàticament quan l’usuari comenci a escriure."
-    },
-    {
-      "label": "Files d’introducció de text",
-      "description": "Determina l’alçada del camp d’introducció de text.",
-      "options": [
-        {
-          "label": "1 línia"
-        },
-        {
-          "label": "2 línies"
-        },
-        {
-          "label": "3 línies"
-        },
-        {
-          "label": "10 línies"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d4fba22aa9fbeaa1332c1204c7f198e94cb018fcc8a853036ced7405e516360f
+size 699

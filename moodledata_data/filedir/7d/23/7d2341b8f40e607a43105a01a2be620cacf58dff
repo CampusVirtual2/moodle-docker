@@ -1,6 +1,3 @@
-{
-  "libraryStrings": {
-    "helpText": "Trenne Fragen mit einer leeren Zeile. Die erste Zeile enthält die Frage und die folgenden Zeilen sind die Antwortmöglichkeiten. Die erste Zeile ist immer die richtige Antwort.",
-    "warning": "Achtung: Wenn die Fragen im Texteditor verändert werden, werden alle Formatierungen (und Zeilenumbrüche) entfernt."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:3bdd5c5e96d646f8ee08d6a967013e81c6222530c230dcd822febca11db87c63
+size 361

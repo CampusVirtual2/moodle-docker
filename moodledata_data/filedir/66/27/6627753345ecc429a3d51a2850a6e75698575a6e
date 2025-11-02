@@ -1,29 +1,3 @@
-{
-  "semantics":[
-    {
-      "label":"lista sadržaja stupca",
-      "entity":"sadržaj",
-      "field":{
-        "fields":[
-          {
-            "label":"Sadržaj"
-          },
-          {
-            "label":"Razdvoji sadržaje sa linijom",
-            "options":[
-              {
-                "label":"Automatski (default)"
-              },
-              {
-                "label":"Nikad ne koristi razdvajanje gore"
-              },
-              {
-                "label":"Uvijek koristi razdvajanje gore"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d666c1ad583ca25b286c22fe734debd834325220fe8a79a2ed32b920d5768e2d
+size 590

@@ -1,11 +1,3 @@
-{
-  "libraryStrings": {
-    "noImage": "Вы должны выбрать фоновое изображение перед добавлением точек доступа.",
-    "noImageTitle": "Нет фонового изображения",
-    "done": "Готово",
-    "back": "Назад",
-    "remove": "Удалить точку доступа",
-    "rectangle": "Создать прямоугольник",
-    "circle": "Создать круг"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:03dd497d0cbe073069b3eae2df4b3e3e324eaa000cd3dc700f98ec9307af62cb
+size 464

@@ -1,32 +1,3 @@
-{
-  "title": "Image Slider",
-  "description": "Image Slider",
-  "majorVersion": 1,
-  "minorVersion": 1,
-  "patchVersion": 4,
-  "runnable": 1,
-  "author": "Falcon",
-  "license": "MIT",
-  "fullscreen": 1,
-  "embedTypes": [
-    "iframe"
-  ],
-  "machineName": "H5P.ImageSlider",
-  "preloadedJs": [
-    {
-      "path": "image-slider.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "image-slider.css"
-    }
-  ],
-  "editorDependencies": [
-    {
-      "machineName": "H5PEditor.ShowWhen",
-      "majorVersion": 1,
-      "minorVersion": 0
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8a9950ff569214708824d12763e9ad1bcb1ce81fdc5e17803d52e7d914638eb7
+size 549

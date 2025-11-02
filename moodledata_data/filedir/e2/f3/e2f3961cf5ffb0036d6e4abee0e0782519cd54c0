@@ -1,17 +1,3 @@
-{
-  "libraryStrings":{
-    "transformLabel":"Transformirati",
-    "editLabel":"Uredi",
-    "removeLabel":"Ukloniti",
-    "bringToFrontLabel":"Postavi ispred",
-    "sendToBackLabel":"Postavi iza",
-    "unableToPaste":"Nije moguće prenijeti ovaj objekat. Nažalost, objekat koji pokušavate prenijeti nije podržan u ovom sadržaju ili verziji sadržaja.",
-    "sizeLabel":"Veličina",
-    "positionLabel":"Pozisija",
-    "heightLabel":"Visina",
-    "widthLabel":"Širina",
-    "copyLabel": "Copy",
-    "paste": "Paste",
-    "moreElements": "More elements"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:037277d48105ff581d6c56c08048f9d70ff161f09a54eeeddfb9077cba2ff4f3
+size 562

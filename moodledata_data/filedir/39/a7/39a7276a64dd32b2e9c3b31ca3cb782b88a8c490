@@ -1,36 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Panelen",
-      "entity": "paneel",
-      "field": {
-        "label": "Inhoud",
-        "entity": "inhoud",
-        "fields": [
-          {
-            "label": "Titel"
-          },
-          {
-            "label": "Inhoudstype",
-            "entity": "inhoudstype"
-          }
-        ]
-      }
-    },
-    {
-      "label": "De kopmarkering voor titels (heeft geen invloed op de afmetingen van het label)",
-      "description": "De H-markering wordt gebruikt voor koppen. Normaal gesproken H2, maar als die onder een H2 kop hoort, gebruik dan H3. Dit beïnvloedt de afmetingen van de labels niet, maar is enkel voor semantische doeleinden.",
-      "options": [
-        {
-          "label": "H2"
-        },
-        {
-          "label": "H3"
-        },
-        {
-          "label": "H4"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:f4574a6406456681e5ffd6adaaa69b23047bcc87a7a8c946a5d7be972bfcc29b
+size 856

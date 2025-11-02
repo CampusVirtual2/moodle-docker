@@ -1,8 +1,3 @@
-{
-  "libraryStrings": {
-    "helpText": "Her soruyu ayırmak için boş bir satır kullanın. Çoklu seçimde ilk satır soru, sonraki satırlar cevap alternatifleridir. Doğru alternatiflerin önüne bir yıldız (*) eklenir, ipuçları ve geri bildirim de eklenebilir: *alternatif:ipucu:seçiliyse geri bildirim:seçili değilse geri bildirim. Örnek:",
-    "example": "Türkiye'nin başkenti neresidir?\n*Ankara\nİstanbul\n\n12+35=?\n44\n40\n*47",
-    "warning": "Dikkat! Metin düzenleyicideki görevleri değiştirirseniz, tüm zengin metin biçimlendirmesi (satır sonları dahil) kaldırılacaktır.",
-    "unknownQuestionType": "Düzenlenemez soru"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:5a3e9f69c7f715bc497dd4e9512b6784c50c997e8993bfc5e96f755448758853
+size 664

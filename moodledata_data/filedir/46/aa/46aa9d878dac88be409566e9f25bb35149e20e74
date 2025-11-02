@@ -1,20 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Naam van de kamer",
-      "description": "Naam van de appear.in kamer"
-    },
-    {
-      "label": "Aanpassen aan de container",
-      "description": "Dit zorgt ervoor dat de kamer in de container past en overschrijft elke hoogte en breedte met 100%."
-    },
-    {
-      "label": "Hoogte",
-      "description": "Stel de hoogte van de chatruimte in"
-    },
-    {
-      "label": "Breedte",
-      "description": "Stel de breedte van de chatruimte in"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:271d82166858695e91ea2ac216baed6cd3b8ab9fd3533bb04838d4654426d2d4
+size 501

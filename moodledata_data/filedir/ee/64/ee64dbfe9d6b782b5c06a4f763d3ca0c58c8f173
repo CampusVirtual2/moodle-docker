@@ -1,7 +1,3 @@
-{
-  "libraryStrings": {
-    "distributeButtonLabel": "Répartir également",
-    "distributeButtonWarning": "Les valeurs seront modifiées pour tous les intervalles. Voulez-vous continuer ?",
-    "rangeOutOfSequenceWarning": "Les valeurs des intervalles doivent être ordonnées (de 0% à 100%)."
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8ed27a182dd14479eea2f9e102f24c7fd877891deb1af785f49c2ea248291794
+size 303

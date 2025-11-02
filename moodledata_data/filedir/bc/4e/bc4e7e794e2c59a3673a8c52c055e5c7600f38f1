@@ -1,17 +1,3 @@
-{
-  "libraryStrings": {
-    "transformLabel": "Transforma",
-    "editLabel": "Edita",
-    "removeLabel": "Suprimeix",
-    "bringToFrontLabel": "Porta al davant",
-    "sendToBackLabel": "Envia enrere",
-    "unableToPaste": "No es pot enganxar aquest objecte. Malauradament, l’objecte que esteu intentant enganxar no és compatible amb aquest tipus de contingut o versió.",
-    "sizeLabel": "Mida",
-    "positionLabel": "Posició",
-    "heightLabel": "Alçada",
-    "widthLabel": "Amplada",
-    "copyLabel": "Copia",
-    "paste": "Enganxa",
-    "moreElements": "Més elements"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ecb4ffbfa636f30ece3789f3067563ea5699828190ba1eaa7ed4f41c24d23599
+size 584

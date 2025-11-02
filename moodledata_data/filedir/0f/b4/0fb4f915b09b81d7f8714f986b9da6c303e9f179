@@ -1,31 +1,3 @@
-{
-  "machineName": "H5PEditor.RangeList",
-  "title": "H5P Editor Range List",
-  "license": "MIT",
-  "author": "Joubel",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 12,
-  "runnable": 0,
-  "coreApi": {
-    "majorVersion": 1,
-    "minorVersion": 14
-  },
-  "preloadedJs": [
-    {
-      "path": "h5p-editor-range-list.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "h5p-editor-range-list.css"
-    }
-  ],
-  "preloadedDependencies": [
-    {
-      "machineName": "H5PEditor.TableList",
-      "majorVersion": 1,
-      "minorVersion": 0
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:44a9819c25c353b8327d209f506cfc927c80fe20a767cb76a8deab64dfe6e94e
+size 562

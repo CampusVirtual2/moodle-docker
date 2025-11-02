@@ -1,7 +1,3 @@
-{
-  "libraryStrings": {
-    "distributeButtonLabel": "وزع بالتساوي",
-    "distributeButtonWarning": "سيتم تغيير القيم لجميع النطاقات. هل ترغب بالمتابعة؟",
-    "rangeOutOfSequenceWarning": "نطاقات العلامة ليست بالتسلسل"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:5ef0fa6fb947a0803447ec0fc8f0c2e563c8fa02ede5a45f3a57fcedc4f89a1d
+size 304

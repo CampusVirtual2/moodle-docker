@@ -1,20 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Tsätin nimi",
-      "description": "Appear.in-tsätin nimi"
-    },
-    {
-      "label": "Sovita kehykseen",
-      "description": "Sovita tsätti-ikkuna ympäröivään kehykseen. Tämä kumoaa aiemmat leveyden ja pituuden asetukset."
-    },
-    {
-      "label": "Korkeus",
-      "description": "Tsätti-ikkunan korkeus"
-    },
-    {
-      "label": "Leveys",
-      "description": "Tsätti-ikkunan leveys"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:ae26e5406c7425e8492a5d86a044436dbe00c1c92ff85ba6978b9587dfdedbd9
+size 457

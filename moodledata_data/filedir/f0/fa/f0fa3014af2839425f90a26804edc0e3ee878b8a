@@ -1,8 +1,3 @@
-{
-  "libraryStrings": {
-    "helpText": "Gebruik een lege regel om de vragen te scheiden. In meerkeuzevragen is de eerste regel de vraag en de volgende regels zijn de antwoordalternatieven. De juiste alternatieven worden voorafgegaan door een sterretje(*), tips en feedback kunnen ook worden toegevoegd: *alternatief:tip:feedback indien gekozen :feedback indien niet gekozen. Voorbeeld:",
-    "example": "Welk getal is Pi?\n*3.14\n9.82\n\nHoeveel is 4 * 0?\n1\n4\n*0",
-    "warning": "Waarschuwing! Als je de taak in de tekstuele editor bewerkt, wordt alle rich text opmaak (incl. regeleinden) verwijderd.",
-    "unknownQuestionType": "Niet-bewerkbare vraag"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:d339c60f5064f110576026c357544e9d27eadb6a31bab921bb7a75b46f49c772
+size 665

@@ -1,36 +1,3 @@
-{
-  "semantics": [
-    {
-      "label": "Paneis",
-      "entity": "panel",
-      "field": {
-        "label": "Contido",
-        "entity": "contido",
-        "fields": [
-          {
-            "label": "Título"
-          },
-          {
-            "label": "Tipo de contido",
-            "entity": "contido"
-          }
-        ]
-      }
-    },
-    {
-      "label": "Tags html H para as etiquetas (non afecta ao tamaño da etiqueta)",
-      "description": "O tag html H usado nas etiquetas. Normalmente H2 pero se o tag vai debaixo dun H2, usa H3. Non afecta ao tamaño das etiquetas e úsase só con finalidade semántica.",
-      "options": [
-        {
-          "label": "H2"
-        },
-        {
-          "label": "H3"
-        },
-        {
-          "label": "H4"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:037ee9fa8295bf463686af606321270bd87ea58e85eb551390d1f662dfac40cf
+size 800

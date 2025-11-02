@@ -1,9 +1,3 @@
-function loadDriverOptions (scope) {
-  scope.APPID = "WQBM2ARBZR";
-  scope.CLOUDURL = null;
-  scope.USE_STRICT_SUSPEND_DATA_LIMITS = false;
-  scope.SHOW_DEBUG_ON_LAUNCH = false;
-  scope.FORCED_COMMIT_TIME = 20000;
-  scope.strLMSStandard = "SCORM";
-  scope.REVIEW_MODE_IS_READ_ONLY = false;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4915cef52d2c47912a84979962369ec5f0c848b31cc3af4c0a8f6265142c0d36
+size 292

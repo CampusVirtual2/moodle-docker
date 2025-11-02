@@ -1,11 +1,3 @@
-{
-  "libraryStrings": {
-    "noImage": "پیش از افزودن نقطه داغ باید یک تصویر پس‌زمینه انتخاب کنید.",
-    "noImageTitle": "بدون تصویر پس‌زمینه",
-    "done": "انجام شد",
-    "back": "برگشت",
-    "remove": "حذف نقطه داغ",
-    "rectangle": "ایجاد مستطیل",
-    "circle": "ایجاد دایره"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b5d3c99ec3d9be9236fe61d64f9c4cad7f4651cfd12548da0e4b70db6a3a4954
+size 395

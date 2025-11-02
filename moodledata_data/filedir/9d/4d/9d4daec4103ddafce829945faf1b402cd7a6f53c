@@ -1,15 +1,3 @@
-{
-  "title": "SwfObject",
-  "contentType": "Media",
-  "description": "Provides a library for dealing with flash files",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 2,
-  "runnable": 0,
-  "machineName": "swfobject",
-  "preloadedJs": [
-    {
-      "path": "scripts/swfobject.js"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:7419f3ef28232f816507adadb3eff813b9128fc14921348a2c63543f24c21ccd
+size 303

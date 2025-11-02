@@ -1,21 +1,3 @@
-{
-  "title": "Odometer",
-  "description": "Odometer (http://github.hubspot.com/odometer/)",
-  "majorVersion": 1,
-  "minorVersion": 0,
-  "patchVersion": 3,
-  "runnable": 0,
-  "author": "HubSpot",
-  "license": "MIT",
-  "machineName": "Odometer",
-  "preloadedJs": [
-    {
-      "path": "odometer.min.js"
-    }
-  ],
-  "preloadedCss": [
-    {
-      "path": "themes/odometer-theme-default.css"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:554d76d5c254575550d203d286e2139fa1db313a6fabea478c178ad60d2dda23
+size 400

@@ -1,12 +1,3 @@
-H5P.GoToScene = (function () {
-
-  function GoToScene() {
-
-    /**
-     * Attach interaction
-     */
-    this.attach = function () {};
-  }
-
-  return GoToScene;
-})();
+version https://git-lfs.github.com/spec/v1
+oid sha256:b9198ec2c40b51baff0ff8124fb068f4da45e649783247521b3ee91de0c0eb36
+size 165

@@ -1,9 +1,3 @@
-[
-  {
-    "name": "nextSceneId",
-    "type": "number",
-    "label": "Go to scene with ID",
-    "importance": "high",
-    "description": "ID of the scene that we will jump to"
-  }
-]
+version https://git-lfs.github.com/spec/v1
+oid sha256:e0fd67477dd1a907c825a2803b72b472ce879994b08815893f86d8452ed57ceb
+size 180

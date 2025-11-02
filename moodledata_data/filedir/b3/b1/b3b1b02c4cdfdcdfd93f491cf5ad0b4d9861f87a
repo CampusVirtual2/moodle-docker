@@ -1,20 +1,3 @@
-{
-  "libraryStrings": {
-    "insertElement": "Добавете :type",
-    "done": "Готово",
-    "remove": "Премахване",
-    "image": "Изображение",
-    "text": "Текст",
-    "noTaskSize": "Моля, задайте първо размера на задачата.",
-    "confirmRemoval": "Наистина ли искате да премахнете този елемент?",
-    "backgroundOpacityOverridden": "Непрозрачността на фона е заменена",
-    "advancedtext": "Текст",
-    "dropzone": "Зона за пускане",
-    "selectAll": "Изберете всички",
-    "deselectAll": "Отмаркирайте всички избрани",
-    "deleteTaskTitle": "Deleting task",
-    "cancel": "Cancel",
-    "confirm": "Confirm",
-    "ok": "Ok"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:92f1b35caa0b5097051058a2bf24ee64397288a469456c6ece07b7c8471c02cd
+size 847

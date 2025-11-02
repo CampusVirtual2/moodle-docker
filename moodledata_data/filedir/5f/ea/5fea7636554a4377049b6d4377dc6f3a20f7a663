@@ -1,18 +1,3 @@
-{
-  "libraryStrings": {
-    "confirmReset": "Та бүдүүвчийг өөрчлөх гэж байгаадаа итгэлтэй байна уу? Энэ нь урьдчилан харахыг дахин тохируулах болно.",
-    "sameAsSpacing": "Зайтай адил",
-    "noFrame": "Хүрээ байхгүй",
-    "uploadError": "Зураг байршуулах боломжгүй. Файл хэт том байж магадгүй.",
-    "zoomIn": "Томруулах",
-    "zoomOut": "Жижигрүүлэх",
-    "noMoreZoom": "Томруулахгүй",
-    "addImage": "Зураг нэмэх",
-    "changeImage": "Зургийг өөрчлөх",
-    "imageSettings": "Зургийн тохиргоо",
-    "close": "Хаах",
-    "imageAltLabel": "Альтернатив текст",
-    "imageTitleLabel": "Гарч ирах текст",
-    "pleaseConfirm": "Баталгаажуулна уу"
-  }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:bd75b0a8e80c2bc317e4b3198041123d143433cb5051965aba2228f61a57b78a
+size 925

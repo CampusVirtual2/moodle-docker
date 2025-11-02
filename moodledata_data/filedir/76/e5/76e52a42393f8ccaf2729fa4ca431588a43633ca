@@ -1,28 +1,3 @@
-.joubel-simple-rounded-button {
-  cursor: pointer;
-  display: inline-block;
-  margin: 0.25em 0;
-  padding: 0.3em 1.2em;
-  border-radius: 2em;
-  background-color: #1a73d9;
-  color: #FFFFFF;
-}
-
-.joubel-simple-rounded-button:hover,
-.joubel-simple-rounded-button:focus {
-  background-color: #1356a3;
-}
-
-.joubel-simple-rounded-button:active {
-  position: relative;
-  background-color: #104888;
-
-  -webkit-box-shadow: inset 0 4px 0px #0e407a;
-  -moz-box-shadow: inset 0 4px 0px #0e407a;
-  box-shadow: inset 0 4px 0px #0e407a;
-}
-
-.joubel-simple-rounded-button:active .joubel-simple-rounded-button-text {
-  position: relative;
-  top: 2px;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1241dffc219b77796878d720780bfa2b89f6b8a1ef8f7e3deec4d5b1e1b7c67d
+size 633

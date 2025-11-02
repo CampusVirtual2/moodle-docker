@@ -1,36 +1,3 @@
-{
-  "semantics":[
-    {
-      "label":"Panely",
-      "entity":"panel",
-      "field":{
-        "label":"Obsah",
-        "entity":"obsah",
-        "fields":[
-          {
-            "label":"Nadpis"
-          },
-          {
-            "label":"Typ obsahu",
-            "entity":"obsah"
-          }
-        ]
-      }
-    },
-    {
-      "label":"Tagy H pro popisky (nemá vliv na velikost štítku)",
-      "description":"Tag h použitý na popisku. Normálně H2, ale pokud patří pod hlavičku H2, použijte H3. Nemá vliv na velikost popisku, které se používají pouze pro sémantické účel.",
-      "options":[
-        {
-          "label":"H2"
-        },
-        {
-          "label":"H3"
-        },
-        {
-          "label":"H4"
-        }
-      ]
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:29079450a05ad3961a9a0dd5c92e9a5dee034b379bed98934564cea1d044756d
+size 771
