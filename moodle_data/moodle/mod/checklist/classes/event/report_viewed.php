@@ -33,7 +33,6 @@ namespace mod_checklist\event;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class report_viewed extends \core\event\base {
-
     /**
      * Init method.
      *
@@ -64,8 +63,8 @@ class report_viewed extends \core\event\base {
         if ($this->relateduserid) {
             $userdesc = "user '$this->relateduserid' in ";
         }
-        return "The user with id '$this->userid' viewed the report for {$userdesc}the checklist with ".
-        "the course module id '$this->contextinstanceid'.";
+        return "The user with id '$this->userid' viewed the report for {$userdesc}the checklist with " .
+            "the course module id '$this->contextinstanceid'.";
     }
 
     /**
@@ -74,7 +73,7 @@ class report_viewed extends \core\event\base {
      * @return \moodle_url
      */
     public function get_url() {
-        return new \moodle_url('/mod/checklist/report.php', array('id' => $this->contextinstanceid));
+        return new \moodle_url('/mod/checklist/report.php', ['id' => $this->contextinstanceid]);
     }
 
     /**

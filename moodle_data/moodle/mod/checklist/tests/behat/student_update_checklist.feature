@@ -16,10 +16,11 @@ Feature: A student can update their progress in a checklist
     And I log in as "teacher1"
     And I am on "Course 1" course homepage
     And I turn editing mode on
-    And I add a "Checklist" to section "1" and I fill the form with:
-      | Checklist    | Test checklist      |
-      | Introduction | This is a checklist |
-      | Updates by   | Student only        |
+    And I add a checklist activity to course "Course 1" section 1 and I fill the form with:
+      | Checklist                    | Test checklist      |
+      | Introduction                 | This is a checklist |
+      | Updates by                   | Student only        |
+      | User can add their own items | Yes                 |
     And the following items exist in checklist "Test checklist":
       | text                      | required |
       | Checklist required item 1 | required |
@@ -73,7 +74,7 @@ Feature: A student can update their progress in a checklist
       | Checklist optional item 4 | 1 |
       | Checklist optional item 5 | 0 |
     # Note - the rounding here is inconsistent between JS & PHP, but I am cautious about fixing it.
-    And I should see "66%" in the "#checklistprogressrequired" "css_element"
+    And I should see "67%" in the "#checklistprogressrequired" "css_element"
     And I should see "60%" in the "#checklistprogressall" "css_element"
 
   @javascript
@@ -101,15 +102,12 @@ Feature: A student can update their progress in a checklist
     And I log out
     And I log in as "teacher1"
     And I am on "Course 1" course homepage
-    # Workaround for differences between M3.9 "Edit settings" and M4.0 "Settings".
-    And I navigate to "ettings" in current page administration
+    And I navigate to "Settings" in current page administration
     And I expand all fieldsets
     And I set the field "Enable completion tracking" to "Yes"
-    # For Moodle 2.8 and below, this should read "Save changes"
     And I press "Save and display"
     And I am on the "Test checklist" "checklist activity" page
-    # Workaround for differences between M3.9 "Edit settings" and M4.0 "Settings".
-    And I navigate to "ettings" in current page administration
+    And I navigate to "Settings" in current page administration
     And I expand all fieldsets
     And I enable automatic completion tracking for the checklist
     And I set the field "completionusegrade" to "1"
@@ -128,3 +126,34 @@ Feature: A student can update their progress in a checklist
     And I log in as "teacher1"
     And I am on "Course 1" course homepage
     Then "Student 1" user has completed "Test checklist" activity
+
+  @javascript
+  Scenario: Students can add and update their own items
+    Given I am on the "Test checklist" "checklist activity" page logged in as "student1"
+    When I press "Add your own items"
+    And I click on "Add a new item to the list" "link" in the "Checklist required item 2" "list_item"
+    And I set the following fields to these values:
+      | displaytext     | Custom item 1    |
+      | displaytextnote | Some explanation |
+    And I press "Add"
+    And I set the following fields to these values:
+      | displaytext     | Custom item 2    |
+      | displaytextnote | More explanation |
+    And I press "Add"
+    And I press "Stop adding your own items"
+    Then I should see "Custom item 1"
+    And I should see "Some explanation"
+    And I should see "Custom item 2"
+    And I should see "More explanation"
+
+    When I click on "Custom item 1" "text"
+    Then I should see "14%" in the "#checklistprogressall" "css_element"
+    And I should see "0%" in the "#checklistprogressrequired" "css_element"
+
+    When I wait "1" seconds
+    And I reload the page
+    Then the following fields match these values:
+      | Custom item 1 | 1 |
+      | Custom item 2 | 0 |
+    And I should see "14%" in the "#checklistprogressall" "css_element"
+    And I should see "0%" in the "#checklistprogressrequired" "css_element"

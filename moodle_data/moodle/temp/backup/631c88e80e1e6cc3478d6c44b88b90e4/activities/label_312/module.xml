@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module id="312" version="2022112801">
+  <modulename>label</modulename>
+  <sectionid>196</sectionid>
+  <sectionnumber>12</sectionnumber>
+  <idnumber></idnumber>
+  <added>1761095619</added>
+  <score>0</score>
+  <indent>0</indent>
+  <visible>1</visible>
+  <visibleoncoursepage>1</visibleoncoursepage>
+  <visibleold>1</visibleold>
+  <groupmode>0</groupmode>
+  <groupingid>0</groupingid>
+  <completion>0</completion>
+  <completiongradeitemnumber>$@NULL@$</completiongradeitemnumber>
+  <completionpassgrade>0</completionpassgrade>
+  <completionview>0</completionview>
+  <completionexpected>0</completionexpected>
+  <availability>{"op":"&amp;","c":[{"type":"sectioncompleted","id":186},{"type":"sectioncompleted","id":187},{"type":"sectioncompleted","id":189},{"type":"sectioncompleted","id":190},{"type":"sectioncompleted","id":188},{"type":"sectioncompleted","id":192},{"type":"sectioncompleted","id":193}],"showc":[false,false,false,false,false,false,false]}</availability>
+  <showdescription>1</showdescription>
+  <downloadcontent>1</downloadcontent>
+  <lang></lang>
+  <tags>
+  </tags>
+</module>

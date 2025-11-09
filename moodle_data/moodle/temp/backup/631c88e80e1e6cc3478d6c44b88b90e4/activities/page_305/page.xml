@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<activity id="19" moduleid="305" modulename="page" contextid="780">
+  <page id="19">
+    <name>Informações sobre o Curso</name>
+    <intro></intro>
+    <introformat>1</introformat>
+    <content>&lt;section class="identidade-curso"&gt;
+    &lt;h1 class="titulo-curso"&gt;🎙️Apresentação do Curso&lt;br&gt;&lt;br&gt;&lt;/h1&gt;
+
+    &lt;div class="bloco-info"&gt;
+        &lt;h2 class="subtitulo"&gt;Apresentação&lt;/h2&gt;
+        &lt;p&gt;Olá, {GENERICO:type="user"}!&lt;br&gt;Este curso apresenta os principais procedimentos para utilização do Prontuário Eletrônico, abrangendo desde o acesso inicial até o registro, acompanhamento e gestão das informações. São abordados os cadastros familiares, registros de atendimentos, condições de vida, benefícios e serviços sociais, além dos registros relacionados a direitos, medidas socioeducativas e acolhimento.&amp;nbsp;&lt;br&gt;O conteúdo busca auxiliar os profissionais no registro das informações e no uso do sistema.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class="bloco-info"&gt;
+        &lt;h2 class="subtitulo"&gt;Público-alvo&lt;/h2&gt;
+        &lt;p&gt;Este curso é destinado a profissionais que atuam na área da assistência social e utilizam o Prontuário Eletrônico como ferramenta de registro e acompanhamento de atendimentos. O conteúdo é voltado especialmente para técnicos, gestores e demais colaboradores responsáveis pelo cadastro, atualização e análise das informações das famílias atendidas nos serviços socioassistenciais.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="bloco-info"&gt;
+        &lt;h2 class="subtitulo"&gt;Carga horária&lt;/h2&gt;
+        &lt;p&gt;&lt;strong&gt;20 horas&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="bloco-info"&gt;
+        &lt;h2 class="subtitulo"&gt;Objetivos Gerais&lt;/h2&gt;
+        &lt;p&gt;Capacitar profissionais da assistência social para a correta utilização do Prontuário Eletrônico, assegurando a padronização, a integridade e a qualidade das informações registradas no sistema.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+        &lt;h2 class="subtitulo"&gt;Objetivos Específicos&lt;/h2&gt;
+        &lt;p&gt;Ao final do curso, espera-se que o participante seja capaz de:&lt;/p&gt;
+        &lt;ul style="font-size: 17px;"&gt;
+            &lt;li&gt;Identificar os procedimentos de &lt;nolink&gt;acesso e gestão do prontuário eletrônico.&lt;/nolink&gt;
+            &lt;/li&gt;
+            &lt;li&gt;Registrar informações da pessoa de referência, endereço e composição familiar.
+            &lt;/li&gt;
+            &lt;li&gt;Realizar registros de atendimentos socioassistenciais e acompanhar sua evolução.&lt;/li&gt;
+            &lt;li&gt;Preencher dados referentes às condições habitacionais, educacionais, de trabalho e de saúde da família.&lt;/li&gt;
+            &lt;li&gt;Registrar benefícios eventuais e a participação em serviços, programas e projetos sociais.&lt;/li&gt;
+            &lt;li&gt;Registrar situações de violência, medidas socioeducativas e acolhimento institucional.&lt;/li&gt;
+            &lt;li&gt;Utilizar os formulários de controle de encaminhamentos e registrar atendimentos coletivos.&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;&lt;strong&gt;&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="bloco-info"&gt;
+        &lt;h2 class="subtitulo"&gt;Certificado&lt;/h2&gt;
+        &lt;p&gt;&lt;strong&gt;Este curso não possui atividades avaliativas.&lt;/strong&gt;&lt;br&gt;Para &lt;strong&gt;emitir o certificado de conclusão&lt;/strong&gt;, é necessário &lt;strong&gt;acessar todos os conteúdos disponíveis nas seções do curso&lt;/strong&gt;.&lt;br&gt;Após a &lt;strong&gt;visualização completa do conteúdo&lt;/strong&gt;, a &lt;strong&gt;seção com o botão para emissão do certificado será automaticamente habilitada na página do curso&lt;/strong&gt;, permitindo que você &lt;strong&gt;gere seu certificado diretamente no Moodle&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="bloco-info"&gt;
+        &lt;h2 class="subtitulo"&gt;Conteudista&lt;/h2&gt;
+        &lt;p&gt;Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome (MDS), 2025.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</content>
+    <contentformat>1</contentformat>
+    <legacyfiles>0</legacyfiles>
+    <legacyfileslast>$@NULL@$</legacyfileslast>
+    <display>5</display>
+    <displayoptions>a:2:{s:10:"printintro";s:1:"0";s:17:"printlastmodified";s:1:"1";}</displayoptions>
+    <revision>7</revision>
+    <timemodified>1762038218</timemodified>
+  </page>
+</activity>

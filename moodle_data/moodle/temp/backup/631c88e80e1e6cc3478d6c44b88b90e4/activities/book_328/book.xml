@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<activity id="62" moduleid="328" modulename="book" contextid="841">
+  <book id="62">
+    <name>Atendimento coletivo</name>
+    <intro>&lt;div class="box-gray"&gt;
+&lt;/div&gt;</intro>
+    <introformat>1</introformat>
+    <numbering>1</numbering>
+    <navstyle>1</navstyle>
+    <customtitles>0</customtitles>
+    <timecreated>1757365248</timecreated>
+    <timemodified>1761699759</timemodified>
+    <chapters>
+      <chapter id="479">
+        <pagenum>4</pagenum>
+        <subchapter>1</subchapter>
+        <title>Excluir o registro de atendimento coletivo</title>
+        <content>&lt;br&gt;
+
+&lt;p&gt;Para &lt;strong&gt;excluir o registro de atendimento coletivo&lt;/strong&gt;, acione a opção
+    &lt;span class="curso327-numero"&gt;11&lt;/span&gt; &lt;strong&gt;Excluir atendimento coletivo&lt;/strong&gt;, e o sistema solicitará a confirmação da ação.
+    Caso confirmada, o sistema exclui o registro, atualiza a lista e apresenta a mensagem
+    &lt;em&gt;“Atendimento coletivo excluído com sucesso”&lt;/em&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-110-01.png" alt="" width="800" height="689" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761699682</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="481">
+        <pagenum>1</pagenum>
+        <subchapter>0</subchapter>
+        <title>Visualizar ou realizar o atendimento coletivo</title>
+        <content>&lt;br&gt;
+&lt;p&gt;Para &lt;span&gt;&lt;strong&gt;visualizar ou realizar o atendimento coletivo&lt;/strong&gt;&lt;/span&gt; de uma pessoa ou família, acione o menu &lt;span class="curso327-numero"&gt;3&lt;/span&gt; &lt;strong&gt;Atendimento Coletivo&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-109-02.png" alt="" width="487" height="339" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;O sistema apresentará a funcionalidade &lt;span class="curso327-numero"&gt;4&lt;/span&gt; &lt;strong&gt;Selecionar unidade&lt;/strong&gt;, listando todas as unidades atribuídas ao usuário conforme perfil (CADSUAS).&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-109-01.png" alt="" width="800" height="548" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;A lista de atendimento coletivo é composta por:&lt;/p&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Código da Unidade&lt;/strong&gt; – coluna que apresenta o código da unidade de atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome da Unidade&lt;/strong&gt; – coluna que informa o nome da unidade de atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Município UF&lt;/strong&gt; – coluna que informa o município e o estado de localização da unidade de atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Endereço&lt;/strong&gt; – coluna que informa o endereço da unidade de atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Telefone&lt;/strong&gt; – coluna que informa o telefone da unidade de atendimento.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;O refinamento da lista de resultado de unidades pode ser feito informando os parâmetros e acionando a opção &lt;span class="curso327-numero"&gt;5&lt;/span&gt; &lt;strong&gt;Pesquisar&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Para &lt;strong&gt;visualizar ou adicionar atendimento coletivo&lt;/strong&gt;, acione o &lt;span class="curso327-numero"&gt;6&lt;/span&gt; &lt;strong&gt;Registro na lista&lt;/strong&gt;.&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;O sistema apresentará a funcionalidade &lt;strong&gt;Atendimento Coletivo&lt;/strong&gt; com a &lt;span class="curso327-numero"&gt;7&lt;/span&gt; &lt;strong&gt;Lista de atendimentos coletivos&lt;/strong&gt; realizados pela unidade.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-110-01.png?time=1758415466557" alt="" width="800" height="689" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;A lista de atendimento coletivo é composta por:&lt;/p&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Nº do atendimento&lt;/strong&gt; – campo que informa o número do atendimento coletivo;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data do Atendimento&lt;/strong&gt; – campo que informa a data em que o atendimento coletivo foi adicionado ou atualizado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Tipo de atendimento&lt;/strong&gt; – campo que informa o tipo de atendimento coletivo ofertado para a pessoa ou a família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Descrição&lt;/strong&gt; – campo que informa a descrição do atendimento coletivo;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Ações&lt;/strong&gt; – coluna que exibe ícones para realizar ações, como por exemplo: Visualizar registro.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;
+&lt;p&gt;Para &lt;b&gt;adicionar um atendimento coletivo&lt;/b&gt;, acione a opção &lt;span class="curso327-numero"&gt;8&lt;/span&gt; &lt;b&gt;Incluir atendimento.&lt;br&gt;&lt;br&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;b&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-110-01.png?time=1758415494418" alt="" width="800" height="689" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;Então o sistema apresentará a janela modal para cadastro.&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-110-02.png" alt="" width="800" height="535" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Preencha os dados solicitados e acione a opção &lt;b&gt;Incluir&lt;/b&gt;, em seguida o sistema fecha a modal, atualiza a lista de atendimento coletivo da unidade e apresenta a mensagem &lt;i&gt;“Atendimento coletivo incluído com sucesso”&lt;/i&gt;.&lt;/p&gt;
+
+&lt;p&gt;A modal &lt;span class="curso327-numero"&gt;8&lt;/span&gt; &lt;b&gt;Incluir atendimento coletivo&lt;/b&gt;, representada na figura acima, contém os seguintes dados:&lt;/p&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;b&gt;CPF&lt;/b&gt; – campo para informar o CPF da pessoa atendida;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Buscar pessoa&lt;/b&gt; – opção que ao ser acionada busca a pessoa na base de dados do cadastro único;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Nome&lt;/b&gt; – campo que informa o nome da pessoa atendida;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Adicionar pessoa&lt;/b&gt; – opção que ao ser acionada adiciona a pessoa na lista de pessoas atendidas;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Excluir&lt;/b&gt; – opção que ao ser acionada exclui a pessoa da lista de pessoas atendidas;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Data do atendimento&lt;/b&gt; – campo para informar a data em que o atendimento foi realizado;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Nome do técnico responsável&lt;/b&gt; – campo que informa o nome do técnico responsável pelo registro do atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Tipo de atendimento coletivo&lt;/b&gt; – campo para informar o tipo de atendimento coletivo a ser ofertado;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Domínio&lt;/b&gt; – oficinas do PAIF; Acolhida em Grupo; Ações Comunitárias (eventos, campanhas temáticas e rodas de conversa);&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Descrição&lt;/b&gt; – campo para informar a descrição do atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Unidade&lt;/b&gt; – campo que informa o nome da unidade de atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Cancelar&lt;/b&gt; – opção que ao ser acionada cancela a ação e fecha a modal;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Incluir&lt;/b&gt; – opção que ao ser acionada salva o atendimento.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761699579</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="482">
+        <pagenum>3</pagenum>
+        <subchapter>1</subchapter>
+        <title>Editar o registro de atendimento coletivo</title>
+        <content>&lt;br&gt;
+&lt;p&gt;Para &lt;strong&gt;editar o registro de atendimento coletivo&lt;/strong&gt;, acione a opção &lt;span class="curso327-numero"&gt;10&lt;/span&gt; &lt;strong&gt;Alterar encaminhamento&lt;/strong&gt; na coluna ação.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-110-01.png" alt="" width="800" height="689" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;Então o sistema apresentará a janela modal com os campos habilitados.&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-114.png" alt="" width="800" height="752" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;Informe os ajustes e acione a opção &lt;span class="curso327-numero"&gt;13&lt;/span&gt; &lt;strong&gt;Alterar&lt;/strong&gt;, em seguida o sistema fecha a modal, atualiza a lista e apresenta a mensagem &lt;em&gt;“Atendimento coletivo alterado com sucesso”&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;A modal &lt;span class="curso327-numero"&gt;10&lt;/span&gt; &lt;strong&gt;Alterar atendimento coletivo&lt;/strong&gt; possui os seguintes campos:&lt;/p&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;CPF&lt;/strong&gt; – campo para informar o CPF da pessoa atendida;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Buscar pessoa&lt;/strong&gt; – opção que ao ser acionada busca a pessoa na base de dados do cadastro único;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome&lt;/strong&gt; – campo que informa o nome da pessoa atendida;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Adicionar pessoa&lt;/strong&gt; – opção que ao ser acionada adiciona a pessoa na lista de pessoas atendidas;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Excluir&lt;/strong&gt; – opção que ao ser acionada exclui a pessoa da lista de pessoas atendidas;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data do atendimento&lt;/strong&gt; – campo para informar a data em que o atendimento foi realizado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome do técnico responsável&lt;/strong&gt; – campo que informa o nome do técnico responsável pelo registro do atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Tipo de atendimento coletivo&lt;/strong&gt; – campo para informar o tipo de atendimento coletivo a ser ofertado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Descrição&lt;/strong&gt; – campo para informar a descrição do atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Unidade&lt;/strong&gt; – campo que informa o nome da unidade de atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada cancela a ação e fecha a modal;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Incluir&lt;/strong&gt; – opção que ao ser acionada salva a alteração realizada para o atendimento.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761699680</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="478">
+        <pagenum>2</pagenum>
+        <subchapter>1</subchapter>
+        <title>Visualizar o atendimento coletivo</title>
+        <content>&lt;br&gt;
+&lt;p&gt;Para &lt;b&gt;visualizar o atendimento coletivo&lt;/b&gt;, acione a opção
+    &lt;span class="curso327-numero"&gt;9&lt;/span&gt; &lt;b&gt;Visualizar atendimento coletivo&lt;/b&gt;
+    na coluna ação.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-110-01.png?time=1758415794590" alt="" width="800" height="689" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;Então o sistema apresentará a janela modal com as informações.&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-112.png" alt="" width="800" height="608" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;A modal &lt;span class="curso327-numero"&gt;9&lt;/span&gt; &lt;b&gt;Visualizar atendimento coletivo&lt;/b&gt;, representada na figura acima, contém os seguintes dados:&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;b&gt;CPF&lt;/b&gt; – coluna que informa o CPF da(s) pessoa(s) atendida(s);&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Nome&lt;/b&gt; – coluna que informa o nome da(s) pessoa(s) atendida(s);&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Data do atendimento&lt;/b&gt; – campo que informa a data em que o atendimento foi realizado;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Nome do técnico responsável&lt;/b&gt; – campo que informa o nome do técnico responsável pelo registro do atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Tipo de atendimento coletivo&lt;/b&gt; – campo que informa o tipo de atendimento coletivo ofertado;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Descrição&lt;/b&gt; – campo que informa a descrição do atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Unidade&lt;/b&gt; – campo que informa o nome da unidade de atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;b&gt;Fechar&lt;/b&gt; – opção que ao ser acionada fecha a modal.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761699678</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+    </chapters>
+    <chaptertags>
+    </chaptertags>
+  </book>
+</activity>

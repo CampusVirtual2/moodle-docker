@@ -25,7 +25,6 @@
  * Class restore_checklist_activity_structure_step
  */
 class restore_checklist_activity_structure_step extends restore_activity_structure_step {
-
     /**
      * List of elements that can be restored
      * @return array
@@ -33,7 +32,7 @@ class restore_checklist_activity_structure_step extends restore_activity_structu
      */
     protected function define_structure() {
 
-        $paths = array();
+        $paths = [];
         $userinfo = $this->get_setting_value('userinfo');
 
         $paths[] = new restore_path_element('checklist', '/activity/checklist');
@@ -61,7 +60,7 @@ class restore_checklist_activity_structure_step extends restore_activity_structu
     protected function process_checklist($data) {
         global $DB;
 
-        $data = (object) $data;
+        $data = (object)$data;
         $oldid = $data->id;
         $data->course = $this->get_courseid();
 
@@ -82,7 +81,7 @@ class restore_checklist_activity_structure_step extends restore_activity_structu
     protected function process_checklist_item($data) {
         global $DB;
 
-        $data = (object) $data;
+        $data = (object)$data;
         $oldid = $data->id;
 
         $data->checklist = $this->get_new_parentid('checklist');
@@ -120,7 +119,7 @@ class restore_checklist_activity_structure_step extends restore_activity_structu
     protected function process_checklist_check($data) {
         global $DB;
 
-        $data = (object) $data;
+        $data = (object)$data;
         $oldid = $data->id;
 
         $data->item = $this->get_new_parentid('checklist_item');
@@ -148,7 +147,7 @@ class restore_checklist_activity_structure_step extends restore_activity_structu
     protected function process_checklist_comment($data) {
         global $DB;
 
-        $data = (object) $data;
+        $data = (object)$data;
         $oldid = $data->id;
 
         $data->itemid = $this->get_new_parentid('checklist_item');
@@ -170,7 +169,7 @@ class restore_checklist_activity_structure_step extends restore_activity_structu
     protected function process_checklist_comment_student($data) {
         global $DB;
 
-        $data = (object) $data;
+        $data = (object)$data;
         $oldid = $data->id;
 
         $data->itemid = $this->get_new_parentid('checklist_item');

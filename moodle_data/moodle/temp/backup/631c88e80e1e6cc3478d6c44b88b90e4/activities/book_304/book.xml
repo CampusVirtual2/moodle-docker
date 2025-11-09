@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<activity id="50" moduleid="304" modulename="book" contextid="779">
+  <book id="50">
+    <name>Gestão do Prontuário</name>
+    <intro>&lt;div class="box-gray"&gt;
+&lt;/div&gt;</intro>
+    <introformat>1</introformat>
+    <numbering>1</numbering>
+    <navstyle>1</navstyle>
+    <customtitles>0</customtitles>
+    <timecreated>1757365248</timecreated>
+    <timemodified>1758408102</timemodified>
+    <chapters>
+      <chapter id="331">
+        <pagenum>1</pagenum>
+        <subchapter>0</subchapter>
+        <title>Migrar Prontuário</title>
+        <content>&lt;br&gt;
+&lt;p&gt;Para visualizar a situação da solicitação de migração de Prontuário feito para a Unidade ou realizar a análise de solicitações feitas por outras Unidades, acione o menu
+    &lt;span class="curso327-numero"&gt;1&lt;/span&gt; &lt;strong&gt;Migrar Prontuário&lt;/strong&gt;.
+    O sistema apresentará a funcionalidade
+    &lt;span class="curso327-numero"&gt;2&lt;/span&gt; &lt;strong&gt;Selecionar unidade&lt;/strong&gt;, listando todas as unidades atribuídas ao usuário conforme perfil (CADSUAS).
+&lt;/p&gt;
+
+&lt;p&gt;A &lt;span class="curso327-numero"&gt;3&lt;/span&gt; &lt;strong&gt;Lista de unidades de atendimento&lt;/strong&gt; é composta por:&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Código da Unidade&lt;/strong&gt; – coluna que apresenta o código da unidade de atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome da Unidade&lt;/strong&gt; – coluna que informa o nome da unidade de atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Município/UF&lt;/strong&gt; – coluna que informa o município e UF de localização da unidade de atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Endereço&lt;/strong&gt; – coluna que informa o endereço da unidade de atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Telefone&lt;/strong&gt; – coluna que informa o telefone da unidade de atendimento.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;
+
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-116.png" alt="" width="800" height="477" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1758489961</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="342">
+        <pagenum>2</pagenum>
+        <subchapter>1</subchapter>
+        <title>Pesquisar </title>
+        <content>&lt;br&gt;
+&lt;p&gt;O refinamento da lista de resultado de unidades pode ser feito informando os parâmetros e acionando a opção
+    &lt;span class="curso327-numero"&gt;4&lt;/span&gt; &lt;strong&gt;Pesquisar&lt;/strong&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;Para visualizar solicitações realizadas ou analisar solicitações recebidas,
+    &lt;span class="curso327-numero"&gt;5&lt;/span&gt; &lt;strong&gt;Acione o registro na lista&lt;/strong&gt;.
+&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-116.png" alt="" width="800" height="477" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;O sistema apresentará a funcionalidade
+    &lt;span class="curso327-numero"&gt;6&lt;/span&gt; &lt;strong&gt;Aprovação de pedido de migração&lt;/strong&gt; com a lista de prontuários aguardando análise.&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-118-01.png" alt="" width="800" height="642" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;A lista de solicitação de migração de prontuário eletrônico é composta por:&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Nº do prontuário&lt;/strong&gt; – coluna que informa o número do prontuário eletrônico da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome&lt;/strong&gt; – coluna que informa o nome da pessoa vinculada ao prontuário eletrônico;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data da solicitação&lt;/strong&gt; – coluna que informa a data da solicitação da migração do prontuário eletrônico;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Unidade de origem&lt;/strong&gt; – coluna que informa o código da unidade de origem do prontuário eletrônico;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Município/UF&lt;/strong&gt; – coluna que informa o município e UF da unidade de origem do prontuário eletrônico;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Situação&lt;/strong&gt; – coluna que informa a situação da solicitação da migração do prontuário eletrônico;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Ações&lt;/strong&gt; – coluna que apresenta as opções:
+            &lt;ul style="list-style-type: square"&gt;
+                &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+                    &lt;li&gt;Visualizar;&lt;/li&gt;
+                    &lt;li&gt;Aprovar migração.&lt;/li&gt;
+                &lt;/div&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;&lt;/div&gt;&lt;/ul&gt;
+    
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1758491759</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="343">
+        <pagenum>3</pagenum>
+        <subchapter>1</subchapter>
+        <title>Visualizar</title>
+        <content>&lt;br&gt;
+&lt;h3 class="curso327-subtitulo-azul"&gt;
+    Visualizar solicitação de migração&lt;br&gt;&lt;/h3&gt;
+&lt;p&gt;Para visualizar solicitação de migração, acione a opção
+    &lt;span class="curso327-numero"&gt;7&lt;/span&gt; &lt;strong&gt;Visualizar&lt;/strong&gt; na coluna ações.
+&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-118-01.png" alt="" width="800" height="642" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;Então, o sistema apresentará a janela modal com as informações.&amp;nbsp;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-118-02.png" alt="" width="800" height="470" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;A modal &lt;strong&gt;Visualizar solicitação de migração&lt;/strong&gt; de prontuário eletrônico é composta por:&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Nº do prontuário&lt;/strong&gt; – campo que informa o número do prontuário da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data de abertura&lt;/strong&gt; – campo que informa a data da abertura do prontuário da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Unidade atual&lt;/strong&gt; – campo que informa o nome da unidade de atendimento atual;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Município&lt;/strong&gt; – campo que informa o município e estado da unidade de atendimento atual;&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;
+&lt;h3 class="curso327-subtitulo-azul"&gt;&lt;span class="curso327-icon"&gt; &lt;/span&gt;
+    Identificação da pessoa de referência e endereço da família&lt;br&gt;&lt;/h3&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Nome&lt;/strong&gt; – campo que informa o nome da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;CPF&lt;/strong&gt; – campo que informa o número do CPF da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Grau de parentesco&lt;/strong&gt; – campo que informa o grau de parentesco da pessoa em relação ao responsável familiar;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Situação cadastral&lt;/strong&gt; – campo que informa o código da família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Código familiar&lt;/strong&gt; – campo que informa o código da família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data de nascimento&lt;/strong&gt; – campo que informa a data de nascimento da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome da mãe&lt;/strong&gt; – campo que informa o nome da mãe da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;NIS&lt;/strong&gt; – campo que informa o número de identificação social – NIS da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;RG&lt;/strong&gt; – campo que informa o número do registro geral - RG (também conhecido como carteira de identidade) da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data de emissão do RG&lt;/strong&gt; – campo que informa a data de emissão do registro geral;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Órgão&lt;/strong&gt; – campo que informa o órgão expedidor do registro geral;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;UF&lt;/strong&gt; – campo que informa o estado do órgão expedidor;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Endereço&lt;/strong&gt; – campo que informa o endereço da residência da pessoa/família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Bairro&lt;/strong&gt; – campo que informa o bairro da residência da pessoa/família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Município/UF&lt;/strong&gt; – campo que informa o município/UF da residência da pessoa/família.&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;CEP&lt;/strong&gt; – campo que informa o número do CEP da residência da pessoa/família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Motivo&lt;/strong&gt; – campo que informa o bairro da residência da pessoa/família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome do técnico responsável&lt;/strong&gt; – campo que informa o município/UF da residência da pessoa/família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Situação&lt;/strong&gt; – campo que informa a situação da solicitação de migração do prontuário;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Prosseguir para aprovação&lt;/strong&gt; – opção que ao ser acionada apresenta a;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Fechar&lt;/strong&gt; – opção que ao ser acionada, fecha a modal.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761700466</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="344">
+        <pagenum>4</pagenum>
+        <subchapter>0</subchapter>
+        <title>Aprovar migração</title>
+        <content>&lt;br&gt;
+&lt;h3 class="curso327-subtitulo-azul"&gt;
+    Aprovar migração&lt;br&gt;&lt;/h3&gt;&lt;br&gt;
+&lt;p&gt;Para aprovar a migração, acione a opção &lt;span class="curso327-numero"&gt;8&lt;/span&gt; &lt;strong&gt;Prosseguir para aprovação&lt;/strong&gt; na modal Visualizar solicitação de migração ou Visualizar na coluna ações.&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-118-01.png" alt="" width="800" height="642" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong&gt;&lt;br&gt;&lt;/strong&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-121.png" alt="" width="800" height="678" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;p&gt;A modal &lt;strong&gt;Aprovar migração&lt;/strong&gt;, representada na figura acima, é composta por:&lt;/p&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;Texto informativo – &lt;em&gt;“Ao confirmar a operação, o prontuário da pessoa e demais membros da família serão migrados para unidade de destino”&lt;/em&gt;&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;
+&lt;h3 class="curso327-subtitulo-azul"&gt;&lt;span class="curso327-icon"&gt; &lt;/span&gt;
+    Informações do Prontuário&lt;br&gt;&lt;/h3&gt;&lt;br&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Nº do prontuário&lt;/strong&gt; – campo que informa o número do prontuário da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data de abertura&lt;/strong&gt; – campo que informa a data da abertura do prontuário da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Unidade atual&lt;/strong&gt; – campo que informa o nome da unidade de atendimento atual;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Município&lt;/strong&gt; – campo que informa o município e estado da unidade de atendimento atual;&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;
+&lt;h3 class="curso327-subtitulo-azul"&gt;&lt;span class="curso327-icon"&gt; &lt;/span&gt;
+    Identificação da pessoa de referência e endereço da família&lt;br&gt;&lt;/h3&gt;&lt;br&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Nome&lt;/strong&gt; – campo que informa o nome da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;CPF&lt;/strong&gt; – campo que informa o número do CPF da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Grau de parentesco&lt;/strong&gt; – campo que informa o grau de parentesco da pessoa em relação ao responsável familiar;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Situação cadastral&lt;/strong&gt; – campo que informa o código da família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Código familiar&lt;/strong&gt; – campo que informa o código da família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data de nascimento&lt;/strong&gt; – campo que informa a data de nascimento da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome da mãe&lt;/strong&gt; – campo que informa o nome da mãe da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;NIS&lt;/strong&gt; – campo que informa o número de identificação social – NIS da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;RG&lt;/strong&gt; – campo que informa o número do registro geral – RG (também conhecido como carteira de identidade) da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data de emissão do RG&lt;/strong&gt; – campo que informa a data de emissão do registro geral;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Órgão&lt;/strong&gt; – campo que informa o órgão expedidor do registro geral;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;UF&lt;/strong&gt; – campo que informa o estado do órgão expedidor;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Endereço&lt;/strong&gt; – campo que informa o endereço da residência da pessoa/família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Bairro&lt;/strong&gt; – campo que informa o bairro da residência da pessoa/família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Município/UF&lt;/strong&gt; – campo que informa o município/UF da residência da pessoa/família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;CEP&lt;/strong&gt; – campo que informa o número do CEP da residência da pessoa/família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Motivo&lt;/strong&gt; – campo que informa o motivo da migração;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome do técnico responsável&lt;/strong&gt; – campo que informa o técnico responsável pela análise da solicitação;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Aprovar (Sim/Não)&lt;/strong&gt; – campo para informar o resultado da avaliação da solicitação de migração do prontuário;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Observação&lt;/strong&gt; – campo para informar observações referentes à aprovação ou rejeição da solicitação de migração do prontuário;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada cancela a ação e fecha a modal;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Confirmar&lt;/strong&gt; – opção que ao ser acionada salva o resultado da análise da solicitação de migração do prontuário.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761700288</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="345">
+        <pagenum>5</pagenum>
+        <subchapter>0</subchapter>
+        <title>Conclusão</title>
+        <content>&lt;div class="bloco-final-curso327"&gt;
+    &lt;h2&gt;&lt;br&gt;Parabéns 👏&lt;/h2&gt;
+    &lt;p&gt;Chegamos ao final deste manual.&lt;/p&gt;
+    &lt;p&gt;Agora, com o conhecimento das seções apresentadas, é possível registrar, acompanhar e
+        gerenciar informações no sistema de forma &lt;strong&gt;segura, eficiente e em conformidade
+            com as diretrizes da assistência social&lt;/strong&gt;.
+    &lt;/p&gt;
+    &lt;p&gt;
+        Este aprendizado fortalece sua atuação profissional, garantindo registros qualificados
+        e contribuindo para a organização e a análise das informações no âmbito do &lt;strong&gt;SUAS&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;/div&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761084185</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+    </chapters>
+    <chaptertags>
+    </chaptertags>
+  </book>
+</activity>

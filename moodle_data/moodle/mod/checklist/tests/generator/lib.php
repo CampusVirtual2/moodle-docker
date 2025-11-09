@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 global $CFG;
-require_once($CFG->dirroot.'/mod/checklist/lib.php');
+require_once($CFG->dirroot . '/mod/checklist/lib.php');
 
 /**
  * Class mod_checklist_generator
@@ -37,10 +37,10 @@ class mod_checklist_generator extends testing_module_generator {
      * @return stdClass
      * @throws coding_exception
      */
-    public function create_instance($record = null, array $options = null) {
+    public function create_instance($record = null, ?array $options = null) {
         $record = (object)(array)$record;
 
-        $defaultsettings = array(
+        $defaultsettings = [
             'timecreated' => time(),
             'timemodified' => time(),
             'useritemsallowed' => 1,
@@ -53,7 +53,7 @@ class mod_checklist_generator extends testing_module_generator {
             'completionpercent' => 0,
             'emailoncomplete' => 0,
             'lockteachermarks' => 0,
-        );
+        ];
 
         foreach ($defaultsettings as $name => $value) {
             if (!isset($record->{$name})) {

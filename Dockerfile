@@ -126,7 +126,7 @@ RUN a2ensite 000-default.conf
 #RUN a2enmod rewrite && a2enmod headers && a2enmod expires && a2enmod ssl
 RUN a2enmod rewrite && a2enmod headers && a2enmod expires
 #Define o correto nome do servidor para remover warning do log do docker
-RUN echo "ServerName campusvirtual2.com" >> /etc/apache2/apache2.conf
+RUN echo "ServerName campusvirtual.unb.br" >> /etc/apache2/apache2.conf
 
 # === Instalação do Pinpoint PHP Agent via PECL e AOP ===
 
@@ -144,7 +144,6 @@ RUN composer require pinpoint-apm/pinpoint-php-aop
 
 # Configuração do agente
 RUN { \
-    echo "extension=pinpoint_php.so"; \
     echo "pinpoint_agent.application_name=moodle_apm"; \
     echo "pinpoint_agent.agent_id=moodle_agent"; \
     echo "pinpoint_collector.host=pinpoint-collector"; \

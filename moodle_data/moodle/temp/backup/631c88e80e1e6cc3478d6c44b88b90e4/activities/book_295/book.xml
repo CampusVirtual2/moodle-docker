@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<activity id="41" moduleid="295" modulename="book" contextid="770">
+  <book id="41">
+    <name>Acesso e gestão do prontuário eletrônico</name>
+    <intro></intro>
+    <introformat>1</introformat>
+    <numbering>1</numbering>
+    <navstyle>1</navstyle>
+    <customtitles>0</customtitles>
+    <timecreated>1757548745</timecreated>
+    <timemodified>1761697637</timemodified>
+    <chapters>
+      <chapter id="264">
+        <pagenum>3</pagenum>
+        <subchapter>0</subchapter>
+        <title>Informações do prontuário</title>
+        <content>&lt;br&gt;
+&lt;p class="curso327-texto"&gt;
+    No agrupamento &lt;span class="curso327-numero"&gt;1&lt;/span&gt;&lt;strong&gt; Informações do prontuário&lt;/strong&gt;, você pode verificar as informações referentes a abertura do Prontuário.&amp;nbsp;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;Conforme representado na figura abaixo, o agrupamento é composto
+    pelos campos:&lt;/p&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Opções&lt;/strong&gt; – opção que ao ser acionada possibilita a migração do pronunciativo e exclusão do pronunciativo;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nº do identificador&lt;/strong&gt; – campo que informa o número de identificação do prontuário de atendimento da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data de abertura&lt;/strong&gt; – campo que informa a data em que o prontuário de atendimento da pessoa foi criado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Unidade&lt;/strong&gt; – campo que informa o nome da unidade CRAS responsável pelo cadastro do prontuário de atendimento da pessoa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Município/UF&lt;/strong&gt; – campo que informa o município e estado onde está localizada a unidade CRAS responsável;&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;
+&lt;p style="line-height: 2.8em;"&gt;
+    Caso exista solicitação de migração para o prontuário eletrônico da pessoa/família, será apresentada a mensagem:
+    &lt;em&gt;Existe solicitação de migração em andamento para a unidade &lt;span class="etiqueta-unidade-327"&gt;&amp;lt;&amp;lt;cód. e nome da unidade de destino&amp;gt;&amp;gt;&lt;/span&gt;
+        .&lt;br&gt;&lt;/em&gt;&lt;br&gt;&lt;em&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;div style="text-align: center;"&gt;
+    &lt;img src="@@PLUGINFILE@@/pag-11.png" alt="" width="800" height="303" role="presentation" class="img-fluid atto_image_button_middle"&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;Para migrar o prontuário eletrônico para outra unidade de atendimento, acione no ícone &lt;span class="curso327-numero"&gt;2&lt;/span&gt;&lt;strong&gt; Opções&lt;/strong&gt; e, em seguida &lt;span class="curso327-numero"&gt;3&lt;/span&gt;&lt;strong&gt; Migrar prontuário&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-11.png?time=1758075610121" alt="" width="799" height="383" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;&lt;br&gt;Então, o sistema apresentará a janela modal.&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+&lt;div style="text-align: center;"&gt;
+    &lt;img src="@@PLUGINFILE@@/prontuario_pag-12-sem%20dados.png" alt="" width="799" height="712" role="presentation" class="img-fluid atto_image_button_text-bottom"&gt;&lt;br&gt;
+&lt;/div&gt;
+&lt;div style="text-align: center;"&gt;&lt;br&gt;
+    &lt;p class="curso327-texto"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;/div&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761697819</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="265">
+        <pagenum>4</pagenum>
+        <subchapter>1</subchapter>
+        <title>Migrar prontuário</title>
+        <content>&lt;br&gt;
+&lt;p class="curso327-texto"&gt;
+    Opção&lt;span class="curso327-numero"&gt;3&lt;/span&gt; &lt;strong&gt;Migrar prontuário:&lt;br&gt;&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;&lt;strong&gt;
+    &lt;p&gt;&lt;/p&gt;
+    &lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-11.png" alt="" width="799" height="383" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+    &lt;p class="curso327-texto"&gt;&lt;br&gt;&lt;span style="font-weight: normal;"&gt;Conforme representado na janela modal da figura abaixo, o agrupamento é composto pelos seguintes campos:&lt;/span&gt;&lt;/p&gt;
+&lt;/strong&gt;&lt;strong&gt;
+    &lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+    &lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-12.png" alt="" width="800" height="713" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;&lt;br&gt;
+    &lt;ul style="list-style-type: square"&gt;
+        &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+            &lt;li&gt;&lt;strong&gt;Texto informativo&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;–&lt;/span&gt; &lt;span style="font-weight: normal;"&gt;Ao confirmar a operação, será criada uma solicitação de migração do prontuário da pessoa e demais membros da família para a unidade de destino.&lt;/span&gt;&lt;/li&gt;
+        &lt;/div&gt;
+    &lt;/ul&gt;
+    &lt;h3 class="curso327-subtitulo-azul"&gt;&lt;span class="curso327-icon"&gt;&lt;br&gt;&lt;/span&gt;Informações do prontuário&lt;br&gt;&lt;br&gt;&lt;/h3&gt;&lt;br&gt;
+    &lt;ul style="list-style-type: square"&gt;
+        &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+            &lt;li&gt;&lt;strong&gt;Nº do prontuário&lt;/strong&gt;&lt;span style="font-weight: normal;"&gt; – campo que informa o número do prontuário da pessoa;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Data de abertura&lt;/strong&gt;&lt;span style="font-weight: normal;"&gt; – campo que informa a data da abertura do prontuário da pessoa;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Unidade atual&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o nome da unidade de atendimento atual;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Município&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o município e estado da unidade de atendimento atual;&lt;/span&gt;&lt;/li&gt;
+        &lt;/div&gt;
+    &lt;/ul&gt;
+    &lt;h3 class="curso327-subtitulo-azul"&gt;&lt;span class="curso327-icon"&gt;&lt;br&gt;&lt;/span&gt;
+        Identificação da pessoa de referência e endereço da família&lt;br&gt;&lt;br&gt;&lt;/h3&gt;&lt;br&gt;
+    &lt;ul style="list-style-type: square"&gt;
+        &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+            &lt;li&gt;&lt;strong&gt;Nome&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o nome da pessoa;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;CPF&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o número do CPF da pessoa;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Grau de parentesco&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o grau de parentesco da pessoa em relação ao responsável familiar;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Situação cadastral&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o código da família;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Código familiar&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o código da família;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Data de nascimento&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa a data de nascimento da pessoa;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Nome da mãe&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o nome da mãe da pessoa;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;NIS&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o número de identificação social – NIS da pessoa;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;RG&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o número do registro geral - RG (também conhecido como carteira de identidade) da pessoa;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Data de emissão do RG&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa a data de emissão do registro geral;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Órgão&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o órgão expedidor do registro geral;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;UF&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o estado do órgão expedidor;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Endereço&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o endereço da residência da pessoa/família;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Bairro&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o bairro da residência da pessoa/família;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Município/UF&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o município/UF da residência da pessoa/família;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;CEP&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o número do CEP da residência da pessoa/família;&lt;/span&gt;&lt;/li&gt;
+        &lt;/div&gt;
+    &lt;/ul&gt;
+    &lt;h3 class="curso327-subtitulo-azul"&gt;&lt;span class="curso327-icon"&gt;&lt;br&gt;&lt;/span&gt;
+        Campos de preenchimento&lt;br&gt;&lt;br&gt;&lt;/h3&gt;&lt;br&gt;
+    &lt;ul style="list-style-type: square"&gt;
+        &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+            &lt;li&gt;&lt;strong&gt;Migrar para&lt;/strong&gt;&lt;span style="font-weight: normal;"&gt; – campo que informa a migração para outra unidade;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Nome do técnico responsável&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo que informa o nome do técnico responsável pela solicitação;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;UF&lt;/strong&gt; – &lt;span style="font-weight: normal;"&gt;campo para informar a UF da unidade de destino;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Município&lt;/strong&gt; &lt;span style="font-weight: normal;"&gt;– campo para informar o município conforme UF da unidade de destino;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Motivo&lt;/strong&gt; – &lt;span style="font-weight: normal;"&gt;campo para informar o motivo da solicitação de migração do prontuário da pessoa/família. O sistema listará as unidades conforme UF/município informado anteriormente;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – &lt;span style="font-weight: normal;"&gt;opção que ao ser acionada, cancela a ação e fecha a modal;&lt;/span&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Confirmar&lt;/strong&gt; – &lt;span style="font-weight: normal;"&gt;opção que ao ser acionada, salva a solicitação de migração do prontuário eletrônico.&lt;/span&gt;&lt;/li&gt;
+        &lt;/div&gt;
+    &lt;/ul&gt;
+    &lt;ul style="list-style-type: square"&gt;
+        &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;/div&gt;
+    &lt;/ul&gt;
+&lt;/strong&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761697854</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="263">
+        <pagenum>2</pagenum>
+        <subchapter>0</subchapter>
+        <title>Realizando atendimento</title>
+        <content>&lt;br&gt;
+&lt;p class="curso327-texto"&gt;
+    Para &lt;strong&gt;visualizar ou realizar&lt;/strong&gt; o atendimento de uma pessoa e/ou família, acione o menu &lt;span class="curso327-numero"&gt;1&lt;/span&gt; &lt;strong&gt;Prontuário&lt;/strong&gt;. O sistema apresentará a funcionalidade
+    &lt;span class="curso327-numero"&gt;2&lt;/span&gt; &lt;strong&gt;Selecionar unidade&lt;/strong&gt;, listando todas as unidades atribuídas ao usuário conforme perfil (CADSUAS).&amp;nbsp;
+&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;O refinamento da lista de resultados de unidades pode ser feito informando os parâmetros e acionando a opção &lt;span class="curso327-numero"&gt;3&lt;/span&gt; &lt;strong&gt;Pesquisar&lt;/strong&gt;.&amp;nbsp;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;Para selecionar a unidade responsável pelo atendimento da pessoa, acione o &lt;span class="curso327-numero"&gt;4&lt;/span&gt;&amp;nbsp;&lt;strong&gt;Registro na lista&lt;/strong&gt;. O sistema apresenta a funcionalidade para busca do cadastro único da pessoa atendida.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+
+
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong&gt;&lt;/strong&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-9-01%281%29.png" alt="" width="800" height="606" role="presentation" class="img-fluid atto_image_button_text-bottom"&gt;&lt;br&gt;&lt;br&gt;
+&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;Para consultar o cadastro único da pessoa atendida na consulta simples, informe o &lt;strong&gt;CPF&lt;/strong&gt; e acione a opção &lt;span class="curso327-numero"&gt;5&lt;/span&gt; &lt;strong&gt;Pesquisar&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 class="curso327-subtitulo-azul"&gt;&lt;span class="curso327-icon"&gt;&lt;/span&gt;
+    Consulta simples:&lt;br&gt;&lt;/h3&gt;&lt;br&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-9-02%281%29.png" alt="" width="798" height="241" role="presentation" class="img-fluid atto_image_button_text-bottom"&gt;&lt;br&gt;&lt;/p&gt;&lt;br&gt;
+
+&lt;p class="curso327-texto"&gt;
+    Para consultar o cadastro único da pessoa atendida na consulta avançada, informe o &lt;strong&gt;nome, data de nascimento e nome da mãe&lt;/strong&gt; e acione a opção &lt;span class="curso327-numero"&gt;6&lt;/span&gt;&lt;strong&gt;Pesquisar&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 class="curso327-subtitulo-azul"&gt;&lt;span class="curso327-icon"&gt;&lt;/span&gt;
+    Consulta avançada:
+&lt;/h3&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-10.png" alt="" width="801" height="366" role="presentation" class="img-fluid atto_image_button_text-bottom"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;&lt;/p&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761697798</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="266">
+        <pagenum>5</pagenum>
+        <subchapter>1</subchapter>
+        <title>Excluir prontuário</title>
+        <content>&lt;p class="curso327-texto"&gt;&lt;br&gt;Para excluir o prontuário eletrônico da pessoa/família, acione o ícone
+    &lt;span class="curso327-numero"&gt;2&lt;/span&gt;&lt;strong&gt; Opções&lt;/strong&gt; e, em seguida,
+    &lt;span class="curso327-numero"&gt;4&lt;/span&gt;&lt;strong&gt; Excluir prontuário&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-11.png" alt="" width="799" height="383" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: left;"&gt;&lt;br&gt;Então, o sistema apresentará a janela modal.&lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-15.png" alt="" width="800" height="412" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;&lt;br&gt;Conforme representado na modal, o agrupamento é composto pelos campos:&lt;/p&gt;
+
+&lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+    &lt;ul class="curso327-lista" style="list-style-type: square"&gt;
+        &lt;li&gt;
+            &lt;strong&gt;Motivo&lt;/strong&gt; – campo para informar o motivo da exclusão do prontuário eletrônico da pessoa/família. As alternativas são:
+            &lt;ul class="curso327-lista" style="list-style-type: square"&gt;
+                &lt;li&gt;Prontuário duplicado&lt;/li&gt;
+                &lt;li&gt;Retificação no registro por parte da equipe técnica;&lt;/li&gt;
+                &lt;li&gt;Informações comprovadamente inverídicas;&lt;/li&gt;
+                &lt;li&gt;Falecimento de toda a família;&lt;/li&gt;
+                &lt;li&gt;Solicitação formal.&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+
+        &lt;li style="list-style-type: square"&gt;
+            &lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada, cancela a ação e fecha a modal;
+        &lt;/li&gt;
+
+        &lt;li style="list-style-type: square"&gt;
+            &lt;strong&gt;Confirmar&lt;/strong&gt; – opção que ao ser acionada, realiza a exclusão do prontuário eletrônico da pessoa/família.
+        &lt;/li&gt;
+    &lt;/ul&gt;&lt;/div&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761697871</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="262">
+        <pagenum>1</pagenum>
+        <subchapter>0</subchapter>
+        <title>Login no sistema </title>
+        <content>&lt;br&gt;
+&lt;p class="curso327-texto"&gt;
+    O &lt;em&gt;login&lt;/em&gt; do sistema é realizado por meio das contas ouro ou prata do sistema gov.br.
+    A conta é gratuita e permite a identificação do usuário para acessar serviços digitais do governo federal.
+&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-7-01-1.png" alt="" width="873" height="807" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;
+    &lt;span class="curso327-numero"&gt;1&lt;/span&gt; Na tela do &lt;em&gt;login&lt;/em&gt; gov.br, informe o número do CPF (número pessoal e único de 11 dígitos),
+    senha e acione a opção &lt;span class="curso327-numero"&gt;2&lt;/span&gt; &lt;strong&gt;Continuar&lt;/strong&gt;.
+&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;O sistema apresenta a tela Autorização de uso de dados pessoais.&lt;/p&gt;
+
+&lt;p class="curso327-texto"&gt;&lt;br&gt;Ao &lt;span class="curso327-numero"&gt;3&lt;/span&gt; &lt;strong&gt;Autorizar&lt;/strong&gt; o uso dos dados pessoais, o sistema apresenta a modal para seleção da unidade de atendimento
+    e o perfil que você deseja conectar. Ao informar os dados, acione a opção
+    &lt;span class="curso327-numero"&gt;4&lt;/span&gt; &lt;strong&gt;Confirmar&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-7-02.png" alt="" width="801" height="304" role="presentation" class="atto_image_button_middle"&gt;&lt;br&gt;
+&lt;/p&gt;&lt;br&gt;&lt;br&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-7-03.png" alt="" width="801" height="276" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;&lt;br&gt;Ao confirmar, o sistema do prontuário eletrônico apresenta a tela inicial conforme permissões atribuídas ao usuário e perfil no CADSUAS .&amp;nbsp;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;Uma vez realizada a autenticação no sistema, você pode verificar &lt;span class="curso327-numero"&gt;1&lt;/span&gt; &lt;strong&gt;No canto superior da tela inicial&lt;/strong&gt;, o CPF, o nome e o avatar do usuário logado .&amp;nbsp;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;Ao acionar o &lt;span class="curso327-numero"&gt;2&lt;/span&gt; &lt;strong&gt;Ícone do &lt;em&gt;avatar&lt;/em&gt;&lt;/strong&gt;, é possível verificar a &lt;span class="curso327-numero"&gt;3&lt;/span&gt; &lt;strong&gt;Unidade de atendimento&lt;/strong&gt; e &lt;span class="curso327-numero"&gt;4&lt;/span&gt; &lt;strong&gt;Perfil&lt;/strong&gt;. Nesta funcionalidade, também é possível
+    &lt;span class="curso327-numero"&gt;5&lt;/span&gt; &lt;strong&gt;Trocar de perfil&lt;/strong&gt; (caso o usuário possua mais de um perfil) ou &lt;span class="curso327-numero"&gt;6&lt;/span&gt; &lt;strong&gt;Sair do sistema&lt;/strong&gt; (&lt;em&gt;logout&lt;/em&gt;).&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;div style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-8-02.png" alt="" width="799" height="436" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/div&gt;&lt;br&gt;
+&lt;p class="curso327-texto"&gt;&lt;br&gt;A seguir, você pode visualizar o &lt;span class="curso327-numero"&gt;7&lt;/span&gt; &lt;strong&gt;Menu principal&lt;/strong&gt;
+    (SUAS) e o(s) &lt;span class="curso327-numero"&gt;8&lt;/span&gt; &lt;strong&gt;Submenu(s)&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-8-01-1.png?time=1758845991089" alt="" width="800" height="499" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;&lt;br&gt;&lt;/p&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761697780</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+    </chapters>
+    <chaptertags>
+    </chaptertags>
+  </book>
+</activity>

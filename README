@@ -1,11 +1,22 @@
 fabio.tabosa@gmail.com
 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
 
-ssh mds@172.16.28.203
-172.16.28.204
+🧩 1️⃣ Instalar o Git LFS
+sudo apt update
+sudo apt install git-lfs -y
 
+
+Depois inicialize o suporte no seu repositório local:
+
+git lfs install
+
+git config --global credential.helper store
+
+git push origin latitude
+
+ssh mds@172.16.28.203
 mds
-VxUqrj36b4Knls
+VxUqrj36b4Kn
 
 install-docker.sh
 docker compose up -d
@@ -27,3 +38,57 @@ docker system prune -a --volumes
 | Quer baixar novas versões das imagens  | `docker compose pull && docker compose up -d`              |
 | Mudou estrutura (rede, nomes, volumes) | `docker compose down && docker compose up -d`              |
 | Quer resetar tudo (inclusive dados)    | `docker compose down -v --rmi all && docker compose up -d` |
+
+
+configurar no npm as urls via web
+Restaurar o banco do moodle no pgsql
+
+
+export AWS_ACCESS_KEY_ID=LPOLDVFGXP0PSO8L63R2
+export AWS_SECRET_ACCESS_KEY=96dVKhBIoycL50HXjIPg8DeYTTz2Ii68RtsttdNI
+
+aws --endpoint-url=https://s3.us-east-1.wasabisys.com s3 ls
+aws --endpoint-url=https://s3.us-east-1.wasabisys.com s3 cp s3://bkp-unbmds/moodle/backups/moodle-backup-2025-09-01_03-00.tar.gz .
+aws --endpoint-url=https://s3.us-east-1.wasabisys.com s3 cp s3://bkp-unbmds/moodle/backups/filedir.zip ,
+
+teste de carga
+
+docker run -i --rm --network moodlenet grafana/k6 run - < loadtest.js
+
+conteudo do arquivo loadtest.js
+
+    import http from 'k6/http';
+    import { sleep } from 'k6';
+
+    export let options = {
+    stages: [
+        { duration: '30s', target: 50 },
+        { duration: '1m', target: 100 },
+        { duration: '1m', target: 200 },
+        { duration: '2m', target: 200 },
+        { duration: '30s', target: 0 },
+    ],
+    };
+
+    export default function () {
+    http.get('https://www.campusvirtual.unb.br/');
+    sleep(1);
+    }
+
+Pra salvar o restulado 
+docker run -i --rm -v $(pwd):/results grafana/k6 run - < loadtest.js --out json=/results/loadtest.json
+
+🔸 Passo 2 – DNS / hosts
+
+Na máquina A (app), edite /etc/hosts:
+
+172.16.28.202 postgres redis
+
+
+Assim os containers podem usar postgres e redis em vez de IP fixo.
+
+➤ Subir apenas o ambiente de banco
+docker compose -f docker-compose-db.yml -p campusvirtual_db up -d
+
+➤ Subir apenas o ambiente de aplicação
+docker compose -f docker-compose-app.yml -p campusvirtual_app up -d

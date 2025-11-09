@@ -33,7 +33,6 @@ namespace mod_checklist\event;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class checklist_completed extends \core\event\base {
-
     /**
      * Init method.
      *
@@ -69,7 +68,7 @@ class checklist_completed extends \core\event\base {
      * @return \moodle_url
      */
     public function get_url() {
-        return new \moodle_url('/mod/checklist/view.php', array('id' => $this->contextinstanceid));
+        return new \moodle_url('/mod/checklist/view.php', ['id' => $this->contextinstanceid]);
     }
 
     /**
@@ -80,4 +79,3 @@ class checklist_completed extends \core\event\base {
         return ['db' => 'checklist', 'restore' => 'checklist'];
     }
 }
-

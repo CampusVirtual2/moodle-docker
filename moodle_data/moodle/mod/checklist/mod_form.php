@@ -24,13 +24,12 @@
 defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
-require_once($CFG->dirroot.'/course/moodleform_mod.php');
+require_once($CFG->dirroot . '/course/moodleform_mod.php');
 
 /**
  * Class mod_checklist_mod_form
  */
 class mod_checklist_mod_form extends moodleform_mod {
-
     /**
      * Define form elements
      * @throws coding_exception
@@ -45,29 +44,25 @@ class mod_checklist_mod_form extends moodleform_mod {
         $mform->addElement('header', 'general', get_string('general', 'form'));
 
         // Adding the standard "name" field.
-        $mform->addElement('text', 'name', get_string('modulename', 'checklist'), array('size' => '64'));
+        $mform->addElement('text', 'name', get_string('modulename', 'checklist'), ['size' => '64']);
         $mform->setType('name', PARAM_TEXT);
         $mform->addRule('name', null, 'required', null, 'client');
         $mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
 
-        if ($CFG->branch < 29) {
-            $this->add_intro_editor(true, get_string('checklistintro', 'checklist'));
-        } else {
-            $this->standard_intro_elements(get_string('checklistintro', 'checklist'));
-        }
+        $this->standard_intro_elements(get_string('checklistintro', 'checklist'));
 
         $mform->addElement('header', 'checklistsettings', get_string('checklistsettings', 'checklist'));
         $mform->setExpanded('checklistsettings', true);
 
-        $ynoptions = array(0 => get_string('no'), 1 => get_string('yes'));
+        $ynoptions = [0 => get_string('no'), 1 => get_string('yes')];
         $mform->addElement('select', 'useritemsallowed', get_string('useritemsallowed', 'checklist'), $ynoptions);
         $mform->addElement('select', 'studentcomments', get_string('studentcomments', 'checklist'), $ynoptions);
 
-        $teditoptions = array(
+        $teditoptions = [
             CHECKLIST_MARKING_STUDENT => get_string('teachernoteditcheck', 'checklist'),
             CHECKLIST_MARKING_TEACHER => get_string('teacheroverwritecheck', 'checklist'),
-            CHECKLIST_MARKING_BOTH => get_string('teacheralongsidecheck', 'checklist')
-        );
+            CHECKLIST_MARKING_BOTH => get_string('teacheralongsidecheck', 'checklist'),
+        ];
         $mform->addElement('select', 'teacheredit', get_string('teacheredit', 'checklist'), $teditoptions);
 
         $mform->addElement('select', 'duedatesoncalendar', get_string('duedatesoncalendar', 'checklist'), $ynoptions);
@@ -76,25 +71,25 @@ class mod_checklist_mod_form extends moodleform_mod {
         $mform->addElement('select', 'teachercomments', get_string('teachercomments', 'checklist'), $ynoptions);
         $mform->setDefault('teachercomments', 1);
 
-        $mform->addElement('text', 'maxgrade', get_string('maximumgrade'), array('size' => '10'));
+        $mform->addElement('text', 'maxgrade', get_string('maximumgrade'), ['size' => '10']);
         $mform->setDefault('maxgrade', 100);
         $mform->setType('maxgrade', PARAM_INT);
 
-        $emailrecipients = array(
+        $emailrecipients = [
             CHECKLIST_EMAIL_NO => get_string('no'),
             CHECKLIST_EMAIL_STUDENT => get_string('teachernoteditcheck', 'checklist'),
             CHECKLIST_EMAIL_TEACHER => get_string('teacheroverwritecheck', 'checklist'),
-            CHECKLIST_EMAIL_BOTH => get_string('teacheralongsidecheck', 'checklist')
-        );
+            CHECKLIST_EMAIL_BOTH => get_string('teacheralongsidecheck', 'checklist'),
+        ];
         $mform->addElement('select', 'emailoncomplete', get_string('emailoncomplete', 'checklist'), $emailrecipients);
         $mform->setDefault('emailoncomplete', 0);
         $mform->addHelpButton('emailoncomplete', 'emailoncomplete', 'checklist');
 
-        $autopopulateoptions = array(
+        $autopopulateoptions = [
             CHECKLIST_AUTOPOPULATE_NO => get_string('no'),
             CHECKLIST_AUTOPOPULATE_SECTION => get_string('importfromsection', 'checklist'),
-            CHECKLIST_AUTOPOPULATE_COURSE => get_string('importfromcourse', 'checklist')
-        );
+            CHECKLIST_AUTOPOPULATE_COURSE => get_string('importfromcourse', 'checklist'),
+        ];
         $mform->addElement('select', 'autopopulate', get_string('autopopulate', 'checklist'), $autopopulateoptions);
         $mform->setDefault('autopopulate', 0);
         $mform->addHelpButton('autopopulate', 'autopopulate', 'checklist');
@@ -106,11 +101,11 @@ class mod_checklist_mod_form extends moodleform_mod {
             $checkdisable = false;
         }
 
-        $autoupdateoptions = array(
+        $autoupdateoptions = [
             CHECKLIST_AUTOUPDATE_NO => get_string('no'),
             CHECKLIST_AUTOUPDATE_YES => get_string('yesnooverride', 'checklist'),
-            CHECKLIST_AUTOUPDATE_YES_OVERRIDE => get_string('yesoverride', 'checklist')
-        );
+            CHECKLIST_AUTOUPDATE_YES_OVERRIDE => get_string('yesoverride', 'checklist'),
+        ];
         $mform->addElement('select', 'autoupdate', get_string($str, 'checklist'), $autoupdateoptions);
         $mform->setDefault('autoupdate', 1);
         $mform->addHelpButton('autoupdate', $str, 'checklist');
@@ -155,25 +150,45 @@ class mod_checklist_mod_form extends moodleform_mod {
      * @throws coding_exception
      */
     public function add_completion_rules() {
+        global $CFG;
+
         $mform = $this->_form;
 
-        $group = array();
-        $group[] = $mform->createElement('checkbox', 'completionpercentenabled', '',
-                                         get_string('completionpercent', 'checklist'), array('class' => 'checkbox-inline'));
-        $group[] = $mform->createElement('text', 'completionpercent', '', array('size' => 3));
-        $mform->setType('completionpercent', PARAM_INT);
+        // Changes for Moodle 4.3 - MDL-78516.
+        if ($CFG->branch < 403) {
+            $suffix = '';
+        } else {
+            $suffix = $this->get_suffix();
+        }
+
+        $group = [];
+        $group[] = $mform->createElement(
+            'checkbox',
+            'completionpercentenabled' . $suffix,
+            '',
+            get_string('completionpercent', 'checklist'),
+            ['class' => 'checkbox-inline']
+        );
+        $group[] = $mform->createElement('text', 'completionpercent' . $suffix, '', ['size' => 3]);
+        $mform->setType('completionpercent' . $suffix, PARAM_INT);
         $opts = [
             'percent' => get_string('percent', 'mod_checklist'),
             'items' => get_string('itemstype', 'mod_checklist'),
         ];
-        $group[] = $mform->createElement('select', 'completionpercenttype', '', $opts);
+        $group[] = $mform->createElement('select', 'completionpercenttype' . $suffix, '', $opts);
 
-        $mform->addGroup($group, 'completionpercentgroup', get_string('completionpercentgroup', 'checklist'), array(' '), false);
-        $mform->disabledIf('completionpercent', 'completionpercentenabled', 'notchecked');
-        $mform->disabledIf('completionpercenttype', 'completionpercentenabled', 'notchecked');
-        $mform->addHelpButton('completionpercentgroup', 'completionpercentgroup', 'mod_checklist');
+        $mform->addGroup(
+            $group,
+            'completionpercentgroup' . $suffix,
+            get_string('completionpercentgroup', 'checklist'),
+            [' '],
+            false
+        );
+        $mform->disabledIf('completionpercent' . $suffix, 'completionpercentenabled', 'notchecked');
+        $mform->disabledIf('completionpercenttype' . $suffix, 'completionpercentenabled', 'notchecked');
+        $mform->addHelpButton('completionpercentgroup' . $suffix, 'completionpercentgroup', 'mod_checklist');
 
-        return array('completionpercentgroup');
+        return ['completionpercentgroup' . $suffix];
     }
 
     /**
@@ -203,5 +218,4 @@ class mod_checklist_mod_form extends moodleform_mod {
         }
         return $data;
     }
-
 }

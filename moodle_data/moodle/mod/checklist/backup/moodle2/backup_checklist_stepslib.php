@@ -29,7 +29,6 @@
  * Define the complete checklist structure for backup, with file and id annotations
  */
 class backup_checklist_activity_structure_step extends backup_activity_structure_step {
-
     /**
      * Define the backup structure
      * @return backup_nested_element
@@ -43,37 +42,40 @@ class backup_checklist_activity_structure_step extends backup_activity_structure
 
         // Define each element separated.
 
-        $checklist = new backup_nested_element('checklist', array('id'), array(
+        $checklist = new backup_nested_element('checklist', ['id'], [
             'name', 'intro', 'introformat', 'timecreated', 'timemodified', 'useritemsallowed', 'studentcomments',
             'teacheredit', 'theme', 'duedatesoncalendar', 'teachercomments', 'maxgrade',
-            'autopopulate', 'autoupdate', 'completionpercent', 'completionpercenttype', 'emailoncomplete', 'lockteachermarks'
-        ));
+            'autopopulate', 'autoupdate', 'completionpercent', 'completionpercenttype', 'emailoncomplete', 'lockteachermarks',
+        ]);
 
         $items = new backup_nested_element('items');
 
-        $item = new backup_nested_element('item', array('id'),
-                                          array(
+        $item = new backup_nested_element(
+            'item',
+            ['id'],
+            [
                                               'userid', 'displaytext', 'position', 'indent',
                                               'itemoptional', 'duetime', 'colour', 'moduleid', 'hidden',
                                               'linkcourseid', 'linkurl', 'openlinkinnewwindow',
-                                          ));
+            ]
+        );
 
         $checks = new backup_nested_element('checks');
 
-        $check = new backup_nested_element('check', array('id'), array(
-            'userid', 'usertimestamp', 'teachermark', 'teachertimestamp', 'teacherid'
-        ));
+        $check = new backup_nested_element('check', ['id'], [
+            'userid', 'usertimestamp', 'teachermark', 'teachertimestamp', 'teacherid',
+        ]);
 
         $comments = new backup_nested_element('comments');
 
-        $comment = new backup_nested_element('comment', array('id'), array(
-            'userid', 'commentby', 'text'
-        ));
+        $comment = new backup_nested_element('comment', ['id'], [
+            'userid', 'commentby', 'text',
+        ]);
 
         $studentcomments = new backup_nested_element('studentcomments');
-        $studentcomment = new backup_nested_element('studentcomment', array('id'), array(
-            'usermodified', 'text', 'timecreated', 'timemodified'
-        ));
+        $studentcomment = new backup_nested_element('studentcomment', ['id'], [
+            'usermodified', 'text', 'timecreated', 'timemodified',
+        ]);
 
         // Build the tree.
         $checklist->add_child($items);
@@ -89,15 +91,18 @@ class backup_checklist_activity_structure_step extends backup_activity_structure
         $studentcomments->add_child($studentcomment);
 
         // Define sources.
-        $checklist->set_source_table('checklist', array('id' => backup::VAR_ACTIVITYID));
+        $checklist->set_source_table('checklist', ['id' => backup::VAR_ACTIVITYID]);
 
         if ($userinfo) {
-            $item->set_source_table('checklist_item', array('checklist' => backup::VAR_PARENTID));
-            $check->set_source_table('checklist_check', array('item' => backup::VAR_PARENTID));
-            $comment->set_source_table('checklist_comment', array('itemid' => backup::VAR_PARENTID));
-            $studentcomment->set_source_table('checklist_comment_student', array('itemid' => backup::VAR_PARENTID));
+            $item->set_source_table('checklist_item', ['checklist' => backup::VAR_PARENTID]);
+            $check->set_source_table('checklist_check', ['item' => backup::VAR_PARENTID]);
+            $comment->set_source_table('checklist_comment', ['itemid' => backup::VAR_PARENTID]);
+            $studentcomment->set_source_table('checklist_comment_student', ['itemid' => backup::VAR_PARENTID]);
         } else {
-            $item->set_source_sql('SELECT * FROM {checklist_item} WHERE userid = 0 AND checklist = ?', array(backup::VAR_PARENTID));
+            $item->set_source_sql(
+                'SELECT * FROM {checklist_item} WHERE userid = 0 AND checklist = ?',
+                [backup::VAR_PARENTID]
+            );
         }
 
         // Define id annotations.
@@ -116,5 +121,4 @@ class backup_checklist_activity_structure_step extends backup_activity_structure
         // Return the root element (forum), wrapped into standard activity structure.
         return $this->prepare_activity_structure($checklist);
     }
-
 }

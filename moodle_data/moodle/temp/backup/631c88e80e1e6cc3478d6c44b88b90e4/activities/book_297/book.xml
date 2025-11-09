@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<activity id="43" moduleid="297" modulename="book" contextid="772">
+  <book id="43">
+    <name>Forma de ingresso na unidade e motivo do primeiro atendimento</name>
+    <intro>&lt;div class="box-gray"&gt;
+&lt;/div&gt;</intro>
+    <introformat>1</introformat>
+    <numbering>1</numbering>
+    <navstyle>1</navstyle>
+    <customtitles>0</customtitles>
+    <timecreated>1757365248</timecreated>
+    <timemodified>1761695287</timemodified>
+    <chapters>
+      <chapter id="278">
+        <pagenum>4</pagenum>
+        <subchapter>1</subchapter>
+        <title>Retrair ou reexibir as informações</title>
+        <content>&lt;br&gt;
+&lt;p class="curso327-texto"&gt;
+    Para &lt;strong&gt;retirar ou reexibir as informações&lt;/strong&gt; contidas no bloco, acione o &lt;span class="curso327-numero"&gt;5&lt;/span&gt; &lt;strong&gt;Ícone&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_forma-de-ingresso.png" alt="" width="1202" height="287" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761083561</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="274">
+        <pagenum>1</pagenum>
+        <subchapter>0</subchapter>
+        <title>Novo registro e incluir forma de ingresso</title>
+        <content>&lt;br&gt;
+&lt;p class="curso327-texto"&gt;
+    Para &lt;strong&gt;adicionar novo registro&lt;/strong&gt;, acione a opção &lt;span class="curso327-numero"&gt;2&lt;/span&gt; &lt;strong&gt;Incluir forma de ingresso&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_forma-de-ingresso.png?time=1761083162465" alt="" width="1202" height="287" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;
+&lt;/p&gt;&lt;br&gt;
+&lt;p class="curso327-texto"&gt;&lt;br&gt;Então, o sistema apresentará a janela modal para cadastro. Preencha os dados solicitados e acione a opção &lt;span class="curso327-numero"&gt;6&lt;/span&gt; &lt;strong&gt;Incluir&lt;/strong&gt;, em seguida o sistema fecha a modal,
+    atualiza a lista de atendimentos e apresenta a mensagem &lt;em&gt;“Registro de atendimento incluído com sucesso”.&lt;/em&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-29.png" alt="" width="800" height="854" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;
+&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;p class="curso327-texto"&gt;
+    A modal &lt;span class="curso327-numero"&gt;2&lt;/span&gt; &lt;strong&gt;Incluir forma de ingresso&lt;/strong&gt;, representada na figura acima, contém os seguintes dados:
+&lt;/p&gt;&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Pessoa(s)&lt;/strong&gt; – campo que informa o(s) nome(s) da(s) pessoa(s) atendida(s);&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data do atendimento&lt;/strong&gt; – campo que informa a data em que o atendimento foi realizado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Número do prontuário físico&lt;/strong&gt; – informa o número do prontuário físico da pessoa/família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;De que forma a família acessou a unidade para o primeiro atendimento&lt;/strong&gt; – informa como a pessoa/família acessou a unidade para o primeiro atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Razões que motivaram o primeiro atendimento&lt;/strong&gt; – campo que apresenta as informações adicionais ao atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada cancela a ação e fecha a modal;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Incluir&lt;/strong&gt; – opção que, ao ser acionada, salva o atendimento.&lt;/li&gt;&lt;/div&gt;&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761083232</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="275">
+        <pagenum>2</pagenum>
+        <subchapter>1</subchapter>
+        <title>Visualizar forma de ingresso</title>
+        <content>&lt;br&gt;
+&lt;p class="curso327-texto"&gt;
+    Para &lt;strong&gt;visualizar o registro do atendimento&lt;/strong&gt;, acione a opção &lt;span class="curso327-numero"&gt;3&lt;/span&gt; &lt;strong&gt;Visualizar forma de ingresso.&lt;/strong&gt;&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_forma-de-ingresso.png" alt="" width="1202" height="287" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;&lt;br&gt;Então, o sistema apresentará a janela modal com as informações:&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-31.png" alt="" width="799" height="704" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;
+    A modal &lt;span class="curso327-numero"&gt;3&lt;/span&gt; &lt;strong&gt;Visualizar forma de ingresso&lt;/strong&gt;, representada acima, contém os seguintes dados:
+&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Pessoa(s)&lt;/strong&gt; – campo que informa o(s) nome(s) da(s) pessoa(s) atendida(s);&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data do atendimento&lt;/strong&gt; – campo que informa a data em que o atendimento foi realizado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Número do prontuário físico&lt;/strong&gt; – informa o número do prontuário físico da pessoa/família;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;De que forma a família acessou a unidade para o primeiro atendimento&lt;/strong&gt; – campo que informa como a pessoa e/ou família acessou a Unidade CRAS para receber o primeiro atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Razões que motivaram o primeiro atendimento&lt;/strong&gt; – campo que apresenta as informações adicionais ao atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada cancela a ação e fecha a modal;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Alterar&lt;/strong&gt; – opção que ao ser acionada salva a alteração realizada para o atendimento.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;
+&lt;div&gt;&lt;br&gt;&lt;/div&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761083363</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="277">
+        <pagenum>3</pagenum>
+        <subchapter>1</subchapter>
+        <title>Editar o atendimento</title>
+        <content>&lt;br&gt;
+&lt;p class="curso327-texto"&gt;
+    Para &lt;strong&gt;editar o atendimento&lt;/strong&gt;, acione a opção &lt;span class="curso327-numero"&gt;4&lt;/span&gt; &lt;strong&gt;Alterar forma de ingresso.&lt;br&gt;&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_forma-de-ingresso.png" alt="" width="1202" height="287" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;&lt;br&gt;Então, o sistema apresentará a janela modal com os campos habilitados. Informe os ajustes e acione a opção
+    &lt;span class="curso327-numero"&gt;6&lt;/span&gt; &lt;strong&gt;Alterar&lt;/strong&gt;, em seguida o sistema fecha a modal, atualiza a lista de atendimentos e apresenta a mensagem &lt;em&gt;“Forma de ingresso na unidade alterada com sucesso.”&lt;/em&gt;
+&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;em&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-33.png" alt="" width="800" height="707" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;&lt;br&gt;A modal &lt;span class="curso327-numero"&gt;4&lt;/span&gt; &lt;strong&gt;Alterar forma de ingresso&lt;/strong&gt;, representada na figura acima, contém os seguintes dados:
+&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Pessoa(s)&lt;/strong&gt; – campo que informa o(s) nome(s) da(s) pessoa(s) atendida(s);&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data do atendimento&lt;/strong&gt; – campo que informa a data em que o atendimento foi realizado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Número do prontuário físico&lt;/strong&gt; – informa o número do prontuário físico da pessoa/família;&lt;/li&gt;
+        &lt;li&gt;
+            &lt;strong&gt;De que forma a família acessou a unidade para o primeiro atendimento&lt;/strong&gt; – informa como a pessoa/família acessou a unidade para o primeiro atendimento. As alternativas são:
+            &lt;ul style="list-style-type: square"&gt;
+                &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+                    &lt;li&gt;Por demanda espontânea&lt;/li&gt;
+                    &lt;li&gt;Em decorrência de Busca Ativa realizada pela equipe da unidade&lt;/li&gt;
+                    &lt;li&gt;Em decorrência de encaminhamento realizado por outros serviços/unidades da Proteção Social Básica&lt;/li&gt;
+                    &lt;li&gt;Em decorrência de encaminhamento realizado por outros serviços/unidades da Proteção Social Especial&lt;/li&gt;
+                    &lt;li&gt;Em decorrência de encaminhamento realizado pela área da saúde&lt;/li&gt;
+                    &lt;li&gt;Em decorrência de encaminhamento realizado pela área da educação&lt;/li&gt;
+                    &lt;li&gt;Em decorrência de encaminhamento realizado pelo Conselho Tutelar&lt;/li&gt;
+                    &lt;li&gt;Em decorrência de encaminhamento realizado pelo Poder Judiciário&lt;/li&gt;
+                    &lt;li&gt;Em decorrência de encaminhamento realizado pelo Sistema de Garantia de Direitos (Defensoria Pública, Ministério Público, Delegacias)&lt;/li&gt;
+                    &lt;li&gt;Outros encaminhamentos&lt;/li&gt;
+                &lt;/div&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Razões que motivaram o primeiro atendimento&lt;/strong&gt; – campo que apresenta as informações adicionais ao atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada cancela a ação e fecha a modal;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Alterar&lt;/strong&gt; – opção que ao ser acionada salva a alteração realizada para o atendimento.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761083463</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+    </chapters>
+    <chaptertags>
+    </chaptertags>
+  </book>
+</activity>

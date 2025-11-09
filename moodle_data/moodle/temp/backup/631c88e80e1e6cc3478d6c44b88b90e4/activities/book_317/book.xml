@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<activity id="51" moduleid="317" modulename="book" contextid="830">
+  <book id="51">
+    <name>Histórico de Cumprimento de Medidas Socioeducativas</name>
+    <intro>&lt;div class="box-gray"&gt;
+&lt;/div&gt;</intro>
+    <introformat>1</introformat>
+    <numbering>1</numbering>
+    <navstyle>1</navstyle>
+    <customtitles>0</customtitles>
+    <timecreated>1757365248</timecreated>
+    <timemodified>1761694479</timemodified>
+    <chapters>
+      <chapter id="348">
+        <pagenum>3</pagenum>
+        <subchapter>1</subchapter>
+        <title>Visualizar o registro da medida socioeducativa</title>
+        <content>&lt;br&gt;
+&lt;p&gt;
+    Para &lt;strong&gt;visualizar o registro da medida socioeducativa&lt;/strong&gt;, acione a opção
+    &lt;span class="curso327-numero"&gt;4&lt;/span&gt; &lt;strong&gt;Visualizar medida&lt;/strong&gt;.&amp;nbsp;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_historico-de-cumprimento-de-medidas-socioeducativas.png" alt="" width="943" height="222" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;Então o sistema&amp;nbsp; apresentarà a janela modal com as informações.&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+
+
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-88.png" alt="" width="800" height="602" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;A modal &lt;span class="curso327-numero"&gt;4&lt;/span&gt; &lt;strong&gt;Visualizar medida socioeducativa&lt;/strong&gt;, representada na figura acima, contém os seguintes dados:
+&lt;/p&gt;
+
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Pessoa&lt;/strong&gt; – campo que informa a pessoa (adolescente) atendida;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Número do processo&lt;/strong&gt; – campo que informa o número do processo da medida socioeducativa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome do técnico responsável&lt;/strong&gt; – campo que informa o nome do técnico responsável pelo registro do atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data de início&lt;/strong&gt; – campo que informa a data de início do cumprimento da medida socioeducativa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data de fim&lt;/strong&gt; – campo que informa a data fim do cumprimento da medida socioeducativa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Tipo de medida&lt;/strong&gt; – campo que informa o tipo de medida socioeducativa a ser cumprida;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Fechar&lt;/strong&gt; – opção que ao ser acionada fecha a modal.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761694966</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="349">
+        <pagenum>5</pagenum>
+        <subchapter>1</subchapter>
+        <title>Excluir o registro de medida socioeducativa</title>
+        <content>&lt;br&gt;
+&lt;p&gt;
+  Para &lt;strong&gt;excluir o registro de medida socioeducativa&lt;/strong&gt;, acione a opção 
+  &lt;span class="curso327-numero"&gt;6&lt;/span&gt; &lt;strong&gt;Excluir medida&lt;/strong&gt;, 
+  e o sistema solicitará a confirmação da ação. Caso confirmada, o sistema atualiza a lista e apresenta a mensagem 
+  &lt;em&gt;"Medida socioeducativa excluída com sucesso"&lt;/em&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_historico-de-cumprimento-de-medidas-socioeducativas.png" alt="" width="943" height="222" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;Para &lt;strong&gt;retrair e reexibir&lt;/strong&gt; as informações contidas no bloco, acione o 
+  &lt;span class="curso327-numero"&gt;7&lt;/span&gt; &lt;strong&gt;Ícone&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_historico-de-cumprimento-de-medidas-socioeducativas-1.png" alt="" width="1203" height="122" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761695117</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="357">
+        <pagenum>4</pagenum>
+        <subchapter>1</subchapter>
+        <title>Editar o registro da medida socioeducativa</title>
+        <content>&lt;br&gt;
+&lt;p&gt;
+  Para &lt;strong&gt;editar o registro da medida socioeducativa&lt;/strong&gt;, acione a opção 
+  &lt;span class="curso327-numero"&gt;5&lt;/span&gt; &lt;strong&gt;Alterar medida&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_historico-de-cumprimento-de-medidas-socioeducativas.png" alt="" width="943" height="222" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;Então o sistema apresentará a janela modal com os campos habilitados.
+&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-90.png?time=1758405047314" alt="" width="800" height="602" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;Informe os ajustes e acione a opção 
+  &lt;span class="curso327-numero"&gt;8&lt;/span&gt; &lt;strong&gt;Alterar&lt;/strong&gt;, 
+  em seguida o sistema fecha a modal, atualiza a lista e apresenta a mensagem 
+  &lt;em&gt;"Medida socioeducativa alterada com sucesso"&lt;/em&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+  A modal &lt;span class="curso327-numero"&gt;5&lt;/span&gt; 
+  &lt;strong&gt;Alterar medida socioeducativa&lt;/strong&gt;, representada na figura acima, contém os seguintes dados:
+&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+  &lt;li&gt;&lt;strong&gt;Pessoa&lt;/strong&gt; – campo para informar a pessoa (adolescente) atendida;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Número do processo&lt;/strong&gt; – campo para informar o número do processo da medida socioeducativa;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Nome do técnico responsável&lt;/strong&gt; – campo que informa o nome do técnico responsável pelo registro do atendimento;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Data de início&lt;/strong&gt; – campo para informar a data de início do cumprimento da medida socioeducativa;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Data de fim&lt;/strong&gt; – campo para informar a data fim do cumprimento da medida socioeducativa;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Tipo de medida&lt;/strong&gt; – campo para informar o tipo de medida socioeducativa a ser cumprida;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada cancela a ação e fecha a modal;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Alterar&lt;/strong&gt; – opção que, ao ser acionada, salva a alteração realizada para o atendimento.&lt;/li&gt;
+&lt;/div&gt;&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761695013</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="356">
+        <pagenum>2</pagenum>
+        <subchapter>1</subchapter>
+        <title>Adicionar medidas socioeducativas para adolescentes</title>
+        <content>&lt;br&gt;
+&lt;p&gt;
+    Para &lt;strong&gt;adicionar medidas socioeducativas para adolescentes&lt;/strong&gt;, acione a opção
+    &lt;span class="curso327-numero"&gt;3&lt;/span&gt; &lt;strong&gt;Incluir medida.&lt;br&gt;&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_historico-de-cumprimento-de-medidas-socioeducativas.png" alt="" width="943" height="222" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;Então o sistema apresentará a janela modal para cadastro.&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-86.png" alt="" width="800" height="805" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;Preencha os dados solicitados e acione a opção &lt;strong&gt;Incluir&lt;/strong&gt;,
+    em seguida o sistema fecha a modal, atualiza a lista de observações e apresenta a mensagem
+    &lt;em&gt;“Medida socioeducativa incluída com sucesso”.&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+    A &lt;span class="curso327-numero"&gt;3&lt;/span&gt; &lt;strong&gt;Incluir medida socioeducativa&lt;/strong&gt;, representada na figura acima, contém os seguintes dados:
+&lt;/p&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Pessoa&lt;/strong&gt; – campo para informar a pessoa (adolescente) atendida;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Número do processo&lt;/strong&gt; – campo para informar o número do processo da medida socioeducativa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome do técnico responsável&lt;/strong&gt; – campo que informa o nome do técnico responsável pelo registro do atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data de início&lt;/strong&gt; – campo para informar a data de início do cumprimento da medida socioeducativa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data de fim&lt;/strong&gt; – campo para informar a data fim do cumprimento da medida socioeducativa;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Tipo de medida&lt;/strong&gt; – campo para informar o tipo de medida socioeducativa a ser cumprida;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada cancela a ação e fecha a modal;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Incluir&lt;/strong&gt; – opção que ao ser acionada salva o atendimento.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761694927</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="355">
+        <pagenum>1</pagenum>
+        <subchapter>0</subchapter>
+        <title>Histórico de cumprimento de  medidas socioeducativas</title>
+        <content>&lt;br&gt;
+&lt;p&gt;
+    Ao acionar o bloco &lt;span class="curso327-numero"&gt;1&lt;/span&gt; 
+    &lt;strong&gt;Histórico de cumprimento de medidas socioeducativas&lt;/strong&gt;, 
+    para expandir as informações, você pode consultar as medidas socioeducativas para adolescentes (cumpridas e/ ou em acompanhamento).
+&lt;/p&gt;
+
+&lt;p&gt;
+    A &lt;span class="curso327-numero"&gt;2&lt;/span&gt; &lt;strong&gt;Lista de medidas socioeducativas para adolescentes (cumpridas e/ou em acompanhamento)&lt;/strong&gt; é composta por:
+&lt;/p&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+    &lt;li&gt;&lt;strong&gt;Data do atendimento&lt;/strong&gt; – coluna que informa a data do atendimento em que foi relatada a medida socioeducativa para o adolescente;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Nome&lt;/strong&gt; – coluna que informa o nome do adolescente (membro da composição familiar) que está cumprindo e/ ou em acompanhamento de medida socioeducativa;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Tipo de medida&lt;/strong&gt; – coluna que informa o tipo de medida socioeducativa a ser cumprida;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Nome do técnico&lt;/strong&gt; – coluna que informa o nome do técnico responsável pelo registro do encaminhamento no Prontuário Eletrônico;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Unidade&lt;/strong&gt; – coluna que informa o nome da unidade em que o atendimento foi realizado;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Ações&lt;/strong&gt; – coluna que exibe ícones para realizar ações, como por exemplo: Visualizar registro.&lt;/li&gt;&lt;/div&gt;&lt;/ul&gt;&lt;div style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_historico-de-cumprimento-de-medidas-socioeducativas.png" alt="" width="943" height="222" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/div&gt;&lt;ul style="list-style-type: square"&gt;&lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+&lt;/div&gt;&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761694827</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+    </chapters>
+    <chaptertags>
+    </chaptertags>
+  </book>
+</activity>

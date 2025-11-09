@@ -11,6 +11,17 @@ Students are presented with a simple chart showing how far they have progressed 
 
 ==Changes==
 
+* 2025-10-18 - 4.1.0.7 - M5.1 compatibility fixes, add missing AJAX_SCRIPT define (thanks to Julia M Jenkins)
+* 2025-07-25 - 4.1.0.6 - Fix for students updating their own checklist items
+* 2025-04-19 - 4.1.0.5 - Fix for animation bug when toggling checklist items quickly, CONTRIB-9880; fix deprecated styling warnings
+* 2025-04-19 - 4.1.0.4 - M5.0 compatibility fixes, CONTRIB-9548 iOS display issues (thanks to Aaron Wells), icon fix (thanks to Luca Bösch)
+* 2024-10-19 - 4.1.0.3 - M4.5 compatibility fixes
+* 2024-05-18 - 4.1.0.2 - fix error when showing a forum activity without completion enabled
+* 2024-04-02 - 4.1.0.0 - M4.4 compatibility fixes + drop maintenance of versions compatible with M4.0 and below
+* 2024-04-02 - 3.9.5.0 - adds new "checklist updated" event, for when a teacher has made changes - thanks to Andrew Hancox
+* 2024-02-02 - 3.9.4.1 - fix compatibility issue with M3.9 - M4.1 introduced in previous commit
+* 2024-01-20 - 3.9.4.0 - now works with Moodle Mobile App, thanks to Dani & Pau from Moodle HQ your help with this at the Global Moodle Moot and Dani for finishing this work off afterwards!
+* 2023-11-27 - 3.9.3.6 - fix completion rule handling for M4.3. Thanks to opitz for the fix.
 * 2023-10-02 - 3.9.3.5 - update GitHub actions ready for 4.3 release, fix PHP8.2 compatibility issue and M4.3 compatibility issue
 * 2023-04-14 - 3.9.3.4 - Minor M4.2 compatibility fixes
 * 2023-03-11 - 3.9.3.3 - Fix 'open link in new window' inclusion in backup + restore

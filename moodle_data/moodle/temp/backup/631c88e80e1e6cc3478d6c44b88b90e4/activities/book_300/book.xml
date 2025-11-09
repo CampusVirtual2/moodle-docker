@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<activity id="46" moduleid="300" modulename="book" contextid="775">
+  <book id="46">
+    <name>Acesso a benefícios eventuais</name>
+    <intro>&lt;div class="box-gray"&gt;
+&lt;/div&gt;</intro>
+    <introformat>1</introformat>
+    <numbering>1</numbering>
+    <navstyle>1</navstyle>
+    <customtitles>0</customtitles>
+    <timecreated>1757365248</timecreated>
+    <timemodified>1761695373</timemodified>
+    <chapters>
+      <chapter id="308">
+        <pagenum>4</pagenum>
+        <subchapter>1</subchapter>
+        <title>Editar o registro</title>
+        <content>&lt;br&gt;
+&lt;p&gt;
+    Para &lt;strong&gt;editar o registro de benefício eventual&lt;/strong&gt;, acione a opção
+    &lt;span class="curso327-numero"&gt;6&lt;/span&gt; &lt;strong&gt;Alterar benefício&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_acesso-a-beneficios-eventuais.png" alt="" width="942" height="390" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;Então o sistema apresentará a janela modal com os campos habilitados.&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-70.png" alt="" width="800" height="599" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;p&gt;Informe os ajustes e acione a opção &lt;span class="curso327-numero"&gt;12&lt;/span&gt;
+    &lt;strong&gt;Atualizar&lt;/strong&gt;, em seguida o sistema fecha a modal, atualiza a lista
+    de benefícios e apresenta a mensagem &lt;em&gt;“Benefício eventual alterado com sucesso”.&lt;/em&gt;
+&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+    &lt;li&gt;&lt;strong&gt;Pessoa(s)&lt;/strong&gt; – campo para informar o(s) nome(s) da(s) pessoa(s) atendida(s);&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Benefícios eventuais&lt;/strong&gt; – campo para informar o(s) benefício(s) eventual(is) concedido(s);&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Descrição&lt;/strong&gt; – campo para registrar informações adicionais;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada cancela a ação e fecha a modal;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Atualizar&lt;/strong&gt; – opção que ao ser acionada salva a alteração realizada para o atendimento.&lt;/li&gt;
+&lt;/div&gt;&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761691710</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="312">
+        <pagenum>8</pagenum>
+        <subchapter>1</subchapter>
+        <title>Editar o registro de observação</title>
+        <content>&lt;br&gt;
+&lt;p&gt;
+    Para &lt;strong&gt;editar o registro de observação de acesso a benefícios eventuais&lt;/strong&gt;, acione a opção &lt;span class="curso327-numero"&gt;10&lt;/span&gt; &lt;strong&gt;Alterar observação&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_acesso-a-beneficios-eventuais.png" alt="" width="942" height="390" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;&lt;br&gt;&lt;br&gt;
+&lt;p&gt;Então o sistema apresentará a janela modal com os campos habilitados.&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-74.png" alt="" width="801" height="325" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt; Informe os ajustes e acione a opção &lt;span class="curso327-numero"&gt;12&lt;/span&gt; &lt;strong&gt;Alterar&lt;/strong&gt;, em seguida o sistema fecha a modal, atualiza a lista e apresenta a mensagem &lt;em&gt;“Observação alterada com sucesso”&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;
+    A modal &lt;span class="curso327-numero"&gt;10&lt;/span&gt; &lt;strong&gt;Alterar observação de acesso a benefícios eventuais&lt;/strong&gt;, 
+    representada na página anterior, contém os seguintes dados:
+&lt;/p&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+    &lt;li&gt;&lt;strong&gt;Data da ação&lt;/strong&gt; – campo para informar a data em que o atendimento foi realizado;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Pessoa(s)&lt;/strong&gt; – campo para informar o(s) nome(s) da(s) pessoa(s) atendida(s);&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Observação&lt;/strong&gt; – campo para registrar informações adicionais;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada cancela a ação e fecha a modal;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Alterar&lt;/strong&gt; – opção que ao ser acionada, salva a alteração realizada.&lt;/li&gt;
+&lt;/div&gt;&lt;/ul&gt;
+
+&lt;p&gt;
+    Para &lt;strong&gt;retirar ou reexibir&lt;/strong&gt; as informações contidas no bloco, acione o 
+    &lt;span class="curso327-numero"&gt;11&lt;/span&gt; &lt;strong&gt;ícone&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_acesso-a-beneficios-eventuais-1.png" alt="" width="1201" height="121" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761692020</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="306">
+        <pagenum>2</pagenum>
+        <subchapter>1</subchapter>
+        <title>Adicionar benefício eventual</title>
+        <content>&lt;br&gt;
+&lt;p&gt;Para &lt;strong&gt;adicionar benefício eventual&lt;/strong&gt;, acione a opção &lt;span class="curso327-numero"&gt;4&lt;/span&gt; &lt;strong&gt;Incluir benefício eventual&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_acesso-a-beneficios-eventuais.png" alt="" width="942" height="390" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;Então, o sistema apresentará a janela modal para cadastro.&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-68.png" alt="" width="800" height="754" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;
+    Preencha os dados solicitados e acione a opção
+    &lt;span class="curso327-numero"&gt;12&lt;/span&gt; &lt;strong&gt;Incluir&lt;/strong&gt;.
+    Em seguida o sistema fecha a modal, atualiza a lista de benefícios e apresenta a mensagem
+    &lt;em&gt;“Benefício eventual incluído com sucesso”.&lt;/em&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+    A modal &lt;span class="curso327-numero"&gt;4&lt;/span&gt;
+    &lt;strong&gt;Incluir benefício eventual&lt;/strong&gt;, conforme representada na figura acima, contém os seguintes dados:
+&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Pessoa(s)&lt;/strong&gt; – campo para informar o(s) nome(s) da(s) pessoa(s) atendida(s);&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Benefícios eventuais&lt;/strong&gt; – campo para informar o(s) benefício(s) concedido(s). As alternativas são:
+            &lt;ul style="list-style-type: square"&gt;
+                &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+                    &lt;li&gt;Situação de morte&lt;/li&gt;
+                    &lt;li&gt;Situação de nascimento&lt;/li&gt;
+                    &lt;li&gt;Situação de calamidade&lt;/li&gt;
+                    &lt;li&gt;Situação de vulnerabilidade temporária&lt;/li&gt;
+                &lt;/div&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Descrição&lt;/strong&gt; – campo para registrar informações adicionais;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada cancela a ação e fecha a modal;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Incluir&lt;/strong&gt; – opção que ao ser acionada salva o atendimento.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761691680</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="307">
+        <pagenum>3</pagenum>
+        <subchapter>1</subchapter>
+        <title>Visualizar o registro</title>
+        <content>&lt;br&gt;
+&lt;p&gt;Para &lt;strong&gt;visualizar o registro do benefício&lt;/strong&gt;, acione a opção &lt;span class="curso327-numero"&gt;5&lt;/span&gt; &lt;strong&gt;Visualizar benefício&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_acesso-a-beneficios-eventuais.png" alt="" width="942" height="390" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;Então o sistema apresentará a janela modal com as informações.&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-69.png" alt="" width="800" height="635" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;A modal &lt;span class="curso327-numero"&gt;5&lt;/span&gt; &lt;strong&gt;Visualizar benefício eventual&lt;/strong&gt;, 
+    representada na figura acima, contém os seguintes dados:
+&lt;/p&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+    &lt;li&gt;&lt;strong&gt;Pessoa(s)&lt;/strong&gt; – campo que informa o(s) nome(s) da(s) pessoa(s) atendida(s);&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Benefícios eventuais&lt;/strong&gt; – campo que informa o(s) benefício(s) eventual(is) concedido(s);&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Descrição&lt;/strong&gt; – campo que apresenta a descrição do(s) benefício(s) concedido(s);&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Fechar&lt;/strong&gt; – opção que ao ser acionada fecha a modal.&lt;/li&gt;
+&lt;/div&gt;&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761691654</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="309">
+        <pagenum>5</pagenum>
+        <subchapter>1</subchapter>
+        <title>Excluir o atendimento da lista</title>
+        <content>&lt;br&gt;
+&lt;p&gt;Para &lt;strong&gt;excluir o atendimento da lista&lt;/strong&gt;, acione a opção &lt;span class="curso327-numero"&gt;7&lt;/span&gt; &lt;strong&gt;Excluir atendimento&lt;/strong&gt;, e o sistema solicitará a confirmação da ação. Caso confirmada, o sistema atualiza a lista e apresenta a mensagem &lt;em&gt;“Benefício eventual excluído com sucesso”.&lt;br&gt;&lt;br&gt;&lt;/em&gt;&lt;/p&gt;&lt;p style="text-align: center;"&gt;&lt;em&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_acesso-a-beneficios-eventuais.png" alt="" width="942" height="390" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/em&gt;&lt;/p&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761691793</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="305">
+        <pagenum>1</pagenum>
+        <subchapter>0</subchapter>
+        <title>Acesso a benefícios eventuais</title>
+        <content>&lt;br&gt;
+&lt;p&gt;
+    Ao acionar o bloco &lt;span class="curso327-numero"&gt;1&lt;/span&gt;
+    &lt;strong&gt;Acesso a benefícios eventuais&lt;/strong&gt;, para expandir as informações, você pode consultar,
+    por membro da composição familiar, os benefícios oferecidos e observações complementares.
+&lt;/p&gt;
+
+&lt;p&gt;
+    A &lt;span class="curso327-numero"&gt;2&lt;/span&gt; &lt;strong&gt;Lista dos benefícios eventuais concedidos&lt;/strong&gt; à família é composta por:
+&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Pessoa&lt;/strong&gt; – a coluna informa o nome do membro da composição familiar, solicitante do benefício;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Benefício&lt;/strong&gt; – a coluna informa o benefício solicitado pelo membro da composição familiar;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Descrição&lt;/strong&gt; – a coluna informa o descritivo do benefício solicitado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Ações&lt;/strong&gt; – coluna que exibe ícones para realizar ações, como por exemplo: Visualizar registro.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+    A &lt;span class="curso327-numero"&gt;3&lt;/span&gt; &lt;strong&gt;Lista de observações sobre acesso à benefícios eventuais&lt;/strong&gt; é composta por:
+&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Data do registro&lt;/strong&gt; – campo que informa a data do registro da observação do acesso ao benefício eventual;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome&lt;/strong&gt; – campo que informa o membro da composição familiar ao qual a observação se destina;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Função&lt;/strong&gt;;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Ações&lt;/strong&gt; – coluna que exibe ícones para realizar ações, como por exemplo: Visualizar registro.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;
+&lt;div style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_acesso-a-beneficios-eventuais.png" alt="" width="942" height="390" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/div&gt;
+&lt;p&gt;
+    &lt;br&gt;
+&lt;/p&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761691485</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="310">
+        <pagenum>6</pagenum>
+        <subchapter>1</subchapter>
+        <title>Adicionar observação</title>
+        <content>&lt;br&gt;
+&lt;p&gt;
+    Para &lt;strong&gt;adicionar observação de acesso a benefícios eventualmente&lt;/strong&gt;,
+    acione a opção &lt;span class="curso327-numero"&gt;8&lt;/span&gt; &lt;strong&gt;Incluir observação.&lt;br&gt;&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;strong&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_acesso-a-beneficios-eventuais.png" alt="" width="942" height="390" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;Então o sistema apresentará a janela modal para cadastro.&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-72.png" alt="" width="800" height="612" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;
+    Preencha os dados solicitados e acione a opção &lt;span class="curso327-numero"&gt;12&lt;/span&gt; &lt;strong&gt;Incluir&lt;/strong&gt;, em seguida o sistema fecha a modal, atualiza a lista de observações e apresenta a mensagem &lt;em&gt;“Observação incluída com sucesso”&lt;/em&gt;.
+&lt;/p&gt;
+&lt;p&gt;
+    A modal &lt;span class="curso327-numero"&gt;8&lt;/span&gt; &lt;strong&gt;Incluir observação de acesso a benefícios eventuais&lt;/strong&gt;,
+    representada na tela acima, contém os seguintes dados:
+&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Data da ação&lt;/strong&gt; – campo para informar a data em que o atendimento foi realizado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Pessoa(s)&lt;/strong&gt; – campo para informar o(s) nome(s) da(s) pessoa(s) atendida(s);&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Observação&lt;/strong&gt; – campo para registrar informações adicionais;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada cancela a ação e fecha a modal;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Incluir&lt;/strong&gt; – opção que ao ser acionada salva o registro.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761691838</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="311">
+        <pagenum>7</pagenum>
+        <subchapter>1</subchapter>
+        <title>Visualizar o registro de observação</title>
+        <content>&lt;br&gt;
+&lt;p&gt;
+    Para &lt;strong&gt;visualizar o registro de observação&lt;/strong&gt;, acione a opção
+    &lt;span class="curso327-numero"&gt;9&lt;/span&gt; &lt;strong&gt;Visualizar observação.&lt;br&gt;&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_acesso-a-beneficios-eventuais.png" alt="" width="942" height="390" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;Então o sistema apresentará a janela modal com as informações.&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-73.png" alt="" width="801" height="364" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;
+  A &lt;span class="curso327-numero"&gt;9&lt;/span&gt; &lt;strong&gt;Visualizar observação de acesso a benefícios eventuais&lt;/strong&gt;, 
+  representada na página anterior, contém os seguintes dados:
+&lt;/p&gt;
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+  &lt;li&gt;&lt;strong&gt;Data da ação&lt;/strong&gt; – campo que informa a data em que o atendimento foi realizado;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Pessoa(s)&lt;/strong&gt; – campo que informa o(s) nome(s) da(s) pessoa(s) atendida(s);&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Observação&lt;/strong&gt; – campo que apresenta informações adicionais;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Fechar&lt;/strong&gt; – opção que ao ser acionada fecha a modal.&lt;/li&gt;
+&lt;/div&gt;&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761691901</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+    </chapters>
+    <chaptertags>
+    </chaptertags>
+  </book>
+</activity>

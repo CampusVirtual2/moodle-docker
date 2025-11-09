@@ -31,7 +31,6 @@ namespace mod_checklist\event;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class student_comment_created extends \core\event\base {
-
     /**
      * Init method.
      *
@@ -69,7 +68,10 @@ class student_comment_created extends \core\event\base {
      * @return \moodle_url
      */
     public function get_url() {
-        return new \moodle_url('/mod/checklist/report.php', array('id' => $this->contextinstanceid, 'studentid' => $this->userid));
+        return new \moodle_url(
+            '/mod/checklist/report.php',
+            ['id' => $this->contextinstanceid, 'studentid' => $this->userid]
+        );
     }
 
     /**
@@ -80,4 +82,3 @@ class student_comment_created extends \core\event\base {
         return ['db' => 'checklist', 'restore' => 'checklist'];
     }
 }
-

@@ -30,7 +30,7 @@ use moodle_url;
 defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
-require_once($CFG->dirroot.'/completion/data_object.php');
+require_once($CFG->dirroot . '/completion/data_object.php');
 
 /**
  * Class checklist_comment
@@ -41,7 +41,7 @@ class checklist_comment extends data_object {
     public $table = 'checklist_comment';
     /** @var string[] */
     public $requiredfields = [
-        'id', 'itemid', 'userid', 'commentby', 'text'
+        'id', 'itemid', 'userid', 'commentby', 'text',
     ];
 
     // DB fields.
@@ -67,7 +67,7 @@ class checklist_comment extends data_object {
      * @param bool $fetch
      * @throws \coding_exception
      */
-    public function __construct(array $params = null, $fetch = true) {
+    public function __construct(?array $params = null, $fetch = true) {
         // Really ugly hack to stop travis complaining about $required_fields.
         $this->{'required_fields'} = $this->requiredfields;
         parent::__construct($params, $fetch);
@@ -110,7 +110,7 @@ class checklist_comment extends data_object {
             return $ret;
         }
 
-        list($isql, $params) = $DB->get_in_or_equal($itemids, SQL_PARAMS_NAMED);
+        [$isql, $params] = $DB->get_in_or_equal($itemids, SQL_PARAMS_NAMED);
         $params['userid'] = $userid;
         $comments = $DB->get_records_select('checklist_comment', "userid = :userid AND itemid $isql", $params);
         foreach ($comments as $comment) {
@@ -157,13 +157,13 @@ class checklist_comment extends data_object {
             $namesql = \core_user\fields::for_name()->get_sql('', true);
         } else {
             $namesql = (object)[
-                'selects' => ','.get_all_user_name_fields(true),
+                'selects' => ',' . get_all_user_name_fields(true),
                 'joins' => '',
                 'params' => [],
                 'mappings' => [],
             ];
         }
-        $commentusers = $DB->get_records_list('user', 'id', $userids, '', 'id'.$namesql->selects);
+        $commentusers = $DB->get_records_list('user', 'id', $userids, '', 'id' . $namesql->selects);
         foreach ($comments as $comment) {
             if ($comment->commentby) {
                 if (isset($commentusers[$comment->commentby])) {

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<activity id="42" moduleid="296" modulename="book" contextid="771">
+  <book id="42">
+    <name>Registro de atendimentos socioassistenciais</name>
+    <intro>&lt;div class="box-gray"&gt;
+&lt;/div&gt;</intro>
+    <introformat>1</introformat>
+    <numbering>1</numbering>
+    <navstyle>1</navstyle>
+    <customtitles>0</customtitles>
+    <timecreated>1757365248</timecreated>
+    <timemodified>1761695358</timemodified>
+    <chapters>
+      <chapter id="273">
+        <pagenum>4</pagenum>
+        <subchapter>1</subchapter>
+        <title>Editar e alterar atendimento</title>
+        <content>&lt;br&gt;
+&lt;p class="curso327-texto"&gt;
+    Para &lt;strong&gt;editar o atendimento&lt;/strong&gt;, acione a opção &lt;span class="curso327-numero"&gt;4&lt;/span&gt; &lt;strong&gt;Alterar atendimento&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;em&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_registro-de-atendimentos-socioassistenciais.png" alt="" width="942" height="225" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;&lt;br&gt;Então, o sistema apresentará a janela modal com os campos habilitados. Informe os ajustes e acione a opção
+    &lt;span class="curso327-numero"&gt;7&lt;/span&gt; &lt;strong&gt;Alterar&lt;/strong&gt;, em seguida o sistema fecha a modal, atualiza a lista de atendimentos e apresenta a mensagem &lt;em&gt;“Registro de atendimento alterado com sucesso.”&lt;/em&gt;
+&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-26.png" alt="" width="800" height="701" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;&lt;br&gt;A modal &lt;span class="curso327-numero"&gt;4&lt;/span&gt; &lt;strong&gt;Alterar atendimento&lt;/strong&gt;, representada na figura acima, contém os seguintes dados:
+&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Pessoa(s)&lt;/strong&gt; – campo para informar o(s) nome(s) da(s) pessoa(s) atendida(s);&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data do atendimento&lt;/strong&gt; – campo para informar a data em que o atendimento foi realizado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome do técnico responsável&lt;/strong&gt; – campo que informa o nome do técnico responsável pelo registro do atendimento no Prontuário Eletrônico;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Tipo&lt;/strong&gt; – campo para informar o tipo do atendimento socioassistencial prestado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Descrição/ resumo do atendimento&lt;/strong&gt; – campo para registrar informações adicionais ao atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada cancela a ação e fecha a modal;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Incluir&lt;/strong&gt; – opção que, ao ser acionada, salva a alteração realizada para o atendimento.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761691193</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="276">
+        <pagenum>5</pagenum>
+        <subchapter>1</subchapter>
+        <title>Excluir atendimento da lista</title>
+        <content>&lt;br&gt;
+&lt;p class="curso327-texto"&gt;
+    Para &lt;strong&gt;excluir o atendimento da lista&lt;/strong&gt;, acione a opção &lt;span class="curso327-numero"&gt;5&lt;/span&gt; &lt;strong&gt;Excluir atendimento&lt;/strong&gt;, e o sistema solicitará a confirmação da ação. Caso confirmada, o sistema atualiza a lista e apresenta a mensagem
+    &lt;em&gt;“Registro de atendimento excluído com sucesso.”&lt;/em&gt;
+&lt;/p&gt;
+
+&lt;p class="curso327-texto"&gt;
+    Para &lt;strong&gt;retrair ou reexibir&lt;/strong&gt; as informações contidas no bloco, acione o &lt;span class="curso327-numero"&gt;6&lt;/span&gt; &lt;strong&gt;Ícone&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_registro-de-atendimentos-socioassistenciais.png" alt="" width="942" height="225" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761691232</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="272">
+        <pagenum>3</pagenum>
+        <subchapter>1</subchapter>
+        <title>Visualizar o Registro do Atendimento</title>
+        <content>&lt;br&gt;
+&lt;p class="curso327-texto"&gt;
+    Para &lt;strong&gt;visualizar o registro do atendimento&lt;/strong&gt;, acione a opção &lt;span class="curso327-numero"&gt;3&lt;/span&gt; &lt;strong&gt;Visualizar atendimento&lt;/strong&gt;.&lt;br&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_registro-de-atendimentos-socioassistenciais.png" alt="" width="942" height="225" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: left;"&gt;&lt;br&gt;Então, o sistema apresentará a janela modal com as informações completas do atendimento:&lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/prontuario_pag-24.png" alt="" width="799" height="704" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;
+    &lt;br&gt;
+&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;
+    A modal &lt;span class="curso327-numero"&gt;3&lt;/span&gt; &lt;strong&gt;Visualizar atendimento&lt;/strong&gt;, representada na figura acima, contém os seguintes dados:
+&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Pessoa(s)&lt;/strong&gt; – campo que informa o(s) nome(s) da(s) pessoa(s) atendida(s);&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data do atendimento&lt;/strong&gt; – campo que informa a data em que o atendimento foi realizado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome do técnico responsável&lt;/strong&gt; – campo que informa o nome do técnico responsável pelo registro do atendimento no Prontuário Eletrônico;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Tipo&lt;/strong&gt; – campo que informa o tipo do atendimento socioassistencial realizado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Descrição/ resumo do atendimento&lt;/strong&gt; – campo que apresenta informações adicionais ao atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada fecha a modal.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761691139</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="270">
+        <pagenum>1</pagenum>
+        <subchapter>0</subchapter>
+        <title>Registro de atendimentos socioassistenciais</title>
+        <content>&lt;br&gt;
+&lt;p class="curso327-texto"&gt;
+    Ao acionar o bloco &lt;span class="curso327-numero"&gt;1&lt;/span&gt; &lt;strong&gt;Registro de atendimentos socioassistenciais individualizados&lt;/strong&gt;,
+    para expandir as informações, você pode consultar ou cadastrar o registro de atendimento, de acordo com a demanda da família ou membro da composição familiar.
+&lt;/p&gt;
+
+&lt;p class="curso327-texto"&gt;
+    A lista de &lt;strong&gt;Registro de atendimentos socioassistenciais individualizados&lt;/strong&gt; é composta por:
+&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Data do registro&lt;/strong&gt; – a coluna informa a data em que a Referência Familiar ou membro da composição familiar foi atendido na Unidade;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome&lt;/strong&gt; – a coluna informa o nome do membro da composição familiar atendido;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome do técnico&lt;/strong&gt; – a coluna informa o nome do técnico responsável pelo registro do atendimento no Prontuário Eletrônico;&lt;/li&gt;
+        &lt;li&gt;
+            &lt;strong&gt;Tipo de atendimento&lt;/strong&gt; – a coluna informa o tipo de atendimento requerido pela pessoa atendida. Pode haver um ou mais atendimentos. Os tipos são:
+            &lt;ul style="list-style-type: square"&gt;
+                &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+                    &lt;li&gt;Acolhida particularizada;&lt;/li&gt;
+                    &lt;li&gt;Atendimento socioassistencial individualizado;&lt;/li&gt;
+                    &lt;li&gt;Visita domiciliar PAIF;&lt;/li&gt;
+                    &lt;li&gt;Visita domiciliar PSB e Domicílio ou Primeira Infância no SUAS/Criança Feliz;&lt;/li&gt;
+                    &lt;li&gt;Outros;&lt;/li&gt;
+                &lt;/div&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Ações&lt;/strong&gt; – coluna que exibe ícones para realizar ações, como por exemplo: Visualizar registro.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_registro-de-atendimentos-socioassistenciais.png" alt="" width="942" height="225" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;&lt;br&gt;&lt;/p&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761690815</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+      <chapter id="271">
+        <pagenum>2</pagenum>
+        <subchapter>1</subchapter>
+        <title>Adicionar novo atendimento</title>
+        <content>&lt;br&gt;
+&lt;p&gt;Para &lt;strong&gt;adicionar novo atendimento&lt;/strong&gt;, acione a opção &lt;span class="curso327-numero"&gt;2&lt;/span&gt; &lt;strong&gt;Incluir atendimento.&lt;br&gt;&lt;br&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;img src="@@PLUGINFILE@@/curso-prontuario_registro-de-atendimentos-socioassistenciais.png" alt="" width="942" height="225" role="presentation" class="img-fluid atto_image_button_middle"&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p class="curso327-texto"&gt;&lt;br&gt;Então, o sistema apresentará a janela modal para cadastro. Preencha os dados solicitados e acione a opção &lt;span class="curso327-numero"&gt;8&lt;/span&gt; &lt;strong&gt;Incluir&lt;/strong&gt;, em seguida o sistema fecha a modal, atualiza a lista de atendimentos e apresenta a mensagem
+    &lt;em&gt;“Registro de atendimento incluído com sucesso”.&lt;/em&gt;
+&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;&lt;strong style="font-size: 25px;color: #1944a8;"&gt;Modal&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="curso327-texto" style="text-align: center;"&gt;
+    &lt;img src="@@PLUGINFILE@@/prontuario_pag-22-com%20numero.png?time=1758072280469" alt="" width="800" height="833" role="presentation" class="img-fluid atto_image_button_middle"&gt;
+&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p class="curso327-texto"&gt;
+    A modal &lt;span class="curso327-numero"&gt;2&lt;/span&gt; &lt;strong&gt;Incluir atendimento&lt;/strong&gt;, representada na figura acima, contém os seguintes dados:
+&lt;/p&gt;
+
+&lt;ul style="list-style-type: square"&gt;
+    &lt;div style="font-size:17px; line-height: 2.8em;"&gt;
+        &lt;li&gt;&lt;strong&gt;Pessoa(s)&lt;/strong&gt; – campo para informar o(s) nome(s) da(s) pessoa(s) atendida(s);&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Data do atendimento&lt;/strong&gt; – campo para informar a data em que o atendimento foi realizado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Nome do técnico responsável&lt;/strong&gt; – campo que informa o nome do técnico responsável pelo registro do atendimento no Prontuário Eletrônico;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Tipo&lt;/strong&gt; – campo para informar o tipo do atendimento socioassistencial prestado;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Descrição/ resumo do atendimento&lt;/strong&gt; – campo para registrar informações adicionais ao atendimento;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Cancelar&lt;/strong&gt; – opção que ao ser acionada cancela a ação e fecha a modal;&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Incluir&lt;/strong&gt; – opção que ao ser acionada salva o atendimento.&lt;/li&gt;
+    &lt;/div&gt;
+&lt;/ul&gt;</content>
+        <contentformat>1</contentformat>
+        <hidden>0</hidden>
+        <timemodified>1761690872</timemodified>
+        <importsrc></importsrc>
+      </chapter>
+    </chapters>
+    <chaptertags>
+    </chaptertags>
+  </book>
+</activity>

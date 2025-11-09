@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section id="183">
+  <number>0</number>
+  <name> </name>
+  <summary>&lt;img src="@@PLUGINFILE@@/novo-icone-verde.png" alt="" width="350" height="258" role="presentation" class="img-fluid atto_image_button_right"&gt;&lt;br&gt;&lt;br&gt;
+&lt;h5 style="font-size: 1.17rem; line-height: 1.6; color:#3f4448; padding-left: 1.5em; padding-right: 0.5em;"&gt;{GENERICO:type="user"}, seja bem-vindo(a) ao curso Manual do Prontuário Eletrônico.&amp;nbsp;&lt;br&gt;&lt;br&gt;Este curso foi elaborado para apoiar os profissionais do Sistema Único de Assistência Social (SUAS).&lt;br&gt;&lt;br&gt;Ao longo das seções, você terá acesso a orientações práticas sobre o acesso ao sistema e os principais conceitos vinculados à sua utilização. O conteúdo busca tornar o processo de registro mais ágil, padronizado e eficiente, fortalecendo a qualidade do atendimento e ampliando a utilização das informações como instrumento de gestão e garantia de direitos.&lt;br&gt;&lt;br&gt;Desejamos a você uma excelente jornada formativa!&lt;/h5&gt;
+&lt;br&gt;</summary>
+  <summaryformat>1</summaryformat>
+  <sequence></sequence>
+  <visible>1</visible>
+  <availabilityjson>{"op":"&amp;","c":[],"showc":[]}</availabilityjson>
+  <timemodified>1758421508</timemodified>
+</section>

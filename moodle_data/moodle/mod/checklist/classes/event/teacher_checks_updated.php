@@ -33,7 +33,6 @@ namespace mod_checklist\event;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class teacher_checks_updated extends \core\event\base {
-
     /**
      * Init method.
      *
@@ -60,8 +59,8 @@ class teacher_checks_updated extends \core\event\base {
      * @return string
      */
     public function get_description() {
-        return "The user with id '$this->userid' has updated the teacher checks for user '$this->relateduserid' on the ".
-        "checklist with the course module id '$this->contextinstanceid'";
+        return "The user with id '$this->userid' has updated the teacher checks for user '$this->relateduserid' on the " .
+            "checklist with the course module id '$this->contextinstanceid'";
     }
 
     /**
@@ -70,10 +69,10 @@ class teacher_checks_updated extends \core\event\base {
      * @return \moodle_url
      */
     public function get_url() {
-        return new \moodle_url('/mod/checklist/report.php', array(
+        return new \moodle_url('/mod/checklist/report.php', [
             'id' => $this->contextinstanceid,
-            'studentid' => $this->relateduserid
-        ));
+            'studentid' => $this->relateduserid,
+        ]);
     }
 
     /**
@@ -93,4 +92,3 @@ class teacher_checks_updated extends \core\event\base {
         return ['db' => 'checklist', 'restore' => 'checklist'];
     }
 }
-
