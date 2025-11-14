@@ -6,16 +6,38 @@ $CFG = new stdClass();
 
 $CFG->dbtype    = 'pgsql';
 $CFG->dblibrary = 'native';
-$CFG->dbhost    = 'moodlepgdb'; //'172.16.28.251';
+
+$CFG->dbhost    = '172.16.28.204';
+$CFG->dbport    = 6432;
+
 $CFG->dbname    = 'moodle_agu';
-$CFG->dbuser    = 'moodle_agu'; //'moodle_agu';
+$CFG->dbuser    = 'moodle_agu';
 $CFG->dbpass    = '5xE&LNr39ls^';
-$CFG->prefix    = 'mdl_';
-$CFG->dboptions = array (
-  'dbpersist' => 0,
-  'dbport' => 5432,
-  'dbsocket' => '',
+
+$CFG->prefix = 'mdl_';
+
+$CFG->dboptions = array(
+    'dbpersist' => true,   // ESSENCIAL p/ PgBouncer
+    'dbtimeout' => 20,
+    'dbsocket' => false,
+    'dbhandlesoptions' => false,
 );
+
+#$CFG->dbtype    = 'pgsql';
+#$CFG->dblibrary = 'native';
+#$CFG->dbhost    = '172.16.28.204'; //'172.16.28.251';
+#$CFG->dbname    = 'moodle_agu';
+#$CFG->dbuser    = 'moodle_agu'; //'moodle_agu';
+#$CFG->dbpass    = '5xE&LNr39ls^';
+#$CFG->prefix    = 'mdl_';
+#$CFG->dboptions = array (
+#  'dbpersist' => 1,
+#  'dbport' => 5432,
+#  'dbsocket' => '',
+#  'dbhandlesoptions' => false,
+#  'dbverifypeer' => false,
+#  'dbtimeout' => 20
+#);
 
 $CFG->wwwroot   = 'https://www.campusvirtual.unb.br';
 $CFG->dataroot  = '/var/www/moodledata';
@@ -43,13 +65,18 @@ $CFG->tempdir       = '/var/www/html/moodle/temp';    // arquivos temporários e
 
 // Sessões no Redis (ótimo para ambientes com múltiplos containers)
 $CFG->session_handler_class = '\core\session\redis';
-$CFG->session_redis_host = 'redis';  // nome do container Redis
+$CFG->session_redis_host = '172.16.28.204';  // nome do container Redis
 $CFG->session_redis_port = 6379;
 $CFG->session_redis_database = 0;  // Pode usar de 0 a 15
 $CFG->session_redis_prefix = 'sess_';
 $CFG->session_redis_acquire_lock_timeout = 120;
 $CFG->session_redis_lock_expire = 7200;
 $CFG->session_redis_lock_retry = 100;
+
+$CFG->cachestore_redis_server = '172.16.28.204';
+$CFG->cachestore_redis_port = 6379;
+$CFG->cachestore_redis_prefix = 'muc_';
+$CFG->cachestore_redis_database = 1;
 
 $CFG->sessiontimeout = 7200; // 2 horas
 
