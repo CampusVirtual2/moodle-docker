@@ -3,6 +3,8 @@ services:
     image: postgres:13
     container_name: ${DOMAIN}_pgdb
     restart: always
+    ports:
+      - "5432:5432"
     volumes:
       - ./pg_data:/var/lib/postgresql/data
       - ./postgresql.conf:/etc/postgresql/postgresql.conf
@@ -19,6 +21,8 @@ services:
   redis:
     image: redis:7.4.1-alpine
     container_name: ${DOMAIN}_redis
+    ports:
+      - "6379:6379"
     volumes:
       - ./redis:/data
     command: >
@@ -32,6 +36,25 @@ services:
       - rede_campusvirtual
       - default
     
+  pgbouncer:
+    image: edoburu/pgbouncer
+    container_name: ${DOMAIN}_pgbouncer
+    restart: always
+    depends_on:
+      - moodlepgdb
+    ports:
+      - "6432:6432"   # PgBouncer exposto aqui
+    environment:
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_HOST: moodlepgdb
+      DB_PORT: 5432
+    volumes:
+      - ./pgbouncer.ini:/etc/pgbouncer/pgbouncer.ini:ro
+      - ./userlist.txt:/etc/pgbouncer/userlist.txt:ro
+    networks:
+      - rede_campusvirtual
+
 volumes:
   pg_data:
     driver: local
@@ -39,4 +62,4 @@ volumes:
 networks:
   rede_campusvirtual:
     name: rede_${DOMAIN}
-    external: true 
+      #    external: true 
