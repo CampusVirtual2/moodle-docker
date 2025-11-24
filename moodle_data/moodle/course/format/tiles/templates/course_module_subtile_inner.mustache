@@ -1,3 +1,6 @@
+{{^is_label}}
+    <div class="tileiconcontainer activityiconcontainer {{{purpose}}} courseicon" id="subtileicon_single_{{cmid}}">{{>format_tiles/tileicon}}</div>
+{{/is_label}}
 {{#is_label}}
     {{#clickable}}
     {{! clickable really means user is allowed to see content - }}
@@ -12,13 +15,12 @@
 {{^is_label}}
     {{^editing}}
         <div class="activityname">
-            <div class="activitytype">{{modnameDisplay}}</div>
             {{#completionInUseForCm}}
                 {{#completionenabled}}
-                    <div class="completion-spacer pull-right"></div>
+                    <div class="completion-spacer float-right"></div>
                 {{/completionenabled}}
             {{/completionInUseForCm}}
-            <h4>{{{activityname}}}</h4>
+            <h5>{{{activityname}}}</h5>
         </div>
     {{/editing}}
 

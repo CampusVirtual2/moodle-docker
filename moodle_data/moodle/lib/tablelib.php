@@ -171,6 +171,16 @@ class flexible_table {
     protected $resetting;
 
     /**
+     * @var string $caption The caption of table
+     */
+    public $caption;
+
+    /**
+     * @var array $captionattributes The caption attributes of table
+     */
+    public $captionattributes;
+
+    /**
      * @var filterset The currently applied filerset
      * This is required for dynamic tables, but can be used by other tables too if desired.
      */
@@ -193,6 +203,21 @@ class flexible_table {
             TABLE_VAR_RESET  => 'treset',
             TABLE_VAR_DIR    => 'tdir',
         );
+
+        static $notified = [];
+        if (!(defined('AJAX_SCRIPT') && AJAX_SCRIPT) &&
+                $this instanceof \core_table\dynamic &&
+                !method_exists($this, 'has_capability') &&
+                empty($notified[get_class($this)])) {
+            // Classes implementing \core_table\dynamic must have a method has_capability():bool .
+            // This will be enforced in Moodle 4.5.
+            \core\notification::add(
+                get_string('codingerror', 'debug',
+                'Error in class '.get_class($this).'. Some functionality may be available to admins only.'),
+                \core\notification::WARNING
+            );
+            $notified[get_class($this)] = true;
+        }
     }
 
     /**
@@ -1839,8 +1864,35 @@ class flexible_table {
         // Start of main data table
 
         echo html_writer::start_tag('div', array('class' => 'no-overflow'));
-        echo html_writer::start_tag('table', $this->attributes);
+        echo html_writer::start_tag('table', $this->attributes) . $this->render_caption();
+    }
 
+    /**
+     * This function set caption for table.
+     *
+     * @param string $caption Caption of table.
+     * @param array|null $captionattributes Caption attributes of table.
+     */
+    public function set_caption(string $caption, ?array $captionattributes): void {
+        $this->caption = $caption;
+        $this->captionattributes = $captionattributes;
+    }
+
+    /**
+     * This function renders a table caption.
+     *
+     * @return string $output Caption of table.
+     */
+    public function render_caption(): string {
+        if ($this->caption === null) {
+            return '';
+        }
+
+        return html_writer::tag(
+            'caption',
+            $this->caption,
+            $this->captionattributes,
+        );
     }
 
     /**

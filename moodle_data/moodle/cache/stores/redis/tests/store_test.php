@@ -38,7 +38,7 @@ require_once(__DIR__.'/../lib.php');
  * @copyright Copyright (c) 2015 Moodlerooms Inc. (http://www.moodlerooms.com)
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class store_test extends \cachestore_tests {
+final class store_test extends \cachestore_tests {
     /**
      * @var cachestore_redis
      */
@@ -139,6 +139,58 @@ class store_test extends \cachestore_tests {
         $this->assertNull($store->check_lock_state('notalock', '123'));
         $this->assertFalse($store->release_lock('lock', '321'));
         $this->assertTrue($store->release_lock('lock', '123'));
+    }
+
+    /**
+     * Checks the timeout features of locking.
+     */
+    public function test_lock_timeouts(): void {
+        $store = $this->create_cachestore_redis(['lockwait' => 2, 'locktimeout' => 4]);
+
+        // User 123 acquires lock.
+        $this->assertTrue($store->acquire_lock('lock', '123'));
+        $this->assertTrue($store->check_lock_state('lock', '123'));
+
+        // User 456 tries to acquire lock - should fail after about 2 seconds.
+        $before = microtime(true);
+        $this->assertFalse($store->acquire_lock('lock', '456'));
+        $after = microtime(true);
+        $this->assertEqualsWithDelta(2, $after - $before, 0.5);
+
+        // Wait another 2 seconds and then it should be able to get the lock because of timeout.
+        sleep(2);
+        $this->assertTrue($store->acquire_lock('lock', '456'));
+        $this->assertTrue($store->check_lock_state('lock', '456'));
+
+        // The first user doesn't have the lock any more.
+        $this->assertFalse($store->check_lock_state('lock', '123'));
+
+        // Releasing the lock from the first user does nothing.
+        $this->assertFalse($store->release_lock('lock', '123'));
+        $this->assertTrue($store->check_lock_state('lock', '456'));
+
+        $this->assertTrue($store->release_lock('lock', '456'));
+    }
+
+    /**
+     * Tests the shutdown function that is supposed to free any remaining locks.
+     */
+    public function test_lock_shutdown(): void {
+        $store = $this->create_cachestore_redis();
+        try {
+            $this->assertTrue($store->acquire_lock('a', '123'));
+            $this->assertTrue($store->acquire_lock('b', '123'));
+            $this->assertTrue($store->acquire_lock('c', '123'));
+            $this->assertTrue($store->check_lock_state('a', '123'));
+            $this->assertTrue($store->check_lock_state('b', '123'));
+            $this->assertTrue($store->check_lock_state('c', '123'));
+        } finally {
+            $store->shutdown_release_locks();
+            $this->assertDebuggingCalledCount(3);
+        }
+        $this->assertNull($store->check_lock_state('a', '123'));
+        $this->assertNull($store->check_lock_state('b', '123'));
+        $this->assertNull($store->check_lock_state('c', '123'));
     }
 
     /**

@@ -26,7 +26,7 @@ namespace core;
  * @copyright  2016 Jake Dallimore <jrhdallimore@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class curl_security_helper_test extends \advanced_testcase {
+final class curl_security_helper_test extends \advanced_testcase {
     /**
      * Test for \core\files\curl_security_helper::url_is_blocked().
      *
@@ -62,7 +62,7 @@ class curl_security_helper_test extends \advanced_testcase {
      *
      * @return array
      */
-    public function curl_security_url_data_provider() {
+    public static function curl_security_url_data_provider(): array {
         $simpledns = ['localhost' => ['127.0.0.1']];
         $multiplerecorddns = [
             'sub.example.com' => ['1.2.3.4', '5.6.7.8']
@@ -135,6 +135,11 @@ class curl_security_helper_test extends \advanced_testcase {
             // Test when DNS resolution fails.
             [[], "http://example.com", "127.0.0.1", "", true],
 
+            // Test ensures that the default value of getremoteaddr() 0.0.0.0 will check against the provided blocked list.
+            [$simpledns, "http://0.0.0.0/x.png", "0.0.0.0", "", true],
+            // Test set using IPV4 with integer format.
+            [$simpledns, "http://2852039166/x.png", "169.254.169.254", "", true],
+
             // Test some freaky deaky Unicode domains. Should be blocked always.
             [$simpledns, "http://169。254。169。254/", "127.0.0.1", "", true],
             [$simpledns, "http://169。254。169。254/", "1.2.3.4", "", true],
@@ -175,7 +180,7 @@ class curl_security_helper_test extends \advanced_testcase {
      *
      * @return array
      */
-    public function curl_security_settings_data_provider() {
+    public static function curl_security_settings_data_provider(): array {
         // Format: blocked hosts, allowed ports, expected result.
         return [
             ["", "", false],
@@ -207,7 +212,7 @@ class curl_security_helper_test extends \advanced_testcase {
      *
      * @return array
      */
-    public function curl_security_host_data_provider() {
+    public static function curl_security_host_data_provider(): array {
         return [
             // IPv4 hosts.
             ["127.0.0.1", "127.0.0.1", true],
@@ -261,7 +266,7 @@ class curl_security_helper_test extends \advanced_testcase {
      *
      * @return array
      */
-    public function curl_security_port_data_provider() {
+    public static function curl_security_port_data_provider(): array {
         return [
             ["", "80\n443", true],
             [" ", "80\n443", true],

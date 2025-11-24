@@ -163,7 +163,7 @@ class templates extends system_report {
             new moodle_url('/admin/tool/certificate/view.php', ['templateid' => ':id', 'preview' => 1, 'code' => 'previewing']),
             new pix_icon('i/search', ''),
             [
-                'target' => '_blank'
+                'target' => '_blank',
             ],
             false,
             new lang_string('preview')
@@ -188,7 +188,7 @@ class templates extends system_report {
         // Duplicate.
         $this->add_action((new action(
             new moodle_url('#'),
-            new pix_icon('e/manage_files', ''),
+            new pix_icon('t/copy', ''),
             [
                 'data-action' => 'duplicate',
                 'data-id' => ':id',

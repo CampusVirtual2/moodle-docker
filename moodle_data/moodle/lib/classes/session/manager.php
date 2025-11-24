@@ -159,9 +159,11 @@ class manager {
                 throw new \core\session\exception(get_string('servererror'));
             }
 
-            // Grab the time when session lock starts.
-            $PERF->sessionlock['gained'] = microtime(true);
-            $PERF->sessionlock['wait'] = $PERF->sessionlock['gained'] - $PERF->sessionlock['start'];
+            if ($requireslock) {
+                // Grab the time when session lock starts.
+                $PERF->sessionlock['gained'] = microtime(true);
+                $PERF->sessionlock['wait'] = $PERF->sessionlock['gained'] - $PERF->sessionlock['start'];
+            }
             self::initialise_user_session($isnewsession);
             self::$sessionactive = true; // Set here, so the session can be cleared if the security check fails.
             self::check_security();
@@ -686,16 +688,17 @@ class manager {
         global $PERF, $ME, $CFG;
 
         if (self::$sessionactive) {
-            // Grab the time when session lock is released.
-            $PERF->sessionlock['released'] = microtime(true);
-            if (!empty($PERF->sessionlock['gained'])) {
-                $PERF->sessionlock['held'] = $PERF->sessionlock['released'] - $PERF->sessionlock['gained'];
-            }
-            $PERF->sessionlock['url'] = me();
-            self::update_recent_session_locks($PERF->sessionlock);
-            self::sessionlock_debugging();
-
             $requireslock = self::$handler->requires_write_lock();
+            if ($requireslock) {
+                // Grab the time when session lock is released.
+                $PERF->sessionlock['released'] = microtime(true);
+                if (!empty($PERF->sessionlock['gained'])) {
+                    $PERF->sessionlock['held'] = $PERF->sessionlock['released'] - $PERF->sessionlock['gained'];
+                }
+                $PERF->sessionlock['url'] = me();
+                self::update_recent_session_locks($PERF->sessionlock);
+                self::sessionlock_debugging();
+            }
             if (!$requireslock || !self::$requireslockdebug) {
                 // Compare the array of the earlier session data with the array now, if
                 // there is a difference then a lock is required.
@@ -954,7 +957,7 @@ class manager {
         // This may take a long time...
         \core_php_time_limit::raise();
 
-        $maxlifetime = $CFG->sessiontimeout;
+        $maxlifetime = (int) $CFG->sessiontimeout;
 
         try {
             // Kill all sessions of deleted and suspended users without any hesitation.
@@ -1001,7 +1004,7 @@ class manager {
             $rs->close();
 
             // Delete expired sessions for guest user account, give them larger timeout, there is no security risk here.
-            $params = array('purgebefore' => (time() - ($maxlifetime * 5)), 'guestid'=>$CFG->siteguest);
+            $params = array('purgebefore' => (time() - $maxlifetime), 'guestid' => $CFG->siteguest);
             $rs = $DB->get_recordset_select('sessions', 'userid = :guestid AND timemodified < :purgebefore', $params, 'id DESC', 'id, sid');
             foreach ($rs as $session) {
                 self::kill_session($session->sid);

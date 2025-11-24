@@ -69,7 +69,7 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                 });
                 $("#iconpickerphotos").find(".photo").each(function (index, ph) {
                     ph = $(ph);
-                    if (photoNames.indexOf(ph.attr("data-filename")) === -1) {
+                    if (photoNames.indexOf(ph.data("filename")) === -1) {
                         ph.fadeOut(500);
                     }
                 });
@@ -95,7 +95,8 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
          * @returns {string}
          */
         var getPhotoTileButtonUrl = function(courseId, sectionId) {
-            return config.wwwroot + '/course/format/tiles/editimage.php?courseid=' + courseId + '&sectionid=' + sectionId;
+            return config.wwwroot
+                + '/course/format/tiles/editor/editimage.php?sectionid=' + sectionId;
         };
 
         /**
@@ -117,23 +118,36 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
             sectionId, sectionNum, icon, displayname, pageType, courseId, imageType, sourcecontextid, sourceitemid
         ) {
             var selectedIcon = $("#selectedicon");
+
+            const onCoursePage = ['section-view-tiles', "course-view-tiles", 'course-view-section-tiles'].includes(pageType);
             var changeUiTilePhoto = function (jqueryObjToChange, imageUrl, imageType) {
                 var templateToRender = '';
                 var templateParams = {
                     tileicon: icon,
-                    num: sectionNum,
-                    id: sectionId,
+                    tileid: sectionNum,
+                    secid: sectionId,
                     isediting: 1
                 };
                 switch (imageType) {
                     case 'tileicon':
-                        templateToRender = 'tileicon';
+                        if (icon.match(/^number_[\d]{1,2}$/)) {
+                            templateToRender = 'tilenumber';
+                            templateParams.tilenumber = icon.match(/\d+/)[0];
+                        } else {
+                            templateToRender = 'tileicon';
+                        }
                         break;
                     case 'tilephoto':
+                        if (!imageUrl) {
+                            // Unsetting photo.
+                            templateParams.tileicon = $('#format-tiles-js-config').data('defaultcourseicon');
+                            templateToRender = 'tileicon';
+                            break;
+                        }
                         templateToRender = 'tilebarphoto';
                         templateParams.phototileurl = imageUrl;
                         templateParams.phototileediturl = getPhotoTileButtonUrl(courseId, sectionId);
-                        templateParams.iamgetype = imageType;
+                        templateParams.imagetype = imageType;
                         jqueryObjToChange.closest(".tileiconcontainer").addClass("hasphoto");
                         // Refresh the photos in library as may not are still be available.
                         setTimeout(function () {
@@ -144,12 +158,12 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                         templateToRender = 'tilebarphoto';
                         templateParams.phototileurl = imageUrl;
                         templateParams.phototileediturl = getPhotoTileButtonUrl(courseId, sectionId);
-                        templateParams.iamgetype = imageType;
+                        templateParams.imagetype = imageType;
                         break;
                     default:
                         throw new Error("Invalid image type " + imageType);
                 }
-                var divToAnimate = pageType === "course-view-tiles" ? jqueryObjToChange : selectedIcon;
+                var divToAnimate = onCoursePage ? jqueryObjToChange : selectedIcon;
                 divToAnimate.animate({opacity: 0}, 500, function () {
                     Templates.render("format_tiles/" + templateToRender, templateParams)
                         .done(function (html) {
@@ -157,14 +171,12 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                                 .animate({opacity: 1}, 500);
                         });
                 });
-                if (pageType === "course-editsection" && imageType === "tilephoto") {
-                        $('input[name=tilephoto]').val(icon);
-                }
             };
+            $(".tooltip").tooltip("hide");
             var ajaxIconPickArgs = {
                 image: icon,
                 courseid: courseId,
-                sectionid: sectionId,
+                sectionid: Number(sectionId === undefined ? 0 : sectionId),
                 imagetype: imageType,
                 sourcecontextid: sourcecontextid === undefined ? 0 : sourcecontextid,
                 sourceitemid: sourceitemid === undefined ? 0 : sourceitemid,
@@ -174,46 +186,39 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                 methodname: "format_tiles_set_image",
                 args: ajaxIconPickArgs
             }]);
+
             setIconDbPromises[0].done(function (response) {
                 if (response.status === true) {
-                    if (pageType === "course-view-tiles") {
+                    if (onCoursePage) {
                         // We are changing an icon for a specific section from within the course.
                         // We are doing this by clicking an existing icon.
                         changeUiTilePhoto($("#tileicon_" + sectionNum), response.imageurl, imageType);
-                    } else if (pageType === "course-edit" || pageType === "course-editsection") {
+                        if (response.imageurl === '') {
+                            // We are resetting tile.  Refresh photo library as image may be deleted now.
+                            getAndStoreIconSet(courseId);
+                        }
+                    } else if (pageType === "course-edit") {
                         // We are changing the icon using a drop down menu not the icon picker modal.
-                        // Either for the whole course or for one section.
+                        // For the whole course.
                         // Select new icon in drop down.
                         var selectBox = $("#id_defaulttileicon"); // Valid if page type is course-edit.
-                        if (pageType === "course-editsection") {
-                            selectBox = $("#id_tileicon");
-                        }
                         selectBox.val(icon);
                         // Then change the image shown next to it.
                         if (imageType === "tileicon") {
                             Templates.renderPix("tileicon/" + icon, "format_tiles", displayname)
                                 .done(function (newIcon) {
                                     selectedIcon.html(newIcon);
-                                    if (pageType === "course-editsection") {
-                                        str.get_strings([
-                                            {key: "tip", component: "format_tiles"},
-                                            {key: "tileselecttip", component: "format_tiles"}
-                                        ]).done(function (strings) {
-                                            Notification.alert(
-                                                strings[0],
-                                                strings[1]
-                                            );
-                                        });
-                                    }
                                 });
-                            if (pageType === "course-editsection") {
-                                $('input[name=tilephoto]').val("");
-                            }
                         } else if (imageType === "tilephoto") {
+                            // We are changing a tile photo.
                             changeUiTilePhoto($("#tileicon_" + sectionNum), response.imageurl, imageType);
                         }
                     }
-
+                } else {
+                    require(["core/log"], function(log) {
+                        log.error("False response setting icon");
+                        log.debug(response);
+                    });
                 }
             }).fail(function(response) {
                 require(["core/log"], function(log) {
@@ -233,8 +238,10 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
          * @param {int} section
          * @param {int} allowPhotoTiles whether to render a button for the photo tile form - true or false).
          * @param {string} documentationurl
+         * @param {number} maxNumberIcons
          */
-        var launchIconPicker = function (pageType, courseId, sectionId, section, allowPhotoTiles, documentationurl) {
+        var launchIconPicker = function (pageType, courseId, sectionId, section,
+                                         allowPhotoTiles, documentationurl, maxNumberIcons) {
             // Launch icon picker can be a tile icon (if editing course) or a button (if on a form).
             var populatePhotoLibrary = function(photosHTML, modalRoot, modal) {
                 var photoLibrary = $("#iconpickerphotos");
@@ -244,11 +251,11 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                 // (User draft files may be large so leave them to load last.
                 var largeFileThreshold = 200000; // Bytes.
                 var doLast = [];
-                photoLibrary.find("img").each(function (index, image) {
+                photoLibrary.find(".photo").each(function (index, image) {
                     image = $(image);
-                    if (image.attr("data-filesize") < largeFileThreshold) {
+                    if (image.data("filesize") < largeFileThreshold && image.data("url")) {
                         setTimeout(function () {
-                            image.attr("src", image.attr("data-url"));
+                            image.attr("style", `background-image: url('${image.data("url")}');`);
                         }, index * 20);
                     } else {
                         doLast.push(image);
@@ -257,34 +264,37 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                     image.click(function (e) {
                         var clickedImage = $(e.currentTarget);
                         setIcon(
-                            modalRoot.attr("data-true-sectionid"),
-                            modalRoot.attr("data-section"),
-                            clickedImage.attr("data-filename"),
-                            clickedImage.attr("data-filename"),
+                            modalRoot.data("true-sectionid"),
+                            modalRoot.data("section"),
+                            clickedImage.data("filename"),
+                            clickedImage.data("filename"),
                             pageType,
                             courseId,
-                            clickedImage.attr("data-imagetype"),
-                            clickedImage.attr("data-contextid"), // For existing photos - sourcecontextid.
-                            clickedImage.attr("data-itemid") // For existing photos - sourceitemid.
+                            clickedImage.data("imagetype"),
+                            clickedImage.data("contextid"), // For existing photos - sourcecontextid.
+                            clickedImage.data("itemid") // For existing photos - sourceitemid.
                         );
                         modal.hide();
                     });
                 });
                 setTimeout(function () {
                     doLast.forEach(function (image) {
-                        image.attr("src", image.attr("data-url"));
+                        image.attr("src", image.data("url"));
                     });
                 }, 1000);
             };
 
             if (typeof modalStored !== "object") {
-                // We only have one modal per page which we recycle.  We dont have it yet so create it.
+                // We only have one modal per page which we recycle.  We don't have it yet so create it.
 
                 var renderModal = function() {
                     Templates.render("format_tiles/icon_picker_modal_body", {
                         /* eslint-disable-next-line camelcase */
                         icon_picker_icons: iconSet,
-                        photosallowed: allowPhotoTiles,
+                        showphotos: allowPhotoTiles,
+                        sectionnumber: section,
+                        showicons: true, // Always include this, but we can hide it when using photos.
+                        tilenumbers: Array.from({length: maxNumberIcons + 1}, (e, i)=> i).filter((e) => e > 0),
                         wwwroot: config.wwwroot,
                         documentationurl: documentationurl
                     }).done(function (iconsHTML) {
@@ -299,21 +309,22 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                                 modal.show();
                                 var modalRoot = $(modal.root);
                                 modalRoot.attr("id", "icon_picker_modal");
-                                modalRoot.attr("data-true-sectionid", sectionId);
-                                modalRoot.attr("data-section", section);
+                                modalRoot.data("true-sectionid", sectionId);
+                                modalRoot.data("section", section);
                                 modalRoot.addClass("icon_picker_modal");
+                                modalRoot.find(`#tile-number-container-${section}`).addClass('suggested');
                                 modalRoot.on("click", ".pickericon", function (e) {
                                     var newIcon = $(e.currentTarget);
                                     setIcon(
                                         sectionId,
                                         section,
-                                        newIcon.attr("data-icon"),
+                                        newIcon.data("icon"),
                                         newIcon.attr("title"),
                                         pageType,
                                         courseId,
                                         'tileicon',
-                                        newIcon.attr("data-contextid"), // For existing photos - sourcecontextid.
-                                        newIcon.attr("data-itemid") // For existing photos - sourcetemid.
+                                        newIcon.data("contextid"), // For existing photos - sourcecontextid.
+                                        newIcon.data("itemid") // For existing photos - sourcetemid.
                                     );
                                     modal.hide();
                                 });
@@ -324,12 +335,12 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                                     if (searchText.length >= 3) {
                                         modalRoot.find(".pickericon").filter(function (index, icon) {
                                             // Show all icons then hide icons which do not match the search term.
-                                            return $(icon).attr('data-original-title').toLowerCase().indexOf(searchText) < 0;
+                                            return $(icon).data('original-title').toLowerCase().indexOf(searchText) < 0;
                                         }).hide();
                                     }
                                 });
                                 try {
-                                    const pickerIcon = $(".pickericon");
+                                    const pickerIcon = $(".pickericon:not(.tile-number)");
                                     if (typeof pickerIcon.tooltip == 'function') {
                                         pickerIcon.tooltip();
                                     }
@@ -339,7 +350,7 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                                     });
                                 }
                                 if (allowPhotoTiles) {
-                                    // Set the URL for the photo tile button if used (done dynamically as contains section id).
+                                    // Set the URL for the photo upload button if used (done dynamically as contains section id).
                                     var url = getPhotoTileButtonUrl(courseId, sectionId);
                                     modalRoot.find('#phototilebtn')
                                         .attr('href', url);
@@ -356,6 +367,7 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                                         }
                                     });
                                 }
+                                $(document).trigger('format-tiles-icon-picker-modal-created');
                             });
                         });
                     });
@@ -367,26 +379,28 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                 }
             } else {
                 // We already have the modal so recycle it instead of re-rendering.
-                modalStored.root.attr("data-true-sectionid", sectionId);
-                modalStored.root.attr("data-section", section);
+                modalStored.root.data("true-sectionid", sectionId);
+                modalStored.root.data("section", section);
                 modalStored.root.off("click");
+                modalStored.root.find(`.tile-number-container`).removeClass('suggested');
+                modalStored.root.find(`#tile-number-container-${section}`).addClass('suggested');
                 modalStored.root.on("click", ".pickericon", function (e) {
                     var newIcon = $(e.currentTarget);
                     setIcon(
                         sectionId,
                         section,
-                        newIcon.attr("data-icon"),
+                        newIcon.data("icon"),
                         newIcon.attr("title"),
                         pageType,
                         courseId,
-                        newIcon.attr("data-imagetype"),
-                        newIcon.attr("data-contextid"), // For existing photos - sourcecontextid.
-                        newIcon.attr("data-itemid") // For existing photos - sourcetemid.
+                        newIcon.data("imagetype"),
+                        newIcon.data("contextid"), // For existing photos - sourcecontextid.
+                        newIcon.data("itemid") // For existing photos - sourcetemid.
                     );
                     modalStored.hide();
                 });
                 if (allowPhotoTiles) {
-                    // Set the URL for the photo tile button if used (done dynamically as contains section id).
+                    // Set the URL for the photo upload button if used (done dynamically as contains section id).
                     var url = getPhotoTileButtonUrl(courseId, sectionId);
                     modalStored.root.find('#phototilebtn')
                         .attr('href', url);
@@ -396,7 +410,7 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
         };
 
         return {
-            init: function (courseId, pageType, allowPhotoTiles, documentationurl) {
+            init: function (courseId, pageType, allowPhotoTiles, documentationurl, maxNumberIcons) {
                 $(document).ready(function () {
                     var stringKey = allowPhotoTiles ? "picknewiconphoto" : "picknewicon";
                     str.get_string(stringKey, "format_tiles").done(function (pickAnIcon) {
@@ -410,16 +424,17 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                         // Some themes e.g. RemUI do not have a #page-content div, so use #region-main.
                         pageContent = $("#region-main");
                     }
-                    pageContent.on("click", '[data-action="launch-tiles-icon-picker"]', function (e) {
+                    pageContent.on("click", '[data-tiles-action="launch-tiles-icon-picker"]', function (e) {
                         e.preventDefault();
                         var clickedIcon = $(e.currentTarget);
                         launchIconPicker(
                             pageType,
                             courseId,
-                            clickedIcon.attr('data-true-sectionid'),
-                            clickedIcon.attr('data-section'),
+                            clickedIcon.data('true-sectionid'),
+                            clickedIcon.data('section'),
                             allowPhotoTiles,
-                            documentationurl
+                            documentationurl,
+                            maxNumberIcons
                         );
                     });
                 });

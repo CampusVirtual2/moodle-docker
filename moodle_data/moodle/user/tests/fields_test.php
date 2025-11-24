@@ -22,8 +22,9 @@ namespace core_user;
  * @package core
  * @copyright 2014 The Open University
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @covers \core_user\fields
  */
-class fields_test extends \advanced_testcase {
+final class fields_test extends \advanced_testcase {
 
     /**
      * Tests getting the user picture fields.
@@ -151,6 +152,27 @@ class fields_test extends \advanced_testcase {
                 fields::get_identity_fields($usercontext));
         $this->assertEquals(['email', 'department'],
                 fields::get_identity_fields($usercontext, false));
+    }
+
+    /**
+     * Test getting identity fields, when one of them refers to a non-existing custom profile field
+     */
+    public function test_get_identity_fields_invalid(): void {
+        $this->resetAfterTest();
+
+        $this->getDataGenerator()->create_custom_profile_field([
+            'datatype' => 'text',
+            'shortname' => 'real',
+            'name' => 'I\'m real',
+        ]);
+
+        // The "fake" profile field does not exist.
+        set_config('showuseridentity', 'email,profile_field_real,profile_field_fake');
+
+        $this->assertEquals([
+            'email',
+            'profile_field_real',
+        ], fields::get_identity_fields(null));
     }
 
     /**
@@ -527,7 +549,7 @@ class fields_test extends \advanced_testcase {
      *
      * @return array
      */
-    public function get_sql_fullname_provider(): array {
+    public static function get_sql_fullname_provider(): array {
         return [
             ['firstname lastname', 'FN LN'],
             ['lastname, firstname', 'LN, FN'],

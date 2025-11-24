@@ -1,5 +1,67 @@
 # Changelog
 
+## 4.5.7 - 2025-10-07
+### Changed
+- Only changes to automatic testing scripts
+
+## 4.5.5 - 2025-06-10
+### Added
+- Improved CI automation
+
+## 4.5.4 - 2025-04-15
+### Fixed
+- Changed branch name in the testing matrix since the required branch of tool_certificate is no longer the default one
+
+## 4.5.3 - 2025-03-18
+### Fixed
+- behat tests checking that certificate opens in a new window failing with selenium/standalone-chrome:4
+
+## 4.4.4 - 2024-10-08
+### Added
+- Compatibility with Moodle 4.5; Updates to version testing matrices
+
+## 4.4.3 - 2024-09-03
+### Changed
+- Only changes to automatic testing scripts
+
+## 4.4.2 - 2024-08-13
+### Fixed
+- Failing behat tests because of incorrect table headers
+
+## 4.4.1 - 2024-06-11
+### Fixed
+- fixed implicit nullable parameter declaration deprecated in PHP 8.4
+  (new coding style check)
+
+## 4.4 - 2024-05-21
+### Added
+- Changed the icon to be more consistent with activity icons in 4.4
+
+## 4.3.4 - 2024-04-23
+### Added
+- Compatibility with Moodle 4.4, added to the testing matrix
+### Fixed
+- Coding style fixes to comply with moodle-plugin-ci 4.4.0
+
+## 4.3.3 - 2024-02-13
+### Fixed
+- Race condition if the template was deleted in the middle of the process of issuing certificates
+- Link to the module documentation from the 'Add activity' menu
+
+## 4.3.2 - 2023-12-28
+### Fixed
+- Users who have both student and teacher roles will no longer receive certificates
+  without meeting availability restrictions conditions.
+
+## 4.3 - 2023-11-09
+### Added
+- Testing on Workplace 4.3
+
+## 4.2.3 - 2023-10-10
+### Changed
+- Coding style fixes
+- Included LMS 4.3 and PHP 8.2 in the GHA testing matrix
+
 ## 4.2 - 2023-05-30
 ### Changed
 - Removed strings: automaticsenddisabledinfo, enableautomaticsend, selecttemplatewarning,

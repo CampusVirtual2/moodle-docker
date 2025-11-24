@@ -107,9 +107,10 @@ if (!has_any_capability(array(
 $PAGE->set_title($hdr);
 $output = $PAGE->get_renderer('core', 'badges');
 
-if (($delete || $archive) && has_capability('moodle/badges:deletebadge', $PAGE->context)) {
+if ($delete || $archive) {
     $badgeid = ($archive != 0) ? $archive : $delete;
     $badge = new badge($badgeid);
+    require_capability('moodle/badges:deletebadge', $badge->get_context());
     if (!$confirm) {
         echo $output->header();
         // Archive this badge?
@@ -139,9 +140,10 @@ if (($delete || $archive) && has_capability('moodle/badges:deletebadge', $PAGE->
     }
 }
 
-if ($deactivate && has_capability('moodle/badges:configuredetails', $PAGE->context)) {
+if ($deactivate) {
     require_sesskey();
     $badge = new badge($deactivate);
+    require_capability('moodle/badges:configuredetails', $badge->get_context());
     if ($badge->is_locked()) {
         $badge->set_status(BADGE_STATUS_INACTIVE_LOCKED);
     } else {

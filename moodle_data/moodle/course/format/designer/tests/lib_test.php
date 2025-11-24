@@ -171,7 +171,11 @@ class lib_test extends \advanced_testcase {
         $this->getDataGenerator()->enrol_user($user->id, $course->id, $teacherrole->id);
 
         $res = \core_external::update_inplace_editable('format_designer', 'sectionname', $section->id, 'New section name');
-        $res = \external_api::clean_returnvalue(\core_external::update_inplace_editable_returns(), $res);
+        if (class_exists('\core_external\external_api')) {
+            $res = \core_external\external_api::clean_returnvalue(\core_external::update_inplace_editable_returns(), $res);
+        } else {
+            $res = \external_api::clean_returnvalue(\core_external::update_inplace_editable_returns(), $res);
+        }
         $this->assertEquals('New section name', $res['value']);
         $this->assertEquals('New section name', $DB->get_field('course_sections', 'name', ['id' => $section->id]));
     }
@@ -233,7 +237,7 @@ class lib_test extends \advanced_testcase {
             'category' => $category,
             'editoroptions' => [
                 'context' => \context_course::instance($course->id),
-                'subdirs' => 0
+                'subdirs' => 0,
             ],
             'returnto' => new \moodle_url('/'),
             'returnurl' => new \moodle_url('/'),
@@ -361,7 +365,7 @@ class lib_test extends \advanced_testcase {
         $record = ['format' => 'designer'];
         $course = $this->getDataGenerator()->create_course($record);
         $this->getDataGenerator()->enrol_user($user->id, $course->id, $teacherrole->id);
-        $result = format_designer_show_staffs_header($course);
+        $result = helper::create()->get_course_staff_users($course);
         $this->assertEquals(1, count($result));
         $this->assertEquals($user->id, $result[0]->userid);
     }
@@ -419,16 +423,6 @@ class lib_test extends \advanced_testcase {
         $this->assertEquals(2, $result['count']);
         $this->assertEquals(1, $result['completed']);
         $this->assertEquals(50, $result['percent']);
-
-        $cmassign1 = get_coursemodule_from_id('assign', $assign2->cmid);
-        $completion = new \completion_info($course1);
-        $completion->update_state($cmassign1, COMPLETION_COMPLETE, $user->id);
-
-        $result = \format_designer\output\renderer::criteria_progress($course, $user->id);
-
-        $this->assertEquals(2, $result['count']);
-        $this->assertEquals(2, $result['completed']);
-        $this->assertEquals(100, $result['percent']);
 
     }
 }

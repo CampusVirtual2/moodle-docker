@@ -1,249 +1,272 @@
 services:
-  moodleweb01:
-    container_name: ${DOMAIN}_web01
-    env_file: .env
-    command: >
-      bash -c "chown -R www-data:www-data /var/www/moodledata &&
-               chmod -R 775 /var/www/moodledata &&
-               apache2-foreground"
-    build: .
-    environment:
-      - MOODLE_DATABASE_TYPE=pgsql
-      - MOODLE_DATABASE_HOST=moodlepgdb
-      - MOODLE_DATABASE_PORT_NUMBER=5432
-      - MOODLE_DATABASE_USER=${POSTGRES_USER}
-      - MOODLE_DATABASE_NAME=${POSTGRES_DB}
-      - MOODLE_DATABASE_PASSWORD=${POSTGRES_PASSWORD}
-      - ALLOW_EMPTY_PASSWORD=no
-      - MOODLE_REVERSEPROXY=yes
-      - TZ=America/Sao_Paulo
-      - PINPOINT_COLLECTOR_HOST=pinpoint-collector # 🆕 Necessário para agente PHP localizar o collector
-    volumes:
-      - ./php.ini:/usr/local/etc/php/conf.d/99-custom.ini
-      - ./moodle_data:/var/www/html
-      - ./moodledata_data:/var/www/moodledata
-      - ./logs:/var/log/apache2
-      - ./000-default.conf:/etc/apache2/sites-available/000-default.conf
-      - ./default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
-      - ./apache2/mpm_prefork.conf:/etc/apache2/mods-available/mpm_prefork.conf
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-    entrypoint: >
-      /bin/sh -c "
-        mkdir -p /tmp/moodle_temp &&
-        chown www-data:www-data /tmp/moodle_temp &&
-        chmod 700 /tmp/moodle_temp &&
-        exec docker-php-entrypoint apache2-foreground
-      "
-    extra_hosts:
-      - "${DOMAIN}:127.0.1.1"
-    networks:
-      rede_proxy_reverso:
-        aliases:
-          - campusvirtual.unb.br_web
-      default:
-
-  moodleweb02:
-    container_name: ${DOMAIN}_web02
-    env_file: .env
-    command: >
-      bash -c "chown -R www-data:www-data /var/www/moodledata &&
-               chmod -R 775 /var/www/moodledata &&
-               apache2-foreground"
-    build: .
-    environment:
-      - MOODLE_DATABASE_TYPE=pgsql
-      - MOODLE_DATABASE_HOST=moodlepgdb
-      - MOODLE_DATABASE_PORT_NUMBER=5432
-      - MOODLE_DATABASE_USER=${POSTGRES_USER}
-      - MOODLE_DATABASE_NAME=${POSTGRES_DB}
-      - MOODLE_DATABASE_PASSWORD=${POSTGRES_PASSWORD}
-      - ALLOW_EMPTY_PASSWORD=no
-      - MOODLE_REVERSEPROXY=yes
-      - TZ=America/Sao_Paulo
-      - PINPOINT_COLLECTOR_HOST=pinpoint-collector # 🆕 Necessário para agente PHP localizar o collector
-    volumes:
-      - ./php.ini:/usr/local/etc/php/conf.d/99-custom.ini
-      - ./moodle_data:/var/www/html
-      - ./moodledata_data:/var/www/moodledata
-      - ./logs:/var/log/apache2
-      - ./000-default.conf:/etc/apache2/sites-available/000-default.conf
-      - ./default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
-      - ./apache2/mpm_prefork.conf:/etc/apache2/mods-available/mpm_prefork.conf
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-    entrypoint: >
-      /bin/sh -c "
-        mkdir -p /tmp/moodle_temp &&
-        chown www-data:www-data /tmp/moodle_temp &&
-        chmod 700 /tmp/moodle_temp &&
-        exec docker-php-entrypoint apache2-foreground
-      "
-    extra_hosts:
-      - "${DOMAIN}:127.0.1.1"
-    networks:
-      rede_proxy_reverso:
-        aliases:
-          - campusvirtual.unb.br_web
-      default:
-
-  moodleweb03:
-    container_name: ${DOMAIN}_web03
-    env_file: .env
-    command: >
-      bash -c "chown -R www-data:www-data /var/www/moodledata &&
-               chmod -R 775 /var/www/moodledata &&
-               apache2-foreground"
-    build: .
-    environment:
-      - MOODLE_DATABASE_TYPE=pgsql
-      - MOODLE_DATABASE_HOST=moodlepgdb
-      - MOODLE_DATABASE_PORT_NUMBER=5432
-      - MOODLE_DATABASE_USER=${POSTGRES_USER}
-      - MOODLE_DATABASE_NAME=${POSTGRES_DB}
-      - MOODLE_DATABASE_PASSWORD=${POSTGRES_PASSWORD}
-      - ALLOW_EMPTY_PASSWORD=no
-      - MOODLE_REVERSEPROXY=yes
-      - TZ=America/Sao_Paulo
-      - PINPOINT_COLLECTOR_HOST=pinpoint-collector # 🆕 Necessário para agente PHP localizar o collector
-    volumes:
-      - ./php.ini:/usr/local/etc/php/conf.d/99-custom.ini
-      - ./moodle_data:/var/www/html
-      - ./moodledata_data:/var/www/moodledata
-      - ./logs:/var/log/apache2
-      - ./000-default.conf:/etc/apache2/sites-available/000-default.conf
-      - ./default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
-      - ./apache2/mpm_prefork.conf:/etc/apache2/mods-available/mpm_prefork.conf
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-    entrypoint: >
-      /bin/sh -c "
-        mkdir -p /tmp/moodle_temp &&
-        chown www-data:www-data /tmp/moodle_temp &&
-        chmod 700 /tmp/moodle_temp &&
-        exec docker-php-entrypoint apache2-foreground
-      "
-    extra_hosts:
-      - "${DOMAIN}:127.0.1.1"
-    networks:
-      rede_proxy_reverso:
-        aliases:
-          - campusvirtual.unb.br_web
-      default:
-
-  cdn-nginx:
-    image: nginx:latest
-    container_name: ${DOMAIN}_cdn
-    environment:
-      - TZ=America/Sao_Paulo
-#    ports:
-#      - "8003:80"
-    volumes:
-      - ./videos:/usr/share/nginx/html:ro
-      - ./nginx_cdn.conf:/etc/nginx/nginx.conf:ro
+  # ==============================================================
+  # NOVO STACK WEB ULTRA-RÁPIDO (3× PHP-FPM + Load Balancer)
+  # ==============================================================
+  moodle-fpm01:
+    build:
+      context: .
+      dockerfile: Dockerfile.fpm
+    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm01
     restart: unless-stopped
-    networks:
-      - rede_proxy_reverso
-      - default
-
-  cron:
-    image: moodlehq/moodle-php-apache:8.1
-    container_name: ${DOMAIN}_cron
-    environment:
-      - TZ=America/Sao_Paulo
     volumes:
-      - ./moodle_data:/var/www/html
+      - ./moodle_data/moodle:/var/www/html
       - ./moodledata_data:/var/www/moodledata
-      - ./cron-logs:/var/log/moodle
-    entrypoint: >
-      /bin/sh -c "mkdir -p /var/log/moodle && \
-        while true; do \
-          php /var/www/html/moodle/admin/cli/cron.php >> /var/log/moodle/cron.log 2>&1; \
-          sleep 60; \
-        done"
-    depends_on:
-      - moodleweb01 
+      - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 8G
 
-  nginx-proxy-manager:
-    image: 'jc21/nginx-proxy-manager:latest'
-    container_name: ${DOMAIN}_npm
+  moodle-fpm02:
+    build:
+      context: .
+      dockerfile: Dockerfile.fpm
+    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm02
     restart: unless-stopped
+    volumes:
+      - ./moodle_data/moodle:/var/www/html
+      - ./moodledata_data:/var/www/moodledata
+      - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 8G
+
+  moodle-fpm03:
+    build:
+      context: .
+      dockerfile: Dockerfile.fpm
+    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm03
+    restart: unless-stopped
+    volumes:
+      - ./moodle_data/moodle:/var/www/html
+      - ./moodledata_data:/var/www/moodledata
+      - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 8G
+
+  moodle-fpm04:
+    build:
+      context: .
+      dockerfile: Dockerfile.fpm
+    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm04
+    restart: unless-stopped
+    volumes:
+      - ./moodle_data/moodle:/var/www/html
+      - ./moodledata_data:/var/www/moodledata
+      - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 8G
+
+  moodle-fpm05:
+    build:
+      context: .
+      dockerfile: Dockerfile.fpm
+    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm05
+    restart: unless-stopped
+    volumes:
+      - ./moodle_data/moodle:/var/www/html
+      - ./moodledata_data:/var/www/moodledata
+      - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 8G
+
+  moodle-fpm06:
+    build:
+      context: .
+      dockerfile: Dockerfile.fpm
+    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm06
+    restart: unless-stopped
+    volumes:
+      - ./moodle_data/moodle:/var/www/html
+      - ./moodledata_data:/var/www/moodledata
+      - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 8G
+
+  moodle-fpm07:
+    build:
+      context: .
+      dockerfile: Dockerfile.fpm
+    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm07
+    restart: unless-stopped
+    volumes:
+      - ./moodle_data/moodle:/var/www/html
+      - ./moodledata_data:/var/www/moodledata
+      - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 8G
+
+  moodle-fpm08:
+    build:
+      context: .
+      dockerfile: Dockerfile.fpm
+    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm08
+    restart: unless-stopped
+    volumes:
+      - ./moodle_data/moodle:/var/www/html
+      - ./moodledata_data:/var/www/moodledata
+      - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 8G
+
+  moodle-lb:
+    image: nginx:alpine
+    container_name: ${DOMAIN:-campusvirtual.unb.br}_lb
+    restart: unless-stopped
+    ulimits:
+      nofile: 200000
+    sysctls:
+      net.core.somaxconn: 65535
     ports:
       - '80:80'
-      - '443:443'
-      - '81:81'
-    environment:
-      DB_MYSQL_HOST: nginx-proxy-manager-db
-      DB_MYSQL_PORT: 3306
-      DB_MYSQL_USER: npm_user
-      DB_MYSQL_PASSWORD: secure_npm_password
-      DB_MYSQL_NAME: npm_database
+      - '9000:9000'
     volumes:
-      - ./data/npm:/data
-      - ./data/letsencrypt:/etc/letsencrypt
+      - ./nginx-lb.conf:/etc/nginx/nginx.conf:ro
+      - ./moodle_data/moodle:/var/www/html   # ← CÓDIGO DO MOODLE
+    depends_on:
+      - moodle-fpm01
+      - moodle-fpm02
+      - moodle-fpm03
+      - moodle-fpm04
+      - moodle-fpm05
+      - moodle-fpm06
+      - moodle-fpm07
+      - moodle-fpm08
+      - cron
+
     networks:
-      - rede_proxy_reverso
       - default
 
-  nginx-proxy-manager-db:
-    image: mariadb:latest
-    container_name: ${DOMAIN}_db_npm
-    command: '--default-authentication-plugin=mysql_native_password'
-    restart: always
-    environment:
-      - MARIADB_ROOT_PASSWORD=root_password
-      - MARIADB_DATABASE=npm_database
-      - MARIADB_USER=npm_user
-      - MARIADB_PASSWORD=secure_npm_password
-      - MARIADB_CHARACTER_SET=utf8mb4
-      - MARIADB_COLLATE=utf8mb4_unicode_ci
-      - TZ=America/Sao_Paulo
+        #  moodleweb:
+        #build:
+        #context: .
+        #dockerfile: Dockerfile.apache
+        #container_name: ${DOMAIN:-campusvirtual.unb.br}_web
+        #restart: unless-stopped
+        #ports:
+        #- '8080:80'        # ← porta temporária só pra teste
+        #volumes:
+        #- ./moodle_data/moodle:/var/www/html
+        #- ./logs/apache:/usr/local/apache2/logs
+        #depends_on:
+        #- moodle-lb
+        #networks:
+        #- rede_proxy_reverso
+        #- default
+
+  # ==============================================================
+  # SEUS CONTAINERS QUE JÁ ESTAVAM PERFEITOS
+  # ==============================================================
+  #  cdn-nginx:
+  #  image: nginx:latest
+  #  container_name: ${DOMAIN:-campusvirtual.unb.br}_cdn
+  #  restart: unless-stopped
+  #  volumes:
+  #    - ./videos:/usr/share/nginx/html:ro
+  #    - ./nginx_cdn.conf:/etc/nginx/nginx.conf:ro
+  #  networks:
+  #    - rede_proxy_reverso
+  #    - default
+
+  cron:
+    image: campusvirtual_app-moodle-fpm01 
+    container_name: ${DOMAIN:-campusvirtual.unb.br}_cron
+    restart: unless-stopped
     volumes:
-      - ./data/npm/mysql-data:/var/lib/mysql
-      - ./data/npm/mysql-config:/etc/mysql/conf.d
-    networks:
-      - rede_proxy_reverso
-      - default
+      - ./moodle_data/moodle:/var/www/html
+      - ./moodledata_data:/var/www/moodledata
+      - ./cron-logs/cron.log:/var/log/moodle_cron.log
+    command: >
+      sh -c "while true; do
+        php /var/www/html/admin/cli/cron.php >> /var/log/moodle_cron.log 2>&1;
+        sleep 60;
+      done"
+    depends_on:
+      - moodle-fpm01
 
   moodle-backup:
     build:
       context: ./backup
-    container_name: ${DOMAIN}_backup
+    container_name: ${DOMAIN:-campusvirtual.unb.br}_backup
+    restart: unless-stopped
     env_file: .env
     environment:
       - TZ=America/Sao_Paulo
-      - POSTGRES_HOST=moodlepgdb
+      - POSTGRES_HOST=172.16.28.204          # ← aponta pro outro host
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - AWS_BUCKET_NAME=${AWS_BUCKET_NAME}
-      - AWS_BUCKET_PATH=${AWS_BUCKET_PATH}
-      - AWS_REGION=${AWS_REGION}
-      - AWS_ACCESS_KEY_ID=LPOLDVFGXP0PSO8L63R2
-      - AWS_SECRET_ACCESS_KEY=96dVKhBIoycL50HXjIPg8DeYTTz2Ii68RtsttdNI
     volumes:
       - ./backup:/backup
-      - ./moodle_data:/var/www/html:ro
+      - ./moodle_data/moodle:/var/www/html:ro
       - ./moodledata_data:/var/www/moodledata:ro
-      - ./.env:/backup/.env:ro
-    restart: unless-stopped
     networks:
       - rede_proxy_reverso
       - default
 
-volumes:
-  mariadb_data:
-    driver: local
-  moodle_data:
-    driver: local
-  moodledata_data:
-    driver: local
+        #  nginx-proxy-manager:
+        #image: jc21/nginx-proxy-manager:latest
+        #container_name: ${DOMAIN:-campusvirtual.unb.br}_npm
+        #restart: unless-stopped
+        #ports:
+      #      - '80:80'
+      #- '443:443'
+      #- '81:81'
+      #environment:
+      #DB_MYSQL_HOST: nginx-proxy-manager-db
+      #DB_MYSQL_PORT: 3306
+      #DB_MYSQL_USER: npm_user
+      #DB_MYSQL_PASSWORD: ${NPM_DB_PASS:-secure_npm_password}
+      #DB_MYSQL_NAME: npm_database
+      #volumes:
+      #- ./data/npm:/data
+      #- ./data/letsencrypt:/etc/letsencrypt
+      #networks:
+      #- rede_proxy_reverso
+      #- default
 
+        #nginx-proxy-manager-db:
+        #image: mariadb:latest
+        #container_name: ${DOMAIN:-campusvirtual.unb.br}_db_npm
+        #restart: always
+        #environment:
+        #MARIADB_ROOT_PASSWORD: ${NPM_DB_ROOT_PASS:-root_password}
+        #MARIADB_DATABASE: npm_database
+        #MARIADB_USER: npm_user
+        #MARIADB_PASSWORD: ${NPM_DB_PASS:-secure_npm_password}
+        #volumes:
+        #- ./data/npm/mysql-data:/var/lib/mysql
+        #networks:
+        #- rede_proxy_reverso
+
+# ==============================================================
+# REDES (mantive exatamente como você já usa)
+# ==============================================================
 networks:
   default:
-    name: rede_${DOMAIN}
+    name: rede_${DOMAIN:-campusvirtual.unb.br}
     external: true
   rede_proxy_reverso:
     name: rede_proxy_reverso_interna
     external: true
-

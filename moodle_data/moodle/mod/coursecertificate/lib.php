@@ -69,10 +69,10 @@ function coursecertificate_supports(string $feature) {
  * number of the instance.
  *
  * @param stdClass $data An object from the form.
- * @param mod_coursecertificate_mod_form $mform The form.
+ * @param mod_coursecertificate_mod_form|null $mform The form.
  * @return int The id of the newly inserted record.
  */
-function coursecertificate_add_instance(stdClass $data, mod_coursecertificate_mod_form $mform = null): int {
+function coursecertificate_add_instance(stdClass $data, ?mod_coursecertificate_mod_form $mform = null): int {
     global $DB;
 
     $data->timecreated = time();
@@ -93,10 +93,10 @@ function coursecertificate_add_instance(stdClass $data, mod_coursecertificate_mo
  * this function will update an existing instance with new data.
  *
  * @param stdClass $data An object from the form in mod_form.php.
- * @param mod_coursecertificate_mod_form $mform The form.
+ * @param mod_coursecertificate_mod_form|null $mform The form.
  * @return bool True if successful, false otherwise.
  */
-function coursecertificate_update_instance(stdClass $data, mod_coursecertificate_mod_form $mform = null): bool {
+function coursecertificate_update_instance(stdClass $data, ?mod_coursecertificate_mod_form $mform = null): bool {
     global $DB;
 
     $data->timemodified = time();
@@ -220,7 +220,7 @@ function coursecertificate_reset_userdata($data) {
         $status[] = [
             'component' => get_string('modulenameplural', 'mod_coursecertificate'),
             'item' => get_string('certificatesarchived', 'mod_coursecertificate'),
-            'error' => false
+            'error' => false,
         ];
 
     }
@@ -273,6 +273,10 @@ function mod_coursecertificate_cm_info_dynamic(cm_info $coursemodule) {
  * Callback allowing to add warning on the filter settings page
  */
 function mod_coursecertificate_before_http_headers() {
+    // This is an implementation of a legacy callback that will only be called in older Moodle versions.
+    // It will not be called in Moodle versions that contain the hook core\hook\output\before_http_headers,
+    // instead, the callback mod_coursecertificate\local\hooks\output\before_http_headers::callback will be executed.
+
     global $PAGE, $CFG;
     if ($PAGE->context->contextlevel == CONTEXT_MODULE &&
             $PAGE->url->compare(new moodle_url('/filter/manage.php'), URL_MATCH_BASE) &&

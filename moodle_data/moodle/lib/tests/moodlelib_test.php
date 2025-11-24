@@ -27,7 +27,7 @@ use lang_string;
  * @author     T.J.Hunt@open.ac.uk
  * @author     nicolas@moodle.com
  */
-class moodlelib_test extends \advanced_testcase {
+final class moodlelib_test extends \advanced_testcase {
 
     /**
      * Define a local decimal separator.
@@ -179,6 +179,7 @@ class moodlelib_test extends \advanced_testcase {
 
         // Invalid utf8 string.
         $this->assertSame('aš', fix_utf8('a'.chr(130).'š'), 'This fails with buggy iconv() when mbstring extenstion is not available as fallback.');
+        $this->assertSame('Hello ', fix_utf8('Hello ￿'));
     }
 
     public function test_optional_param() {
@@ -859,13 +860,15 @@ class moodlelib_test extends \advanced_testcase {
             '-13.5'                          => '',
             '0.2'                            => '',
             ''                               => '',
-            null                             => '',
         );
 
         foreach ($testvalues as $testvalue => $expectedvalue) {
             $actualvalue = clean_param($testvalue, PARAM_TIMEZONE);
             $this->assertEquals($expectedvalue, $actualvalue);
         }
+
+        // Test for null.
+        $this->assertEquals('', clean_param(null, PARAM_TIMEZONE));
     }
 
     public function test_clean_param_null_argument() {
@@ -1099,7 +1102,7 @@ class moodlelib_test extends \advanced_testcase {
      *
      * @return array of ($filename, $length, $expected, $includehash)
      */
-    public function shorten_filename_provider() {
+    public static function shorten_filename_provider(): array {
         $filename = 'sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem';
         $shortfilename = 'sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque';
 
@@ -1202,7 +1205,7 @@ class moodlelib_test extends \advanced_testcase {
      *
      * @return array of ($filename, $length, $expected, $includehash)
      */
-    public function shorten_filenames_provider() {
+    public static function shorten_filenames_provider(): array {
         $shortfilename = 'sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque';
         $longfilename = 'sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem';
         $extfilename = $longfilename.'.zip';
@@ -3324,7 +3327,7 @@ EOF;
     /**
      * A data provider for testing email messageid
      */
-    public function generate_email_messageid_provider() {
+    public static function generate_email_messageid_provider(): array {
         return array(
             'nopath' => array(
                 'wwwroot' => 'http://www.example.com',
@@ -3391,7 +3394,7 @@ EOF;
     /**
      * A data provider for testing email diversion
      */
-    public function diverted_emails_provider() {
+    public static function diverted_emails_provider(): array {
         return array(
             'nodiverts' => array(
                 'divertallemailsto' => null,
@@ -3596,7 +3599,7 @@ EOF;
      *
      * @return array
      */
-    public function email_to_user_attachment_provider(): array {
+    public static function email_to_user_attachment_provider(): array {
         global $CFG;
 
         // Return all paths that can be used to send attachments from.
@@ -3711,9 +3714,9 @@ EOF;
 
     /**
      * Data provider for test_generate_confirmation_link
-     * @return Array of confirmation urls and expected resultant confirmation links
+     * @return array Confirmation urls and expected resultant confirmation links
      */
-    public function generate_confirmation_link_provider() {
+    public static function generate_confirmation_link_provider(): array {
         global $CFG;
         return [
             "Simple name" => [
@@ -3781,7 +3784,7 @@ EOF;
                 "confirmationurl" => "http://moodle.org/ext.php?with=some&param=eters",
                 "expected" => "http://moodle.org/ext.php?with=some&param=eters&data=/many_-%2E%40characters%40_%40-%2E%2E-%2E%2E"
             ],
-            "Custom external confirmation url with parameters" => [
+            "Custom external confirmation url with parameters (again)" => [
                 "username" => "many_-.@characters@_@-..-..",
                 "confirmationurl" => "http://moodle.org/ext.php?with=some&data=test",
                 "expected" => "http://moodle.org/ext.php?with=some&data=/many_-%2E%40characters%40_%40-%2E%2E-%2E%2E"
@@ -3957,9 +3960,11 @@ EOF;
      * @dataProvider count_words_testcases
      * @param int $expectedcount number of words in $string.
      * @param string $string the test string to count the words of.
+     * @param int|null $format
      */
-    public function test_count_words(int $expectedcount, string $string): void {
-        $this->assertEquals($expectedcount, count_words($string));
+    public function test_count_words(int $expectedcount, string $string, $format = null): void {
+        $this->assertEquals($expectedcount, count_words($string, $format),
+            "'$string' with format '$format' does not match count $expectedcount");
     }
 
     /**
@@ -3967,7 +3972,14 @@ EOF;
      *
      * @return array of test cases.
      */
-    public function count_words_testcases(): array {
+    public static function count_words_testcases(): array {
+        // Copy-pasting example from MDL-64240.
+        $copypasted = <<<EOT
+<p onclick="alert('boop');">Snoot is booped</p>
+ <script>alert('Boop the snoot');</script>
+ <img alt="Boop the Snoot." src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.geekfill.com%2Fwp-content%2Fuploads%2F2015%2F08%2FBoop-the-Snoot.jpg&f=1">
+EOT;
+
         // The counts here should match MS Word and Libre Office.
         return [
             [0, ''],
@@ -4004,6 +4016,16 @@ EOF;
             [1, "SO<sub>4</sub><sup>2-</sup>"],
             [6, '4+4=8 i.e. O(1) a,b,c,d I’m black&blue_really'],
             [1, '<span>a</span><span>b</span>'],
+            [1, '<span>a</span><span>b</span>', FORMAT_PLAIN],
+            [1, '<span>a</span><span>b</span>', FORMAT_HTML],
+            [1, '<span>a</span><span>b</span>', FORMAT_MOODLE],
+            [1, '<span>a</span><span>b</span>', FORMAT_MARKDOWN],
+            [1, 'aa <argh <bleh>pokus</bleh>'],
+            [2, 'aa <argh <bleh>pokus</bleh>', FORMAT_HTML],
+            [6, $copypasted],
+            [6, $copypasted, FORMAT_PLAIN],
+            [3, $copypasted, FORMAT_HTML],
+            [3, $copypasted, FORMAT_MOODLE],
         ];
     }
 
@@ -4013,9 +4035,11 @@ EOF;
      * @dataProvider count_letters_testcases
      * @param int $expectedcount number of characters in $string.
      * @param string $string the test string to count the letters of.
+     * @param int|null $format
      */
-    public function test_count_letters(int $expectedcount, string $string): void {
-        $this->assertEquals($expectedcount, count_letters($string));
+    public function test_count_letters(int $expectedcount, string $string, $format = null): void {
+        $this->assertEquals($expectedcount, count_letters($string, $format),
+            "'$string' with format '$format' does not match count $expectedcount");
     }
 
     /**
@@ -4023,12 +4047,18 @@ EOF;
      *
      * @return array of test cases.
      */
-    public function count_letters_testcases(): array {
+    public static function count_letters_testcases(): array {
         return [
             [0, ''],
             [1, 'x'],
             [1, '&amp;'],
             [4, '<p>frog</p>'],
+            [4, '<p>frog</p>', FORMAT_PLAIN],
+            [4, '<p>frog</p>', FORMAT_MOODLE],
+            [4, '<p>frog</p>', FORMAT_HTML],
+            [4, '<p>frog</p>', FORMAT_MARKDOWN],
+            [2, 'aa <argh <bleh>pokus</bleh>'],
+            [7, 'aa <argh <bleh>pokus</bleh>', FORMAT_HTML],
         ];
     }
 
@@ -4227,7 +4257,7 @@ EOF;
     /**
      * Data provider for private ips.
      */
-    public function data_private_ips() {
+    public static function data_private_ips(): array {
         return array(
             array('10.0.0.0'),
             array('172.16.0.0'),
@@ -4252,7 +4282,7 @@ EOF;
     /**
      * Data provider for public ips.
      */
-    public function data_public_ips() {
+    public static function data_public_ips(): array {
         return array(
             array('2400:cb00:2048:1::8d65:71b3'),
             array('2400:6180:0:d0::1b:2001'),
@@ -4305,7 +4335,7 @@ EOF;
      *
      * @return array Returns an array of test data for the above function.
      */
-    public function data_can_send_from_real_email_address() {
+    public static function data_can_send_from_real_email_address(): array {
         return [
             // Test from email is in allowed domain.
             // Test that from display is set to show no one.
@@ -4451,7 +4481,7 @@ EOF;
      *
      * @return array Returns an array of test data for the above function.
      */
-    public function data_email_is_not_allowed_for_allowemailaddresses() {
+    public static function data_email_is_not_allowed_for_allowemailaddresses(): array {
         return [
             // Test allowed domain empty list.
             [
@@ -4530,7 +4560,7 @@ EOF;
      *
      * @return array Returns an array of test data for the above function.
      */
-    public function data_email_is_not_allowed_for_denyemailaddresses() {
+    public static function data_email_is_not_allowed_for_denyemailaddresses(): array {
         return [
             // Test denied domain empty list.
             [
@@ -4593,24 +4623,26 @@ EOF;
     public function test_unserialize_array() {
         $a = [1, 2, 3];
         $this->assertEquals($a, unserialize_array(serialize($a)));
-        $this->assertEquals($a, unserialize_array(serialize($a)));
         $a = ['a' => 1, 2 => 2, 'b' => 'cde'];
-        $this->assertEquals($a, unserialize_array(serialize($a)));
         $this->assertEquals($a, unserialize_array(serialize($a)));
         $a = ['a' => 1, 2 => 2, 'b' => 'c"d"e'];
         $this->assertEquals($a, unserialize_array(serialize($a)));
         $a = ['a' => 1, 2 => ['c' => 'd', 'e' => 'f'], 'b' => 'cde'];
         $this->assertEquals($a, unserialize_array(serialize($a)));
-
-        // Can not unserialize if any string contains semicolons.
+        $a = ['a' => 1, 2 => ['c' => 'd', 'e' => ['f' => 'g']], 'b' => 'cde'];
+        $this->assertEquals($a, unserialize_array(serialize($a)));
         $a = ['a' => 1, 2 => 2, 'b' => 'c"d";e'];
-        $this->assertEquals(false, unserialize_array(serialize($a)));
+        $this->assertEquals($a, unserialize_array(serialize($a)));
 
         // Can not unserialize if there are any objects.
         $a = (object)['a' => 1, 2 => 2, 'b' => 'cde'];
-        $this->assertEquals(false, unserialize_array(serialize($a)));
+        $this->assertFalse(unserialize_array(serialize($a)));
         $a = ['a' => 1, 2 => 2, 'b' => (object)['a' => 'cde']];
-        $this->assertEquals(false, unserialize_array(serialize($a)));
+        $this->assertFalse(unserialize_array(serialize($a)));
+        $a = ['a' => 1, 2 => 2, 'b' => ['c' => (object)['a' => 'cde']]];
+        $this->assertFalse(unserialize_array(serialize($a)));
+        $a = ['a' => 1, 2 => 2, 'b' => ['c' => new lang_string('no')]];
+        $this->assertFalse(unserialize_array(serialize($a)));
 
         // Array used in the grader report.
         $a = array('aggregatesonly' => [51, 34], 'gradesonly' => [21, 45, 78]);
@@ -4706,7 +4738,7 @@ EOF;
      *
      * @return array
      */
-    public function component_class_callback_default_provider() {
+    public static function component_class_callback_default_provider(): array {
         return [
             'null' => [null],
             'empty string' => [''],
@@ -4722,7 +4754,7 @@ EOF;
      *
      * @return array
      */
-    public function component_class_callback_data_provider() {
+    public static function component_class_callback_data_provider(): array {
         return [
             'empty string' => [''],
             'string' => ['This is a string'],
@@ -4737,7 +4769,7 @@ EOF;
      *
      * @return array
      */
-    public function component_class_callback_multiple_params_provider() {
+    public static function component_class_callback_multiple_params_provider(): array {
         return [
             'empty array' => [
                 [],
@@ -4782,7 +4814,7 @@ EOF;
      *
      * @return array of (string)case => [(mixed)callable, (string|bool)expected description]
      */
-    public function callable_names_provider() {
+    public static function callable_names_provider(): array {
         return [
             'integer' => [
                 386,
@@ -4800,10 +4832,6 @@ EOF;
                 ['my_foobar_class', 'my_foobar_method'],
                 'my_foobar_class::my_foobar_method',
             ],
-            'static_method_of_object' => [
-                [$this, 'my_foobar_method'],
-                'core\moodlelib_test::my_foobar_method',
-            ],
             'method_of_object' => [
                 [new lang_string('parentlanguage', 'core_langconfig'), 'my_foobar_method'],
                 'lang_string::my_foobar_method',
@@ -4820,11 +4848,18 @@ EOF;
     }
 
     /**
+     * Test that get_callable_name works with a static method on an instance.
+     */
+    public function test_get_callable_name_this(): void {
+        $this->assertSame('core\moodlelib_test::foo', get_callable_name([$this, 'foo']));
+    }
+
+    /**
      * Data provider for \core_moodlelib_testcase::test_get_complete_user_data().
      *
      * @return array
      */
-    public function user_data_provider() {
+    public static function user_data_provider(): array {
         return [
             'Fetch data using a valid username' => [
                 'username', 's1', true
@@ -4955,7 +4990,7 @@ EOF;
     /**
      * Data provider for the test_get_time_interval_string() method.
      */
-    public function get_time_interval_string_provider() {
+    public static function get_time_interval_string_provider(): array {
         return [
             'Time is after the reference time by 1 minute, omitted format' => [
                 'time1' => 12345660,
@@ -5082,7 +5117,7 @@ EOF;
      *
      * @return array of ($size, $expected)
      */
-    public function display_size_provider() {
+    public static function display_size_provider(): array {
 
         return [
             [0, '0 bytes'],
@@ -5124,7 +5159,7 @@ EOF;
      *
      * @return array of ($size, $units, $expected)
      */
-    public function display_size_fixed_provider(): array {
+    public static function display_size_fixed_provider(): array {
         return [
             [0, 'KB', '0.0 KB'],
             [1, 'MB', '0.0 MB'],
@@ -5154,7 +5189,7 @@ EOF;
      *
      * @return array of ($size, $decimalplaces, $units, $expected)
      */
-    public function display_size_dp_provider(): array {
+    public static function display_size_dp_provider(): array {
         return [
             [0, 1, 'KB', '0.0 KB'],
             [1, 6, 'MB', '0.000001 MB'],
@@ -5200,7 +5235,7 @@ EOF;
      *
      * @return  array
      */
-    public function get_list_of_plugins_provider(): array {
+    public static function get_list_of_plugins_provider(): array {
         return [
             'Standard excludes' => [
                 ['amdd', 'class', 'local', 'test'],
@@ -5494,4 +5529,70 @@ EOF;
         $this->assertEquals(false, html_is_blank('<p>.</p>'));
         $this->assertEquals(false, html_is_blank('<img src="#">'));
     }
+
+    /**
+     * Provider for is_proxybypass
+     *
+     * @return array of test cases.
+     */
+    public static function is_proxybypass_provider(): array {
+
+        return [
+            'Proxybypass contains the same IP as the beginning of the URL' => [
+                'http://192.168.5.5-fake-app-7f000101.nip.io',
+                '192.168.5.5, 127.0.0.1',
+                false
+            ],
+            'Proxybypass contains the last part of the URL' => [
+                'http://192.168.5.5-fake-app-7f000101.nip.io',
+                'app-7f000101.nip.io',
+                false
+            ],
+            'Proxybypass contains the last part of the URL 2' => [
+                'http://store.mydomain.com',
+                'mydomain.com',
+                false
+            ],
+            'Proxybypass contains part of the url' => [
+                'http://myweb.com',
+                'store.myweb.com',
+                false
+            ],
+            'Different IPs used in proxybypass' => [
+                'http://192.168.5.5',
+                '192.168.5.3',
+                false
+            ],
+            'Proxybypass and URL matchs' => [
+                'http://store.mydomain.com',
+                'store.mydomain.com',
+                true
+            ],
+            'IP used in proxybypass' => [
+                'http://192.168.5.5',
+                '192.168.5.5',
+                true
+            ],
+        ];
+    }
+
+    /**
+     * Check if $url matches anything in proxybypass list
+     *
+     * Test function {@see is_proxybypass()}.
+     * @dataProvider is_proxybypass_provider
+     * @param string $url url to check
+     * @param string $proxybypass
+     * @param bool $expected Expected value.
+     */
+    public function test_is_proxybypass(string $url, string $proxybypass, bool $expected): void {
+        $this->resetAfterTest();
+
+        global $CFG;
+        $CFG->proxyhost = '192.168.5.5'; // Test with a fake proxy.
+        $CFG->proxybypass = $proxybypass;
+
+        $this->assertEquals($expected, is_proxybypass($url));
+    }
+
 }

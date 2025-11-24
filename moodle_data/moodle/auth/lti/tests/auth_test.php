@@ -24,10 +24,10 @@ namespace auth_lti;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @coversDefaultClass \auth_plugin_lti
  */
-class auth_test extends \advanced_testcase {
+final class auth_test extends \advanced_testcase {
 
     /** @var string issuer URL used for test cases. */
-    protected $issuer = 'https://lms.example.org';
+    protected static string $issuer = 'https://lms.example.org';
 
     /** @var int const representing cases where no PII is present. */
     protected const PII_NONE = 0;
@@ -70,10 +70,13 @@ class auth_test extends \advanced_testcase {
      * @param bool $includepicture whether to include a profile picture or not (slows tests, so defaults to false).
      * @return array the users list.
      */
-    protected function get_mock_users_with_ids(array $ids,
-            string $role = 'http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor', bool $includenames = true,
-            bool $includeemail = true, bool $includepicture = false): array {
-
+    protected static function get_mock_users_with_ids(
+        array $ids,
+        string $role = 'http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor',
+        bool $includenames = true,
+        bool $includeemail = true,
+        bool $includepicture = false
+    ): array {
         $users = [];
         foreach ($ids as $id) {
             $user = [
@@ -91,7 +94,7 @@ class auth_test extends \advanced_testcase {
                 unset($user['email']);
             }
             if ($includepicture) {
-                $user['picture'] = $this->getExternalTestFileUrl('/test.jpg');
+                $user['picture'] = self::getExternalTestFileUrl('/test.jpg');
             }
             $users[] = $user;
         }
@@ -137,7 +140,7 @@ class auth_test extends \advanced_testcase {
      */
     protected function get_mock_launchdata_for_user(array $mockuser, array $mockmigration = []): array {
         $data = [
-            'iss' => $this->issuer, // Must match registration in create_test_environment.
+            'iss' => self::$issuer, // Must match registration in create_test_environment.
             'aud' => '123', // Must match registration in create_test_environment.
             'sub' => $mockuser['user_id'], // User id on the platform site.
             'exp' => time() + 60,
@@ -249,12 +252,15 @@ class auth_test extends \advanced_testcase {
         $mockjwtdata = $this->get_mock_launchdata_for_user($launchdata['user'], $launchdata['migration_claim'] ?? []);
 
         // Authenticate the platform user.
+        $sink = $this->redirectEvents();
         $countusersbefore = $DB->count_records('user');
         $user = $auth->find_or_create_user_from_launch($mockjwtdata, true, $legacysecrets);
         if (!empty($expected['migration_debugging'])) {
             $this->assertDebuggingCalled();
         }
         $countusersafter = $DB->count_records('user');
+        $events = $sink->get_events();
+        $sink->close();
 
         // Verify user count is correct. i.e. no user is created when migration claim is correctly processed or when
         // the user has authenticated with the tool before.
@@ -295,15 +301,18 @@ class auth_test extends \advanced_testcase {
             $this->verify_user_profile_image_updated($user->id);
         }
 
-        // If migrated, verify the user account is reusing the legacy user account.
         if (!empty($expected['migrated']) && $expected['migrated']) {
+            // If migrated, verify the user account is reusing the legacy user account.
             $legacyuserids = array_column($legacyusers, 'id');
             $this->assertContains($user->id, $legacyuserids);
-        }
-
-        // If the user is authenticating a second time, confirm the same account is being returned.
-        if (isset($firstauthuser)) {
+            $this->assertInstanceOf(\core\event\user_updated::class, $events[0]);
+        } else if (isset($firstauthuser)) {
+            // If the user is authenticating a second time, confirm the same account is being returned.
             $this->assertEquals($firstauthuser->id, $user->id);
+            $this->assertEmpty($events); // The user authenticated with the same data once before, so we don't expect an update.
+        } else {
+            // The user wasn't migrated and hasn't launched before, so we expect a user_created event.
+            $this->assertInstanceOf(\core\event\user_created::class, $events[0]);
         }
     }
 
@@ -312,12 +321,12 @@ class auth_test extends \advanced_testcase {
      *
      * @return array the test case data.
      */
-    public function launch_data_provider(): array {
+    public static function launch_data_provider(): array {
         return [
             'New (unlinked) platform learner including PII, no legacy user, no migration claim' => [
                 'legacy_data' => null,
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
@@ -330,7 +339,7 @@ class auth_test extends \advanced_testcase {
             'New (unlinked) platform learner excluding names, no legacy user, no migration claim' => [
                 'legacy_data' => null,
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner',
                         false
@@ -344,7 +353,7 @@ class auth_test extends \advanced_testcase {
             'New (unlinked) platform learner excluding emails, no legacy user, no migration claim' => [
                 'legacy_data' => null,
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner',
                         true,
@@ -359,7 +368,7 @@ class auth_test extends \advanced_testcase {
             'New (unlinked) platform learner excluding all PII, no legacy user, no migration claim' => [
                 'legacy_data' => null,
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner',
                         false,
@@ -383,7 +392,7 @@ class auth_test extends \advanced_testcase {
                     ]
                 ],
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
@@ -413,7 +422,7 @@ class auth_test extends \advanced_testcase {
                     ]
                 ],
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
@@ -436,7 +445,7 @@ class auth_test extends \advanced_testcase {
                     ]
                 ],
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
@@ -466,7 +475,7 @@ class auth_test extends \advanced_testcase {
                     ]
                 ],
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
@@ -496,7 +505,7 @@ class auth_test extends \advanced_testcase {
                     ]
                 ],
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
@@ -526,7 +535,7 @@ class auth_test extends \advanced_testcase {
                     ]
                 ],
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
@@ -556,7 +565,7 @@ class auth_test extends \advanced_testcase {
                     ]
                 ],
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
@@ -585,7 +594,7 @@ class auth_test extends \advanced_testcase {
                     ]
                 ],
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
@@ -615,7 +624,7 @@ class auth_test extends \advanced_testcase {
                     ]
                 ],
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner',
                         false,
@@ -638,7 +647,7 @@ class auth_test extends \advanced_testcase {
             'New (unlinked) platform instructor including PII, no legacy user, no migration claim' => [
                 'legacy_data' => null,
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor'
                     )[0],
@@ -651,7 +660,7 @@ class auth_test extends \advanced_testcase {
             'New (unlinked) platform instructor excluding PII, no legacy user, no migration claim' => [
                 'legacy_data' => null,
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor',
                         false,
@@ -675,7 +684,7 @@ class auth_test extends \advanced_testcase {
                     ]
                 ],
                 'launch_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor'
                     )[0],
@@ -697,7 +706,7 @@ class auth_test extends \advanced_testcase {
                 'legacy_data' => null,
                 'launch_data' => [
                     'has_authenticated_before' => true,
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
@@ -711,7 +720,7 @@ class auth_test extends \advanced_testcase {
                 'legacy_data' => null,
                 'launch_data' => [
                     'has_authenticated_before' => true,
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner',
                         false,
@@ -727,7 +736,7 @@ class auth_test extends \advanced_testcase {
                 'legacy_data' => null,
                 'launch_data' => [
                     'has_authenticated_before' => true,
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor'
                     )[0],
@@ -741,7 +750,7 @@ class auth_test extends \advanced_testcase {
                 'legacy_data' => null,
                 'launch_data' => [
                     'has_authenticated_before' => true,
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor',
                         false,
@@ -757,7 +766,7 @@ class auth_test extends \advanced_testcase {
                 'legacy_data' => null,
                 'launch_data' => [
                     'has_authenticated_before' => false,
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor',
                         false,
@@ -819,9 +828,12 @@ class auth_test extends \advanced_testcase {
         $mockmemberdata = $this->get_mock_member_data_for_user($memberdata['user'], $memberdata['legacy_user_id'] ?? '');
 
         // Authenticate the platform user.
+        $sink = $this->redirectEvents();
         $countusersbefore = $DB->count_records('user');
         $user = $auth->find_or_create_user_from_membership($mockmemberdata, $iss, $legacyconsumerkey ?? '');
         $countusersafter = $DB->count_records('user');
+        $events = $sink->get_events();
+        $sink->close();
 
         // Verify user count is correct. i.e. no user is created when migration claim is correctly processed or when
         // the user has authenticated with the tool before.
@@ -857,15 +869,18 @@ class auth_test extends \advanced_testcase {
                 break;
         }
 
-        // If migrated, verify the user account is reusing the legacy user account.
         if (!empty($expected['migrated']) && $expected['migrated']) {
+            // If migrated, verify the user account is reusing the legacy user account.
             $legacyuserids = array_column($legacyusers, 'id');
             $this->assertContains($user->id, $legacyuserids);
-        }
-
-        // If the user is authenticating a second time, confirm the same account is being returned.
-        if (isset($firstauthuser)) {
+            $this->assertInstanceOf(\core\event\user_updated::class, $events[0]);
+        } else if (isset($firstauthuser)) {
+            // If the user is authenticating a second time, confirm the same account is being returned.
             $this->assertEquals($firstauthuser->id, $user->id);
+            $this->assertEmpty($events); // The user authenticated with the same data once before, so we don't expect an update.
+        } else {
+            // The user wasn't migrated and hasn't launched before, so we expect a user_created event.
+            $this->assertInstanceOf(\core\event\user_created::class, $events[0]);
         }
     }
 
@@ -874,17 +889,17 @@ class auth_test extends \advanced_testcase {
      *
      * @return array the test case data.
      */
-    public function membership_data_provider(): array {
+    public static function membership_data_provider(): array {
         return [
             'New (unlinked) platform learner including PII, no legacy data, no consumer key bound, no legacy id' => [
                 'legacy_data' => null,
                 'membership_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
                 ],
-                'iss' => $this->issuer,
+                'iss' => self::$issuer,
                 'legacy_consumer_key' => null,
                 'expected' => [
                     'PII' => self::PII_ALL,
@@ -894,14 +909,14 @@ class auth_test extends \advanced_testcase {
             'New (unlinked) platform learner excluding PII, no legacy data, no consumer key bound, no legacy id' => [
                 'legacy_data' => null,
                 'membership_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner',
                         false,
                         false
                     )[0],
                 ],
-                'iss' => $this->issuer,
+                'iss' => self::$issuer,
                 'legacy_consumer_key' => null,
                 'expected' => [
                     'PII' => self::PII_NONE,
@@ -911,13 +926,13 @@ class auth_test extends \advanced_testcase {
             'New (unlinked) platform learner excluding names, no legacy data, no consumer key bound, no legacy id' => [
                 'legacy_data' => null,
                 'membership_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner',
                         false,
                     )[0],
                 ],
-                'iss' => $this->issuer,
+                'iss' => self::$issuer,
                 'legacy_consumer_key' => null,
                 'expected' => [
                     'PII' => self::PII_EMAILS_ONLY,
@@ -927,14 +942,14 @@ class auth_test extends \advanced_testcase {
             'New (unlinked) platform learner excluding email, no legacy data, no consumer key bound, no legacy id' => [
                 'legacy_data' => null,
                 'membership_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner',
                         true,
                         false
                     )[0],
                 ],
-                'iss' => $this->issuer,
+                'iss' => self::$issuer,
                 'legacy_consumer_key' => null,
                 'expected' => [
                     'PII' => self::PII_NAMES_ONLY,
@@ -949,13 +964,13 @@ class auth_test extends \advanced_testcase {
                     'consumer_key' => 'CONSUMER_1',
                 ],
                 'membership_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
                     'legacy_user_id' => '123-abc'
                 ],
-                'iss' => $this->issuer,
+                'iss' => self::$issuer,
                 'legacy_consumer_key' => 'CONSUMER_1',
                 'expected' => [
                     'PII' => self::PII_ALL,
@@ -970,12 +985,12 @@ class auth_test extends \advanced_testcase {
                     'consumer_key' => 'CONSUMER_1',
                 ],
                 'membership_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
                 ],
-                'iss' => $this->issuer,
+                'iss' => self::$issuer,
                 'legacy_consumer_key' => 'CONSUMER_1',
                 'expected' => [
                     'PII' => self::PII_ALL,
@@ -990,12 +1005,12 @@ class auth_test extends \advanced_testcase {
                     'consumer_key' => 'CONSUMER_1',
                 ],
                 'membership_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['123-abc'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
                 ],
-                'iss' => $this->issuer,
+                'iss' => self::$issuer,
                 'legacy_consumer_key' => 'CONSUMER_1',
                 'expected' => [
                     'PII' => self::PII_ALL,
@@ -1010,12 +1025,12 @@ class auth_test extends \advanced_testcase {
                     'consumer_key' => 'CONSUMER_1',
                 ],
                 'membership_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['123-abc'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
                 ],
-                'iss' => $this->issuer,
+                'iss' => self::$issuer,
                 'legacy_consumer_key' => 'CONSUMER_ABCDEF',
                 'expected' => [
                     'PII' => self::PII_ALL,
@@ -1030,13 +1045,13 @@ class auth_test extends \advanced_testcase {
                     'consumer_key' => 'CONSUMER_1',
                 ],
                 'membership_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
                     'legacy_user_id' => '123-abc'
                 ],
-                'iss' => $this->issuer,
+                'iss' => self::$issuer,
                 'legacy_consumer_key' => null,
                 'expected' => [
                     'PII' => self::PII_ALL,
@@ -1046,13 +1061,13 @@ class auth_test extends \advanced_testcase {
             'New (unlinked) platform learner including PII, no legacy data, consumer key bound, legacy user id sent' => [
                 'legacy_data' => null,
                 'membership_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
                     )[0],
                     'legacy_user_id' => '123-abc'
                 ],
-                'iss' => $this->issuer,
+                'iss' => self::$issuer,
                 'legacy_consumer_key' => 'CONSUMER_1',
                 'expected' => [
                     'PII' => self::PII_ALL,
@@ -1062,12 +1077,12 @@ class auth_test extends \advanced_testcase {
             'New (unlinked) platform instructor including PII, no legacy data, no consumer key bound, no legacy id' => [
                 'legacy_data' => null,
                 'membership_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor'
                     )[0],
                 ],
-                'iss' => $this->issuer,
+                'iss' => self::$issuer,
                 'legacy_consumer_key' => null,
                 'expected' => [
                     'PII' => self::PII_ALL,
@@ -1077,20 +1092,36 @@ class auth_test extends \advanced_testcase {
             'New (unlinked) platform instructor excluding PII, no legacy data, no consumer key bound, no legacy id' => [
                 'legacy_data' => null,
                 'membership_data' => [
-                    'user' => $this->get_mock_users_with_ids(
+                    'user' => self::get_mock_users_with_ids(
                         ['1'],
                         'http://purl.imsglobal.org/vocab/lis/v2/membership#Instructor',
                         false,
                         false
                     )[0],
                 ],
-                'iss' => $this->issuer,
+                'iss' => self::$issuer,
                 'legacy_consumer_key' => null,
                 'expected' => [
                     'PII' => self::PII_NONE,
                     'migrated' => false
                 ]
-            ]
+            ],
+            'Existing (linked) platform learner including PII, no legacy data, no consumer key bound, no legacy id' => [
+                'legacy_data' => null,
+                'launch_data' => [
+                    'has_authenticated_before' => true,
+                    'user' => self::get_mock_users_with_ids(
+                        ['1'],
+                        'http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'
+                    )[0],
+                ],
+                'iss' => self::$issuer,
+                'legacy_consumer_key' => null,
+                'expected' => [
+                    'PII' => self::PII_ALL,
+                    'migrated' => false
+                ]
+            ],
         ];
     }
 
@@ -1104,7 +1135,7 @@ class auth_test extends \advanced_testcase {
         global $DB;
         $auth = get_auth_plugin('lti');
         $user = $this->getDataGenerator()->create_user();
-        $mockiss = $this->issuer;
+        $mockiss = self::$issuer;
         $mocksub = '1';
 
         // Create a binding and verify it exists.
@@ -1116,7 +1147,7 @@ class auth_test extends \advanced_testcase {
         $numusersbefore = $DB->count_records('user');
         $matcheduser = $auth->find_or_create_user_from_launch(
             $this->get_mock_launchdata_for_user(
-                $this->get_mock_users_with_ids([$mocksub])[0]
+                self::get_mock_users_with_ids([$mocksub])[0]
             )
         );
         $numusersafter = $DB->count_records('user');

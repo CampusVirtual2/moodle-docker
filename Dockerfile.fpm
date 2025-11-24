@@ -1,0 +1,42 @@
+FROM php:8.1-fpm-alpine
+
+# Ajustar UID/GID do www-data para 33:33 (compatível com Debian/Ubuntu host)
+RUN deluser www-data || true && \
+    addgroup -g 33 www-data && \
+    adduser -D -u 33 -G www-data www-data
+
+# Dependências
+RUN apk add --no-cache \
+    libpng libjpeg-turbo freetype libzip icu-libs libsodium oniguruma \
+    postgresql-libs libxml2 libxslt ghostscript imagemagick \
+    util-linux-dev ossp-uuid-dev \
+  && apk add --no-cache --virtual .build-deps \
+    $PHPIZE_DEPS \
+    libpng-dev libjpeg-turbo-dev freetype-dev libzip-dev \
+    icu-dev libsodium-dev oniguruma-dev postgresql-dev \
+    libxml2-dev libxslt-dev imagemagick-dev \
+    autoconf automake libtool
+
+# Compilar extensões
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd pgsql pdo_pgsql intl soap exif zip opcache \
+    && pecl install redis apcu igbinary uuid \
+    && docker-php-ext-enable redis apcu igbinary \
+    && echo "extension=uuid.so" > /usr/local/etc/php/conf.d/20-uuid.ini \
+    && apk del .build-deps
+
+# Permissões do moodledata
+RUN mkdir -p /var/www/moodledata/temp \
+    && chown -R www-data:www-data /var/www/moodledata
+
+WORKDIR /var/www/html
+
+COPY php.ini /usr/local/etc/php/conf.d/99-moodle.ini
+COPY www.conf /usr/local/etc/php-fpm.d/www.conf
+
+# Rodar como www-data
+USER www-data
+
+EXPOSE 9000
+CMD ["php-fpm"]
+

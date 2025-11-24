@@ -645,7 +645,6 @@ trait behat_session_trait {
      * @return void Throws an exception if it times out without the element being visible
      */
     protected function ensure_node_is_visible($node) {
-
         if (!$this->running_javascript()) {
             return;
         }
@@ -715,7 +714,6 @@ trait behat_session_trait {
      * @return NodeElement Throws an exception if it times out without being visible
      */
     protected function ensure_element_is_visible($element, $selectortype) {
-
         if (!$this->running_javascript()) {
             return;
         }
@@ -763,9 +761,14 @@ trait behat_session_trait {
      *
      * @param string $windowsize size of window.
      * @param bool $viewport If true, changes viewport rather than window size
+     * @param bool $scalesize Whether to scale the size by the WINDOWSCALE environment variable
      * @throws ExpectationException
      */
-    protected function resize_window($windowsize, $viewport = false) {
+    protected function resize_window(
+        string $windowsize,
+        bool $viewport = false,
+        bool $scalesize = true
+    ): void {
         global $CFG;
 
         // Non JS don't support resize window.
@@ -807,6 +810,16 @@ trait behat_session_trait {
         if (isset($CFG->behat_window_size_modifier) && is_numeric($CFG->behat_window_size_modifier)) {
             $width *= $CFG->behat_window_size_modifier;
             $height *= $CFG->behat_window_size_modifier;
+        }
+
+        if ($scalesize) {
+            // Scale the window size by the WINDOWSCALE environment variable.
+            // This is intended to be used for Behat reruns to negate the impact of browser window size issues.
+            // This allows a per-run, runtime configuration of the scaling, unlike behat_window_size_modifier which
+            // typically applies to all runs.
+            $scalefactor = getenv('WINDOWSCALE') ? floatval(getenv('WINDOWSCALE')) : 1;
+            $width *= $scalefactor;
+            $height *= $scalefactor;
         }
 
         if ($viewport) {
@@ -1040,19 +1053,37 @@ EOF;
     /**
      * Helper function to execute api in a given context.
      *
-     * @param string $contextapi context in which api is defined.
-     * @param array $params list of params to pass.
+     * Note: The contextapi does not support a callback.
+     *
+     * @param string|array $contextapi context in which api is defined.
+     * @param array|mixed $params list of params to pass or a single parameter
      * @throws Exception
+     * @throws DriverException
      */
-    protected function execute($contextapi, $params = array()) {
+    protected function execute(
+        $contextapi,
+        $params = []
+    ): void {
         if (!is_array($params)) {
-            $params = array($params);
+            $params = [$params];
+        }
+
+        if (is_string($contextapi)) {
+            $contextapi = explode('::', $contextapi);
+        }
+
+        if (count($contextapi) !== 2) {
+            throw new DriverException('Invalid contextapi format, expected "context::api" or ["context", "api"]');
         }
 
         // Get required context and execute the api.
-        $contextapi = explode("::", $contextapi);
-        $context = behat_context_helper::get($contextapi[0]);
-        call_user_func_array(array($context, $contextapi[1]), $params);
+        [$classname, $method] = $contextapi;
+        if (!is_string($classname) || !is_string($method)) {
+            throw new DriverException('Invalid contextapi format, expected "context::api" or ["context", "api"]');
+        }
+
+        $context = behat_context_helper::get($classname);
+        call_user_func_array([$context, $method], $params);
 
         // NOTE: Wait for pending js and look for exception are not optional, as this might lead to unexpected results.
         // Don't make them optional for performance reasons.
@@ -1720,5 +1751,20 @@ EOF;
         ]);
 
         return $result ?: null;
+    }
+
+    /**
+     * Prepare an xpath for insertion into Selenium JavaScript.
+     *
+     * @param string $xpath
+     * @return string
+     */
+    protected function prepare_xpath_for_javascript(string $xpath): string {
+        $newlines = [
+            "\r\n",
+            "\r",
+            "\n",
+        ];
+        return str_replace($newlines, ' ', $xpath);
     }
 }

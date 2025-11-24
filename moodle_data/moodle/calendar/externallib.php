@@ -898,13 +898,23 @@ class core_calendar_external extends external_api {
         $courseid = (!empty($data[$coursekey])) ? $data[$coursekey] : null;
         $editoroptions = \core_calendar\local\event\forms\create::build_editor_options($context);
         $formoptions = ['editoroptions' => $editoroptions, 'courseid' => $courseid];
-        $formoptions['eventtypes'] = calendar_get_allowed_event_types($courseid);
+        $allowedeeventtypes = calendar_get_allowed_event_types($courseid);
+
+        // Event type validation.
+        if (in_array(true, $allowedeeventtypes, true) === false) {
+            throw new \moodle_exception('nopermissiontoupdatecalendar');
+        }
+        if (empty($eventtype) || !isset($allowedeeventtypes[$eventtype]) || $allowedeeventtypes[$eventtype] == false) {
+            return ['validationerror' => true];
+        }
+
+        $formoptions['eventtypes'] = $allowedeeventtypes;
         if ($courseid) {
             require_once($CFG->libdir . '/grouplib.php');
-            $groupcoursedata = groups_get_course_data($courseid);
-            if (!empty($groupcoursedata->groups)) {
+            $groupcoursedata = groups_get_all_groups($courseid);
+            if (!empty($groupcoursedata)) {
                 $formoptions['groups'] = [];
-                foreach ($groupcoursedata->groups as $groupid => $groupdata) {
+                foreach ($groupcoursedata as $groupid => $groupdata) {
                     $formoptions['groups'][$groupid] = $groupdata->name;
                 }
             }

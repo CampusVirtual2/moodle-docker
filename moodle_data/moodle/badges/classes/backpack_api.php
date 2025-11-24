@@ -639,6 +639,8 @@ class backpack_api {
         $DB->delete_records('badge_external', array('backpackid' => $backpackid));
         $DB->delete_records('badge_backpack', array('userid' => $userid));
         $badgescache->delete($userid);
+        $this->clear_system_user_session();
+
         return true;
     }
 
@@ -663,6 +665,20 @@ class backpack_api {
      */
     public function get_authentication_error() {
         return backpack_api_mapping::get_authentication_error();
+    }
+
+    /**
+     * List all errors occurred during the requests to the backpack.
+     *
+     * @return array The list of errors.
+     */
+    public function get_errors(): array {
+        $errors = [];
+        foreach ($this->mappings as $mapping) {
+            $errors = array_merge($errors, $mapping->get_errors());
+        }
+
+        return $errors;
     }
 
     /**

@@ -26,7 +26,8 @@
     }
 }}
 
-<div class="section-content-wrapper">
+<div class="section-content-wrapper {{#sectionprogresscomp}} section-progress-info-completed {{/sectionprogresscomp}}" {{#sectionsingle}} data-action="go-to-section-url"
+data-target="{{#sectioncardcontentdirect}}_blank{{/sectioncardcontentdirect}}" data-url="{{#sectionvisible}} {{{sectionurl}}} {{/sectionvisible}}" {{/sectionsingle}}>
 {{#sectiondesignwhole}}
     <div class="section-background-style section-design-whole" style="{{#sectionbackgroundstyle}} {{sectionbackgroundstyle}} {{/sectionbackgroundstyle}}">
         {{#maskinner}}
@@ -49,7 +50,7 @@
     <div class="icon-loader-block"></div>
 </div>
 
-<div class="course-section-header section-header-content {{#sectioncollapse}}{{^sectionshow}}collapsed{{/sectionshow}}{{/sectioncollapse}} {{coursetype.classes}}"
+<div class="course-section-header section-header-content {{#sectioncollapse}}{{^sectionshow}}collapsed{{/sectionshow}}{{/sectioncollapse}} {{coursetype.classes}} {{#flowsizeclass}} {{flowsizeclass}} {{/flowsizeclass}}"
     id="section-head-{{section.section}}"
     {{#sectioncollapse}} data-toggle="collapse" {{/sectioncollapse}}
     data-target="#section-content-{{section.section}}"
@@ -64,7 +65,7 @@
     >
     {{#flowcourse}}
     <div class="flow-stack-header"></div>
-    <div class="section-background-color" style="{{sectionbackcolor}}"></div> 
+    <div class="section-background-color" style="{{sectionbackcolor}}"></div>
     {{/flowcourse}}
         {{#sectiondesignheader}}
             <div class="section-background-style sectiondesign-header" style="{{sectionbackgroundstyle}}">
@@ -93,20 +94,19 @@
         {{/flowcourse}}
 
         {{! Section name header }}
-        {{^section.hidesectiontitle}}
-            <div class="section-head-text" style="{{#sectiondesigntextcolor}} {{sectiondesigntextcolor}} {{/sectiondesigntextcolor}}">
-                {{#singleheader}}
-                {{$ format_designer/courseformat/content/section/header }}
-                    {{> format_designer/courseformat/content/section/header }}
-                {{/ format_designer/courseformat/content/section/header }}
-                {{/singleheader}}
-                {{#header}}
-                {{$ format_designer/courseformat/content/section/header }}
-                    {{> format_designer/courseformat/content/section/header }}
-                {{/ format_designer/courseformat/content/section/header }}
-                {{/header}}
-            </div>
-        {{/section.hidesectiontitle}}
+        <div class="section-head-text" style="{{#sectiondesigntextcolor}} {{sectiondesigntextcolor}} {{/sectiondesigntextcolor}}">
+            {{#singleheader}}
+            {{$ format_designer/courseformat/content/section/header }}
+                {{> format_designer/courseformat/content/section/header }}
+            {{/ format_designer/courseformat/content/section/header }}
+            {{/singleheader}}
+            {{#header}}
+            {{$ format_designer/courseformat/content/section/header }}
+                {{> format_designer/courseformat/content/section/header }}
+            {{/ format_designer/courseformat/content/section/header }}
+            {{/header}}
+        </div>
+
         {{! End of section name }}
 
         {{! Section badges }}
@@ -115,7 +115,7 @@
                 {{> core_courseformat/local/content/section/badges }}
             {{/ core_courseformat/local/content/section/badges }}
         </div>
-        
+        {{^hidesectiontitle}}
         {{^flowcourse}}
             {{#section.categorisetitle}}
             <div class="categorise-section-block">
@@ -123,26 +123,32 @@
             </div>
             {{/section.categorisetitle}}
         {{/flowcourse}}
+         {{/hidesectiontitle}}
 
         {{! End of section badges }}
 
         {{^flowcourse}}
             {{#issectioncompletion}}
             <div class="section-progress-info">
+                {{^progresspro}}
                 {{^sectionprogresscomp}}
                 <div class="section-progress-bar">
                     <div class="progress">
-                        <div class="progress-bar progress-bg-success" role="progressbar" style= "width: {{sectionprogress}}%" aria-valuenow="{{sectionprogress}}" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar{{#sectionprogress}} progress-bg-success{{/sectionprogress}}{{^sectionprogress}} progress-not-started{{/sectionprogress}}" role="progressbar" style= "width: {{sectionprogress}}%" aria-valuenow="{{sectionprogress}}" aria-valuemin="0" aria-valuemax="100">
                             <span class="percentage">{{sectionprogress}}%</span>
                         </div>
                     </div>
                 </div>
                 {{/sectionprogresscomp}}
                 {{#sectionprogresscomp}}
-                    <div class="section-progress-completeted">
+                    <div class="section-progress-completed">
                         <span class="badge badge-completion badge-success"><span><i class="fa fa-check"></i> {{#str}}sectioncompleted, format_designer{{/str}}</span></span>
                     </div>
                 {{/sectionprogresscomp}}
+                {{/progresspro}}
+                {{#progresspro}}
+                    {{{progress}}}
+                {{/progresspro}}
             </div>
             {{/issectioncompletion}}
         {{/flowcourse}}
@@ -155,17 +161,25 @@
         </div>
         {{/availability}}
 
-        <div class="summary" style="{{#sectiondesigntextcolor}} {{sectiondesigntextcolor}} {{/sectiondesigntextcolor}}">
-        {{#summary}}
-            {{$ core_courseformat/local/content/section/summary }}
-                {{> core_courseformat/local/content/section/summary }}
-            {{/ core_courseformat/local/content/section/summary }}
-        {{/summary}}
-        </div>
+        {{^hidesectionsummary}}
+            <div class="summary" style="{{#sectiondesigntextcolor}} {{sectiondesigntextcolor}} {{/sectiondesigntextcolor}}">
+            {{#summary}}
+                {{$ core_courseformat/local/content/section/summary }}
+                    {{> core_courseformat/local/content/section/summary }}
+                {{/ core_courseformat/local/content/section/summary }}
+            {{/summary}}
+            </div>
+        {{/hidesectionsummary}}
+
+
+        {{#sectioncardctacontent}}
+            {{{sectioncardctacontent}}}
+        {{/sectioncardctacontent}}
 
         {{#flowcourse}}
             {{#issectioncompletion}}
             <div class="section-progress-info">
+                {{^progresspro}}
                 {{^sectionprogresscomp}}
                 <div class="section-progress-bar">
                     <div class="progress">
@@ -176,16 +190,46 @@
                 </div>
                 {{/sectionprogresscomp}}
                 {{#sectionprogresscomp}}
-                    <div class="section-progress-completeted">
+                    <div class="section-progress-completed">
                         <span class="badge badge-completion badge-success"><span><i class="fa fa-check"></i> {{#str}}sectioncompleted, format_designer{{/str}}</span></span>
                     </div>
                 {{/sectionprogresscomp}}
+                {{/progresspro}}
+                {{#progresspro}}
+                    {{{progress}}}
+                {{/progresspro}}
             </div>
             {{/issectioncompletion}}
         {{/flowcourse}}
+        {{#sectioncountstatus}}
+        <div class="section-summary-activities pr-2 mdl-right">
+            {{#sectionmodcount}}
+                <div class="img-element activity-img {{customclass}}" style="{{{sectionmoduleimgstyle}}}">
+                    {{#activityimgsvg}}
+                        {{{activityimgsvg}}}
+                    {{/activityimgsvg}}
 
+                    {{^activityimgsvg}}
+                        {{#img}}
+                            <img src="{{img}}" alt="{{name}}" title="{{name}}">
+                        {{/img}}
+                    {{/activityimgsvg}}
+
+                    {{#icon}}
+                        <i class="fa {{icon}}" data-purpose="{{name}}"> </i>
+                    {{/icon}}
+                    <span class="activity-count" style="{{{sectionactivitycountstyle}}}" data-name={{name}}>{{count}}</span>
+                </div>
+            {{/sectionmodcount}}
+        </div>
+        {{/sectioncountstatus}}
         {{#gotosection}}
-        <a href="{{{sectionurl}}}" class="goto-section btn btn-primary">{{#str}}gotosection, format_designer{{/str}}</a>
+            {{#sectionsingle}}
+                <a href="{{{sectionurl}}}" target="{{#sectioncardcontentdirect}}_blank{{/sectioncardcontentdirect}}" class="goto-section btn btn-primary" {{#sectioncountstatus}} style="{{#sectiontextcolor}} {{sectiontextcolor}} {{/sectiontextcolor}}" {{/sectioncountstatus}}><i class="fa fa-fw fa-arrow-right"></i></a>
+            {{/sectionsingle}}
+            {{^sectionsingle}}
+            	<a href="{{{sectionurl}}}" class="goto-section btn btn-primary">{{#str}}gotosection, format_designer{{/str}}</a>
+            {{/sectionsingle}}
         {{/gotosection}}
 </div>
 

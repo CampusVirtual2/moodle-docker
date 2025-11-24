@@ -26,12 +26,13 @@ use core\notification;
  * @copyright   2022 Ruslan Kabalin
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class lib_test extends \advanced_testcase {
+final class lib_test extends \advanced_testcase {
 
     /**
      * Set up
      */
     public function setUp(): void {
+        parent::setUp();
         $this->resetAfterTest();
     }
 
@@ -40,7 +41,7 @@ class lib_test extends \advanced_testcase {
      *
      * @covers ::coursecertificate_delete_instance
      */
-    public function test_delete_instance() {
+    public function test_delete_instance(): void {
         $course = $this->getDataGenerator()->create_course();
         $certinstance = $this->getDataGenerator()->create_module('coursecertificate', ['course' => $course->id]);
         $cm = get_coursemodule_from_instance('coursecertificate', $certinstance->id);
@@ -54,7 +55,7 @@ class lib_test extends \advanced_testcase {
      *
      * @covers ::mod_coursecertificate_before_http_headers()
      */
-    public function test_mod_coursecertificate_before_http_headers() {
+    public function test_mod_coursecertificate_before_http_headers(): void {
         global $PAGE;
         $this->resetAfterTest();
         $course = $this->getDataGenerator()->create_course();

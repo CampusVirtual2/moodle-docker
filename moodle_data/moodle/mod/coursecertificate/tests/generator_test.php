@@ -27,20 +27,20 @@ use tool_certificate_generator;
  * @copyright  2020 Marina Glancy
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class generator_test extends advanced_testcase {
+final class generator_test extends advanced_testcase {
 
     /**
      * Get certificate generator
      * @return tool_certificate_generator
      */
-    protected function get_certificate_generator() : tool_certificate_generator {
+    protected function get_certificate_generator(): tool_certificate_generator {
         return $this->getDataGenerator()->get_plugin_generator('tool_certificate');
     }
 
     /**
      * Test create instance of module
      */
-    public function test_create_instance() {
+    public function test_create_instance(): void {
         global $DB;
         $this->resetAfterTest();
         $this->setAdminUser();
@@ -57,7 +57,7 @@ class generator_test extends advanced_testcase {
 
         // Create an instance specifying the template by name.
         $mod = $this->getDataGenerator()->create_module('coursecertificate', ['course' => $course->id,
-            'template' => $certificate1->get_name()]);
+            'template' => $certificate1->get_name(), ]);
         $this->assertEquals(2, $DB->count_records('coursecertificate', ['course' => $course->id]));
         $this->assertTrue($DB->record_exists('coursecertificate', ['course' => $course->id, 'id' => $mod->id]));
         $this->assertEquals($certificate1->get_id(), $DB->get_field('coursecertificate', 'template', ['id' => $mod->id]));

@@ -1,3 +1,11 @@
+.format-cards .course-content .card-deck.cards {
+    justify-content: center;
+}
+
+.format-cards .course-content ul.cards {
+    padding: 0;
+}
+
 .format-cards .course-content .card-deck .card {
     aspect-ratio: 5 / 7;
     border: none;
@@ -15,7 +23,11 @@
 }
 
 .format-cards .course-content .card-deck .card.highlighted {
-    box-shadow: 0 0 5px var(--primary, #0f6cbf);
+    box-shadow: 0 0 10px var(--primary, #0f6cbf);
+}
+
+.format-cards .course-content .card-deck .card.highlighted .card-overlay {
+    box-shadow: 0 0 20px var(--primary, #0f6cbf) inset;
 }
 
 .format-cards .course-content .card-deck .card .card-main-content {
@@ -38,7 +50,8 @@
     transition: transform .4s;
 }
 
-.format-cards .course-content .card-deck .card:hover .card-main-content .card-img-top {
+.format-cards .course-content .card-deck .card:hover .card-main-content .card-img-top,
+.format-cards .course-content .card-deck .card .card-main-content:focus-visible .card-img-top {
     transform: scale(1.1);
 }
 
@@ -159,14 +172,26 @@
     transition: 0.4s filter ease-in-out;
 }
 
-.format-cards .course-content .card-deck .card:hover .card-img-top {
+.format-cards .course-content .card-deck .card:hover .card-img-top,
+.format-cards .course-content .card-deck .card .card-main-content:focus-visible .card-img-top {
     filter: brightness(110%);
 }
 .format-cards .course-content .card-deck .card.hiddenfromstudents .card-img-top {
     filter: blur(1px) grayscale(80%);
 }
-.format-cards .course-content .card-deck .card.hiddenfromstudents:hover .card-img-top {
+.format-cards .course-content .card-deck .card.hiddenfromstudents:hover .card-img-top,
+.format-cards .course-content .card-deck .card.hiddenfromstudents .card-main-content:focus-visible .card-img-top {
     filter: grayscale(75%);
+}
+
+.format-cards .course-content .card-deck .section.course-section {
+    width: 100%;
+}
+
+.format-cards .course-content .card-deck .section-break {
+    list-style: none;
+    display: block;
+    width: 100%;
 }
 
 @media (max-width: 576px) {

@@ -28,11 +28,12 @@ use tool_certificate_generator;
  * @copyright   2020 Mikel Martín <mikel@moodle.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class observer_test extends advanced_testcase {
+final class observer_test extends advanced_testcase {
     /**
      * Set up
      */
     public function setUp(): void {
+        parent::setUp();
         $this->resetAfterTest();
     }
 
@@ -47,7 +48,7 @@ class observer_test extends advanced_testcase {
     /**
      * Test coursecertificate template value is changed to 0 when template is deleted.
      */
-    public function test_course_deleted() {
+    public function test_course_deleted(): void {
         global $DB;
 
         // Create course, certificate template and coursecertificate module.

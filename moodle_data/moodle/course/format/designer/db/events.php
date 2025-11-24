@@ -29,8 +29,16 @@
 defined('MOODLE_INTERNAL') || die();
 
 $observers = [
-    array(
+    [
         'eventname' => 'core\event\course_section_created',
         'callback' => '\format_designer\events::course_section_created',
-    ),
+    ],
+    [
+        'eventname' => 'core\event\course_module_deleted',
+        'callback' => '\format_designer\events::course_module_deleted',
+    ],
+    [
+        'eventname' => 'core\event\course_deleted',
+        'callback' => '\format_designer\events::course_deleted',
+    ],
 ];

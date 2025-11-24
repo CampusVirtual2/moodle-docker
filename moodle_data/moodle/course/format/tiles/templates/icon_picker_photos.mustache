@@ -44,3 +44,11 @@
 {{#icon_picker_photos}}
     {{> format_tiles/icon_picker_photo}}
 {{/icon_picker_photos}}
+<div class="photo d-flex align-items-center justify-content-center" id="tilephoto-none" title="{{#str}}clearphoto, format_tiles{{/str}}" data-filename=""
+     data-imagetype="{{#isdraftfile}}draftfile{{/isdraftfile}}{{^isdraftfile}}tilephoto{{/isdraftfile}}">
+    <div>
+        <i class="fa fa-trash-can"></i>
+        {{#str}}clearphoto, format_tiles{{/str}}
+    </div>
+
+</div>

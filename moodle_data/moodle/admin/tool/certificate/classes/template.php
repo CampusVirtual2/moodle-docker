@@ -59,7 +59,7 @@ class template {
      * @param null|\stdClass $obj
      * @return template
      */
-    public static function instance(int $id = 0, ?\stdClass $obj = null) : template {
+    public static function instance(int $id = 0, ?\stdClass $obj = null): template {
         $data = new \stdClass();
         if ($obj !== null) {
             // Ignore fields that are not properties.
@@ -133,7 +133,7 @@ class template {
         $time = time();
 
         // Get the existing pages and save the page data.
-        if ($pages = $DB->get_records('tool_certificate_pages', array('templateid' => $data->tid))) {
+        if ($pages = $DB->get_records('tool_certificate_pages', ['templateid' => $data->tid])) {
             // Loop through existing pages.
             foreach ($pages as $page) {
                 // Get the name of the fields we want from the form.
@@ -196,7 +196,7 @@ class template {
                    SET sequence = sequence - 1
                  WHERE templateid = :templateid
                    AND sequence > :sequence";
-        $DB->execute($sql, array('templateid' => $this->get_id(), 'sequence' => $sequence));
+        $DB->execute($sql, ['templateid' => $this->get_id(), 'sequence' => $sequence]);
         $this->pages = null;
     }
 
@@ -209,7 +209,7 @@ class template {
         global $DB;
 
         // Ensure element exists and delete it.
-        $element = $DB->get_record('tool_certificate_elements', array('id' => $elementid), '*', MUST_EXIST);
+        $element = $DB->get_record('tool_certificate_elements', ['id' => $elementid], '*', MUST_EXIST);
         if (!array_key_exists($element->pageid, $this->get_pages())) {
             return;
         }
@@ -219,7 +219,7 @@ class template {
             \tool_certificate\element::instance(0, $element)->delete();
         } catch (\moodle_exception $e) {
             // The plugin files are missing, so just remove the entry from the DB.
-            $DB->delete_records('tool_certificate_elements', array('id' => $elementid));
+            $DB->delete_records('tool_certificate_elements', ['id' => $elementid]);
         }
 
         // Now we want to decrease the sequence numbers of the elements
@@ -228,7 +228,7 @@ class template {
                    SET sequence = sequence - 1
                  WHERE pageid = :pageid
                    AND sequence > :sequence";
-        $DB->execute($sql, array('pageid' => $element->pageid, 'sequence' => $element->sequence));
+        $DB->execute($sql, ['pageid' => $element->pageid, 'sequence' => $element->sequence]);
     }
 
     /**
@@ -265,6 +265,9 @@ class template {
             $pdf->setPrintHeader(false);
             $pdf->setPrintFooter(false);
             $pdf->SetTitle($this->get_formatted_name());
+            $pdf->setViewerPreferences([
+                'DisplayDocTitle' => true,
+            ]);
             $pdf->SetAutoPageBreak(true, 0);
             // Remove full-stop at the end, if it exists, to avoid "..pdf" being created and being filtered by clean_filename.
             $filename = rtrim($this->get_formatted_name(), '.');
@@ -278,7 +281,7 @@ class template {
                 } else {
                     $orientation = 'P';
                 }
-                $pdf->AddPage($orientation, array($pagerecord->width, $pagerecord->height));
+                $pdf->AddPage($orientation, [$pagerecord->width, $pagerecord->height]);
                 $pdf->SetMargins($pagerecord->leftmargin, 0, $pagerecord->rightmargin);
                 // Get the elements for the page.
                 if ($elements = $page->get_elements()) {
@@ -292,7 +295,10 @@ class template {
             force_current_language($currentlang);
 
             if ($return) {
-                return $pdf->Output('', 'S');
+                $output = $pdf->Output('', 'S');
+                // Destroys the created pdf object upon return to avoid memory exhaustion.
+                $pdf->_destroy(true);
+                return $output;
             }
             if (defined('PHPUNIT_TEST') && PHPUNIT_TEST) {
                 // For some reason phpunit on travis-ci.com do not return 'cli' on php_sapi_name().
@@ -306,7 +312,7 @@ class template {
     /**
      * Duplicates the template into a new one
      *
-     * @param \context $context
+     * @param \context|null $context
      * @return template
      */
     public function duplicate(?\context $context = null) {
@@ -538,7 +544,7 @@ class template {
      * @param int $id
      * @return template
      */
-    public static function find_by_element_id($id) : template {
+    public static function find_by_element_id($id): template {
         global $DB;
         $template = $DB->get_record_sql('SELECT t.* FROM {tool_certificate_templates} t
             JOIN {tool_certificate_pages} p ON p.templateid = t.id
@@ -582,7 +588,7 @@ class template {
      * @param \context|null $context
      * @return bool
      */
-    public function can_issue_to_anybody(\context $context = null): bool {
+    public function can_issue_to_anybody(?\context $context = null): bool {
         return $this->get_id() && permission::can_issue_to_anybody($context ?? $this->get_context());
     }
 
@@ -593,7 +599,7 @@ class template {
      * @param \context|null $context
      * @return bool
      */
-    public function can_issue(int $issuetouserid, \context $context = null): bool {
+    public function can_issue(int $issuetouserid, ?\context $context = null): bool {
         return $this->can_issue_to_anybody($context) && !permission::is_user_hidden_by_tenancy($issuetouserid);
     }
 
@@ -604,7 +610,7 @@ class template {
      * @param \context|null $context
      * @return bool
      */
-    public function can_revoke(int $userid, \context $context = null): bool {
+    public function can_revoke(int $userid, ?\context $context = null): bool {
         return $this->can_issue($userid, $context);
     }
 
@@ -614,7 +620,7 @@ class template {
      * @param \context|null $issuecontext
      * @return bool
      */
-    public function can_view_issues(\context $issuecontext = null) {
+    public function can_view_issues(?\context $issuecontext = null) {
         // The context is not always matching template context, e.g. when template is used in the course module.
         return permission::can_view_templates_in_context($issuecontext ?? $this->get_context());
     }
@@ -684,7 +690,7 @@ class template {
      * @param int $expires The timestamp when the certificate will expiry. Null if do not expires.
      * @param array $data Additional data that will json_encode'd and stored with the issue.
      * @param string $component The component the certificate was issued by.
-     * @param null $courseid
+     * @param int|null $courseid
      * @param \core\lock\lock|null $lock optional lock to release after a record was inserted into the DB
      * @return int The ID of the issue
      */
@@ -730,8 +736,10 @@ class template {
 
         return $issue->id;
     }
+
     /**
-     * Creates stored file for an issue.
+     * Creates stored file for an issue, if the file already exists and $regenerate is false,
+     * we return the existing file.
      *
      * @param \stdClass $issue
      * @param bool $regenerate
@@ -747,7 +755,7 @@ class template {
             'filearea'  => 'issues',
             'itemid'    => $issue->id,
             'filepath'  => '/',
-            'filename'  => $issue->code . '.pdf'
+            'filename'  => $issue->code . '.pdf',
         ];
         $fs = get_file_storage();
 
@@ -756,6 +764,8 @@ class template {
             $file->filename);
         if ($storedfile && $regenerate) {
             $storedfile->delete();
+        } else if ($storedfile && !$regenerate) {
+            return $storedfile;
         }
 
         return $fs->create_file_from_string($file, $filecontents);
@@ -871,7 +881,7 @@ class template {
      *
      * @return output\template
      */
-    public function get_exporter() : \tool_certificate\output\template {
+    public function get_exporter(): \tool_certificate\output\template {
         return new \tool_certificate\output\template($this->persistent, ['template' => $this]);
     }
 

@@ -20,6 +20,8 @@ use core_collator;
 use Moodle\H5PCore;
 use Moodle\H5PDisplayOptionBehaviour;
 
+// phpcs:disable moodle.NamingConventions.ValidFunctionName.LowercaseMethod
+
 /**
  *
  * Test class covering the H5PFrameworkInterface interface implementation.
@@ -28,9 +30,10 @@ use Moodle\H5PDisplayOptionBehaviour;
  * @category   test
  * @copyright  2019 Mihail Geshoski <mihail@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @covers     \core_h5p\framework
  * @runTestsInSeparateProcesses
  */
-class framework_test extends \advanced_testcase {
+final class framework_test extends \advanced_testcase {
 
     /** @var \core_h5p\framework */
     private $framework;
@@ -652,7 +655,7 @@ class framework_test extends \advanced_testcase {
      *
      * @return array
      */
-    public function isPatchedLibrary_provider(): array {
+    public static function isPatchedLibrary_provider(): array {
         return [
             'Unpatched library. No different versioning' => [
                 [
@@ -1091,6 +1094,55 @@ class framework_test extends \advanced_testcase {
     }
 
     /**
+     * Test the behaviour of updateContent() with metadata.
+     *
+     * @covers ::updateContent
+     */
+    public function test_updateContent_withmetadata(): void {
+        global $DB;
+
+        $this->resetAfterTest();
+
+        /** @var \core_h5p_generator $generator */
+        $generator = $this->getDataGenerator()->get_plugin_generator('core_h5p');
+
+        // Create a library record.
+        $lib = $generator->create_library_record('TestLibrary', 'Test', 1, 1, 2);
+
+        // Create an h5p content with 'TestLibrary' as it's main library.
+        $contentid = $generator->create_h5p_record($lib->id);
+
+        $params = ['param2' => 'Test2'];
+        $metadata = [
+            'license' => 'CC BY',
+            'licenseVersion' => '4.0',
+            'yearFrom' => 2000,
+            'yearTo' => 2023,
+            'defaultLanguage' => 'ca',
+        ];
+        $content = [
+            'id' => $contentid,
+            'params' => json_encode($params),
+            'library' => [
+                'libraryId' => $lib->id,
+            ],
+            'disable' => 8,
+            'metadata' => $metadata,
+        ];
+
+        // Update the h5p content.
+        $this->framework->updateContent($content);
+
+        $h5pcontent = $DB->get_record('h5p', ['id' => $contentid]);
+
+        // Make sure the h5p content was properly updated.
+        $this->assertNotEmpty($h5pcontent);
+        $this->assertEquals(json_encode(array_merge($params, ['metadata' => $metadata])), $h5pcontent->jsoncontent);
+        $this->assertEquals($content['library']['libraryId'], $h5pcontent->mainlibraryid);
+        $this->assertEquals($content['disable'], $h5pcontent->displayoptions);
+    }
+
+    /**
      * Test the behaviour of saveLibraryDependencies().
      */
     public function test_saveLibraryDependencies() {
@@ -1431,7 +1483,7 @@ class framework_test extends \advanced_testcase {
      *
      * @return array
      */
-    public function loadLibrarySemantics_provider(): array {
+    public static function loadLibrarySemantics_provider(): array {
 
         $semantics = json_encode(
             [
@@ -2222,7 +2274,7 @@ class framework_test extends \advanced_testcase {
      *
      * @return array
      */
-    public function libraryHasUpgrade_provider(): array {
+    public static function libraryHasUpgrade_provider(): array {
         return [
             'Lower major version; Identical lower version' => [
                 [

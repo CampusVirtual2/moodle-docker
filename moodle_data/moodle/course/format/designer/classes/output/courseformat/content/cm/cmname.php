@@ -53,7 +53,7 @@ class cmname extends \core_courseformat\output\local\content\cm\cmname {
             // Nothing to be displayed to the user.
             $data = new stdClass();
             $data->mod = $mod;
-            return $data;
+            return (array) $data;
         }
 
         // Usually classes are loaded in the main cm output. However when the user uses the inplace editor
@@ -73,14 +73,14 @@ class cmname extends \core_courseformat\output\local\content\cm\cmname {
         $useactivityimage = '';
         if (format_designer_has_pro()) {
             if ($mod->modname == 'videotime') {
-                if ($videorecord = $DB->get_record('videotime', array('id' => $mod->instance))) {
+                if ($videorecord = $DB->get_record('videotime', ['id' => $mod->instance])) {
                     if (isset($videorecord->label_mode) && $videorecord->label_mode == 2) {
                         $useactivityimage = \format_designer\options::get_option($mod->id, 'useactivityimage');
                     }
                 }
             }
         }
-        $sectiontype = $format->get_section_option($mod->section, 'sectiontype') ?: 'default';
+        $sectiontype = $format->get_section_option($mod->section, 'sectiontype') ?: get_config('format_designer', 'sectiontype');
         $removecenter = ($sectiontype == 'default') ? true : false;
         $data = (object)[
             'url' => ($mod->modname == 'videotime') ? new moodle_url('/mod/videotime/view.php', ['id' => $mod->id]) : $mod->url,

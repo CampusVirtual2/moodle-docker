@@ -51,11 +51,12 @@ require_once($CFG->libdir . "/phpunit/classes/restore_date_testcase.php");
  * @copyright   2020 Mikel Martín <mikel@moodle.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class restore_test extends restore_date_testcase {
+final class restore_test extends restore_date_testcase {
     /**
      * Set up
      */
     public function setUp(): void {
+        parent::setUp();
         $this->resetAfterTest();
         $this->setAdminUser();
     }
@@ -65,7 +66,7 @@ class restore_test extends restore_date_testcase {
      *
      * @return tool_certificate_generator
      */
-    protected function get_certificate_generator() : tool_certificate_generator {
+    protected function get_certificate_generator(): tool_certificate_generator {
         return $this->getDataGenerator()->get_plugin_generator('tool_certificate');
     }
 
@@ -122,7 +123,7 @@ class restore_test extends restore_date_testcase {
     /**
      * Test restore with existing template and existing issue with same code
      */
-    public function test_restore_without_issues() {
+    public function test_restore_without_issues(): void {
         global $DB;
 
         // Create course and coursecertificate module.
@@ -146,14 +147,14 @@ class restore_test extends restore_date_testcase {
 
         // Check new issue is not generated.
         $newissue = $DB->get_record('tool_certificate_issues', ['courseid' => $newcourseid, 'userid' => $user->id,
-            'templateid' => $certificate1->get_id()], '*', IGNORE_MISSING);
+            'templateid' => $certificate1->get_id(), ], '*', IGNORE_MISSING);
         $this->assertEmpty($newissue);
     }
 
     /**
      * Test restore with existing template and non-existing issue with same code.
      */
-    public function test_restore_with_issues() {
+    public function test_restore_with_issues(): void {
         global $DB;
 
         // Create course and coursecertificate module.
@@ -188,7 +189,7 @@ class restore_test extends restore_date_testcase {
 
         // Check new issue is generated.
         $newissue = $DB->get_record('tool_certificate_issues', ['courseid' => $newcourseid, 'userid' => $user->id,
-            'templateid' => $certificate1->get_id()], '*', IGNORE_MISSING);
+            'templateid' => $certificate1->get_id(), ], '*', IGNORE_MISSING);
         $this->assertEquals($issue->data, $newissue->data);
 
         $files = $fs->get_area_files(context_system::instance()->id, 'tool_certificate', 'issues',

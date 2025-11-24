@@ -44,7 +44,7 @@ class details extends dynamic_form {
      * Template getter
      * @return template
      */
-    protected function get_template() : template {
+    protected function get_template(): template {
         $id = $this->optional_param('id', 0, PARAM_INT);
         if ($this->template === null) {
             $obj = null;
@@ -187,7 +187,7 @@ class details extends dynamic_form {
                 'id' => $this->template->get_id(),
                 'name' => $this->template->get_name(),
                 'shared' => $this->template->get_shared(),
-                'categoryid' => $this->template->get_category_id()]);
+                'categoryid' => $this->template->get_category_id(), ]);
         } else {
             $data = template::instance()->new_page()->to_record();
             unset($data->id, $data->templateid);

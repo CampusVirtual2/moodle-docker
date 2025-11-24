@@ -1,0 +1,22 @@
+FROM httpd:2.4-alpine
+
+# Habilita todos os módulos proxy necessários
+RUN sed -i \
+    -e 's/#LoadModule proxy_module /LoadModule proxy_module /' \
+    -e 's/#LoadModule proxy_http_module /LoadModule proxy_http_module /' \
+    -e 's/#LoadModule proxy_fcgi_module /LoadModule proxy_fcgi_module /' \
+    -e 's/#LoadModule rewrite_module /LoadModule rewrite_module /' \
+    -e 's/#LoadModule headers_module /LoadModule headers_module /' \
+    -e 's/#LoadModule expires_module /LoadModule expires_module /' \
+    /usr/local/apache2/conf/httpd.conf
+
+# Copia os virtualhosts direto da pasta apache/
+COPY apache/000-default.conf /usr/local/apache2/conf/sites-available/000-default.conf
+COPY apache/default-ssl.conf /usr/local/apache2/conf/sites-available/default-ssl.conf
+
+# Ativa os sites
+RUN mkdir -p /usr/local/apache2/conf/sites-enabled && \
+    echo "Include conf/sites-available/*.conf" >> /usr/local/apache2/conf/httpd.conf && \
+    ln -sf /usr/local/apache2/conf/sites-available/000-default.conf /usr/local/apache2/conf/sites-enabled/000-default.conf
+
+EXPOSE 80

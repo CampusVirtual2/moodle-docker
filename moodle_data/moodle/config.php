@@ -9,15 +9,12 @@ $CFG->dblibrary = 'native';
 
 $CFG->dbhost    = '172.16.28.204';
 $CFG->dbport    = 6432;
-
 $CFG->dbname    = 'moodle_agu';
 $CFG->dbuser    = 'moodle_agu';
 $CFG->dbpass    = '5xE&LNr39ls^';
-
 $CFG->prefix = 'mdl_';
-
 $CFG->dboptions = array(
-    'dbpersist' => true,   // ESSENCIAL p/ PgBouncer
+    'dbpersist' => false,   // ESSENCIAL p/ PgBouncer
     'dbtimeout' => 20,
     'dbsocket' => false,
     'dbhandlesoptions' => false,
@@ -42,26 +39,45 @@ $CFG->dboptions = array(
 $CFG->wwwroot   = 'https://www.campusvirtual.unb.br';
 $CFG->dataroot  = '/var/www/moodledata';
 $CFG->admin     = 'admin';
-$CFG->sslproxy  = 1;
+$CFG->reverseproxy = false;
+$CFG->sslproxy  = true;
+
+#$CFG->debug = E_ALL;
+#$CFG->debugdisplay = true;
 
 $CFG->lang      = 'pt_br';
 
 $CFG->directorypermissions = 0777;
 
+#$CFG->themedesignermode = false;
+#$CFG->cachejs = true;
+#$CFG->purgecaches = true;
+#$CFG->cssoptimiser = true;
+
+$CFG->themedesignermode = 0;
+$CFG->cachejs = 1;
+
 // **MUITO IMPORTANTE:** Esta linha força o Moodle a considerar a conexão como HTTPS
 // se o cabeçalho X-Forwarded-Proto (enviado pelo Cloudflare/NPM) indicar 'https'.
-if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
-    $_SERVER['HTTPS'] = 'on';
-}
+#if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+#    $_SERVER['HTTPS'] = 'on';
+#}
 
 //
 // 🚀 Tuning de desempenho com cache em memória (RAM)
 //
 #$CFG->localcachedir = '/dev/shm/moodlecache';   // cache local mais rápido
-$CFG->localcachedir = '/var/www/moodledata/cache';   // cache local mais rápido
+#$CFG->localcachedir = '/var/www/moodledata/localcache';   // cache local mais rápido
 #$CFG->tempdir       = '/dev/shm/moodletemp';    // arquivos temporários em memória
-$CFG->tempdir       = '/var/www/html/moodle/temp';    // arquivos temporários em memória
+#$CFG->tempdir       = '/var/www/moodledata/temp';    // arquivos temporários em memória
 
+#if (
+#    !empty($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
+#    strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https'
+#) {
+#    $_SERVER['HTTPS'] = 'on';
+#    $_SERVER['REQUEST_SCHEME'] = 'https';
+#}
 
 // Sessões no Redis (ótimo para ambientes com múltiplos containers)
 $CFG->session_handler_class = '\core\session\redis';
@@ -103,3 +119,15 @@ require_once(__DIR__ . '/lib/setup.php');
 //@ini_set('display_errors', '1');
 //$CFG->debug = (E_ALL | E_STRICT);
 //$CFG->debugdisplay = 1;
+
+// Permite que o Moodle use o IP do cabeçalho X-Real-IP.
+#if (!empty($_SERVER['HTTP_X_REAL_IP']) && filter_var($_SERVER['HTTP_X_REAL_IP'], FILTER_VALIDATE_IP)) {
+#    $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_REAL_IP'];
+#} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+#    $forwardedIps = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+#    $clientIp = trim(reset($forwardedIps));
+#    if (filter_var($clientIp, FILTER_VALIDATE_IP)) {
+#        $_SERVER['REMOTE_ADDR'] = $clientIp;
+#    }
+#}
+

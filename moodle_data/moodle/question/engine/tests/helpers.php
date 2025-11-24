@@ -574,6 +574,7 @@ abstract class question_testcase extends advanced_testcase {
         $dom = new DOMDocument();
         $dom->loadHTML($html);
         $selects = $dom->getElementsByTagName('select');
+        $this->assertGreaterThanOrEqual(1, $selects->count(), 'There is no <select> in the output.');
         foreach ($selects as $select) {
             if ($select->getAttribute('name') == $expectation->name) {
                 $options = $select->getElementsByTagName('option');
@@ -1229,7 +1230,7 @@ abstract class qbehaviour_walkthrough_test_base extends question_testcase {
         } else if ($enabled === false) {
             $expectedattributes['disabled'] = 'disabled';
         }
-        return new question_contains_tag_with_attributes('input', $expectedattributes, $forbiddenattributes);
+        return new question_contains_tag_with_attributes('button', $expectedattributes, $forbiddenattributes);
     }
 
     /**

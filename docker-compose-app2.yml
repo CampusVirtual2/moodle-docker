@@ -1,0 +1,228 @@
+services:
+  moodleweb01:
+    container_name: ${DOMAIN}_web01
+    env_file: .env
+    command: >
+      bash -c "chown -R www-data:www-data /var/www/moodledata &&
+               chmod -R 775 /var/www/moodledata &&
+               apache2-foreground"
+    build: .
+    environment:
+      - MOODLE_REVERSEPROXY=yes
+      - ALLOW_EMPTY_PASSWORD=no
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ./php.ini:/usr/local/etc/php/conf.d/99-custom.ini
+      - ./moodle_data:/var/www/html
+      - ./moodledata_data:/var/www/moodledata
+      - ./logs:/var/log/apache2
+      - ./000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
+      - ./apache2/mpm_prefork.conf:/etc/apache2/mods-available/mpm_prefork.conf
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    entrypoint: >
+      /bin/sh -c "
+        mkdir -p /tmp/moodle_temp &&
+        chown www-data:www-data /tmp/moodle_temp &&
+        chmod 700 /tmp/moodle_temp &&
+        exec docker-php-entrypoint apache2-foreground
+      "
+    extra_hosts:
+      - "${DOMAIN}:127.0.1.1"
+    networks:
+      rede_proxy_reverso:
+        aliases:
+          - campusvirtual.unb.br_web
+      default:
+
+  moodleweb02:
+    container_name: ${DOMAIN}_web02
+    env_file: .env
+    command: >
+      bash -c "chown -R www-data:www-data /var/www/moodledata &&
+               chmod -R 775 /var/www/moodledata &&
+               apache2-foreground"
+    build: .
+    environment:
+      - ALLOW_EMPTY_PASSWORD=no
+      - MOODLE_REVERSEPROXY=yes
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ./php.ini:/usr/local/etc/php/conf.d/99-custom.ini
+      - ./moodle_data:/var/www/html
+      - ./moodledata_data:/var/www/moodledata
+      - ./logs:/var/log/apache2
+      - ./000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
+      - ./apache2/mpm_prefork.conf:/etc/apache2/mods-available/mpm_prefork.conf
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    entrypoint: >
+      /bin/sh -c "
+        mkdir -p /tmp/moodle_temp &&
+        chown www-data:www-data /tmp/moodle_temp &&
+        chmod 700 /tmp/moodle_temp &&
+        exec docker-php-entrypoint apache2-foreground
+      "
+    extra_hosts:
+      - "${DOMAIN}:127.0.1.1"
+    networks:
+      rede_proxy_reverso:
+        aliases:
+          - campusvirtual.unb.br_web
+      default:
+
+  moodleweb03:
+    container_name: ${DOMAIN}_web03
+    env_file: .env
+    command: >
+      bash -c "chown -R www-data:www-data /var/www/moodledata &&
+               chmod -R 775 /var/www/moodledata &&
+               apache2-foreground"
+    build: .
+    environment:
+      - ALLOW_EMPTY_PASSWORD=no
+      - MOODLE_REVERSEPROXY=yes
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ./php.ini:/usr/local/etc/php/conf.d/99-custom.ini
+      - ./moodle_data:/var/www/html
+      - ./moodledata_data:/var/www/moodledata
+      - ./logs:/var/log/apache2
+      - ./000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf
+      - ./apache2/mpm_prefork.conf:/etc/apache2/mods-available/mpm_prefork.conf
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    entrypoint: >
+      /bin/sh -c "
+        mkdir -p /tmp/moodle_temp &&
+        chown www-data:www-data /tmp/moodle_temp &&
+        chmod 700 /tmp/moodle_temp &&
+        exec docker-php-entrypoint apache2-foreground
+      "
+    extra_hosts:
+      - "${DOMAIN}:127.0.1.1"
+    networks:
+      rede_proxy_reverso:
+        aliases:
+          - campusvirtual.unb.br_web
+      default:
+
+  cdn-nginx:
+    image: nginx:latest
+    container_name: ${DOMAIN}_cdn
+    environment:
+      - TZ=America/Sao_Paulo
+#    ports:
+#      - "8003:80"
+    volumes:
+      - ./videos:/usr/share/nginx/html:ro
+      - ./nginx_cdn.conf:/etc/nginx/nginx.conf:ro
+    restart: unless-stopped
+    networks:
+      - rede_proxy_reverso
+      - default
+
+  cron:
+    image: moodlehq/moodle-php-apache:8.1
+    container_name: ${DOMAIN}_cron
+    environment:
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ./moodle_data:/var/www/html
+      - ./moodledata_data:/var/www/moodledata
+      - ./cron-logs:/var/log/moodle
+    entrypoint: >
+      /bin/sh -c "mkdir -p /var/log/moodle && \
+        while true; do \
+          php /var/www/html/moodle/admin/cli/cron.php >> /var/log/moodle/cron.log 2>&1; \
+          sleep 60; \
+        done"
+    depends_on:
+      - moodleweb01 
+
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: ${DOMAIN}_npm
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+      - '81:81'
+    environment:
+      DB_MYSQL_HOST: nginx-proxy-manager-db
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: npm_user
+      DB_MYSQL_PASSWORD: secure_npm_password
+      DB_MYSQL_NAME: npm_database
+    volumes:
+      - ./data/npm:/data
+      - ./data/letsencrypt:/etc/letsencrypt
+    networks:
+      - rede_proxy_reverso
+      - default
+
+  nginx-proxy-manager-db:
+    image: mariadb:latest
+    container_name: ${DOMAIN}_db_npm
+    command: '--default-authentication-plugin=mysql_native_password'
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=root_password
+      - MARIADB_DATABASE=npm_database
+      - MARIADB_USER=npm_user
+      - MARIADB_PASSWORD=secure_npm_password
+      - MARIADB_CHARACTER_SET=utf8mb4
+      - MARIADB_COLLATE=utf8mb4_unicode_ci
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ./data/npm/mysql-data:/var/lib/mysql
+      - ./data/npm/mysql-config:/etc/mysql/conf.d
+    networks:
+      - rede_proxy_reverso
+      - default
+
+  moodle-backup:
+    build:
+      context: ./backup
+    container_name: ${DOMAIN}_backup
+    env_file: .env
+    environment:
+      - TZ=America/Sao_Paulo
+      - POSTGRES_HOST=moodlepgdb
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - AWS_BUCKET_NAME=${AWS_BUCKET_NAME}
+      - AWS_BUCKET_PATH=${AWS_BUCKET_PATH}
+      - AWS_REGION=${AWS_REGION}
+      - AWS_ACCESS_KEY_ID=LPOLDVFGXP0PSO8L63R2
+      - AWS_SECRET_ACCESS_KEY=96dVKhBIoycL50HXjIPg8DeYTTz2Ii68RtsttdNI
+    volumes:
+      - ./backup:/backup
+      - ./moodle_data:/var/www/html:ro
+      - ./moodledata_data:/var/www/moodledata:ro
+      - ./.env:/backup/.env:ro
+    restart: unless-stopped
+    networks:
+      - rede_proxy_reverso
+      - default
+
+volumes:
+  mariadb_data:
+    driver: local
+  moodle_data:
+    driver: local
+  moodledata_data:
+    driver: local
+
+networks:
+  default:
+    name: rede_${DOMAIN}
+    external: true
+  rede_proxy_reverso:
+    name: rede_proxy_reverso_interna
+    external: true
+

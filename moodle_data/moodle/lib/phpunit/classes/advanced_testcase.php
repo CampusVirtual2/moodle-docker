@@ -64,7 +64,7 @@ abstract class advanced_testcase extends base_testcase {
      * @return void
      */
     final public function runBare(): void {
-        global $DB;
+        global $CFG, $DB;
 
         if (phpunit_util::$lastdbwrites != $DB->perf_get_writes()) {
             // this happens when previous test does not reset, we can not use transactions
@@ -78,21 +78,18 @@ abstract class advanced_testcase extends base_testcase {
         try {
             $this->setCurrentTimeStart();
             parent::runBare();
-            // set DB reference in case somebody mocked it in test
-            $DB = phpunit_util::get_global_backup('DB');
-
-            // Deal with any debugging messages.
-            $debugerror = phpunit_util::display_debugging_messages(true);
-            $this->resetDebugging();
-            if (!empty($debugerror)) {
-                trigger_error('Unexpected debugging() call detected.'."\n".$debugerror, E_USER_NOTICE);
-            }
-
         } catch (Exception $ex) {
             $e = $ex;
         } catch (Throwable $ex) {
             // Engine errors in PHP7 throw exceptions of type Throwable (this "catch" will be ignored in PHP5).
             $e = $ex;
+        } finally {
+            // Reset global state after test and test failure.
+            $CFG = phpunit_util::get_global_backup('CFG');
+            $DB = phpunit_util::get_global_backup('DB');
+
+            // We need to reset the autoloader.
+            \core_component::reset();
         }
 
         if (isset($e)) {
@@ -101,7 +98,14 @@ abstract class advanced_testcase extends base_testcase {
             throw $e;
         }
 
-        if (!$this->testdbtransaction or $this->testdbtransaction->is_disposed()) {
+        // Deal with any debugging messages.
+        $debugerror = phpunit_util::display_debugging_messages(true);
+        $this->resetDebugging();
+        if (!empty($debugerror)) {
+            trigger_error('Unexpected debugging() call detected.' . "\n" . $debugerror, E_USER_NOTICE);
+        }
+
+        if (!$this->testdbtransaction || $this->testdbtransaction->is_disposed()) {
             $this->testdbtransaction = null;
         }
 
@@ -224,7 +228,7 @@ abstract class advanced_testcase extends base_testcase {
      * @param array $files full paths to CSV or XML files to load.
      * @return phpunit_dataset
      */
-    protected function dataset_from_files(array $files) {
+    protected static function dataset_from_files(array $files) {
         // We ignore $delimiter, $enclosure and $escape, use the default ones in your fixtures.
         $dataset = new phpunit_dataset();
         $dataset->from_files($files);
@@ -241,7 +245,7 @@ abstract class advanced_testcase extends base_testcase {
      * @param string $table name of the table which the file belongs to (only for CSV files).
      * @return phpunit_dataset
      */
-    protected function dataset_from_string(string $content, string $type, ?string $table = null) {
+    protected static function dataset_from_string(string $content, string $type, ?string $table = null) {
         $dataset = new phpunit_dataset();
         $dataset->from_string($content, $type, $table);
         return $dataset;
@@ -255,7 +259,7 @@ abstract class advanced_testcase extends base_testcase {
      * @param array $data array of tables, see {@see phpunit_dataset::from_array()} for supported formats.
      * @return phpunit_dataset
      */
-    protected function dataset_from_array(array $data) {
+    protected static function dataset_from_array(array $data) {
         $dataset = new phpunit_dataset();
         $dataset->from_array($data);
         return $dataset;
@@ -618,28 +622,31 @@ abstract class advanced_testcase extends base_testcase {
      * @param bool $https true if https required
      * @return string url
      */
-    public function getExternalTestFileUrl($path, $https = false) {
+    public static function getExternalTestFileUrl(
+        string $path,
+        bool $https = false
+    ): string {
         $path = ltrim($path, '/');
         if ($path) {
-            $path = '/'.$path;
+            $path = "/{$path}";
         }
         if ($https) {
             if (defined('TEST_EXTERNAL_FILES_HTTPS_URL')) {
                 if (!TEST_EXTERNAL_FILES_HTTPS_URL) {
-                    $this->markTestSkipped('Tests using external https test files are disabled');
+                    self::markTestSkipped('Tests using external https test files are disabled');
                 }
                 return TEST_EXTERNAL_FILES_HTTPS_URL.$path;
             }
-            return 'https://download.moodle.org/unittest'.$path;
+            return "https://download.moodle.org/unittest{$path}";
         }
 
         if (defined('TEST_EXTERNAL_FILES_HTTP_URL')) {
             if (!TEST_EXTERNAL_FILES_HTTP_URL) {
-                $this->markTestSkipped('Tests using external http test files are disabled');
+                self::markTestSkipped('Tests using external http test files are disabled');
             }
             return TEST_EXTERNAL_FILES_HTTP_URL.$path;
         }
-        return 'http://download.moodle.org/unittest'.$path;
+        return "http://download.moodle.org/unittest{$path}";
     }
 
     /**
@@ -741,5 +748,54 @@ abstract class advanced_testcase extends base_testcase {
             unset($task);
         }
         $tasks->close();
+    }
+
+    /**
+     * Convenience method to get the path to a fixture.
+     *
+     * @param string $component
+     * @param string $path
+     * @throws coding_exception
+     */
+    protected static function get_fixture_path(
+        string $component,
+        string $path
+    ): string {
+        return sprintf(
+            "%s/tests/fixtures/%s",
+            \core_component::get_component_directory($component),
+            $path,
+        );
+    }
+
+    /**
+     * Convenience method to load a fixture from a component's fixture directory.
+     *
+     * @param string $component
+     * @param string $path
+     * @throws coding_exception
+     */
+    protected static function load_fixture(
+        string $component,
+        string $path
+    ): void {
+        global $ADMIN;
+        global $CFG;
+        global $DB;
+        global $SITE;
+        global $USER;
+        global $OUTPUT;
+        global $PAGE;
+        global $SESSION;
+        global $COURSE;
+        global $SITE;
+
+        $fullpath = static::get_fixture_path($component, $path);
+
+        if (!file_exists($fullpath)) {
+            throw new \coding_exception("Fixture file not found: $fullpath");
+        }
+
+        require_once($fullpath);
     }
 }

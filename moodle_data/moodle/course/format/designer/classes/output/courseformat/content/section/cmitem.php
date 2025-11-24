@@ -68,6 +68,7 @@ class cmitem extends \core_courseformat\output\local\content\section\cmitem {
             'extraclasses' => $mod->extraclasses,
             'cmformat' => $item->export_for_template($output),
             'hasinfo' => $hasinfo,
+            'indent' => ($format->uses_indentation()) ? $mod->indent : 0,
         ];
         $this->render_course_module($mod, $data, $output);
         return (object) $data;
@@ -94,7 +95,7 @@ class cmitem extends \core_courseformat\output\local\content\section\cmitem {
             'class' => $data['modclasses'],
             'id' => $data['anchor'],
             'data-for' => "cmitem",
-            'data-id' => $data['cm']->id
+            'data-id' => $data['cm']->id,
         ]);
         $data['moduleend'] = \html_writer::end_tag('li');
 

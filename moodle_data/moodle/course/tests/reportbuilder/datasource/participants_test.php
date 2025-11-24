@@ -19,17 +19,14 @@ declare(strict_types=1);
 namespace core_course\reportbuilder\datasource;
 
 use completion_completion;
-use core_reportbuilder\local\filters\boolean_select;
-use core_reportbuilder\local\filters\date;
-use core_reportbuilder\local\filters\select;
 use core_reportbuilder_generator;
-use core_reportbuilder_testcase;
+use core_reportbuilder\local\filters\{boolean_select, date, select};
+use core_reportbuilder\tests\core_reportbuilder_testcase;
 use grade_item;
 
 defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
-require_once("{$CFG->dirroot}/reportbuilder/tests/helpers.php");
 require_once("{$CFG->libdir}/gradelib.php");
 
 /**
@@ -80,7 +77,7 @@ class participants_test extends core_reportbuilder_testcase {
 
         // Update final grade for the user.
         $courseitem = grade_item::fetch_course_item($course->id);
-        $courseitem->update_final_grade($user1->id, 80);
+        $courseitem->update_final_grade($user1->id, 42.5);
 
         // Set some last access value for the user in the course.
         $DB->insert_record('user_lastaccess',
@@ -152,7 +149,7 @@ class participants_test extends core_reportbuilder_testcase {
             '', // Reagreggate.
             '2', // Days taking course.
             '2', // Days until completion.
-            '80.00', // Grade.
+            '42.50', // Grade.
         ], array_values($content[0]));
     }
 
