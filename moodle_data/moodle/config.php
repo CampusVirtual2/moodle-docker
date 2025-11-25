@@ -6,35 +6,20 @@ $CFG = new stdClass();
 
 $CFG->dbtype    = 'pgsql';
 $CFG->dblibrary = 'native';
-
 $CFG->dbhost    = '172.16.28.204';
-$CFG->dbport    = 6432;
+#$CFG->dbport    = '6432';
 $CFG->dbname    = 'moodle_agu';
 $CFG->dbuser    = 'moodle_agu';
 $CFG->dbpass    = '5xE&LNr39ls^';
-$CFG->prefix = 'mdl_';
+$CFG->prefix    = 'mdl_';
 $CFG->dboptions = array(
-    'dbpersist' => false,   // ESSENCIAL p/ PgBouncer
+    'dbpersist' => 0,
     'dbtimeout' => 20,
+    'dbport' 	=> 6432,
     'dbsocket' => false,
     'dbhandlesoptions' => false,
+    'dbcollation' => 'utf8mb4'
 );
-
-#$CFG->dbtype    = 'pgsql';
-#$CFG->dblibrary = 'native';
-#$CFG->dbhost    = '172.16.28.204'; //'172.16.28.251';
-#$CFG->dbname    = 'moodle_agu';
-#$CFG->dbuser    = 'moodle_agu'; //'moodle_agu';
-#$CFG->dbpass    = '5xE&LNr39ls^';
-#$CFG->prefix    = 'mdl_';
-#$CFG->dboptions = array (
-#  'dbpersist' => 1,
-#  'dbport' => 5432,
-#  'dbsocket' => '',
-#  'dbhandlesoptions' => false,
-#  'dbverifypeer' => false,
-#  'dbtimeout' => 20
-#);
 
 $CFG->wwwroot   = 'https://www.campusvirtual.unb.br';
 $CFG->dataroot  = '/var/www/moodledata';
@@ -42,48 +27,17 @@ $CFG->admin     = 'admin';
 $CFG->reverseproxy = false;
 $CFG->sslproxy  = true;
 
-#$CFG->debug = E_ALL;
-#$CFG->debugdisplay = true;
-
 $CFG->lang      = 'pt_br';
 
 $CFG->directorypermissions = 0777;
 
-#$CFG->themedesignermode = false;
-#$CFG->cachejs = true;
-#$CFG->purgecaches = true;
-#$CFG->cssoptimiser = true;
-
 $CFG->themedesignermode = 0;
 $CFG->cachejs = 1;
 
-// **MUITO IMPORTANTE:** Esta linha força o Moodle a considerar a conexão como HTTPS
-// se o cabeçalho X-Forwarded-Proto (enviado pelo Cloudflare/NPM) indicar 'https'.
-#if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
-#    $_SERVER['HTTPS'] = 'on';
-#}
-
-//
-// 🚀 Tuning de desempenho com cache em memória (RAM)
-//
-#$CFG->localcachedir = '/dev/shm/moodlecache';   // cache local mais rápido
-#$CFG->localcachedir = '/var/www/moodledata/localcache';   // cache local mais rápido
-#$CFG->tempdir       = '/dev/shm/moodletemp';    // arquivos temporários em memória
-#$CFG->tempdir       = '/var/www/moodledata/temp';    // arquivos temporários em memória
-
-#if (
-#    !empty($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
-#    strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https'
-#) {
-#    $_SERVER['HTTPS'] = 'on';
-#    $_SERVER['REQUEST_SCHEME'] = 'https';
-#}
-
-// Sessões no Redis (ótimo para ambientes com múltiplos containers)
 $CFG->session_handler_class = '\core\session\redis';
-$CFG->session_redis_host = '172.16.28.204';  // nome do container Redis
+$CFG->session_redis_host = '172.16.28.204';
 $CFG->session_redis_port = 6379;
-$CFG->session_redis_database = 0;  // Pode usar de 0 a 15
+$CFG->session_redis_database = 0;
 $CFG->session_redis_prefix = 'sess_';
 $CFG->session_redis_acquire_lock_timeout = 120;
 $CFG->session_redis_lock_expire = 7200;
@@ -94,16 +48,14 @@ $CFG->cachestore_redis_port = 6379;
 $CFG->cachestore_redis_prefix = 'muc_';
 $CFG->cachestore_redis_database = 1;
 
-$CFG->sessiontimeout = 7200; // 2 horas
+$CFG->sessiontimeout = 7200;
 
-// ⚡️ Usa APCu para armazenar sessões e configurações
-//$CFG->session_handler_class = '\core\session\apcu_session'; // armazena sessões no APCu (ótimo para 1 container PHP)
 $CFG->rcache = true;
 $CFG->rcachetype = 'apcu';
 
 //debug - development
-@error_reporting(E_ALL | E_STRICT);   // NOT FOR PRODUCTION SERVERS!
-@ini_set('display_errors', '1');         // NOT FOR PRODUCTION SERVERS!
+#@error_reporting(E_ALL | E_STRICT);   // NOT FOR PRODUCTION SERVERS!
+#@ini_set('display_errors', '1');         // NOT FOR PRODUCTION SERVERS!
 //$CFG->debug = (E_ALL | E_STRICT);   // === DEBUG_DEVELOPER - NOT FOR PRODUCTION$
 //$CFG->debugdisplay = 1;              // NOT FOR PRODUCTION SERVERS!
  
