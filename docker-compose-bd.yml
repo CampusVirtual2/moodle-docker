@@ -19,19 +19,17 @@ services:
       - rede_campusvirtual
 
   redis:
-    image: redis:7.4.1-alpine
+    image: redis:8.4.0-alpine
     container_name: ${DOMAIN}_redis
     ports:
       - "6379:6379"
     volumes:
       - ./redis:/data
-    command: >
-      redis-server --save 900 1
-                   --rename-command SLAVEOF ""
-                   --rename-command REPLICAOF ""
-                   --rename-command CONFIG ""
-                   --dir /data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
     restart: always
+    sysctls:
+      - net.core.somaxconn=2048
     networks:
       - rede_campusvirtual
       - default
