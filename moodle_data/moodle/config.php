@@ -6,7 +6,7 @@ $CFG = new stdClass();
 
 $CFG->dbtype    = 'pgsql';
 $CFG->dblibrary = 'native';
-$CFG->dbhost    = '172.16.28.204';
+$CFG->dbhost    = '10.100.200.4';
 #$CFG->dbport    = '6432';
 $CFG->dbname    = 'moodle_agu';
 $CFG->dbuser    = 'moodle_agu';
@@ -21,7 +21,7 @@ $CFG->dboptions = array(
     'dbcollation' => 'utf8mb4'
 );
 
-$CFG->wwwroot   = 'https://www.campusvirtual.unb.br';
+$CFG->wwwroot   = 'https://www.campusvirtual2.com';
 $CFG->dataroot  = '/var/www/moodledata';
 $CFG->admin     = 'admin';
 $CFG->reverseproxy = false;
@@ -35,7 +35,7 @@ $CFG->themedesignermode = 0;
 $CFG->cachejs = 1;
 
 $CFG->session_handler_class = '\core\session\redis';
-$CFG->session_redis_host = '172.16.28.204';
+$CFG->session_redis_host = '10.100.200.4';
 $CFG->session_redis_port = 6379;
 $CFG->session_redis_database = 0;
 $CFG->session_redis_prefix = 'sess_';
@@ -43,7 +43,7 @@ $CFG->session_redis_acquire_lock_timeout = 120;
 $CFG->session_redis_lock_expire = 7200;
 $CFG->session_redis_lock_retry = 100;
 
-$CFG->cachestore_redis_server = '172.16.28.204';
+$CFG->cachestore_redis_server = '10.100.200.4';
 $CFG->cachestore_redis_port = 6379;
 $CFG->cachestore_redis_prefix = 'muc_';
 $CFG->cachestore_redis_database = 1;
