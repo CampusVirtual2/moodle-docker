@@ -4,7 +4,7 @@ services:
     container_name: ${DOMAIN}_pgdb
     restart: always
     ports:
-      - "5432:5432"
+      - "10.100.200.4:5432:5432"
     volumes:
       - ./pg_data:/var/lib/postgresql/data
       - ./postgresql.conf:/etc/postgresql/postgresql.conf
@@ -22,7 +22,7 @@ services:
     image: redis:8.4.0-alpine
     container_name: ${DOMAIN}_redis
     ports:
-      - "6379:6379"
+      - "10.100.200.4:6379:6379"
     volumes:
       - ./redis:/data
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
@@ -41,7 +41,7 @@ services:
     depends_on:
       - moodlepgdb
     ports:
-      - "6432:6432"   # PgBouncer exposto aqui
+      - "10.100.200.4:6432:6432"   # PgBouncer exposto aqui
     environment:
       DB_USER: ${POSTGRES_USER}
       DB_PASSWORD: ${POSTGRES_PASSWORD}

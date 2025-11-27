@@ -6,12 +6,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.fpm
-    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm01
+    container_name: ${DOMAIN:-campusvirtual2.com}_fpm01
     restart: unless-stopped
     volumes:
       - ./moodle_data/moodle:/var/www/html
       - ./moodledata_data:/var/www/moodledata
       - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    ports:
+      - "10.100.200.3:9001:9000"
     deploy:
       resources:
         limits:
@@ -22,12 +24,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.fpm
-    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm02
+    container_name: ${DOMAIN:-campusvirtual2.com}_fpm02
     restart: unless-stopped
     volumes:
       - ./moodle_data/moodle:/var/www/html
       - ./moodledata_data:/var/www/moodledata
       - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    ports:
+      - "10.100.200.3:9002:9000"
     deploy:
       resources:
         limits:
@@ -38,12 +42,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.fpm
-    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm03
+    container_name: ${DOMAIN:-campusvirtual2.com}_fpm03
     restart: unless-stopped
     volumes:
       - ./moodle_data/moodle:/var/www/html
       - ./moodledata_data:/var/www/moodledata
       - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    ports:
+      - "10.100.200.3:9003:9000"
     deploy:
       resources:
         limits:
@@ -54,12 +60,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.fpm
-    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm04
+    container_name: ${DOMAIN:-campusvirtual2.com}_fpm04
     restart: unless-stopped
     volumes:
       - ./moodle_data/moodle:/var/www/html
       - ./moodledata_data:/var/www/moodledata
       - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    ports:
+      - "10.100.200.3:9004:9000"
     deploy:
       resources:
         limits:
@@ -70,12 +78,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.fpm
-    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm05
+    container_name: ${DOMAIN:-campusvirtual2.com}_fpm05
     restart: unless-stopped
     volumes:
       - ./moodle_data/moodle:/var/www/html
       - ./moodledata_data:/var/www/moodledata
       - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    ports:
+      - "10.100.200.3:9005:9000"
     deploy:
       resources:
         limits:
@@ -86,12 +96,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.fpm
-    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm06
+    container_name: ${DOMAIN:-campusvirtual2.com}_fpm06
     restart: unless-stopped
     volumes:
       - ./moodle_data/moodle:/var/www/html
       - ./moodledata_data:/var/www/moodledata
       - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    ports:
+      - "10.100.200.3:9006:9000"
     deploy:
       resources:
         limits:
@@ -102,12 +114,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.fpm
-    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm07
+    container_name: ${DOMAIN:-campusvirtual2.com}_fpm07
     restart: unless-stopped
     volumes:
       - ./moodle_data/moodle:/var/www/html
       - ./moodledata_data:/var/www/moodledata
       - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    ports:
+      - "10.100.200.3:9007:9000"
     deploy:
       resources:
         limits:
@@ -118,80 +132,24 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.fpm
-    container_name: ${DOMAIN:-campusvirtual.unb.br}_fpm08
+    container_name: ${DOMAIN:-campusvirtual2.com}_fpm08
     restart: unless-stopped
     volumes:
       - ./moodle_data/moodle:/var/www/html
       - ./moodledata_data:/var/www/moodledata
       - ./php.ini:/usr/local/etc/php/conf.d/99-moodle.ini
+    ports:
+      - "10.100.200.3:9008:9000"
     deploy:
       resources:
         limits:
           cpus: "2.0"
           memory: 8G
-
-  moodle-lb:
-    image: nginx:alpine
-    container_name: ${DOMAIN:-campusvirtual.unb.br}_lb
-    restart: unless-stopped
-    ulimits:
-      nofile: 200000
-    sysctls:
-      net.core.somaxconn: 65535
-    ports:
-      - '80:80'
-      - '9000:9000'
-    volumes:
-      - ./nginx-lb.conf:/etc/nginx/nginx.conf:ro
-      - ./moodle_data/moodle:/var/www/html   # ← CÓDIGO DO MOODLE
-    depends_on:
-      - moodle-fpm01
-      - moodle-fpm02
-      - moodle-fpm03
-      - moodle-fpm04
-      - moodle-fpm05
-      - moodle-fpm06
-      - moodle-fpm07
-      - moodle-fpm08
-      - cron
-
-    networks:
-      - default
-
-        #  moodleweb:
-        #build:
-        #context: .
-        #dockerfile: Dockerfile.apache
-        #container_name: ${DOMAIN:-campusvirtual.unb.br}_web
-        #restart: unless-stopped
-        #ports:
-        #- '8080:80'        # ← porta temporária só pra teste
-        #volumes:
-        #- ./moodle_data/moodle:/var/www/html
-        #- ./logs/apache:/usr/local/apache2/logs
-        #depends_on:
-        #- moodle-lb
-        #networks:
-        #- rede_proxy_reverso
-        #- default
-
-  # ==============================================================
-  # SEUS CONTAINERS QUE JÁ ESTAVAM PERFEITOS
-  # ==============================================================
-  #  cdn-nginx:
-  #  image: nginx:latest
-  #  container_name: ${DOMAIN:-campusvirtual.unb.br}_cdn
-  #  restart: unless-stopped
-  #  volumes:
-  #    - ./videos:/usr/share/nginx/html:ro
-  #    - ./nginx_cdn.conf:/etc/nginx/nginx.conf:ro
-  #  networks:
-  #    - rede_proxy_reverso
-  #    - default
-
   cron:
-    image: campusvirtual_app-moodle-fpm01 
-    container_name: ${DOMAIN:-campusvirtual.unb.br}_cron
+    build:
+      context: .
+      dockerfile: Dockerfile.fpm
+    container_name: ${DOMAIN:-campusvirtual2.com}_cron
     restart: unless-stopped
     volumes:
       - ./moodle_data/moodle:/var/www/html
@@ -205,68 +163,6 @@ services:
     depends_on:
       - moodle-fpm01
 
-  moodle-backup:
-    build:
-      context: ./backup
-    container_name: ${DOMAIN:-campusvirtual.unb.br}_backup
-    restart: unless-stopped
-    env_file: .env
-    environment:
-      - TZ=America/Sao_Paulo
-      - POSTGRES_HOST=172.16.28.204          # ← aponta pro outro host
-      - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-    volumes:
-      - ./backup:/backup
-      - ./moodle_data/moodle:/var/www/html:ro
-      - ./moodledata_data:/var/www/moodledata:ro
-    networks:
-      - rede_proxy_reverso
-      - default
-
-        #  nginx-proxy-manager:
-        #image: jc21/nginx-proxy-manager:latest
-        #container_name: ${DOMAIN:-campusvirtual.unb.br}_npm
-        #restart: unless-stopped
-        #ports:
-      #      - '80:80'
-      #- '443:443'
-      #- '81:81'
-      #environment:
-      #DB_MYSQL_HOST: nginx-proxy-manager-db
-      #DB_MYSQL_PORT: 3306
-      #DB_MYSQL_USER: npm_user
-      #DB_MYSQL_PASSWORD: ${NPM_DB_PASS:-secure_npm_password}
-      #DB_MYSQL_NAME: npm_database
-      #volumes:
-      #- ./data/npm:/data
-      #- ./data/letsencrypt:/etc/letsencrypt
-      #networks:
-      #- rede_proxy_reverso
-      #- default
-
-        #nginx-proxy-manager-db:
-        #image: mariadb:latest
-        #container_name: ${DOMAIN:-campusvirtual.unb.br}_db_npm
-        #restart: always
-        #environment:
-        #MARIADB_ROOT_PASSWORD: ${NPM_DB_ROOT_PASS:-root_password}
-        #MARIADB_DATABASE: npm_database
-        #MARIADB_USER: npm_user
-        #MARIADB_PASSWORD: ${NPM_DB_PASS:-secure_npm_password}
-        #volumes:
-        #- ./data/npm/mysql-data:/var/lib/mysql
-        #networks:
-        #- rede_proxy_reverso
-
-# ==============================================================
-# REDES (mantive exatamente como você já usa)
-# ==============================================================
 networks:
   default:
-    name: rede_${DOMAIN:-campusvirtual.unb.br}
-    external: true
-  rede_proxy_reverso:
-    name: rede_proxy_reverso_interna
-    external: true
+    driver: bridge
