@@ -1,0 +1,43 @@
+services:
+  moodle-lb:
+    image: nginx:alpine
+    container_name: ${DOMAIN:-campusvirtual2.com}_lb
+    restart: unless-stopped
+    ulimits:
+      nofile: 200000
+    sysctls:
+      net.core.somaxconn: 65535
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx-lb.conf:/etc/nginx/nginx.conf:ro
+      - ./moodle_data/moodle:/var/www/html   # ← CÓDIGO DO MOODLE
+      - ./ssl:/etc/nginx/ssl:ro
+      - ./ssl/selfsigned.crt:/etc/nginx/ssl/selfsigned.crt:ro
+      - ./ssl/selfsigned.key:/etc/nginx/ssl/selfsigned.key:ro
+    networks:
+      - default
+  
+  moodle-backup:
+    build:
+      context: ./backup
+    container_name: ${DOMAIN:-campusvirtual2.com}_backup
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - TZ=America/Sao_Paulo
+      - POSTGRES_HOST=10.100.200.4          # ← aponta pro outro host
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./backup:/backup
+      - ./moodle_data/moodle:/var/www/html:ro
+      - ./moodledata_data:/var/www/moodledata:ro
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
