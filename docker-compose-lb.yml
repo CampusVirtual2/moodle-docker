@@ -16,6 +16,7 @@ services:
       - ./ssl:/etc/nginx/ssl:ro
       - ./ssl/selfsigned.crt:/etc/nginx/ssl/selfsigned.crt:ro
       - ./ssl/selfsigned.key:/etc/nginx/ssl/selfsigned.key:ro
+      - ./ssl/letsencrypt:/etc/letsencrypt:ro
     networks:
       - default
   
