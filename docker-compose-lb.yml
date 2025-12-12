@@ -4,7 +4,9 @@ services:
     container_name: ${DOMAIN:-campusvirtual2.com}_lb
     restart: unless-stopped
     ulimits:
-      nofile: 200000
+      nofile:
+        soft: 200000 
+        hard: 200000
     sysctls:
       net.core.somaxconn: 65535
     ports:
@@ -17,6 +19,7 @@ services:
       - ./ssl/selfsigned.crt:/etc/nginx/ssl/selfsigned.crt:ro
       - ./ssl/selfsigned.key:/etc/nginx/ssl/selfsigned.key:ro
       - ./ssl/letsencrypt:/etc/letsencrypt:ro
+      - ./dhparam.pem:/etc/nginx/dhparam.pem:ro
     networks:
       - default
   

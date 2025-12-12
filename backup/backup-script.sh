@@ -1,47 +1,108 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 trap 'echo "[ERRO] Ocorreu um problema durante o backup." >&2' ERR
 
-# PostgreSQL (novo para o Moodle)
-export POSTGRES_USER=moodle_agu
-export POSTGRES_PASSWORD="5xE&LNr39ls^"
-export POSTGRES_DB=moodle_agu
-export AWS_ACCESS_KEY_ID=LPOLDVFGXP0PSO8L63R2
-export AWS_SECRET_ACCESS_KEY=96dVKhBIoycL50HXjIPg8DeYTTz2Ii68RtsttdNI
-export AWS_REGION=us-east-1
-export AWS_BUCKET_NAME=bkp-unbmds
-export AWS_BUCKET_PATH=moodle/backups
+############################################
+#        CONFIGURAÇÕES E VARIÁVEIS
+############################################
 
+export POSTGRES_HOST="10.100.200.4"
+export POSTGRES_USER="moodle_agu"
+export POSTGRES_PASSWORD="5xE&LNr39ls^"
+export POSTGRES_DB="moodle_agu"
+
+export AWS_ACCESS_KEY_ID="LPOLDVFGXP0PSO8L63R2"
+export AWS_SECRET_ACCESS_KEY="96dVKhBIoycL50HXjIPg8DeYTTz2Ii68RtsttdNI"
+export AWS_REGION="us-east-1"
+export AWS_BUCKET_NAME="bkp-unbmds"
+export AWS_BUCKET_PATH="moodle/backups"
+export AWS_ENDPOINT_URL="https://s3.us-east-1.wasabisys.com"
 
 DATE=$(date +'%Y-%m-%d_%H-%M')
 BACKUP_DIR="/backup/moodle/$DATE"
+
 mkdir -p "$BACKUP_DIR"
 
-echo "[INFO] Backup do código Moodle..."
-tar -czf "$BACKUP_DIR/moodle.tar.gz" /var/www/html/moodle
+############################################
+#                FUNÇÕES
+############################################
+log() { echo "[INFO] $1"; }
+err() { echo "[ERRO] $1" >&2; exit 1; }
 
-echo "[INFO] Backup do moodledata..."
-tar -czf "$BACKUP_DIR/moodledata.tar.gz" /var/www/moodledata
+############################################
+#               BACKUP MOODLE
+############################################
 
-echo "[INFO] Backup do banco PostgreSQL..."
-PGPASSWORD="${POSTGRES_PASSWORD}" pg_dump -h "${POSTGRES_HOST}" -U "${POSTGRES_USER}" "${POSTGRES_DB}" > "${BACKUP_DIR}/db.sql"
+log "Compactando diretório do Moodle (sem exclusões)..."
 
-FINAL_ARCHIVE="/backup/moodle/moodle-backup-$DATE.tar.gz"
-tar -czf "$FINAL_ARCHIVE" -C "$BACKUP_DIR" .
+MOODLE_FILE="$BACKUP_DIR/moodle-$DATE.tar.gz"
 
-S3_PATH="s3://$AWS_BUCKET_NAME/$AWS_BUCKET_PATH/moodle-backup-$DATE.tar.gz"
-echo "[INFO] Enviando backup para S3 Wasabi: $S3_PATH"
-aws s3 cp "$FINAL_ARCHIVE" "$S3_PATH" --region "$AWS_REGION" --endpoint-url https://s3.us-east-1.wasabisys.com
+tar -czf "$MOODLE_FILE" /var/www/html \
+    || err "Falha ao compactar o diretório do Moodle."
 
-# ✅ Checagem do resultado do envio para o S3
-if [ $? -eq 0 ]; then
-    echo "[INFO] Envio para S3 concluído com sucesso."
-else
-    echo "[ERRO] Falha ao enviar para S3." >&2
-    exit 1
-fi
+############################################
+#            BACKUP MOODLEDATA
+############################################
+
+log "Compactando moodledata (excluindo caches)..."
+
+MOODLEDATA_FILE="$BACKUP_DIR/moodledata-$DATE.tar.gz"
+
+tar -czf "$MOODLEDATA_FILE" \
+    --exclude='/var/www/moodledata/cache' \
+    --exclude='/var/www/moodledata/localcache' \
+    --exclude='/var/www/moodledata/sessions' \
+    /var/www/moodledata \
+    || err "Falha ao compactar o diretório moodledata."
+
+############################################
+#            BACKUP DO BANCO
+############################################
+
+log "Gerando backup do banco PostgreSQL..."
+
+DB_FILE="$BACKUP_DIR/moodle-db-$DATE.dump.gz"
+
+PGPASSWORD="$POSTGRES_PASSWORD" \
+pg_dump -h "$POSTGRES_HOST" -U "$POSTGRES_USER" -Fc "$POSTGRES_DB" \
+    | gzip > "$DB_FILE" \
+    || err "Falha ao gerar backup do banco."
+
+############################################
+#         ENVIO PARA WASABI S3
+############################################
+
+log "Enviando moodle.tar.gz..."
+
+aws s3 cp "$MOODLE_FILE" \
+    "s3://$AWS_BUCKET_NAME/$AWS_BUCKET_PATH/moodle-$DATE.tar.gz" \
+    --region "$AWS_REGION" \
+    --endpoint-url "$AWS_ENDPOINT_URL" \
+    || err "Falha ao enviar o backup do Moodle."
+
+log "Enviando moodledata.tar.gz..."
+
+aws s3 cp "$MOODLEDATA_FILE" \
+    "s3://$AWS_BUCKET_NAME/$AWS_BUCKET_PATH/moodledata-$DATE.tar.gz" \
+    --region "$AWS_REGION" \
+    --endpoint-url "$AWS_ENDPOINT_URL" \
+    || err "Falha ao enviar o backup do MoodleData."
+
+log "Enviando backup do banco..."
+
+aws s3 cp "$DB_FILE" \
+    "s3://$AWS_BUCKET_NAME/$AWS_BUCKET_PATH/moodle-db-$DATE.dump.gz" \
+    --region "$AWS_REGION" \
+    --endpoint-url "$AWS_ENDPOINT_URL" \
+    || err "Falha ao enviar o backup do banco."
+
+log "Todos arquivos foram enviados com sucesso!"
+
+############################################
+#               LIMPEZA
+############################################
 
 rm -rf "$BACKUP_DIR"
-rm -f "$FINAL_ARCHIVE"
 
-echo "[INFO] Backup enviado com sucesso!"
+log "Backup finalizado e arquivos temporários removidos."
+

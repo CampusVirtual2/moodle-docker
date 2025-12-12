@@ -18,30 +18,6 @@ http {
     # Uploads (combine com PHP: 2G)
     client_max_body_size 2g;
 
-    gzip on;
-    gzip_comp_level 5;
-    gzip_min_length 1024;
-    gzip_vary on;
-    gzip_proxied any;
-    gzip_disable "MSIE [1-6]\.(?!.*SV1)";
-
-    gzip_types
-        text/plain
-	text/css
-    	text/javascript
-    	application/javascript
-    	application/x-javascript
-    	application/json
-    	application/xml
-    	application/rss+xml
-    	application/vnd.ms-fontobject
-    	font/ttf
-    	font/otf
-    	font/woff
-    	font/woff2
-    	image/svg+xml;
-
-
     upstream moodle_fpm {
         least_conn;
         server 10.100.200.3:9001 max_fails=3 fail_timeout=30s;
@@ -52,7 +28,7 @@ http {
         server 10.100.200.3:9006 max_fails=3 fail_timeout=30s;
         server 10.100.200.3:9007 max_fails=3 fail_timeout=30s;
         server 10.100.200.3:9008 max_fails=3 fail_timeout=30s;
-
+	keepalive 256;
     }
 
     server {
@@ -74,8 +50,6 @@ http {
 
 	ssl_certificate     /etc/letsencrypt/live/campusvirtual2.com/fullchain.pem;
 	ssl_certificate_key /etc/letsencrypt/live/campusvirtual2.com/privkey.pem;
-	#ssl_certificate     /etc/nginx/ssl/selfsigned.crt;
-	#ssl_certificate_key /etc/nginx/ssl/selfsigned.key;
 
         ssl_protocols TLSv1.2 TLSv1.3;
         ssl_ciphers HIGH:!aNULL:!MD5;
@@ -83,20 +57,21 @@ http {
         root /var/www/html;
         index index.php;
 
-	add_header Access-Control-Allow-Origin *;
         # Não propague cabeçalhos de proxy aqui — eles vêm do NPM
         # estes podem até ser removidos
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
+	#proxy_set_header Host $host;
+	#proxy_set_header X-Real-IP $remote_addr;
         # --- Cabeçalhos para TODAS as requisições ---
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto https;
-        proxy_set_header X-Forwarded-Port 443;
-        proxy_set_header X-Forwarded-Host $host;
+	#proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	#proxy_set_header X-Forwarded-Proto https;
+	#proxy_set_header X-Forwarded-Port 443;
+	#proxy_set_header X-Forwarded-Host $host;
 	#	proxy_set_header X-Forwarded-Scheme https;
 
         location / {
             try_files $uri/ /index.php?$query_string;
+	    #proxy_read_timeout 300s;
+	    #proxy_connect_timeout 75s;
         }
 
 	#location ~ pluginfile\.php {
@@ -112,6 +87,8 @@ http {
 	    proxy_set_header Accept-Encoding "";
 	    add_header Content-Encoding "" always;
 	    add_header Transfer-Encoding "" always;
+            proxy_read_timeout 300s;
+            proxy_connect_timeout 75s;
 
 	    fastcgi_buffering on;
 	    fastcgi_buffers 64 32k;
@@ -149,6 +126,8 @@ http {
             fastcgi_buffering on;
             fastcgi_buffers 64 32k;
             fastcgi_buffer_size 256k;
+            proxy_read_timeout 300s;
+            proxy_connect_timeout 75s;
 
 	    #expires 30d;
 	}

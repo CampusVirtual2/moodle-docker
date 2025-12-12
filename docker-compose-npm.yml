@@ -1,0 +1,41 @@
+services:
+  npm_db:
+    image: mariadb:latest
+    container_name: ${DOMAIN:-campusvirtual2.com}_db
+    command: '--default-authentication-plugin=mysql_native_password'
+    volumes:
+      - ./data/db:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_USER: npm_user
+      MYSQL_DATABASE: npm_database
+      MYSQL_PASSWORD: secure_npm_password
+      MYSQL_ROOT_PASSWORD: root_password
+      TZ: America/Sao_Paulo
+    networks:
+      - default
+
+  npm:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: ${DOMAIN:-campusvirtual2.com}_npm
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+      - '81:81'
+    environment:
+      DB_MYSQL_HOST: npm_db
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: npm_user
+      DB_MYSQL_PASSWORD: secure_npm_password
+      DB_MYSQL_NAME: npm_database
+    volumes:
+      - ./data/npm:/data
+      - ./data/letsencrypt:/etc/letsencrypt
+    networks:
+      - default
+
+networks:
+  default:
+    name: rede_${DOMAIN}
+
