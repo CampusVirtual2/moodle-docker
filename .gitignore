@@ -6,7 +6,8 @@ moodledata_data/localcache/
 moodledata_data/temp/
 zk_data/
 zk_datalog/
-redis/*.rbd
+*.rdb
+*.aof
 backup/moodle/
 cron-logs/
 *.log
